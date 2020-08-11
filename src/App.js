@@ -3,6 +3,7 @@ import "./styles/main.scss";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Home from "./pages/Home";
+import Footer from "./components/Footer";
 import GoodAt from "./pages/Wizard/goodAt";
 import Love from "./pages/Wizard/love";
 import Needs from "./pages/Wizard/needs";
@@ -19,6 +20,7 @@ const App = () => (
       <Route path="/what-are-you-paid-for" component={PaidFor} exact />
       <Route path="/chart" component={IkigaiChart} exact />
     </Switch>
+    <Footer />
   </Router>
 );
 

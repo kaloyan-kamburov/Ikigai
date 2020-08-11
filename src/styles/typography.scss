@@ -1,8 +1,35 @@
 html {
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: "Campton";
   font-size: 100%;
 }
 
 h1 {
-  font-size: 2.4rem;
+  font-size: 220px;
+  font-family: Casta;
+  color: $black;
+  line-height: 242px;
+  text-align: left;
+  font-weight: 100;
+}
+
+h2 {
+  color: $black;
+  font-family: Casta;
+  font-size: 100px;
+  line-height: 110px;
+  font-weight: 100;
+} 
+
+h3 {
+  color: $black;
+  font-family: Campton;
+  font-size: 44px;
+  line-height: 64px;
+  font-weight: 100;
+}
+p, ul { 
+  color: #000000;
+  font-family: Campton;
+  font-size: 28px;
+  line-height: 46px;
 }

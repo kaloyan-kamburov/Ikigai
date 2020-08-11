@@ -1,0 +1,38 @@
+.footer {
+    background: $black;
+    padding: 104px 0 71.5px;
+}
+.foot-wrap {
+    &::after {
+        display: block;
+        clear: both;
+        content:"";
+    }
+}
+.foot-content  {
+    display: inline-block;
+    & p,
+    & .foot-nav li a{
+        color: $white;
+        font-family: Campton;
+        font-size: 18px;
+        line-height: 46px;
+    }
+    &.left {
+        float: left;
+    }
+    &.right {
+        float: right;
+    }
+}
+
+.foot-nav {
+    text-align: right;
+    & li {
+        display: inline-block;
+        padding-left: 40px;
+        &:first-child {
+            padding-left: 0;
+        }
+    }
+}
