@@ -32,3 +32,9 @@ button {
     text-transform: initial;
     margin-left: 60px;
   }
+  .btn-light {
+    opacity: 0.3;
+    &.active {
+      opacity: 1;
+    }
+  }

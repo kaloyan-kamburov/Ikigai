@@ -1,0 +1,127 @@
+.section-dark {
+    background: $black;
+}
+.wizard {
+    display: flex;
+    padding: 76px 0 89px;
+}
+.wizard__step {
+flex: 1 0 0;
+    position: relative;
+    &.active {
+        &::before {
+            border-top: 3px solid $white;
+            content: "";
+            left: 10%;
+            position: absolute;
+            right: 0;
+            top: 15px;
+            width: 70%;
+            margin: 0 auto;
+        }
+        &:last-child {
+            border: 0;
+            flex: 0 0 auto;
+            &::before {
+            border: 0 none;
+            }
+        }
+    }
+    
+}
+.rectangle {
+    height: 27px;
+    width: 27px;
+    border: 3px solid #FFFFFF;
+    transform: rotate(315deg);
+    display: block;
+    &.active {
+        background-color: $white;
+    }
+}
+.form-bg {
+    background: $white;
+    padding: 64px 73px 151px 77px;
+}
+.formHead-title,
+.page-number {
+    opacity: 0.5;
+    color: $black;
+    font-family: Campton;
+    font-size: 28px;
+    line-height: 46px;
+    display: inline-block;
+}
+.form-title {
+    color: $black;
+    font-family: Casta;
+    font-size: 120px;
+    font-weight: 100;
+    line-height: 132px;
+}
+.page-number {
+   float: right;
+    & li {
+        display: inline-block;
+        &:last-child {
+            &:before {
+                height: 23px;
+                width: 17px;
+                border-right: 2px solid #000000;
+                opacity: 0.5;
+                display: inline-block;
+                content: '';
+                transform: rotate(390deg);
+                margin: 0 30px 0 20px;
+            }
+        }
+    }
+}
+.form-head {
+    padding-bottom: 49px;
+}
+.form-select {
+    padding-top: 65px;
+}
+.form-btns {
+    padding: 83px 0 45px;
+}
+.form-foot {
+    & p {
+        opacity: 0.5;
+        color: $black;
+        font-family: Campton;
+        font-size: 18px;
+        line-height: 32px;
+    }
+}
+.form-questions{
+    padding-left: 151px; 
+    padding-top: 172px;
+}
+.form-questions-title {
+    color: $white;
+    font-family: Campton-Bold;
+    font-size: 38px;
+    line-height: 56px;
+    font-weight: 600;
+}
+.form-questions-list {
+    color: $white;
+    padding-top: 27px;
+    & li {
+        padding: 20px 0;
+        &:before {
+            content: '';
+            display: inline-block;
+            vertical-align: middle;
+            height: 11px;
+            width: 11px;
+            transform: rotate(315deg);
+            background-color: $white;
+            margin-right: 14px;
+            line-height: 46px;
+        }
+    }
+}
+
