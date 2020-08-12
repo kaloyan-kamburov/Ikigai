@@ -1,10 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useHistory, useLocation } from "react-router-dom";
-import Highcharts from "highcharts";
-import HighchartsReact from "highcharts-react-official";
-
-import VennModule from "highcharts/modules/venn.js";
-VennModule(Highcharts);
 
 const IkigaiChart = () => {
   const history = useHistory();
