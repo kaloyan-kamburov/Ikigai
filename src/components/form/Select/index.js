@@ -1,7 +1,8 @@
 import React from "react";
-import CreatableSelect from "react-select/creatable";
+import CreatableSelect from "react-select/async-creatable";
 import { Field } from "react-final-form";
 import Highlighter from "react-highlight-words";
+import { debounce } from "underscore";
 
 const styles = {
   container: (provided) => ({
@@ -57,13 +58,48 @@ const styles = {
   input: (provided) => ({ ...provided, width: "100%" }),
   dropdownIndicator: () => ({ display: "none" }),
 };
+const options = [
+  {
+    label: "Skateboarding",
+    value: "Skateboarding",
+  },
+  {
+    label: "Drawing",
+    value: "Drawing",
+  },
+  {
+    label: "Cooking",
+    value: "Cooking",
+  },
+];
+
+// const loadOptions = async (inputValue, callback) => {
+//   if (!inputValue || inputValue.length < 2) {
+//     return callback([]);
+//   }
+//   try {
+//     const res = await fetch(`http://localhost:3001/items?q=${inputValue}`);
+//     return res.json();
+//   } catch (e) {
+//     return callback([]);
+//   }
+// };
+
+const loadOptions = (inputValue, callback) => {
+  setTimeout(() => {
+    return callback(options);
+  }, 2000);
+};
 
 const formatOptionLabel = ({ label = "" }, { inputValue }) => {
   return (
     <Highlighter
       searchWords={[inputValue]}
       textToHighlight={label}
-      highlightStyle={{ background: "transparent", fontWeight: 900 }}
+      highlightStyle={{
+        background: "transparent",
+        fontFamily: "Campton-Bold",
+      }}
     />
   );
 };
@@ -87,6 +123,8 @@ const renderSelect = (props) => {
       {...props}
       formatOptionLabel={formatOptionLabel}
       formatCreateLabel={formatCreateLabel}
+      loadOptions={debounce(loadOptions, 500)}
+      cacheOptions
       // defaultMenuIsOpen
       // menuIsOpen
     />

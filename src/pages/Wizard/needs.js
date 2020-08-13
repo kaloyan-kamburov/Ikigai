@@ -39,11 +39,11 @@ const GoodAt = () => {
             <li className="wizard__step active">
               <span className="rectangle active"></span>
             </li>
+            <li className="wizard__step active">
+              <span className="rectangle active"></span>
+            </li>
             <li className="wizard__step toBeFilled">
               <span className="rectangle fill"></span>
-            </li>
-            <li className="wizard__step">
-              <span className="rectangle"></span>
             </li>
             <li className="wizard__step">
               <span className="rectangle"></span>
@@ -119,18 +119,22 @@ const GoodAt = () => {
 
             <div className="col_40 form-questions">
               <h2 className="form-questions-title">
-              This question is meant to figure out what you can give to the world, your culture or your family.
+                This question is meant to figure out what you can give to the
+                world, your culture or your family.
               </h2>
               <ul className="form-questions-list">
                 <li>
                   {" "}
-                  What problems in your society would you like to help solve immediately?
+                  What problems in your society would you like to help solve
+                  immediately?
                 </li>
                 <li>
-                What issues in your community/ the whole world touch you emotionally?
+                  What issues in your community/ the whole world touch you
+                  emotionally?
                 </li>
                 <li>
-                Will your work still be relevant a decade (or even a century) from now?
+                  Will your work still be relevant a decade (or even a century)
+                  from now?
                 </li>
               </ul>
             </div>

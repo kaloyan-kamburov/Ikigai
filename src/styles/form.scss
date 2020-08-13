@@ -151,6 +151,9 @@
     }
   }
   &[class*="multi-value__remove"] {
+    svg {
+      transform: scale(1.5);
+    }
     &:hover {
       background-color: $white;
       color: inherit;
@@ -164,19 +167,24 @@
       color: $white;
     }
   }
-  &[class*=" custom-select__multi-value"]{
+  &[class*="custom-select__multi-value"] {
     color: $black;
     font-family: Campton;
     font-size: 28px;
     letter-spacing: 0;
     line-height: 46px;
+  }
+  &[class*="__input"] {
+    color: $black;
+    font-family: Campton;
+    font-size: 28px;
+    letter-spacing: 0;
+    line-height: 46px;
+  }
+  &[class*="value-container"] {
+    mark {
+      font-family: Campton !important;
     }
-  &[class*="__input"]{
-    color: $black;
-    font-family: Campton;
-    font-size: 28px;
-    letter-spacing: 0;
-    line-height: 46px;
   }
 }
 

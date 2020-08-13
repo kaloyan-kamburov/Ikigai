@@ -162,6 +162,7 @@ const IkigaiChart = () => {
           // height="1790px"
           viewBox="0 0 1791 1790"
           version="1.1"
+          className="hidden"
         >
           <g
             id="Group-10"

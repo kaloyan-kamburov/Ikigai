@@ -6,20 +6,20 @@ import { useHistory, useLocation } from "react-router-dom";
 const GoodAt = () => {
   const history = useHistory();
   const location = useLocation();
-  const options = [
-    {
-      label: "Skateboarding",
-      value: "Skateboarding",
-    },
-    {
-      label: "Drawing",
-      value: "Drawing",
-    },
-    {
-      label: "Cooking",
-      value: "Cooking",
-    },
-  ];
+  // const options = [
+  //   {
+  //     label: "Skateboarding",
+  //     value: "Skateboarding",
+  //   },
+  //   {
+  //     label: "Drawing",
+  //     value: "Drawing",
+  //   },
+  //   {
+  //     label: "Cooking",
+  //     value: "Cooking",
+  //   },
+  // ];
 
   const handleSubmit = (values) => {
     history.push({
@@ -36,8 +36,8 @@ const GoodAt = () => {
       <section className="section-dark">
         <div className="shell">
           <ul className="wizard">
-            <li className="wizard__step">
-              <span className="rectangle"></span>
+            <li className="wizard__step toBeFilled">
+              <span className="rectangle fill"></span>
             </li>
             <li className="wizard__step">
               <span className="rectangle"></span>
@@ -83,7 +83,6 @@ const GoodAt = () => {
                         <Select
                           name="options"
                           isMulti
-                          options={options}
                           value={props.initialValues.options}
                         />
                         <div className="form-btns">
