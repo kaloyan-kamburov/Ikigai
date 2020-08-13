@@ -63,7 +63,7 @@ const GoodAt = () => {
                 </ul>
               </div>
 
-              <h1 className="form-title">What can you be paid for</h1>
+              <h1 className="form-title">What you can be paid for</h1>
 
               <div className="form-select">
                 <Form
@@ -119,21 +119,15 @@ const GoodAt = () => {
 
             <div className="col_40 form-questions">
               <h2 className="form-questions-title">
-                This question is meant to figure out your natural gifts: your
-                talents and skills.
+              This question is about the things that can put bread on your table, whether you enjoy them or not.
               </h2>
               <ul className="form-questions-list">
                 <li>
                   {" "}
-                  What parts of your current job are you effortless good at?
+                  Lately, have you been paid for what you do? Have you ever been paid for what you do? If not, are other people being paid for this work?
                 </li>
                 <li>
-                  What are you among the best in your workplace, community (or
-                  even the whole world) at?
-                </li>
-                <li>
-                  With some more education and experience, could you be among
-                  the best at what you do?
+                Are you already making a good living doing what it is that you’re doing? Can you eventually make a good living doing this work?
                 </li>
               </ul>
             </div>

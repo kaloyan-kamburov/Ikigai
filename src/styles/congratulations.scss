@@ -1,7 +1,23 @@
 .congratulations {
   text-align: center;
-
-  button {
-    padding: 15px;
-  }
+}
+.congrats-title {
+  color: $black;
+  font-size: 160px;
+  font-weight: 100;
+  line-height: 176px;
+  text-align: center;
+  padding: 189px 0 45px;
+}
+.congrats-subTitle {
+  color: $black;
+  font-family: Campton;
+  font-size: 44px;
+  line-height: 64px;
+  text-align: center;
+}
+.congrats-body {
+  padding: 58px 0 46px;
+  width: 65%;
+  margin: 0 auto;
 }

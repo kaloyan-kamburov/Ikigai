@@ -119,21 +119,18 @@ const GoodAt = () => {
 
             <div className="col_40 form-questions">
               <h2 className="form-questions-title">
-                This question is meant to figure out your natural gifts: your
-                talents and skills.
+              This question is meant to figure out what you can give to the world, your culture or your family.
               </h2>
               <ul className="form-questions-list">
                 <li>
                   {" "}
-                  What parts of your current job are you effortless good at?
+                  What problems in your society would you like to help solve immediately?
                 </li>
                 <li>
-                  What are you among the best in your workplace, community (or
-                  even the whole world) at?
+                What issues in your community/ the whole world touch you emotionally?
                 </li>
                 <li>
-                  With some more education and experience, could you be among
-                  the best at what you do?
+                Will your work still be relevant a decade (or even a century) from now?
                 </li>
               </ul>
             </div>

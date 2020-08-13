@@ -26,9 +26,15 @@ const Congratulations = () => {
         </ul>
 
         <div className="congratulations form-bg">
-          <h1>Congratulations</h1>
+          <h1 className="congrats-title">Congratulations</h1>
+          <h2 className="congrats-subTitle">Your journey has just started.</h2>
+          <div className="congrats-body">
+            <p>
+            We have to be honest with you. The ikigai diagram is not perfect. The important part is the process of self discovery that you follow as you try to answer the questions. What you could have seen is that ikigai shows you that nothing is siloed. Everything is connected. Everything is work in progress.
+            </p>
+          </div>
           <div className="form-btns">
-            <button
+            <button className="btn-lg"
               onClick={() =>
                 history.push({
                   pathname: "/chart",
