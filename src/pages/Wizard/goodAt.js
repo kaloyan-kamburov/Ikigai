@@ -23,20 +23,19 @@ const GoodAt = () => {
 
   const handleSubmit = (values) => {
     history.push({
-      pathname: "/what-you-love",
+      pathname: "/what-the-world-needs",
       state: {
         goodAt: values.options,
       },
     });
   };
-  const styles = { option: (provided) => ({ ...provided, background: "red" }) };
 
   return (
     <>
       <section className="section-dark">
         <div className="shell">
           <ul className="wizard">
-            <li className="wizard__step active">
+            <li className="wizard__step toBeFilled">
               <span className="rectangle active"></span>
             </li>
             <li className="wizard__step">
@@ -69,7 +68,7 @@ const GoodAt = () => {
                 <Form
                   validate={(values) => {
                     const errors = {};
-                    if (!values.options || !values.options.length) {
+                    if (!values.options || values.options.length < 3) {
                       errors.options = "Required";
                     }
                     return errors;
@@ -84,14 +83,12 @@ const GoodAt = () => {
                       <form onSubmit={props.handleSubmit}>
                         <Select
                           name="options"
-                          isMulti
                           value={props.initialValues.options}
                           options={options}
-                          styles={styles}
                         />
                         <div className="form-btns">
                           <button
-                            className="btn-small btn-light"
+                            className="btn-small"
                             disabled={props.invalid}
                             type="submit"
                           >
@@ -104,11 +101,11 @@ const GoodAt = () => {
                 </Form>
               </div>
 
-              <button
+              {/* <button
                 onClick={() => history.push({ pathname: "/", state: {} })}
               >
                 Back to home
-              </button>
+              </button> */}
 
               <div className="form-foot">
                 <p>You have to add at least 3 items in order to continue.</p>

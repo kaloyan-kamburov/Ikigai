@@ -8,6 +8,7 @@ import GoodAt from "./pages/Wizard/goodAt";
 import Love from "./pages/Wizard/love";
 import Needs from "./pages/Wizard/needs";
 import PaidFor from "./pages/Wizard/paidFor";
+import Congratulations from "./pages/Wizard/congratulations";
 import IkigaiChart from "./pages/Wizard/chart";
 
 const App = () => (
@@ -18,6 +19,7 @@ const App = () => (
       <Route path="/what-you-love" component={Love} exact />
       <Route path="/what-the-world-needs" component={Needs} exact />
       <Route path="/what-are-you-paid-for" component={PaidFor} exact />
+      <Route path="/congratulations" component={Congratulations} exact />
       <Route path="/chart" component={IkigaiChart} exact />
     </Switch>
     <Footer />

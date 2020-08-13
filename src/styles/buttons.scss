@@ -1,40 +1,43 @@
 button {
-    color: $black;
-    font-family: Campton;
-    text-transform: uppercase;
-    border: 3px solid $black;
-    background: $white;
-    box-shadow: 7px 6px;
-    display: inline-block;
-    vertical-align: middle;
-    cursor: pointer;
-  }
-  .btn-lg{
-    height: 107px;
-    width: 341px;
-    font-size: 40px;
-    line-height: 107px;
-  }
-  .btn-small {
-    height: 76px;
-    width: 252px;
-    font-size: 28px;
-    line-height: 76px;
-  }
-  .btn-viewExamples {
-    font-size: 28px;
-    letter-spacing: 0;
-    height: 76px;
-    line-height: 76px;
-    text-decoration: underline;
-    box-shadow: none;
-    border: none;
-    text-transform: initial;
-    margin-left: 60px;
-  }
-  .btn-light {
+  color: $black;
+  font-family: Campton;
+  text-transform: uppercase;
+  border: 3px solid $black;
+  background: $white;
+  box-shadow: 7px 6px;
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+  &:disabled {
     opacity: 0.3;
-    &.active {
-      opacity: 1;
-    }
   }
+}
+.btn-lg {
+  height: 107px;
+  width: 341px;
+  font-size: 40px;
+  line-height: 107px;
+}
+.btn-small {
+  height: 76px;
+  width: 252px;
+  font-size: 28px;
+  line-height: 76px;
+}
+.btn-viewExamples {
+  font-size: 28px;
+  letter-spacing: 0;
+  height: 76px;
+  line-height: 76px;
+  text-decoration: underline;
+  box-shadow: none;
+  border: none;
+  text-transform: initial;
+  margin-left: 60px;
+}
+// .btn-light {
+//   opacity: 0.3;
+//   &.active {
+//     opacity: 1;
+//   }
+// }
