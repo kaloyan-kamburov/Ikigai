@@ -36,7 +36,7 @@ const GoodAt = () => {
         <div className="shell">
           <ul className="wizard">
             <li className="wizard__step toBeFilled">
-              <span className="rectangle active"></span>
+              <span className="rectangle active fill"></span>
             </li>
             <li className="wizard__step">
               <span className="rectangle"></span>
