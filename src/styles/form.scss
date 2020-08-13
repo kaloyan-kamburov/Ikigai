@@ -4,6 +4,7 @@
 .wizard {
   display: flex;
   padding: 76px 0 89px;
+  width: 122%;
 }
 .wizard__step {
   flex: 1 0 0;
@@ -157,7 +158,8 @@
   }
   &[class*="__option--is-focused"] {
     color: $white;
-    background: #7d7d7d;
+    cursor: pointer;
+    background: #7d7d7d !important;
     mark {
       color: $white;
     }

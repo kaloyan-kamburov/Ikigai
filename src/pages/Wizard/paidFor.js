@@ -43,7 +43,7 @@ const GoodAt = () => {
               <span className="rectangle active"></span>
             </li>
             <li className="wizard__step toBeFilled">
-              <span className="rectangle active"></span>
+              <span className="rectangle fill"></span>
             </li>
             <li className="wizard__step">
               <span className="rectangle"></span>
