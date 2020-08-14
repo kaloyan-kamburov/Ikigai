@@ -76,7 +76,7 @@ const GoodAt = () => {
                   }}
                   onSubmit={handleSubmit}
                   initialValues={{
-                    options: (location.state && location.state.goodAt) || null,
+                    options: (location.state && location.state.needs) || null,
                   }}
                 >
                   {(props) => {
