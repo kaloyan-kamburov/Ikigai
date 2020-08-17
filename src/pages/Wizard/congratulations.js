@@ -21,11 +21,7 @@ const Congratulations = () => {
             <span className="rectangle active"></span>
           </li>
           <li className="wizard__step">
-<<<<<<< HEAD
-            <span className="rectangle active"></span>
-=======
             <span className="rectangle fill"></span>
->>>>>>> ef6457510507223f08646414f8cfa192f49ff5e3
           </li>
         </ul>
 
