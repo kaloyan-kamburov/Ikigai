@@ -7,15 +7,21 @@
 	width: 89%;
 	margin: auto;
 
+} 
+.col_40,
+.col-60 {
+	width: 100%;
 }
-  
 
-.col-wrapper {
-	display: flex;
-}
-
-.col_40 { width: 40%;}
-.col_60 { width: 60%; }
+@media #{$large} {
+	.col-wrapper {
+		display: flex;
+	}
 	
+	.col_40 { width: 40%;}
+	.col_60 { width: 60%; }
+		
+}
+
 	
 

@@ -85,6 +85,15 @@ const GoodAt = () => {
                           isMulti
                           value={props.initialValues.options}
                         />
+                        <div className="form-list">
+                          <p className="form-list-title">Your items</p>
+                          <ul>
+                            <li><span className="check">
+                            &#10003;</span>Skateboarding</li>
+                            <li>Design</li>
+                            <li>Hiking</li>
+                          </ul>
+                        </div>
                         <div className="form-btns">
                           <button
                             className="btn-small"
@@ -108,6 +117,7 @@ const GoodAt = () => {
                 >
                   Back
                 </button> */}
+                
               </div>
               <div className="form-foot">
                 <p>You have to add at least 3 items in order to continue.</p>

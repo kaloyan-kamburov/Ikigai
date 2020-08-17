@@ -11,6 +11,9 @@ button {
   &:disabled {
     opacity: 0.3;
   }
+  &:focus {
+    outline: none;
+  }
 }
 .btn-lg {
   height: 107px;

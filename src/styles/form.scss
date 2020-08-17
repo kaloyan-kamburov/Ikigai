@@ -98,6 +98,15 @@
 .form-select {
   padding-top: 65px;
 }
+.form-list-title {
+  opacity: 0.4;
+  color: $black;
+  font-family: Campton;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 46px;
+  padding: 45px 0 16px;
+}
 .form-btns {
   padding: 83px 0 45px;
 }
@@ -111,7 +120,6 @@
   }
 }
 .form-questions {
-  padding-left: 151px;
   padding-top: 172px;
 }
 .form-questions-title {
@@ -186,6 +194,14 @@
       font-family: Campton !important;
     }
   }
+  &[class*="-placeholder"] {
+    font-family: Campton;
+    font-size: 28px;
+    letter-spacing: 0;
+    line-height: 46px;
+    opacity: 0.2;
+    color: $black;
+  }
 }
 
 @keyframes show {
@@ -207,5 +223,11 @@
   }
   100% {
     background-color: $white;
+  }
+}
+
+@media #{$large} {
+  .form-questions {
+    padding-left: 151px;
   }
 }
