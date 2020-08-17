@@ -42,11 +42,11 @@ const GoodAt = () => {
             <li className="wizard__step active">
               <span className="rectangle active"></span>
             </li>
+            <li className="wizard__step active">
+              <span className="rectangle active"></span>
+            </li>
             <li className="wizard__step toBeFilled">
               <span className="rectangle fill"></span>
-            </li>
-            <li className="wizard__step">
-              <span className="rectangle"></span>
             </li>
             <li className="wizard__step">
               <span className="rectangle"></span>
@@ -76,7 +76,7 @@ const GoodAt = () => {
                   }}
                   onSubmit={handleSubmit}
                   initialValues={{
-                    options: (location.state && location.state.goodAt) || null,
+                    options: (location.state && location.state.paidFor) || null,
                   }}
                 >
                   {(props) => {
@@ -119,15 +119,20 @@ const GoodAt = () => {
 
             <div className="col_40 form-questions">
               <h2 className="form-questions-title">
-              This question is about the things that can put bread on your table, whether you enjoy them or not.
+                This question is about the things that can put bread on your
+                table, whether you enjoy them or not.
               </h2>
               <ul className="form-questions-list">
                 <li>
                   {" "}
-                  Lately, have you been paid for what you do? Have you ever been paid for what you do? If not, are other people being paid for this work?
+                  Lately, have you been paid for what you do? Have you ever been
+                  paid for what you do? If not, are other people being paid for
+                  this work?
                 </li>
                 <li>
-                Are you already making a good living doing what it is that you’re doing? Can you eventually make a good living doing this work?
+                  Are you already making a good living doing what it is that
+                  you’re doing? Can you eventually make a good living doing this
+                  work?
                 </li>
               </ul>
             </div>
