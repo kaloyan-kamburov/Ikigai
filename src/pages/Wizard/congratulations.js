@@ -21,7 +21,7 @@ const Congratulations = () => {
             <span className="rectangle fill"></span>
           </li>
           <li className="wizard__step">
-            <span className="rectangle"></span>
+            <span className="rectangle active"></span>
           </li>
         </ul>
 

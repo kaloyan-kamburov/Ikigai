@@ -1,7 +1,14 @@
 .shell {
-  width: 89%;
-  margin: 0 auto;
+  padding: 0 15px;
 }
+@media #{$large} {
+  .shell {
+    width: 89%;
+    margin: 0 auto;
+    padding: 0;
+  }
+}
+
 .section {
   padding: 270px 0 355px;
 }
