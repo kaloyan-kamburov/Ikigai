@@ -535,11 +535,13 @@ const IkigaiChart = () => {
   }, []);
 
   return (
-    <div
-      className="chart-wrapper"
-      id="ikigai"
-      style={{ textAlign: "center" }}
-    ></div>
+    <div className="outer-wrapper">
+      <div
+        className="chart-wrapper"
+        id="ikigai"
+        style={{ textAlign: "center" }}
+      ></div>
+    </div>
   );
 };
 
