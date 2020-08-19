@@ -532,10 +532,14 @@ const IkigaiChart = () => {
     // svg.node().prepend(defs);
     // circles.each(insertClipPath);
     // intersections.each(insertClipPath);
+    setTimeout(() => {
+      document.getElementById("mask").remove();
+    }, 1500);
   }, []);
 
   return (
     <div className="outer-wrapper">
+      <div id="mask" className="mask"></div>
       <div
         className="chart-wrapper"
         id="ikigai"
