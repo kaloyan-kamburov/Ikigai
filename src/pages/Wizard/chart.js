@@ -371,6 +371,7 @@ const IkigaiChart = () => {
   ]);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     // draw venn diagram
     const div = d3.select("#ikigai");
     div
@@ -425,8 +426,8 @@ const IkigaiChart = () => {
 
       .on("mousemove", function () {
         tooltip
-          .style("left", d3.event.pageX + 20 + "px")
-          .style("top", d3.event.pageY + 38 + "px");
+          .style("left", d3.event.pageX + 20 - window.scrollX + "px")
+          .style("top", d3.event.pageY + 30 - window.scrollY + "px");
       })
 
       .on("mouseout", function (d, i) {
@@ -452,12 +453,12 @@ const IkigaiChart = () => {
       //   .getAttribute("data-venn-sets")
       //   .split("_")
       //   .join("")}`;
-      const innerPath = document.createElement("path");
-      innerPath.id = `pathFor-${path.parentElement.getAttribute(
-        "data-venn-sets"
-      )}`;
-      innerPath.setAttribute("d", path.getAttribute("d"));
-      bigClipPath.appendChild(innerPath);
+      // const innerPath = document.createElement("path");
+      // innerPath.id = `pathFor-${path.parentElement.getAttribute(
+      //   "data-venn-sets"
+      // )}`;
+      // innerPath.setAttribute("d", path.getAttribute("d"));
+      // bigClipPath.appendChild(innerPath);
       // clipPath.appendChild(innerPath);
 
       // svg.node().firstChild.appendChild(clipPath);
@@ -491,8 +492,8 @@ const IkigaiChart = () => {
 
         path
           .append("foreignObject")
-          .attr("x", `${Math.round(pathDimensions.left)}`) //- 300)
-          .attr("y", `${Math.round(pathDimensions.top)}`) // - 300)
+          .attr("x", `${Math.round(pathDimensions.left + window.scrollX)}`) //- 300)
+          .attr("y", `${Math.round(pathDimensions.top + window.scrollY)}`) // - 300)
           .attr("height", `${Math.round(pathDimensions.height)}`)
           .attr("width", `${Math.round(pathDimensions.width)}`)
           .attr("class", "items-wrapper")
@@ -520,14 +521,15 @@ const IkigaiChart = () => {
 
     circles.each(insertItems);
     intersections.each(insertItems);
-    const defs = document.createElement("defs");
-    const bigClipPath = document.createElementNS(
-      "http://www.w3.org/2000/svg",
-      "clipPath"
-    );
-    bigClipPath.id = "test";
-    defs.appendChild(bigClipPath);
-    svg.node().prepend(defs);
+
+    // const defs = document.createElement("defs");
+    // const bigClipPath = document.createElementNS(
+    //   "http://www.w3.org/2000/svg",
+    //   "clipPath"
+    // );
+    // bigClipPath.id = "test";
+    // defs.appendChild(bigClipPath);
+    // svg.node().prepend(defs);
     // circles.each(insertClipPath);
     // intersections.each(insertClipPath);
   }, []);
