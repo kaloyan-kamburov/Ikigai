@@ -25,6 +25,7 @@ const GoodAt = () => {
     history.push({
       pathname: "/what-the-world-needs",
       state: {
+        ...location.state,
         goodAt: values.options,
       },
     });
