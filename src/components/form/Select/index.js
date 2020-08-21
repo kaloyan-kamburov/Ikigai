@@ -71,6 +71,14 @@ const options = [
     label: "Cooking",
     value: "Cooking",
   },
+  {
+    label: "Travelling",
+    value: "Travelling",
+  },
+  {
+    label: "Design",
+    value: "Design",
+  },
 ];
 
 // const loadOptions = async (inputValue, callback) => {

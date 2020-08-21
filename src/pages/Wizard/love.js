@@ -26,7 +26,7 @@ const GoodAt = () => {
       pathname: "/what-are-you-good-at",
       state: {
         ...location.state,
-        love: values.options,
+        A: values.options,
       },
     });
   };
@@ -74,7 +74,7 @@ const GoodAt = () => {
                   }}
                   onSubmit={handleSubmit}
                   initialValues={{
-                    options: (location.state && location.state.love) || null,
+                    options: (location.state && location.state.A) || null,
                   }}
                 >
                   {(props) => {
@@ -88,8 +88,10 @@ const GoodAt = () => {
                         <div className="form-list">
                           <p className="form-list-title">Your items</p>
                           <ul>
-                            <li><span className="check">
-                            &#10003;</span>Skateboarding</li>
+                            <li>
+                              <span className="check">&#10003;</span>
+                              Skateboarding
+                            </li>
                             <li>Design</li>
                             <li>Hiking</li>
                           </ul>
@@ -117,7 +119,6 @@ const GoodAt = () => {
                 >
                   Back
                 </button> */}
-                
               </div>
               <div className="form-foot">
                 <p>You have to add at least 3 items in order to continue.</p>

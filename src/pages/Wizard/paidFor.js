@@ -26,7 +26,7 @@ const GoodAt = () => {
       pathname: "/congratulations",
       state: {
         ...location.state,
-        paidFor: values.options,
+        D: values.options,
       },
     });
   };
@@ -76,7 +76,7 @@ const GoodAt = () => {
                   }}
                   onSubmit={handleSubmit}
                   initialValues={{
-                    options: (location.state && location.state.paidFor) || null,
+                    options: (location.state && location.state.D) || null,
                   }}
                 >
                   {(props) => {

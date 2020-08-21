@@ -26,7 +26,7 @@ const GoodAt = () => {
       pathname: "/what-the-world-needs",
       state: {
         ...location.state,
-        goodAt: values.options,
+        C: values.options,
       },
     });
   };
@@ -76,7 +76,7 @@ const GoodAt = () => {
                   }}
                   onSubmit={handleSubmit}
                   initialValues={{
-                    options: (location.state && location.state.goodAt) || null,
+                    options: (location.state && location.state.C) || null,
                   }}
                 >
                   {(props) => {

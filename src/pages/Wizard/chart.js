@@ -2,375 +2,122 @@ import React, { useState, useEffect, useRef } from "react";
 import { useHistory, useLocation, generatePath } from "react-router-dom";
 import * as d3 from "d3";
 import * as venn from "@upsetjs/venn.js";
+import { intersection } from "underscore";
 
 const IkigaiChart = () => {
+  const location = useLocation();
+
+  const reduceItems = (items) =>
+    items.reduce((acc, item) => {
+      acc.push(item.value);
+      return acc;
+    }, []);
+
+  const generateItemsForGroup = (group = ["A", "B", "C", "D"]) => {
+    const items = [];
+    const allItems = location.state;
+    group.forEach((g) => items.push(reduceItems(allItems[g])));
+
+    return intersection(...items);
+  };
+
   const [sets, setSets] = useState([
     {
-      sets: ["A"],
+      sets: ["D"],
       size: 1000,
-      label: "WHAT YOU LOVE",
-      desc: "WHAT YOU LOVE",
-      items: [
-        "Skateboarding",
-        "Design",
-        "Cooking",
-        "Drawing",
-        "Watch TV",
-        "Driving",
-        "Skydiving",
-      ],
+      label: "WHAT YOU ARE GOOD AT",
+      desc: "WHAT YOU ARE GOOD AT",
+      items: generateItemsForGroup(["D"]),
     },
     {
       sets: ["B"],
       size: 1000,
       label: "WHAT THE WORLD NEEDS",
       desc: "WHAT THE WORLD NEEDS",
-      items: [
-        "Skateboarding",
-        "Design",
-        "Cooking",
-        "Drawing",
-        "Watch TV",
-        "Driving",
-        "Skydiving",
-        "test",
-        "asd",
-        "fds",
-        "fs",
-        "dfs TV",
-        "xxs",
-        "asdadd",
-        "test",
-        "asd",
-        "fds",
-        "fs",
-        "dfs TV",
-        "xxs",
-        "asdadd",
-      ],
+      items: generateItemsForGroup(["B"]),
+    },
+    {
+      sets: ["A"],
+      size: 1000,
+      label: "WHAT YOU LOVE",
+      desc: "WHAT YOU LOVE",
+      items: generateItemsForGroup(["A"]),
     },
     {
       sets: ["C"],
       size: 1000,
       label: "WHAT CAN YOU BE PAID FOR",
       desc: "WHAT CAN YOU BE PAID FOR",
-      items: [
-        "Skateboarding",
-        "Design",
-        "Cooking",
-        "Drawing",
-        "Watch TV",
-        "Driving",
-        "Skydiving",
-        "test",
-        "asd",
-        "fds",
-        "fs",
-        "dfs TV",
-        "xxs",
-        "asdadd",
-        "test",
-        "asd",
-        "fds",
-        "fs",
-        "dfs TV",
-        "xxs",
-        "asdadd",
-      ],
-    },
-    {
-      sets: ["D"],
-      size: 1000,
-      label: "WHAT YOU ARE GOOD AT",
-      desc: "WHAT YOU ARE GOOD AT",
-      items: [
-        "Skateboarding",
-        "Design",
-        "Cooking",
-        "Drawing",
-        "Watch TV",
-        "Driving",
-        "Skydiving",
-        "test",
-        "asd",
-        "fds",
-        "fs",
-        "dfs TV",
-        "xxs",
-        "asdadd",
-        "test",
-        "asd",
-        "fds",
-        "fs",
-        "dfs TV",
-        "xxs",
-        "asdadd",
-      ],
+      items: generateItemsForGroup(["C"]),
     },
     {
       sets: ["A", "B"],
       size: 300,
       label: "MISSION",
       desc: "MISSION",
-      items: [
-        "Skateboarding",
-        "Design",
-        "Cooking",
-        "Drawing",
-        "Watch TV",
-        "Driving",
-        "Skydiving",
-        "test",
-        "asd",
-        "fds",
-        "fs",
-        "dfs TV",
-        "xxs",
-        "asdadd",
-        "test",
-        "asd",
-        "fds",
-        "fs",
-        "dfs TV",
-        "xxs",
-        "asdadd",
-      ],
+      items: generateItemsForGroup(["A", "B"]),
     },
     {
       sets: ["B", "C"],
       size: 300,
       label: "VOCATION",
       desc: "VOCATION",
-      items: [
-        "Skateboarding",
-        "Design",
-        "Cooking",
-        "Drawing",
-        "Watch TV",
-        "Driving",
-        "Skydiving",
-        "test",
-        "asd",
-        "fds",
-        "fs",
-        "dfs TV",
-        "xxs",
-        "asdadd",
-        "test",
-        "asd",
-        "fds",
-        "fs",
-        "dfs TV",
-        "xxs",
-        "asdadd",
-      ],
+      items: generateItemsForGroup(["B", "C"]),
     },
     {
       sets: ["C", "D"],
       size: 300,
       label: "PROFESSION",
       desc: "PROFESSION",
-      items: [
-        "Skateboarding",
-        "Design",
-        "Cooking",
-        "Drawing",
-        "Watch TV",
-        "Driving",
-        "Skydiving",
-        "test",
-        "asd",
-        "fds",
-        "fs",
-        "dfs TV",
-        "xxs",
-        "asdadd",
-        "test",
-        "asd",
-        "fds",
-        "fs",
-        "dfs TV",
-        "xxs",
-        "asdadd",
-      ],
+      items: generateItemsForGroup(["C", "D"]),
     },
     {
       sets: ["A", "D"],
       size: 300,
       label: "PASSION",
       desc: "PASSION",
-      items: [
-        "Skateboarding",
-        "Design",
-        "Cooking",
-        "Drawing",
-        "Watch TV",
-        "Driving",
-        "Skydiving",
-        "test",
-        "asd",
-        "fds",
-        "fs",
-        "dfs TV",
-        "xxs",
-        "asdadd",
-        "test",
-        "asd",
-        "fds",
-        "fs",
-        "dfs TV",
-        "xxs",
-        "asdadd",
-      ],
+      items: generateItemsForGroup(["A", "D"]),
     },
     {
       sets: ["A", "B", "C", "D"],
       size: 300,
       label: "IKIGAI",
       desc: "IKIGAI",
-      // items: [
-      //   "Skateboarding",
-      //   "Design",
-      //   "Cooking",
-      //   "Drawing",
-      //   "Watch TV",
-      //   "Driving",
-      //   "Skydiving",
-      //   "test",
-      //   "asd",
-      //   "fds",
-      //   "fs",
-      //   "dfs TV",
-      //   "xxs",
-      //   "asdadd",
-      //   "test",
-      //   "asd",
-      //   "fds",
-      //   "fs",
-      //   "dfs TV",
-      //   "xxs",
-      //   "asdadd",
-      // ],
+      items: generateItemsForGroup(["A", "B", "C", "D"]),
     },
     {
       sets: ["A", "B", "C"],
       size: 300,
       desc:
         "LOREM IPSUM IS A PLACEHOLDER TEXT COMMONLY USED TO DEMONSTRATE LOREM IPSUM IS A PLACEHOLDER TEXT COMMONLY USED TO DEMONSTRATE",
-      items: [
-        "Skateboarding",
-        "Design",
-        "Cooking",
-        "Drawing",
-        "Watch TV",
-        "Driving",
-        "Skydiving",
-        "test",
-        "asd",
-        "fds",
-        "fs",
-        "dfs TV",
-        "xxs",
-        "asdadd",
-        "test",
-        "asd",
-        "fds",
-        "fs",
-        "dfs TV",
-        "xxs",
-        "asdadd",
-      ],
+      items: generateItemsForGroup(["A", "B", "C"]),
     },
     {
       sets: ["A", "B", "D"],
       size: 300,
       desc:
         "LOREM IPSUM IS A PLACEHOLDER TEXT COMMONLY USED TO DEMONSTRATE LOREM IPSUM IS A PLACEHOLDER TEXT COMMONLY USED TO DEMONSTRATE",
-      items: [
-        "Skateboarding",
-        "Design",
-        "Cooking",
-        "Drawing",
-        "Watch TV",
-        "Driving",
-        "Skydiving",
-        "test",
-        "asd",
-        "fds",
-        "fs",
-        "dfs TV",
-        "xxs",
-        "asdadd",
-        "test",
-        "asd",
-        "fds",
-        "fs",
-        "dfs TV",
-        "xxs",
-        "asdadd",
-      ],
+      items: generateItemsForGroup(["A", "B", "D"]),
     },
     {
       sets: ["A", "C", "D"],
       size: 300,
       desc:
         "LOREM IPSUM IS A PLACEHOLDER TEXT COMMONLY USED TO DEMONSTRATE LOREM IPSUM IS A PLACEHOLDER TEXT COMMONLY USED TO DEMONSTRATE",
-      items: [
-        "Skateboarding",
-        "Design",
-        "Cooking",
-        "Drawing",
-        "Watch TV",
-        "Driving",
-        "Skydiving",
-        "test",
-        "asd",
-        "fds",
-        "fs",
-        "dfs TV",
-        "xxs",
-        "asdadd",
-        "test",
-        "asd",
-        "fds",
-        "fs",
-        "dfs TV",
-        "xxs",
-        "asdadd",
-      ],
+      items: generateItemsForGroup(["A", "C", "D"]),
     },
     {
       sets: ["B", "C", "D"],
       size: 300,
       desc:
         "LOREM IPSUM IS A PLACEHOLDER TEXT COMMONLY USED TO DEMONSTRATE LOREM IPSUM IS A PLACEHOLDER TEXT COMMONLY USED TO DEMONSTRATE",
-      items: [
-        "Skateboarding",
-        "Design",
-        "Cooking",
-        "Drawing",
-        "Watch TV",
-        "Driving",
-        "Skydiving",
-        "test",
-        "asd",
-        "fds",
-        "fs",
-        "dfs TV",
-        "xxs",
-        "asdadd",
-        "test",
-        "asd",
-        "fds",
-        "fs",
-        "dfs TV",
-        "xxs",
-        "asdadd",
-      ],
+      items: generateItemsForGroup(["B", "C", "D"]),
     },
   ]);
 
   useEffect(() => {
+    console.log(location.state);
+    // generateItemsForGroup();
     window.scrollTo(0, 0);
     // draw venn diagram
     const div = d3.select("#ikigai");
@@ -469,47 +216,55 @@ const IkigaiChart = () => {
     };
 
     const insertItems = function (d, i) {
-      if (d.label !== "IKIGAI") {
-        const path = d3.select(this);
-        const text = path.select("text");
+      // if (d.label === "gucci") {
+      const path = d3.select(this);
+      const text = path.select("text");
 
-        let items = "";
+      let items = "";
 
-        const pathDimensions = path
-          .node()
-          .childNodes[0].getBoundingClientRect();
+      const pathDimensions = path.node().childNodes[0].getBoundingClientRect();
 
-        // console.log("denn-----");
-        // console.log(path.node().childNodes[0]);
-        // console.log(pathDimensions);
-        // console.log("--------");
+      // console.log("denn-----");
+      // console.log(path.node().childNodes[0]);
+      // console.log(pathDimensions);
+      // console.log("--------");
 
-        if (d.items) {
-          d.items.forEach((item) => {
-            items += `<div class="item">${item}</div>`;
-          });
-        }
-
-        path
-          .append("foreignObject")
-          .attr("x", `${Math.round(pathDimensions.left + window.scrollX)}`) //- 300)
-          .attr("y", `${Math.round(pathDimensions.top + window.scrollY)}`) // - 300)
-          .attr("height", `${Math.round(pathDimensions.height)}`)
-          .attr("width", `${Math.round(pathDimensions.width)}`)
-          .attr("class", "items-wrapper")
-          .append("xhtml:div")
-          .attr("class", "items")
-          .attr(
-            "style",
-            `width: ${Math.round(pathDimensions.width)}px; height:${Math.round(
-              pathDimensions.height
-            )}px`
-          )
-          .append("xhtml:div")
-          .attr("class", "inner-wrapper")
-          .style("color", "#fff")
-          .html(items);
+      if (d.items) {
+        d.items.forEach((item) => {
+          items += `<div class="item">${item}</div>`;
+        });
       }
+
+      path
+        .append("foreignObject")
+        .attr(
+          "x",
+          `${Math.round(
+            pathDimensions.left + window.scrollX + pathDimensions.width / 2
+          )}`
+        ) //- 300)
+        .attr(
+          "y",
+          `${Math.round(
+            pathDimensions.top + window.scrollY + pathDimensions.height / 2
+          )}`
+        ) // - 300)
+        // .attr("height", `${Math.round(pathDimensions.height)}`)
+        // .attr("width", `${Math.round(pathDimensions.width)}`)
+        .attr("class", "items-wrapper")
+        .append("xhtml:div")
+        .attr("class", "items")
+        // .attr(
+        //   "style",
+        //   `width: ${Math.round(pathDimensions.width)}px; height:${Math.round(
+        //     pathDimensions.height
+        //   )}px`
+        // )
+        .append("xhtml:div")
+        .attr("class", "inner-wrapper")
+        .style("color", "#fff")
+        .html(items);
+      // }
     };
 
     const circles = d3.selectAll("#ikigai .venn-circle");
@@ -521,17 +276,6 @@ const IkigaiChart = () => {
 
     circles.each(insertItems);
     intersections.each(insertItems);
-
-    // const defs = document.createElement("defs");
-    // const bigClipPath = document.createElementNS(
-    //   "http://www.w3.org/2000/svg",
-    //   "clipPath"
-    // );
-    // bigClipPath.id = "test";
-    // defs.appendChild(bigClipPath);
-    // svg.node().prepend(defs);
-    // circles.each(insertClipPath);
-    // intersections.each(insertClipPath);
     setTimeout(() => {
       document.getElementById("mask").remove();
     }, 1500);
