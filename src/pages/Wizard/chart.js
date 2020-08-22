@@ -251,6 +251,7 @@ const IkigaiChart = () => {
         ) // - 300)
         // .attr("height", `${Math.round(pathDimensions.height)}`)
         // .attr("width", `${Math.round(pathDimensions.width)}`)
+        .attr("style", `max-width: ${Math.round(pathDimensions.width)}px;`)
         .attr("class", "items-wrapper")
         .append("xhtml:div")
         .attr("class", "items")
