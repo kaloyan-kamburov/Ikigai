@@ -22,6 +22,7 @@ const GoodAt = () => {
   // ];
 
   const handleSubmit = (values) => {
+    sessionStorage.setItem("step_A", JSON.stringify(values.options));
     history.push({
       pathname: "/what-are-you-good-at",
       state: {
@@ -74,7 +75,8 @@ const GoodAt = () => {
                   }}
                   onSubmit={handleSubmit}
                   initialValues={{
-                    options: (location.state && location.state.A) || null,
+                    options:
+                      JSON.parse(sessionStorage.getItem("step_A")) || null,
                   }}
                 >
                   {(props) => {
@@ -84,6 +86,7 @@ const GoodAt = () => {
                           name="options"
                           isMulti
                           value={props.initialValues.options}
+                          defVal={sessionStorage.getItem("step_A")}
                         />
                         <div className="form-list">
                           <p className="form-list-title">Your items</p>

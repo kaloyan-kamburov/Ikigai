@@ -1,12 +1,13 @@
-import React, { useState, useEffect, useRef } from "react";
-import { useHistory, useLocation, generatePath } from "react-router-dom";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState, useEffect } from "react";
 import * as d3 from "d3";
 import * as venn from "@upsetjs/venn.js";
 import { intersection } from "underscore";
 
-const IkigaiChart = () => {
-  const location = useLocation();
+import ItemsModal from "./itemsModal";
 
+const IkigaiChart = () => {
+  const [groupForEdit, setGroupForEdit] = useState({ items: [], sets: [] });
   const reduceItems = (items) =>
     items.reduce((acc, item) => {
       acc.push(item.value);
@@ -15,13 +16,25 @@ const IkigaiChart = () => {
 
   const generateItemsForGroup = (group = ["A", "B", "C", "D"]) => {
     const items = [];
-    const allItems = location.state;
+    const allItems = {
+      A: JSON.parse(sessionStorage.getItem("step_A")),
+      B: JSON.parse(sessionStorage.getItem("step_B")),
+      C: JSON.parse(sessionStorage.getItem("step_C")),
+      D: JSON.parse(sessionStorage.getItem("step_D")),
+    }; //location.state;
     group.forEach((g) => items.push(reduceItems(allItems[g])));
 
     return intersection(...items);
   };
 
-  const [sets, setSets] = useState([
+  const defaultSets = [
+    {
+      sets: ["A", "B", "C", "D"],
+      size: 300,
+      label: "IKIGAI",
+      desc: "IKIGAI",
+      items: generateItemsForGroup(["A", "B", "C", "D"]),
+    },
     {
       sets: ["D"],
       size: 1000,
@@ -79,13 +92,6 @@ const IkigaiChart = () => {
       items: generateItemsForGroup(["A", "D"]),
     },
     {
-      sets: ["A", "B", "C", "D"],
-      size: 300,
-      label: "IKIGAI",
-      desc: "IKIGAI",
-      items: generateItemsForGroup(["A", "B", "C", "D"]),
-    },
-    {
       sets: ["A", "B", "C"],
       size: 300,
       desc:
@@ -113,12 +119,11 @@ const IkigaiChart = () => {
         "LOREM IPSUM IS A PLACEHOLDER TEXT COMMONLY USED TO DEMONSTRATE LOREM IPSUM IS A PLACEHOLDER TEXT COMMONLY USED TO DEMONSTRATE",
       items: generateItemsForGroup(["B", "C", "D"]),
     },
-  ]);
+  ];
 
-  useEffect(() => {
-    console.log(location.state);
-    // generateItemsForGroup();
-    window.scrollTo(0, 0);
+  const [sets, setSets] = useState(defaultSets);
+
+  const draw = () => {
     // draw venn diagram
     const div = d3.select("#ikigai");
     div
@@ -146,7 +151,11 @@ const IkigaiChart = () => {
       .style("fill", "rgba(255, 255, 255, 1)");
 
     // add a tooltip
-    let tooltip = d3.select("body").append("div").attr("class", "venntooltip");
+    let tooltip = d3
+      .select("body")
+      .append("div")
+      .attr("class", "ikigai-tooltip")
+      .attr("id", "ikigai-tooltip");
 
     // add listeners to all the groups to display tooltip on mouseover
     div
@@ -186,48 +195,46 @@ const IkigaiChart = () => {
           .style("fill-opacity", 0);
         // // .style("fill-opacity", d.sets.length == 1 ? 0.25 : 0.0)
         // // .style("stroke-opacity", 0);
+      })
+
+      .on("click", function (d, i) {
+        setGroupForEdit(d);
       });
 
-    const insertClipPath = function (d, i) {
-      const path = d3.select(this).node().childNodes[0];
-      const g = path.parentElement;
+    // const insertClipPath = function (d, i) {
+    //   const path = d3.select(this).node().childNodes[0];
+    //   const g = path.parentElement;
 
-      // const clipPath = document.createElementNS(
-      //   "http://www.w3.org/2000/svg",
-      //   "clipPath"
-      // );
-      // clipPath.id = `cp${path.parentElement
-      //   .getAttribute("data-venn-sets")
-      //   .split("_")
-      //   .join("")}`;
-      // const innerPath = document.createElement("path");
-      // innerPath.id = `pathFor-${path.parentElement.getAttribute(
-      //   "data-venn-sets"
-      // )}`;
-      // innerPath.setAttribute("d", path.getAttribute("d"));
-      // bigClipPath.appendChild(innerPath);
-      // clipPath.appendChild(innerPath);
+    //   // const clipPath = document.createElementNS(
+    //   //   "http://www.w3.org/2000/svg",
+    //   //   "clipPath"
+    //   // );
+    //   // clipPath.id = `cp${path.parentElement
+    //   //   .getAttribute("data-venn-sets")
+    //   //   .split("_")
+    //   //   .join("")}`;
+    //   // const innerPath = document.createElement("path");
+    //   // innerPath.id = `pathFor-${path.parentElement.getAttribute(
+    //   //   "data-venn-sets"
+    //   // )}`;
+    //   // innerPath.setAttribute("d", path.getAttribute("d"));
+    //   // bigClipPath.appendChild(innerPath);
+    //   // clipPath.appendChild(innerPath);
 
-      // svg.node().firstChild.appendChild(clipPath);
+    //   // svg.node().firstChild.appendChild(clipPath);
 
-      g.setAttribute("clip-path", `url(#test)`);
+    //   g.setAttribute("clip-path", `url(#test)`);
 
-      // svg.node().childNodes();
-    };
+    //   // svg.node().childNodes();
+    // };
 
     const insertItems = function (d, i) {
       // if (d.label === "gucci") {
       const path = d3.select(this);
-      const text = path.select("text");
 
       let items = "";
 
       const pathDimensions = path.node().childNodes[0].getBoundingClientRect();
-
-      // console.log("denn-----");
-      // console.log(path.node().childNodes[0]);
-      // console.log(pathDimensions);
-      // console.log("--------");
 
       if (d.items) {
         d.items.forEach((item) => {
@@ -271,26 +278,143 @@ const IkigaiChart = () => {
     const circles = d3.selectAll("#ikigai .venn-circle");
     const intersections = d3.selectAll("#ikigai .venn-intersection");
 
-    // console.log(intersections);
-
-    const svg = d3.select("#ikigai svg");
-
     circles.each(insertItems);
     intersections.each(insertItems);
-    setTimeout(() => {
-      document.getElementById("mask").remove();
-    }, 1500);
+
+    // setTimeout(() => {
+    //   document.getElementById("mask").remove();
+    // }, 1500);
+  };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    resetSets();
+    // delete tooltip
+    return () => document.getElementById("ikigai-tooltip").remove();
   }, []);
 
+  useEffect(() => draw(), [sets]);
+
+  const resetSets = () =>
+    setSets([
+      {
+        sets: ["A", "B", "C", "D"],
+        size: 300,
+        label: "IKIGAI",
+        desc: "IKIGAI",
+        items: generateItemsForGroup(["A", "B", "C", "D"]),
+      },
+      {
+        sets: ["D"],
+        size: 1000,
+        label: "WHAT YOU ARE GOOD AT",
+        desc: "WHAT YOU ARE GOOD AT",
+        items: generateItemsForGroup(["D"]),
+      },
+      {
+        sets: ["B"],
+        size: 1000,
+        label: "WHAT THE WORLD NEEDS",
+        desc: "WHAT THE WORLD NEEDS",
+        items: generateItemsForGroup(["B"]),
+      },
+      {
+        sets: ["A"],
+        size: 1000,
+        label: "WHAT YOU LOVE",
+        desc: "WHAT YOU LOVE",
+        items: generateItemsForGroup(["A"]),
+      },
+      {
+        sets: ["C"],
+        size: 1000,
+        label: "WHAT CAN YOU BE PAID FOR",
+        desc: "WHAT CAN YOU BE PAID FOR",
+        items: generateItemsForGroup(["C"]),
+      },
+      {
+        sets: ["A", "B"],
+        size: 300,
+        label: "MISSION",
+        desc: "MISSION",
+        items: generateItemsForGroup(["A", "B"]),
+      },
+      {
+        sets: ["B", "C"],
+        size: 300,
+        label: "VOCATION",
+        desc: "VOCATION",
+        items: generateItemsForGroup(["B", "C"]),
+      },
+      {
+        sets: ["C", "D"],
+        size: 300,
+        label: "PROFESSION",
+        desc: "PROFESSION",
+        items: generateItemsForGroup(["C", "D"]),
+      },
+      {
+        sets: ["A", "D"],
+        size: 300,
+        label: "PASSION",
+        desc: "PASSION",
+        items: generateItemsForGroup(["A", "D"]),
+      },
+      {
+        sets: ["A", "B", "C"],
+        size: 300,
+        desc:
+          "LOREM IPSUM IS A PLACEHOLDER TEXT COMMONLY USED TO DEMONSTRATE LOREM IPSUM IS A PLACEHOLDER TEXT COMMONLY USED TO DEMONSTRATE",
+        items: generateItemsForGroup(["A", "B", "C"]),
+      },
+      {
+        sets: ["A", "B", "D"],
+        size: 300,
+        desc:
+          "LOREM IPSUM IS A PLACEHOLDER TEXT COMMONLY USED TO DEMONSTRATE LOREM IPSUM IS A PLACEHOLDER TEXT COMMONLY USED TO DEMONSTRATE",
+        items: generateItemsForGroup(["A", "B", "D"]),
+      },
+      {
+        sets: ["A", "C", "D"],
+        size: 300,
+        desc:
+          "LOREM IPSUM IS A PLACEHOLDER TEXT COMMONLY USED TO DEMONSTRATE LOREM IPSUM IS A PLACEHOLDER TEXT COMMONLY USED TO DEMONSTRATE",
+        items: generateItemsForGroup(["A", "C", "D"]),
+      },
+      {
+        sets: ["B", "C", "D"],
+        size: 300,
+        desc:
+          "LOREM IPSUM IS A PLACEHOLDER TEXT COMMONLY USED TO DEMONSTRATE LOREM IPSUM IS A PLACEHOLDER TEXT COMMONLY USED TO DEMONSTRATE",
+        items: generateItemsForGroup(["B", "C", "D"]),
+      },
+    ]);
+
+  const updateItems = (items, setsForUpdate) => {
+    document.getElementById("ikigai").innerHTML = null;
+    setsForUpdate.forEach((setName) => {
+      sessionStorage.setItem(`step_${setName}`, JSON.stringify(items));
+    });
+    resetSets();
+  };
+
   return (
-    <div className="outer-wrapper">
-      <div id="mask" className="mask"></div>
-      <div
-        className="chart-wrapper"
-        id="ikigai"
-        style={{ textAlign: "center" }}
-      ></div>
-    </div>
+    <>
+      <div className="outer-wrapper">
+        <div id="mask" className="mask"></div>
+        <div
+          className="chart-wrapper"
+          id="ikigai"
+          style={{ textAlign: "center" }}
+        ></div>
+      </div>
+      <ItemsModal
+        closeFn={() => setGroupForEdit({ items: [], sets: [] })}
+        hidden={groupForEdit.sets.length === 0}
+        group={groupForEdit}
+        updateItems={updateItems}
+      />
+    </>
   );
 };
 

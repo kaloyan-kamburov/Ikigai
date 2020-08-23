@@ -94,9 +94,9 @@ const options = [
 // };
 
 const loadOptions = (inputValue, callback) => {
-  setTimeout(() => {
-    return callback(options);
-  }, 2000);
+  // setTimeout(() => {
+  return callback(options);
+  // }, 2000);
 };
 
 const formatOptionLabel = ({ label = "" }, { inputValue }) => {
@@ -115,15 +115,17 @@ const formatOptionLabel = ({ label = "" }, { inputValue }) => {
 const formatCreateLabel = (value) => `Add ${value}`;
 
 const renderSelect = (props) => {
+  // console.log(props);
   const onChange = (item) => {
     // Final form provided utility method
-    const { onChange, value } = props.input;
+    const { onChange } = props.input;
     onChange(item);
   };
+
   return (
     <CreatableSelect
       onChange={onChange}
-      value={props.input.value}
+      value={props.input.value || (props.defVal && JSON.parse(props.defVal))}
       styles={styles}
       placeholder="Start typing"
       isMulti
@@ -139,8 +141,8 @@ const renderSelect = (props) => {
   );
 };
 
-const SelectComponent = (props) => (
-  <Field component={renderSelect} {...props} />
-);
+const SelectComponent = (props) => {
+  return <Field component={renderSelect} {...props} defVal={props.defVal} />;
+};
 
 export default SelectComponent;

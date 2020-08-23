@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 const Home = () => {
   const history = useHistory();
+  useEffect(() => {
+    sessionStorage.removeItem("step_A");
+    sessionStorage.removeItem("step_B");
+    sessionStorage.removeItem("step_C");
+    sessionStorage.removeItem("step_D");
+  }, []);
   return (
     <>
       <section className="section">

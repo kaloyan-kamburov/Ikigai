@@ -22,6 +22,7 @@ const GoodAt = () => {
   ];
 
   const handleSubmit = (values) => {
+    sessionStorage.setItem("step_C", JSON.stringify(values.options));
     history.push({
       pathname: "/what-the-world-needs",
       state: {
@@ -76,7 +77,8 @@ const GoodAt = () => {
                   }}
                   onSubmit={handleSubmit}
                   initialValues={{
-                    options: (location.state && location.state.C) || null,
+                    options:
+                      JSON.parse(sessionStorage.getItem("step_C")) || null,
                   }}
                 >
                   {(props) => {
@@ -86,6 +88,7 @@ const GoodAt = () => {
                           name="options"
                           value={props.initialValues.options}
                           options={options}
+                          defVal={sessionStorage.getItem("step_C")}
                         />
                         <div className="form-btns">
                           <button

@@ -30,6 +30,7 @@
     text {
       transform-origin: center;
       text-anchor: middle;
+      cursor: pointer;
       // transform: translate(0, 0) rotate(-45deg);
     }
   }
@@ -44,6 +45,7 @@
     transform-origin: center;
     transform: scale(0);
     overflow: visible;
+    max-width: 100%;
   }
   .items {
     font-size: 10px;
@@ -91,7 +93,7 @@
   }
 }
 
-.venntooltip {
+.ikigai-tooltip {
   padding: 10px;
   // background: rgba(255, 255, 255, 0.5);
   // background-color: rgba(255, 255, 255, 0.95);

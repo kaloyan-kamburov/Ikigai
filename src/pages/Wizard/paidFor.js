@@ -22,6 +22,7 @@ const GoodAt = () => {
   ];
 
   const handleSubmit = (values) => {
+    sessionStorage.setItem("step_D", JSON.stringify(values.options));
     history.push({
       pathname: "/congratulations",
       state: {
@@ -69,6 +70,7 @@ const GoodAt = () => {
                 <Form
                   validate={(values) => {
                     const errors = {};
+                    console.log(JSON.parse(sessionStorage.getItem("step_D")));
                     if (!values.options || values.options.length < 3) {
                       errors.options = "Required";
                     }
@@ -76,7 +78,8 @@ const GoodAt = () => {
                   }}
                   onSubmit={handleSubmit}
                   initialValues={{
-                    options: (location.state && location.state.D) || null,
+                    options:
+                      JSON.parse(sessionStorage.getItem("step_D")) || null,
                   }}
                 >
                   {(props) => {
@@ -86,6 +89,7 @@ const GoodAt = () => {
                           name="options"
                           value={props.initialValues.options}
                           options={options}
+                          defVal={sessionStorage.getItem("step_D")}
                         />
                         <div className="form-btns">
                           <button
