@@ -81,23 +81,36 @@ const options = [
   },
 ];
 
-// const loadOptions = async (inputValue, callback) => {
-//   if (!inputValue || inputValue.length < 2) {
-//     return callback([]);
-//   }
-//   try {
-//     const res = await fetch(`http://localhost:3001/items?q=${inputValue}`);
-//     return res.json();
-//   } catch (e) {
-//     return callback([]);
-//   }
-// };
-
-const loadOptions = (inputValue, callback) => {
-  // setTimeout(() => {
-  return callback(options);
-  // }, 2000);
+const loadOptions = async (inputValue, callback) => {
+  if (!inputValue || inputValue.length < 2) {
+    return callback([]);
+  }
+  try {
+    const res = await fetch(`/api/ikigai-item-template/?q=${inputValue}`);
+    const items = await res.json()
+    /* Sample result:
+    [
+        {
+            "id": 1,
+            "title": "item1"
+        },
+        ...
+    ]
+    */
+    // The backend and frontend keys differ in names:
+    return items.map(item => {
+      return { value: item.id.toString(), label: item.title };
+    })
+  } catch (e) {
+    return callback([]);
+  }
 };
+
+// const loadOptions = (inputValue, callback) => {
+//   // setTimeout(() => {
+//   return callback(options);
+//   // }, 2000);
+// };
 
 const formatOptionLabel = ({ label = "" }, { inputValue }) => {
   return (
