@@ -9,6 +9,7 @@
   transition: all 0.2s ease-out;
   transform: translateX(0);
   padding: 64px 79px;
+  z-index: 11;
 
   &.hidden {
     transform: translateX(100%);

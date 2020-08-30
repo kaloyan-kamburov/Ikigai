@@ -92,6 +92,7 @@ const IkigaiChart = () => {
       items: generateItemsForGroup(["A", "D"]),
     },
     {
+      label: ".",
       sets: ["A", "B", "C"],
       size: 300,
       desc:
@@ -99,6 +100,7 @@ const IkigaiChart = () => {
       items: generateItemsForGroup(["A", "B", "C"]),
     },
     {
+      label: ".",
       sets: ["A", "B", "D"],
       size: 300,
       desc:
@@ -106,6 +108,7 @@ const IkigaiChart = () => {
       items: generateItemsForGroup(["A", "B", "D"]),
     },
     {
+      label: ".",
       sets: ["A", "C", "D"],
       size: 300,
       desc:
@@ -113,6 +116,7 @@ const IkigaiChart = () => {
       items: generateItemsForGroup(["A", "C", "D"]),
     },
     {
+      label: ".",
       sets: ["B", "C", "D"],
       size: 300,
       desc:
@@ -231,10 +235,12 @@ const IkigaiChart = () => {
     const insertItems = function (d, i) {
       // if (d.label === "gucci") {
       const path = d3.select(this);
+      // const text = path.node().childNodes[1]
+      // console.log(path.node().childNodes[1]);
 
       let items = "";
 
-      const pathDimensions = path.node().childNodes[0].getBoundingClientRect();
+      const pathDimensions = path.node().childNodes[1].getBoundingClientRect();
 
       if (d.items) {
         d.items.forEach((item) => {
@@ -393,7 +399,13 @@ const IkigaiChart = () => {
   const updateItems = (items, setsForUpdate) => {
     document.getElementById("ikigai").innerHTML = null;
     setsForUpdate.forEach((setName) => {
-      sessionStorage.setItem(`step_${setName}`, JSON.stringify(items));
+      const itemsGroup = JSON.parse(sessionStorage.getItem(`step_${setName}`));
+      items.forEach((item) => {
+        if (itemsGroup.indexOf(item) > -1) {
+          itemsGroup.push(item);
+        }
+      });
+      sessionStorage.setItem(`step_${setName}`, JSON.stringify(itemsGroup));
     });
     resetSets();
   };

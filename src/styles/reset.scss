@@ -11,5 +11,10 @@ a {
 }
 html,
 body {
-  overflow-x: hidden; //not sure if should be removed
+  min-height: 100vh;
+  // overflow-x: hidden; //not sure if should be removed
+}
+
+#root {
+  min-height: 100%;
 }
