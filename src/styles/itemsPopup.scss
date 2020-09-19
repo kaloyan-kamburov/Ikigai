@@ -1,0 +1,13 @@
+.items-popup {
+  position: absolute;
+  width: 200px;
+  // height: 200px;
+  background-color: $white;
+  top: 0;
+  left: 0;
+  z-index: 10;
+
+  button {
+    float: right;
+  }
+}

@@ -1,8 +1,11 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
+import { useLocation } from "react-router-dom";
 
 function Footer() {
-  return (
+  const location = useLocation();
+
+  return location.pathname !== "/chart" ? (
     <>
       <footer className="footer">
         <div className="shell">
@@ -24,7 +27,7 @@ function Footer() {
         </div>
       </footer>
     </>
-  );
+  ) : null;
 }
 
 export default Footer;
