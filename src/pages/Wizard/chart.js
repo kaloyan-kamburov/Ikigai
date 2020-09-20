@@ -8,112 +8,13 @@ step_C: [{"label":"Skateboarding","value":"Skateboarding"},{"label":"Travelling"
 import React, { useState, useEffect, useRef } from "react";
 import * as d3 from "d3";
 import * as venn from "@upsetjs/venn.js";
-import { intersection, difference, uniq, union, without } from "underscore";
-import { MapInteractionCSS } from "react-map-interaction";
-
-import ItemsModal from "./itemsModal";
 import { useHistory } from "react-router-dom";
-import Select from "../../components/form/Select";
-import { Form } from "react-final-form";
-
-const ItemsEdit = ({ sets, items = [], onClose, posX, posY, saveFn }) => {
-  const handleSubmit = (values, initialValues) => {
-    document.getElementById("ikigai").innerHTML = null;
-
-    sets.forEach((setName) => {
-      const itemsGroup = JSON.parse(
-        sessionStorage.getItem(`step_${setName}`)
-      ).reduce((acc, item) => {
-        acc.push(item.label);
-        return acc;
-      }, []);
-
-      const itemsOptions =
-        values.options && values.options.length > 0
-          ? values.options.reduce((acc, item) => {
-              acc.push(item.label);
-              return acc;
-            }, [])
-          : [];
-
-      const removedValues = difference(
-        initialValues.reduce((acc, item) => {
-          acc.push(item.label);
-          return acc;
-        }, []),
-        itemsOptions
-      );
-
-      console.log(removedValues);
-
-      const newArr = uniq(
-        uniq([
-          ...itemsOptions,
-          ...without(
-            itemsGroup,
-            ...removedValues
-            // intersection(itemsGroup, itemsOptions)
-          ),
-        ]).reduce((acc, item) => {
-          acc.push({ label: item, value: item });
-          return acc;
-        }, [])
-      );
-
-      console.log(newArr);
-
-      sessionStorage.setItem(`step_${setName}`, JSON.stringify(newArr));
-    });
-    saveFn();
-  };
-  return (
-    <div
-      className="items-popup"
-      style={{
-        left: posX + "px",
-        top: posY + "px",
-      }}
-    >
-      <Form
-        // validate={(values) => {
-        //   const errors = {};
-        //   if (!values.options || values.options.length < 3) {
-        //     errors.options = "Required";
-        //   }
-        //   return errors;
-        // }}
-        onSubmit={(values) =>
-          handleSubmit(
-            values,
-            items.map((item) => ({ label: item, value: item }))
-          )
-        }
-        initialValues={{
-          options: items.map((item) => ({ label: item, value: item })),
-        }}
-      >
-        {(props) => {
-          return (
-            <form onSubmit={props.handleSubmit}>
-              <Select
-                name="options"
-                isMulti
-                value={props.initialValues.options}
-                autoFocus
-              />
-              <button type="submit">save</button>
-            </form>
-          );
-        }}
-      </Form>
-      <span onClick={onClose}>close</span>
-    </div>
-  );
-};
+import { intersection } from "underscore";
+import { MapInteractionCSS } from "react-map-interaction";
+import ItemsEdit from "./itemsEdit";
 
 const IkigaiChart = () => {
   const history = useHistory();
-  const [groupForEdit, setGroupForEdit] = useState({ items: [], sets: [] });
   const [zoomMode, setZoomMode] = useState(false);
   const defaultZoomValue = {
     scale: 1,
@@ -124,12 +25,7 @@ const IkigaiChart = () => {
   const [itemsForEdit, setItemsForEdit] = useState(null);
 
   const reduceItems = (items) => {
-    if (
-      !JSON.parse(sessionStorage.getItem("step_A")) ||
-      !JSON.parse(sessionStorage.getItem("step_B")) ||
-      !JSON.parse(sessionStorage.getItem("step_C")) ||
-      !JSON.parse(sessionStorage.getItem("step_D"))
-    ) {
+    if (!items) {
       return history.push("/");
     }
     return items.reduce((acc, item) => {
@@ -140,21 +36,38 @@ const IkigaiChart = () => {
 
   const generateItemsForGroup = (group = ["A", "B", "C", "D"]) => {
     const items = [];
+
+    const ikiSettings = JSON.parse(localStorage.getItem("ikiSettings"));
+
     const allItems = {
-      A: JSON.parse(sessionStorage.getItem("step_A")),
-      B: JSON.parse(sessionStorage.getItem("step_B")),
-      C: JSON.parse(sessionStorage.getItem("step_C")),
-      D: JSON.parse(sessionStorage.getItem("step_D")),
+      A: ikiSettings.items.step_A,
+      B: ikiSettings.items.step_B,
+      C: ikiSettings.items.step_C,
+      D: ikiSettings.items.step_D,
     }; //location.state;
     group.forEach((g) => items.push(reduceItems(allItems[g])));
 
-    // if (group.length === 4) {
-    //   return intersection(...items);
-    // }
     return intersection(...items);
   };
 
   const removeDuplicates = (sets) => {
+    const ikiSettings = JSON.parse(localStorage.getItem("ikiSettings"));
+
+    if (
+      !ikiSettings ||
+      !(
+        ikiSettings &&
+        !(
+          ikiSettings.items &&
+          (!ikiSettings.items.step_A ||
+            !ikiSettings.items.step_B ||
+            !ikiSettings.items.step_C ||
+            !ikiSettings.items.step_D)
+        )
+      )
+    ) {
+      return history.push("/");
+    }
     //TODO fix this dummy sorting pls
     let setsForSend = {
       ...sets.reduce((acc, set) => {
@@ -301,62 +214,6 @@ const IkigaiChart = () => {
       (i) => !setsForSend["BCD"].items.includes(i)
     );
 
-    /////
-    // setsForSend["ABD"].items = setsForSend["ABD"].items.filter(
-    //   (i) =>
-    //     setsForSend["A"].items.includes(i) &&
-    //     setsForSend["B"].items.includes(i) &&
-    //     setsForSend["D"].items.includes(i)
-    // );
-
-    // setsForSend["ABC"].items = setsForSend["ABC"].items.filter(
-    //   (i) =>
-    //     setsForSend["A"].items.includes(i) &&
-    //     setsForSend["B"].items.includes(i) &&
-    //     setsForSend["C"].items.includes(i)
-    // );
-
-    // setsForSend["BCD"].items = setsForSend["BCD"].items.filter(
-    //   (i) =>
-    //     setsForSend["B"].items.includes(i) &&
-    //     setsForSend["C"].items.includes(i) &&
-    //     setsForSend["D"].items.includes(i)
-    // );
-
-    // setsForSend["ACD"].items = setsForSend["ACD"].items.filter(
-    //   (i) =>
-    //     setsForSend["A"].items.includes(i) &&
-    //     setsForSend["C"].items.includes(i) &&
-    //     setsForSend["D"].items.includes(i)
-    // );
-    ///////
-
-    //////
-    // setsForSend["AD"].items = setsForSend["AD"].items.filter(
-    //   (i) => !setsForSend["CD"].items.includes(i)
-    // );
-
-    // setsForSend["C"].items = setsForSend["C"].items.filter(
-    //   (i) =>
-    //     setsForSend["A"].items.includes(i) &&
-    //     setsForSend["B"].items.includes(i) &&
-    //     setsForSend["D"].items.includes(i)
-    // );
-
-    // setsForSend["B"].items = setsForSend["B"].items.filter(
-    //   (i) =>
-    //     setsForSend["A"].items.includes(i) &&
-    //     setsForSend["C"].items.includes(i) &&
-    //     setsForSend["D"].items.includes(i)
-    // );
-
-    // setsForSend["A"].items = setsForSend["A"].items.filter(
-    //   (i) =>
-    //     setsForSend["B"].items.includes(i) &&
-    //     setsForSend["C"].items.includes(i) &&
-    //     setsForSend["D"].items.includes(i)
-    // );
-
     return Object.keys(setsForSend).reduce((acc, setName) => {
       acc.push(setsForSend[setName]);
       return acc;
@@ -377,6 +234,9 @@ const IkigaiChart = () => {
           y: 400,
           width: 120,
           height: 130,
+          big: 5,
+          medium: 9,
+          small: 12,
         },
       },
       {
@@ -390,10 +250,13 @@ const IkigaiChart = () => {
         posLabelX: "50%",
         posLabelY: "5%",
         itemsParams: {
-          x: -190,
-          y: 290,
-          width: 100,
-          height: 344,
+          x: -220,
+          y: 220,
+          width: 170,
+          height: 500,
+          big: 20,
+          medium: 30,
+          small: 40,
         },
       },
       {
@@ -407,10 +270,13 @@ const IkigaiChart = () => {
         posLabelX: "50%",
         posLabelY: "5%",
         itemsParams: {
-          x: 90,
-          y: 290,
-          width: 100,
-          height: 344,
+          x: 50,
+          y: 220,
+          width: 170,
+          height: 500,
+          big: 20,
+          medium: 30,
+          small: 40,
         },
       },
       {
@@ -427,6 +293,9 @@ const IkigaiChart = () => {
           y: 45,
           width: 220,
           height: 160,
+          big: 20,
+          medium: 30,
+          small: 40,
         },
       },
       {
@@ -443,6 +312,9 @@ const IkigaiChart = () => {
           y: 730,
           width: 230,
           height: 140,
+          big: 20,
+          medium: 30,
+          small: 40,
         },
       },
       {
@@ -457,6 +329,9 @@ const IkigaiChart = () => {
           y: 230,
           width: 160,
           height: 160,
+          big: 15,
+          medium: 25,
+          small: 30,
         },
       },
       {
@@ -471,6 +346,9 @@ const IkigaiChart = () => {
           y: 540,
           width: 160,
           height: 160,
+          big: 15,
+          medium: 25,
+          small: 30,
         },
       },
       {
@@ -485,6 +363,9 @@ const IkigaiChart = () => {
           y: 540,
           width: 160,
           height: 160,
+          big: 15,
+          medium: 25,
+          small: 30,
         },
       },
       {
@@ -499,6 +380,9 @@ const IkigaiChart = () => {
           y: 230,
           width: 160,
           height: 160,
+          big: 15,
+          medium: 25,
+          small: 30,
         },
       },
       {
@@ -510,9 +394,12 @@ const IkigaiChart = () => {
         type: "intersection",
         itemsParams: {
           x: 30,
-          y: 430,
+          y: 415,
           width: 50,
-          height: 70,
+          height: 100,
+          big: 2,
+          medium: 5,
+          small: 8,
         },
       },
       {
@@ -523,10 +410,13 @@ const IkigaiChart = () => {
         items: generateItemsForGroup(["A", "B", "D"]),
         type: "intersection",
         itemsParams: {
-          x: -25,
-          y: 310,
-          width: 50,
-          height: 70,
+          x: -45,
+          y: 300,
+          width: 90,
+          height: 90,
+          big: 2,
+          medium: 5,
+          small: 8,
         },
       },
       {
@@ -538,9 +428,12 @@ const IkigaiChart = () => {
         type: "intersection",
         itemsParams: {
           x: -80,
-          y: 430,
+          y: 415,
           width: 50,
-          height: 70,
+          height: 100,
+          big: 2,
+          medium: 5,
+          small: 8,
         },
       },
       {
@@ -551,15 +444,18 @@ const IkigaiChart = () => {
         items: generateItemsForGroup(["B", "C", "D"]),
         type: "intersection",
         itemsParams: {
-          x: -25,
+          x: -45,
           y: 550,
-          width: 50,
-          height: 70,
+          width: 90,
+          height: 90,
+          big: 2,
+          medium: 5,
+          small: 8,
         },
       },
     ]);
 
-  const [sets, setSets] = useState(defaultSets());
+  const [sets, setSets] = useState(defaultSets() || []);
 
   const draw = () => {
     // draw venn diagram
@@ -709,41 +605,34 @@ const IkigaiChart = () => {
         "style",
         `width: ${d.itemsParams.width}px; height: ${d.itemsParams.height}px;`
       )
-      // .attr("class", "items-wrapper")
-      // .append("xhtml:div")
+      .attr(
+        "class",
+        `items-${
+          d.items.length > d.itemsParams.big
+            ? d.items.length > d.itemsParams.medium
+              ? "small"
+              : "medium"
+            : "big"
+        }`
+      )
       .append("xhtml:div")
       .attr("class", "items")
-      // .attr("class", "inner-wrapper")
-      // .style("color", "#fff")
       .html(items);
   };
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    // resetSets();
+
     draw();
+
     // delete tooltip
-    // return () => document.getElementById("ikigai-tooltip").remove();
+    return () => document.getElementById("ikigai-tooltip").remove();
   }, []);
 
   useEffect(() => draw(), [sets]);
 
   const resetSets = () => {
     setSets(removeDuplicates(defaultSets()));
-  };
-
-  const updateItems = (items, setsForUpdate) => {
-    document.getElementById("ikigai").innerHTML = null;
-    setsForUpdate.forEach((setName) => {
-      const itemsGroup = JSON.parse(sessionStorage.getItem(`step_${setName}`));
-      items.forEach((item) => {
-        if (itemsGroup.indexOf(item) > -1) {
-          itemsGroup.push(item);
-        }
-      });
-      sessionStorage.setItem(`step_${setName}`, JSON.stringify(itemsGroup));
-    });
-    resetSets();
   };
 
   return (
@@ -772,8 +661,12 @@ const IkigaiChart = () => {
         <MapInteractionCSS
           // value={!zoomMode ? defaultZoomValue : zoomValue}
           showControls
-          maxScale={5}
+          maxScale={2}
           minScale={1}
+          plusBtnContents="Zoom in"
+          plusBtnClass="zoom-in-btn"
+          minusBtnContents="Zoom out"
+          minusBtnClass="zoom-out-btn"
           // onChange={(value) => {
           //   setZoomMode(value);
           //   // setZoomValue(zoomMode ? value : defaultZoomValue);

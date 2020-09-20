@@ -22,7 +22,14 @@ const GoodAt = () => {
   ];
 
   const handleSubmit = (values) => {
-    sessionStorage.setItem("step_D", JSON.stringify(values.options));
+    const ikiSettings = JSON.parse(localStorage.getItem("ikiSettings"));
+    localStorage.setItem(
+      "ikiSettings",
+      JSON.stringify({
+        ...ikiSettings,
+        items: { ...ikiSettings.items, step_D: values.options },
+      })
+    );
     history.push({
       pathname: "/congratulations",
       state: {

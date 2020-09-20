@@ -1,12 +1,30 @@
-[
-  { "label": "Skateboarding", "value": "Skateboarding" },
-  { "label": "Design", "value": "Design" },
-  { "label": "Drawing", "value": "Drawing" },
-  { "label": "Travelling", "value": "Travelling" },
-  { "label": "Jump", "value": "Jump" },
-  { "label": "Flash", "value": "Flash" },
-  { "label": "Bla", "value": "Bla" },
-  { "label": "test", "value": "test" },
-  { "label": "hh", "value": "hh" },
-  { "label": "ss", "value": "ss" }
-]
+{
+  "items": {
+    "step_A": [
+      { "label": "test", "value": "test" },
+      { "label": "Skateboarding", "value": "Skateboarding" },
+      { "label": "Cooking", "value": "Cooking" },
+      { "label": "Travelling", "value": "Travelling" }
+    ],
+    "step_C": [
+      { "label": "bla", "value": "bla" },
+      { "label": "Drawing", "value": "Drawing" },
+      { "label": "Skateboarding", "value": "Skateboarding" },
+      { "label": "Travelling", "value": "Travelling" }
+    ],
+    "step_B": [
+      { "label": "test", "value": "test" },
+      { "label": "bla", "value": "bla" },
+      { "label": "Skateboarding", "value": "Skateboarding" },
+      { "label": "Drawing", "value": "Drawing" },
+      { "label": "Travelling", "value": "Travelling" }
+    ],
+    "step_D": [
+      { "label": "test", "value": "test" },
+      { "label": "Skateboarding", "value": "Skateboarding" },
+      { "label": "Drawing", "value": "Drawing" },
+      { "label": "Cooking", "value": "Cooking" }
+    ]
+  },
+  "dateCreated": "2020-09-20T15:52:06.531Z"
+}

@@ -1,9 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 
 const Congratulations = () => {
   const history = useHistory();
   const location = useLocation();
+  useEffect(() => {
+    const ikiSettings = JSON.parse(localStorage.getItem("ikiSettings"));
+    if (
+      !ikiSettings ||
+      !(
+        ikiSettings &&
+        !(
+          ikiSettings.items &&
+          (!ikiSettings.items.step_A ||
+            !ikiSettings.items.step_B ||
+            !ikiSettings.items.step_C ||
+            !ikiSettings.items.step_D)
+        )
+      )
+    ) {
+      return history.push("/");
+    }
+  }, []);
   return (
     <section className="section-dark">
       <div className="shell">
@@ -40,12 +58,20 @@ const Congratulations = () => {
           <div className="form-btns">
             <button
               className="btn-lg"
-              onClick={() =>
+              onClick={() => {
+                const ikiSettings = JSON.parse(
+                  localStorage.getItem("ikiSettings")
+                );
+                localStorage.setItem(
+                  "ikiSettings",
+                  JSON.stringify({ ...ikiSettings, dateCreated: new Date() })
+                );
+
                 history.push({
                   pathname: "/chart",
                   state: location.state,
-                })
-              }
+                });
+              }}
             >
               view results
             </button>

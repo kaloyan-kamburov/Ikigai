@@ -22,7 +22,14 @@ const GoodAt = () => {
   ];
 
   const handleSubmit = (values) => {
-    sessionStorage.setItem("step_C", JSON.stringify(values.options));
+    const ikiSettings = JSON.parse(localStorage.getItem("ikiSettings"));
+    localStorage.setItem(
+      "ikiSettings",
+      JSON.stringify({
+        ...ikiSettings,
+        items: { ...ikiSettings.items, step_C: values.options },
+      })
+    );
     history.push({
       pathname: "/what-the-world-needs",
       state: {
