@@ -44,3 +44,36 @@ button {
 //     opacity: 1;
 //   }
 // }
+.btn-save {
+  border: 1px solid;
+  box-shadow: none;
+  padding: 5px;
+  font-size: 15px;
+}
+.closeBtn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  opacity: 0.3;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  &:hover {
+    opacity: 1;
+  }
+  &::before,
+  &::after {
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 25px;
+    width: 2px;
+    background-color: $black;
+  }
+  &::before {
+    transform: rotate(45deg);
+  }
+  &::after {
+    transform: rotate(-45deg);
+  }
+}

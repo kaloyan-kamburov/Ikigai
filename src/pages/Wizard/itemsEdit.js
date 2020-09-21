@@ -100,19 +100,21 @@ const ItemsEdit = ({ sets, items = [], onClose, posX, posY, saveFn }) => {
       >
         {(props) => {
           return (
+            <div className="items-popupWrapper">
             <form onSubmit={props.handleSubmit}>
-              <Select
+              <Select className="popupSelect"
                 name="options"
                 isMulti
                 value={props.initialValues.options}
                 autoFocus
               />
-              <button type="submit">save</button>
+              <button className="btn-save" type="submit">save</button>
             </form>
+            </div>
           );
         }}
       </Form>
-      <span onClick={onClose}>close</span>
+      <span className="closeBtn"  onClick={onClose}></span>
     </div>
   );
 };
