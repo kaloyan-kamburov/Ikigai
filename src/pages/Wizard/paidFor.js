@@ -77,7 +77,6 @@ const GoodAt = () => {
                 <Form
                   validate={(values) => {
                     const errors = {};
-                    console.log(JSON.parse(sessionStorage.getItem("step_D")));
                     if (!values.options || values.options.length < 3) {
                       errors.options = "Required";
                     }
@@ -86,7 +85,8 @@ const GoodAt = () => {
                   onSubmit={handleSubmit}
                   initialValues={{
                     options:
-                      JSON.parse(sessionStorage.getItem("step_D")) || null,
+                      JSON.parse(localStorage.getItem("ikiSettings")).items
+                        .step_D || null,
                   }}
                 >
                   {(props) => {
@@ -96,7 +96,7 @@ const GoodAt = () => {
                           name="options"
                           value={props.initialValues.options}
                           options={options}
-                          defVal={sessionStorage.getItem("step_D")}
+                          // defVal={sessionStorage.getItem("step_D")}
                         />
                         <div className="form-btns">
                           <button

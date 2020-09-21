@@ -85,7 +85,8 @@ const GoodAt = () => {
                   onSubmit={handleSubmit}
                   initialValues={{
                     options:
-                      JSON.parse(sessionStorage.getItem("step_B")) || null,
+                      JSON.parse(localStorage.getItem("ikiSettings")).items
+                        .step_B || null,
                   }}
                 >
                   {(props) => {

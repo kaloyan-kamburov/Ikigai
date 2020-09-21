@@ -39,6 +39,17 @@ const IkigaiChart = () => {
 
     const ikiSettings = JSON.parse(localStorage.getItem("ikiSettings"));
 
+    if (
+      !ikiSettings ||
+      !ikiSettings.items ||
+      !ikiSettings.items.step_A ||
+      !ikiSettings.items.step_B ||
+      !ikiSettings.items.step_C ||
+      !ikiSettings.items.step_D
+    ) {
+      return history.push("/");
+    }
+
     const allItems = {
       A: ikiSettings.items.step_A,
       B: ikiSettings.items.step_B,
@@ -55,16 +66,11 @@ const IkigaiChart = () => {
 
     if (
       !ikiSettings ||
-      !(
-        ikiSettings &&
-        !(
-          ikiSettings.items &&
-          (!ikiSettings.items.step_A ||
-            !ikiSettings.items.step_B ||
-            !ikiSettings.items.step_C ||
-            !ikiSettings.items.step_D)
-        )
-      )
+      !ikiSettings.items ||
+      !ikiSettings.items.step_A ||
+      !ikiSettings.items.step_B ||
+      !ikiSettings.items.step_C ||
+      !ikiSettings.items.step_D
     ) {
       return history.push("/");
     }
@@ -395,7 +401,7 @@ const IkigaiChart = () => {
         itemsParams: {
           x: 30,
           y: 415,
-          width: 50,
+          width: 100,
           height: 100,
           big: 2,
           medium: 5,
@@ -427,9 +433,9 @@ const IkigaiChart = () => {
         items: generateItemsForGroup(["A", "C", "D"]),
         type: "intersection",
         itemsParams: {
-          x: -80,
+          x: -110,
           y: 415,
-          width: 50,
+          width: 100,
           height: 100,
           big: 2,
           medium: 5,
