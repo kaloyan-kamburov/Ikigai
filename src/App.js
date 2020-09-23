@@ -28,6 +28,7 @@ const App = () => {
         <Route path="/what-are-you-paid-for" component={PaidFor} exact />
         <Route path="/congratulations" component={Congratulations} exact />
         <Route path="/chart" component={IkigaiChart} exact />
+        <Route component={Home} />
       </Switch>
       <Footer />
     </Router>

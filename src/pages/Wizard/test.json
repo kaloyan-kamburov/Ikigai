@@ -1,30 +1,52 @@
 {
   "items": {
     "step_A": [
-      { "label": "test", "value": "test" },
+      { "label": "ala bala", "value": "ala bala" },
       { "label": "Skateboarding", "value": "Skateboarding" },
+      { "label": "Drawing", "value": "Drawing" },
+      { "label": "Travelling", "value": "Travelling" },
+      { "label": "something", "value": "something" },
+      { "label": "watching tv", "value": "watching tv" },
+      { "label": "testing", "value": "testing" },
+      { "label": "Add neshto", "value": "Add neshto" },
+      { "label": "dd", "value": "dd" },
+      { "label": "ss", "value": "ss" },
+      { "label": "asd", "value": "asd" },
       { "label": "Cooking", "value": "Cooking" },
-      { "label": "Travelling", "value": "Travelling" }
+      { "label": "writing", "value": "writing" }
     ],
     "step_C": [
-      { "label": "bla", "value": "bla" },
+      { "label": "something", "value": "something" },
+      { "label": "watching tv", "value": "watching tv" },
+      { "label": "testing", "value": "testing" },
       { "label": "Drawing", "value": "Drawing" },
-      { "label": "Skateboarding", "value": "Skateboarding" },
-      { "label": "Travelling", "value": "Travelling" }
+      { "label": "Add neshto", "value": "Add neshto" },
+      { "label": "dd", "value": "dd" },
+      { "label": "ss", "value": "ss" },
+      { "label": "asd", "value": "asd" },
+      { "label": "Cooking", "value": "Cooking" },
+      { "label": "Skateboarding", "value": "Skateboarding" }
     ],
     "step_B": [
-      { "label": "test", "value": "test" },
-      { "label": "bla", "value": "bla" },
+      { "label": "Travelling", "value": "Travelling" },
+      { "label": "writing", "value": "writing" },
       { "label": "Skateboarding", "value": "Skateboarding" },
-      { "label": "Drawing", "value": "Drawing" },
-      { "label": "Travelling", "value": "Travelling" }
+      { "label": "Cooking", "value": "Cooking" }
     ],
     "step_D": [
-      { "label": "test", "value": "test" },
-      { "label": "Skateboarding", "value": "Skateboarding" },
+      { "label": "something", "value": "something" },
+      { "label": "watching tv", "value": "watching tv" },
+      { "label": "testing", "value": "testing" },
       { "label": "Drawing", "value": "Drawing" },
-      { "label": "Cooking", "value": "Cooking" }
+      { "label": "Add neshto", "value": "Add neshto" },
+      { "label": "dd", "value": "dd" },
+      { "label": "ss", "value": "ss" },
+      { "label": "asd", "value": "asd" },
+      { "label": "Cooking", "value": "Cooking" },
+      { "label": "Design", "value": "Design" },
+      { "label": "writing", "value": "writing" },
+      { "label": "Skateboarding", "value": "Skateboarding" }
     ]
   },
-  "dateCreated": "2020-09-20T15:52:06.531Z"
+  "dateCreated": "2020-09-23T13:47:04.480Z"
 }

@@ -3,6 +3,7 @@ import CreatableSelect from "react-select/async-creatable";
 import { Field } from "react-final-form";
 import Highlighter from "react-highlight-words";
 import { debounce } from "underscore";
+import { fetchAbsolute as fetch } from "../../../config/api";
 
 const styles = {
   container: (provided) => ({
@@ -86,7 +87,7 @@ const options = [
 //     return callback([]);
 //   }
 //   try {
-//     const res = await fetch(`http://localhost:3001/items?q=${inputValue}`);
+//     const res = await fetch({ url: `items?q=${inputValue}` });
 //     return res.json();
 //   } catch (e) {
 //     return callback([]);

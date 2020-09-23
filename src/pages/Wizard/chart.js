@@ -11,6 +11,7 @@ import * as venn from "@upsetjs/venn.js";
 import { useHistory } from "react-router-dom";
 import { intersection } from "underscore";
 import { MapInteractionCSS } from "react-map-interaction";
+// import sanitizeHtml from 'sanitize-html'
 import ItemsEdit from "./itemsEdit";
 
 const IkigaiChart = () => {
@@ -248,13 +249,14 @@ const IkigaiChart = () => {
       {
         sets: ["D"],
         size: 1000,
-        label: "D WHAT YOU ARE GOOD AT",
-        desc: "WHAT YOU ARE GOOD AT",
+        label: "WHAT YOU ARE GOOD AT",
+        desc:
+          "<h6>dads</h6><p></p>WHAT YOU ARE GOOD AT</p><strong>click to view</strong>",
         items: generateItemsForGroup(["D"]),
         type: "circle",
         rotate: "left",
         posLabelX: "50%",
-        posLabelY: "5%",
+        posLabelY: "0%",
         itemsParams: {
           x: -220,
           y: 220,
@@ -268,13 +270,13 @@ const IkigaiChart = () => {
       {
         sets: ["B"],
         size: 1000,
-        label: "B WHAT THE WORLD NEEDS",
+        label: "WHAT THE WORLD NEEDS",
         desc: "WHAT THE WORLD NEEDS",
         items: generateItemsForGroup(["B"]),
         type: "circle",
         rotate: "right",
         posLabelX: "50%",
-        posLabelY: "5%",
+        posLabelY: "0%",
         itemsParams: {
           x: 50,
           y: 220,
@@ -288,12 +290,12 @@ const IkigaiChart = () => {
       {
         sets: ["A"],
         size: 1000,
-        label: "A WHAT YOU LOVE",
+        label: "WHAT YOU LOVE",
         desc: "WHAT YOU LOVE",
         items: generateItemsForGroup(["A"]),
         type: "circle",
         posLabelX: "50%",
-        posLabelY: 35,
+        posLabelY: 1,
         itemsParams: {
           x: -100,
           y: 45,
@@ -307,12 +309,12 @@ const IkigaiChart = () => {
       {
         sets: ["C"],
         size: 1000,
-        label: "C WHAT CAN YOU BE PAID FOR",
+        label: "WHAT CAN YOU BE PAID FOR",
         desc: "WHAT CAN YOU BE PAID FOR",
         items: generateItemsForGroup(["C"]),
         type: "circle",
         posLabelX: "50%",
-        posLabelY: "95%",
+        posLabelY: "100%",
         itemsParams: {
           x: -120,
           y: 730,
@@ -483,7 +485,7 @@ const IkigaiChart = () => {
       .style("cursor", "pointer");
     d3.selectAll("#ikigai .venn-circle")
       .select("text")
-      .style("font-size", "0.85rem")
+      .style("font-size", "1rem")
       .style("fill", "rgba(128, 128, 0, 1)");
     d3.selectAll("#ikigai .venn-intersection")
       .style("cursor", "pointer")
@@ -521,7 +523,7 @@ const IkigaiChart = () => {
 
         // Display a tooltip with the current size
         tooltip.transition().duration(400).style("opacity", 1);
-        tooltip.text(d.desc || null);
+        tooltip.html(d.desc || null);
 
         // highlight the current path
         let selection = d3.select(this).transition("tooltip").duration(400);
@@ -537,8 +539,8 @@ const IkigaiChart = () => {
 
       .on("mousemove", function () {
         tooltip
-          .style("left", d3.event.pageX + 20 - window.scrollX + "px")
-          .style("top", d3.event.pageY + 30 - window.scrollY + "px");
+          .style("left", d3.event.pageX + 40 + "px")
+          .style("top", d3.event.pageY - 50 + "px");
       })
 
       .on("mouseout", function (d, i) {
@@ -584,7 +586,7 @@ const IkigaiChart = () => {
           "style",
           `transform: rotate(${
             d.rotate === "left" ? "-" : ""
-          }90deg); transform-origin: center; fill: rgb(128, 128, 0); font-size: 0.85rem`
+          }90deg); transform-origin: center; fill: rgb(128, 128, 0); font-size: 1rem`
         );
     }
     if (d.type === "circle") {
@@ -668,11 +670,21 @@ const IkigaiChart = () => {
           // value={!zoomMode ? defaultZoomValue : zoomValue}
           showControls
           maxScale={2}
-          minScale={1}
+          minScale={0.96}
+          defaultValue={{
+            scale: 0.96,
+            translation: {
+              x: (window.innerWidth - window.innerWidth * 0.96) / 2,
+              y: (window.innerHeight - window.innerHeight * 0.96) / 2,
+            },
+          }}
           plusBtnContents="Zoom in"
           plusBtnClass="zoom-in-btn"
           minusBtnContents="Zoom out"
           minusBtnClass="zoom-out-btn"
+          onChange={(value) => {
+            console.log(value);
+          }}
           // onChange={(value) => {
           //   setZoomMode(value);
           //   // setZoomValue(zoomMode ? value : defaultZoomValue);
