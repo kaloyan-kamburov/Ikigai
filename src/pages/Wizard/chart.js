@@ -251,7 +251,7 @@ const IkigaiChart = () => {
         size: 1000,
         label: "WHAT YOU ARE GOOD AT",
         desc:
-          "<h6>dads</h6><p></p>WHAT YOU ARE GOOD AT</p><strong>click to view</strong>",
+          "<h6>WHAT YOU ARE GOOD AT</h6><p></p><strong>click to view</strong>",
         items: generateItemsForGroup(["D"]),
         type: "circle",
         rotate: "left",
@@ -291,7 +291,7 @@ const IkigaiChart = () => {
         sets: ["A"],
         size: 1000,
         label: "WHAT YOU LOVE",
-        desc: "WHAT YOU LOVE",
+        desc: "<h6>Things that you love doing</h6><div><p>What would you do if you didn’t have to worry about making money?</p><p>How would you spend your time on a long vacation or a free weekend?</p><p>What’s exciting to you and gets your juices flowing when you do it?</p><p>What could you enthusiastically talk about for hours on end?</p></div><div><p><span></span>Click to view</p></div>",
         items: generateItemsForGroup(["A"]),
         type: "circle",
         posLabelX: "50%",
@@ -329,7 +329,7 @@ const IkigaiChart = () => {
         sets: ["A", "B"],
         size: 300,
         // label: "AB",
-        desc: "MISSION",
+        desc: "<h6>This is your mission</h6><div><p>The place where the things you love intersect what the world needs.</p></div><div><p><span></span>Click to view</p></div>",
         items: generateItemsForGroup(["A", "B"]),
         type: "intersection",
         itemsParams: {
@@ -397,7 +397,7 @@ const IkigaiChart = () => {
         // label: "ABC",
         sets: ["A", "B", "C"],
         size: 300,
-        desc: "ABC",
+        desc: "<h6>Great but uneasy</h6><div><p>Things you do with excitement and complacency, but sense of uncertainty.</p></div><div><p><span></span>Click to view</p></div>",
         items: generateItemsForGroup(["A", "B", "C"]),
         type: "intersection",
         itemsParams: {
