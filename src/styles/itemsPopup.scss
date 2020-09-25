@@ -28,8 +28,10 @@
     & [class*="custom-select"] {
       &[class*="custom-select__multi-value"],
       &[class*="-placeholder"]{
-        font-size: 22px;
-        line-height: 36px;
+        // font-size: 22px;
+        // line-height: 36px;
+        font-size: 18px;
+        line-height: 28px;
       }
       
     }
