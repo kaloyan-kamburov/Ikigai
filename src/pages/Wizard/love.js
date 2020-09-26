@@ -99,7 +99,7 @@ const GoodAt = () => {
                           value={props.initialValues.options}
                           defVal={sessionStorage.getItem("step_A")}
                         />
-                        <div className="form-list">
+                        {/* <div className="form-list">
                           <p className="form-list-title">Your items</p>
                           <ul>
                             <li>
@@ -109,7 +109,7 @@ const GoodAt = () => {
                             <li>Design</li>
                             <li>Hiking</li>
                           </ul>
-                        </div>
+                        </div> */}
                         <div className="form-btns">
                           <button
                             className="btn-small"

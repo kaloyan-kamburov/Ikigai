@@ -1,7 +1,7 @@
 .items-popup {
   position: absolute;
   width: 372px;
-  max-height: 430px;
+  // max-height: 430px;
   // height: 200px;
   background-color: $white;
   top: 0;
@@ -28,8 +28,10 @@
     & [class*="custom-select"] {
       &[class*="custom-select__multi-value"],
       &[class*="-placeholder"]{
-        font-size: 22px;
-        line-height: 36px;
+        // font-size: 22px;
+        // line-height: 36px;
+        font-size: 18px;
+        line-height: 28px;
       }
       
     }

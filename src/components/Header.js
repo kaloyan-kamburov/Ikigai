@@ -1,14 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Form, Field } from "react-final-form";
-import { required, composeValidators, email } from "../utils/validation";
+import {
+  required,
+  composeValidators,
+  email,
+  passwordCompare,
+} from "../utils/validation";
 import Loader from "./Loader";
 import axios from "../utils/api";
+import { UserContext } from "../context";
 
-const Header = () => {
-  const [loginModal, setLoginModal] = useState(true);
+const Header = ({ userState }) => {
+  const [loginModal, setLoginModal] = useState(false);
+  const [registerModal, setRegisterModal] = useState(false);
+  const [profileModal, setProfileModal] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [logoutLoading, setLogoutLoading] = useState(false);
+  const [userDetails, setUserDetails] = useContext(UserContext);
 
-  const handleSubmit = (values) => {
+  const handleLogin = (values) => {
     return new Promise((resolve, reject) => {
       setLoading(true);
       axios({
@@ -16,6 +26,13 @@ const Header = () => {
         method: "post",
       })
         .then(({ data }) => {
+          setUserDetails({
+            user: data.user,
+          });
+          localStorage.setItem(
+            "ikiSettings",
+            JSON.stringify(data.user.ikiSettings)
+          );
           setLoading(false);
           setLoginModal(false);
           resolve();
@@ -25,27 +42,108 @@ const Header = () => {
           reject();
         });
     });
-
-    // console.log(`${baseUrl}login`);
-    // // setLoginModal(false);
-    // fetch(`${baseUrl}login`, {
-    //   headers: {
-    //     "content-type": "application/json",
-    //   },
-    //   method: "POST",
-    // })
-    //   .then((data) => {
-    //     data.json().then((data) => console.log(data));
-    //   })
-    //   .catch((e) => console.log(e));
   };
+
+  const handleLogOut = (values) => {
+    setLogoutLoading(true);
+    axios({
+      url: "logout",
+      method: "post",
+    })
+      .then(({ data }) => {
+        setUserDetails({
+          user: {},
+        });
+        setLogoutLoading(false);
+      })
+      .catch((e) => {
+        setLogoutLoading(false);
+      });
+  };
+
+  const handleRegister = (values) => {
+    return new Promise((resolve, reject) => {
+      setLoading(true);
+      axios({
+        url: "register",
+        method: "post",
+      })
+        .then(({ data }) => {
+          setUserDetails({
+            user: data.user,
+          });
+          localStorage.setItem(
+            "ikiSettings",
+            JSON.stringify(data.user.ikiSettings)
+          );
+          setLoading(false);
+          setRegisterModal(false);
+          resolve();
+        })
+        .catch((e) => {
+          setLoading(false);
+          reject();
+        });
+    });
+  };
+
+  const handleProfileUpdate = (values) => {
+    return new Promise((resolve, reject) => {
+      setLoading(true);
+      axios({
+        url: "profile",
+        method: "patch",
+      })
+        .then(({ data }) => {
+          setLoading(false);
+          setProfileModal(false);
+          resolve();
+        })
+        .catch((e) => {
+          setLoading(false);
+          reject();
+        });
+    });
+  };
+  // console.log(state);
   return (
     <header>
       <div className="logo">Logo</div>
       <div className="profile-controls">
-        <span style={{ cursor: "pointer" }} onClick={() => setLoginModal(true)}>
-          Log in
-        </span>
+        {/* {JSON.stringify(userDetails, null, 4)} */}
+
+        {!Object.keys(userDetails.user).length ? (
+          <>
+            <span
+              style={{ cursor: "pointer", marginRight: "15px" }}
+              onClick={() => setRegisterModal(true)}
+            >
+              Register
+            </span>
+            <span
+              style={{ cursor: "pointer" }}
+              onClick={() => setLoginModal(true)}
+            >
+              Log in
+            </span>
+          </>
+        ) : (
+          <>
+            <span
+              style={{ cursor: "pointer", marginRight: "15px" }}
+              onClick={() => setProfileModal(true)}
+            >
+              Profile
+            </span>
+            {logoutLoading ? (
+              <span>Logging out...</span>
+            ) : (
+              <span style={{ cursor: "pointer" }} onClick={handleLogOut}>
+                Log out
+              </span>
+            )}
+          </>
+        )}
       </div>
 
       {/** modals */}
@@ -58,8 +156,11 @@ const Header = () => {
               onClick={() => setLoginModal(false)}
             ></span>
             <div className="modal-content">
-              <h6>Login</h6>
-              <Form onSubmit={handleSubmit}>
+              <h4>Login</h4>
+              <Form
+                onSubmit={handleLogin}
+                initialValues={{ email: "email@email.com", password: "asd" }}
+              >
                 {(props) => (
                   <form onSubmit={props.handleSubmit}>
                     {/* <pre>{JSON.stringify(props, null, 4)}</pre> */}
@@ -67,15 +168,18 @@ const Header = () => {
                       <Field
                         name="email"
                         component="input"
-                        type="text"
-                        placeholder="First Name"
+                        type="email"
+                        placeholder="Email"
                         className={
-                          props.touched.password && props.errors.password
+                          props.touched.email && props.errors.email
                             ? "invalid"
                             : ""
                         }
-                        // validate={composeValidators(required, email)}
+                        validate={composeValidators(required, email)}
                       />
+                      {props.touched.email && props.errors.email && (
+                        <span className="error">{props.errors.email}</span>
+                      )}
                     </div>
 
                     <div className="field-wrapper">
@@ -100,6 +204,218 @@ const Header = () => {
                       disabled={!props.valid || props.submitting}
                     >
                       Log in
+                    </button>
+                  </form>
+                )}
+              </Form>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {registerModal && (
+        <div className="modal-mask">
+          <div className="modal-wrapper">
+            {loading && <Loader />}
+            <span
+              className="closeBtn"
+              onClick={() => setRegisterModal(false)}
+            ></span>
+            <div className="modal-content">
+              <h4>Register</h4>
+              <Form
+                onSubmit={handleRegister}
+                initialValues={{ email: "email@email.com" }}
+                validate={(values) => {
+                  const errors = {};
+                  if (values.password !== values.password2) {
+                    errors.password2 = "Passwords are not matching";
+                  }
+                  return errors;
+                }}
+              >
+                {(props) => (
+                  <form onSubmit={props.handleSubmit}>
+                    {/* <pre>{JSON.stringify(props, null, 4)}</pre> */}
+                    <div className="field-wrapper">
+                      <Field
+                        name="email"
+                        component="input"
+                        type="email"
+                        placeholder="Email"
+                        className={
+                          props.touched.email && props.errors.email
+                            ? "invalid"
+                            : ""
+                        }
+                        validate={composeValidators(required, email)}
+                      />
+                      {props.touched.email && props.errors.email && (
+                        <span className="error">{props.errors.email}</span>
+                      )}
+                    </div>
+
+                    <div className="field-wrapper">
+                      <Field
+                        name="password"
+                        component="input"
+                        type="password"
+                        placeholder="Password"
+                        className={
+                          props.touched.password && props.errors.password
+                            ? "invalid"
+                            : ""
+                        }
+                        validate={required}
+                      />
+                      {props.touched.password && props.errors.password && (
+                        <span className="error">{props.errors.password}</span>
+                      )}
+                    </div>
+                    <div className="field-wrapper">
+                      <Field
+                        name="password2"
+                        component="input"
+                        type="password"
+                        placeholder="Confirm password"
+                        className={
+                          props.touched.password &&
+                          props.touched.password2 &&
+                          props.errors.password2
+                            ? "invalid"
+                            : ""
+                        }
+                        validate={required}
+                      />
+                      {props.touched.password &&
+                        props.touched.password2 &&
+                        props.errors.password2 && (
+                          <span className="error">
+                            {props.errors.password2}
+                          </span>
+                        )}
+                    </div>
+                    <button
+                      type="submit"
+                      disabled={!props.valid || props.submitting}
+                    >
+                      Register
+                    </button>
+                  </form>
+                )}
+              </Form>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {profileModal && (
+        <div className="modal-mask">
+          <div className="modal-wrapper">
+            {loading && <Loader />}
+            <span
+              className="closeBtn"
+              onClick={() => setProfileModal(false)}
+            ></span>
+            <div className="modal-content">
+              <h4>Profile</h4>
+              <Form
+                onSubmit={handleProfileUpdate}
+                initialValues={{ email: userDetails.user.email }}
+                validate={(values) => {
+                  const errors = {};
+                  if (values.password !== values.password2) {
+                    errors.password2 = "Passwords are not matching";
+                  }
+                  return errors;
+                }}
+              >
+                {(props) => (
+                  <form onSubmit={props.handleSubmit}>
+                    {/* <pre>{JSON.stringify(props, null, 4)}</pre> */}
+                    <div className="field-wrapper">
+                      <Field
+                        name="email"
+                        component="input"
+                        type="email"
+                        placeholder="Email"
+                        className={
+                          props.touched.email && props.errors.email
+                            ? "invalid"
+                            : ""
+                        }
+                        validate={composeValidators(required, email)}
+                      />
+                      {props.touched.email && props.errors.email && (
+                        <span className="error">{props.errors.email}</span>
+                      )}
+                    </div>
+                    <div className="field-wrapper">
+                      <Field
+                        name="password"
+                        component="input"
+                        type="password"
+                        placeholder="Password"
+                        className={
+                          props.touched.password && props.errors.password
+                            ? "invalid"
+                            : ""
+                        }
+                        validate={required}
+                      />
+                      {props.touched.password && props.errors.password && (
+                        <span className="error">{props.errors.password}</span>
+                      )}
+                    </div>
+                    <div className="field-wrapper">
+                      <Field
+                        name="password2"
+                        component="input"
+                        type="password"
+                        placeholder="Confirm password"
+                        className={
+                          props.touched.password &&
+                          props.touched.password2 &&
+                          props.errors.password2
+                            ? "invalid"
+                            : ""
+                        }
+                        validate={required}
+                      />
+                      {props.touched.password &&
+                        props.touched.password2 &&
+                        props.errors.password2 && (
+                          <span className="error">
+                            {props.errors.password2}
+                          </span>
+                        )}
+                    </div>
+                    <div className="field-wrapper">
+                      <Field
+                        name="new_password"
+                        component="input"
+                        type="password"
+                        placeholder="New password"
+                        className={
+                          props.touched.new_password &&
+                          props.errors.new_password
+                            ? "invalid"
+                            : ""
+                        }
+                        validate={required}
+                      />
+                      {props.touched.new_password &&
+                        props.errors.new_password && (
+                          <span className="error">
+                            {props.errors.new_password}
+                          </span>
+                        )}
+                    </div>
+                    <button
+                      type="submit"
+                      disabled={!props.valid || props.submitting}
+                    >
+                      Register
                     </button>
                   </form>
                 )}

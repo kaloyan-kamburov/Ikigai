@@ -175,19 +175,19 @@
   }
 }
 
-// .hide-tooltip {
-//   .ikigai-tooltip {
-//     display: none;
-//   }
-//   g {
-//     cursor: default !important;
-//     &:not(.active) {
-//       path {
-//         stroke-width: 1 !important;
-//       }
-//     }
-//   }
-// }
+.hide-tooltip {
+  .ikigai-tooltip {
+    display: none;
+  }
+  g {
+    cursor: default !important;
+    &:not(.active) {
+      path {
+        stroke-width: 1 !important;
+      }
+    }
+  }
+}
 
 .ikigai-tooltip {
   // padding: 10px;
@@ -198,7 +198,8 @@
   position: fixed;
   transition: background-color 0.2s linear;
   // max-width: 240px;
-  max-width: 266px;
+  // max-width: 266px;
+  max-width: 435px;
   padding: 40px;
   z-index: 9;
   opacity: 0;
@@ -220,7 +221,7 @@
     border-style: solid;
     border-color: transparent $black;
     border-width: 20px 20px 20px 0;
-    top: 50%;
+    top: 50px;
     left: -20px;
     margin-top: -20px;
   }
@@ -232,11 +233,59 @@
     border-style: solid;
     border-color: transparent #979797;
     border-width: 21px 21px 21px 0;
-    top: 50%;
+    top: 50px;
     left: -21.5px;
     margin-top: -21px;
     display: block;
   }
+  & div {
+    padding: 40px 0 20px;
+    & p {
+      color: $white;
+      font-family: Campton;
+      font-size: 18px;
+      line-height: 22px;
+      text-align: left;
+      padding-bottom: 15px;
+    }
+    &:last-of-type {
+      height: 45px;
+      width: 240px;
+      background-color: rgba(216, 216, 216, 0.12);
+      padding: 0 15px;
+      & p:last-of-type {
+        padding-bottom: 0;
+        font-family: Campton-Bold;
+        line-height: 45px;
+        padding-left: 25px;
+        position: relative;
+        & span {
+          width: 16px;
+          height: 16px;
+          position: absolute;
+          left: 0;
+          top: 8%;
+          &::before,
+          &::after {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            content: " ";
+            height: 16px;
+            width: 3px;
+            background-color: $white;
+          }
+          &::before {
+            transform: rotate(90deg);
+          }
+          &::after {
+            transform: rotate(180deg);
+          }
+        }
+      }
+    }
+  }
+
   // &:before {
   //   content: "";
   //   display: block;

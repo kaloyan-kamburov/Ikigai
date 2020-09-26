@@ -12,3 +12,16 @@
 @import "modal";
 @import "loader";
 @import "itemsPopup";
+
+.app-wrapper {
+  animation: fadeIn linear 0.3s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100%;
+  }
+}

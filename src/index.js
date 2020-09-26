@@ -6,10 +6,13 @@ import "./fonts/Campton-Light.otf";
 import "./fonts/Campton-Bold.otf";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
+import { UserProvider } from "./context";
 
 ReactDOM.render(
   // <React.StrictMode>
-  <App />,
+  <UserProvider>
+    <App />
+  </UserProvider>,
   // </React.StrictMode>,
   document.getElementById("root")
 );

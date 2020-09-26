@@ -70,9 +70,11 @@
 .form-title {
   color: $black;
   font-family: Casta;
-  font-size: 120px;
+  // font-size: 120px;
+  font-size: 67px;
   font-weight: 100;
-  line-height: 132px;
+  // line-height: 132px;
+  line-height: 77px;
 }
 .page-number {
   float: right;
@@ -232,8 +234,24 @@
   }
 }
 
-input {
-  &.invalid {
-    border-color: red;
+.field-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+
+  input {
+    width: 100%;
+    outline: none;
+
+    &.invalid {
+      border-color: red;
+    }
   }
+
+  .error {
+    width: 100%;
+  }
+}
+
+.error {
+  color: red;
 }

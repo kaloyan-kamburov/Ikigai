@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "./styles/main.scss";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -12,29 +12,56 @@ import PaidFor from "./pages/Wizard/paidFor";
 import Congratulations from "./pages/Wizard/congratulations";
 import IkigaiChart from "./pages/Wizard/chart";
 
+import { UserProvider, UserContext } from "./context";
+import axios from "./utils/api";
+import Loader from "./components/Loader";
+
 const App = () => {
+  const [userDetails, setUserDetails] = useContext(UserContext);
+  const [appLoaded, setAppLoaded] = useState(false);
   useEffect(() => {
     const ikiSettings = localStorage.getItem("ikiSettings");
     if (!ikiSettings) {
       localStorage.setItem("ikiSettings", JSON.stringify({}));
     }
+    axios({
+      url: "logged",
+      method: "post",
+    })
+      .then(({ data }) => {
+        setUserDetails({ loggedIn: true, user: data.user });
+      })
+      .catch((e) => {
+        console.log(e);
+      })
+      .finally(() => setAppLoaded(true));
   }, []);
   return (
     <>
-      <Header />
-      <Router basename="/">
-        <Switch>
-          <Route path="/" component={Home} exact />
-          <Route path="/what-are-you-good-at" component={GoodAt} exact />
-          <Route path="/what-you-love" component={Love} exact />
-          <Route path="/what-the-world-needs" component={Needs} exact />
-          <Route path="/what-are-you-paid-for" component={PaidFor} exact />
-          <Route path="/congratulations" component={Congratulations} exact />
-          <Route path="/chart" component={IkigaiChart} exact />
-          <Route component={Home} />
-        </Switch>
-        <Footer />
-      </Router>
+      {!appLoaded ? (
+        <Loader dark />
+      ) : (
+        <div className="app-wrapper">
+          <Header userState={userDetails} />
+          <Router basename="/">
+            <Switch>
+              <Route path="/" component={Home} exact />
+              <Route path="/what-are-you-good-at" component={GoodAt} exact />
+              <Route path="/what-you-love" component={Love} exact />
+              <Route path="/what-the-world-needs" component={Needs} exact />
+              <Route path="/what-are-you-paid-for" component={PaidFor} exact />
+              <Route
+                path="/congratulations"
+                component={Congratulations}
+                exact
+              />
+              <Route path="/chart" component={IkigaiChart} exact />
+              <Route component={Home} />
+            </Switch>
+            <Footer />
+          </Router>
+        </div>
+      )}
     </>
   );
 };

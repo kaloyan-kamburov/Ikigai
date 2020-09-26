@@ -1,7 +1,7 @@
 import React from "react";
 
-const Loader = () => {
-  return <div className="loader">Loading...</div>;
+const Loader = ({ dark }) => {
+  return <div className={`loader${dark ? " dark" : ""}`}>Loading...</div>;
 };
 
 export default Loader;

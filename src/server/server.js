@@ -10,7 +10,7 @@ const app = express();
 /**
  * For local testing only!  Enables CORS for all domains
  */
-app.use(cors());
+app.use(cors({ credentials: true }));
 app.use(cookieParser());
 app.use(morgan("dev"));
 
@@ -26,11 +26,106 @@ app.use((error, req, res, next) => {
   }
 });
 
-app.post("/api/login", (req, res) => {
+const userData = {
+  user: {
+    email: "email@email.com",
+    ikiSettings: {
+      items: {
+        step_A: [
+          { label: "ala bala", value: "ala bala" },
+          { label: "Skateboarding", value: "Skateboarding" },
+          { label: "Drawing", value: "Drawing" },
+          { label: "Travelling", value: "Travelling" },
+          { label: "something", value: "something" },
+          { label: "watching tv", value: "watching tv" },
+          { label: "testing", value: "testing" },
+          { label: "Add neshto", value: "Add neshto" },
+          { label: "dd", value: "dd" },
+          { label: "ss", value: "ss" },
+          { label: "asd", value: "asd" },
+          { label: "Cooking", value: "Cooking" },
+          { label: "writing", value: "writing" },
+        ],
+        step_C: [
+          { label: "something", value: "something" },
+          { label: "watching tv", value: "watching tv" },
+          { label: "testing", value: "testing" },
+          { label: "Drawing", value: "Drawing" },
+          { label: "Add neshto", value: "Add neshto" },
+          { label: "dd", value: "dd" },
+          { label: "ss", value: "ss" },
+          { label: "asd", value: "asd" },
+          { label: "Cooking", value: "Cooking" },
+          { label: "Skateboarding", value: "Skateboarding" },
+        ],
+        step_B: [
+          { label: "Travelling", value: "Travelling" },
+          { label: "writing", value: "writing" },
+          { label: "Skateboarding", value: "Skateboarding" },
+          { label: "Cooking", value: "Cooking" },
+        ],
+        step_D: [
+          { label: "something", value: "something" },
+          { label: "watching tv", value: "watching tv" },
+          { label: "testing", value: "testing" },
+          { label: "Drawing", value: "Drawing" },
+          { label: "Add neshto", value: "Add neshto" },
+          { label: "dd", value: "dd" },
+          { label: "ss", value: "ss" },
+          { label: "asd", value: "asd" },
+          { label: "Cooking", value: "Cooking" },
+          { label: "Design", value: "Design" },
+          { label: "writing", value: "writing" },
+          { label: "Skateboarding", value: "Skateboarding" },
+        ],
+      },
+      dateCreated: "2020-09-26T15:02:06.664Z",
+    },
+  },
+};
+
+app.post("/api/logged", (req, res) => {
+  // res.json(userData);
   setTimeout(() => {
     res.json({
-      success: true,
+      user: {},
     });
+  }, 1500);
+});
+
+app.post("/api/login", (req, res) => {
+  // setTimeout(() => {
+  //   res
+  //     .cookie("jwt", "123", {
+  //       maxAge: 86_400_000,
+  //     })
+  //     .json(userData);
+  // }, 2000);
+  setTimeout(() => {
+    res.json(userData);
+  }, 1500);
+});
+
+app.post("/api/logout", (req, res) => {
+  console.log(req.headers);
+  setTimeout(() => {
+    // res.cookie("jwt", "", {
+    //   maxAge: 0,
+    //   httpOnly: true,
+    // });
+    res.json(userData);
+  }, 1500);
+});
+
+app.post("/api/register", (req, res) => {
+  setTimeout(() => {
+    res.json(userData);
+  }, 1500);
+});
+
+app.patch("/api/profile", (req, res) => {
+  setTimeout(() => {
+    res.json(userData);
   }, 2000);
 });
 
