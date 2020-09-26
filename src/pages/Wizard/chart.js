@@ -12,7 +12,7 @@ import { useHistory } from "react-router-dom";
 import { intersection } from "underscore";
 import { MapInteractionCSS } from "react-map-interaction";
 // import sanitizeHtml from 'sanitize-html'
-import ItemsEdit from "./itemsEdit";
+import ItemsModal from "./ItemsModal";
 
 const IkigaiChart = () => {
   const history = useHistory();
@@ -469,15 +469,13 @@ const IkigaiChart = () => {
     // draw venn diagram
     document.getElementById("ikigai").innerHTML = "";
     const div = d3.select("#ikigai");
-    div
-      .datum(sets)
-      .call(
-        venn
-          .VennDiagram()
-          .useViewBox()
-          .width(window.innerWidth)
-          .height(window.innerHeight)
-      );
+    div.datum(sets).call(
+      venn
+        .VennDiagram()
+        .useViewBox()
+        .width(window.innerWidth)
+        .height(window.innerHeight - 64)
+    );
 
     d3.selectAll("#ikigai .venn-circle path")
       .style("stroke", "white")
@@ -699,7 +697,7 @@ const IkigaiChart = () => {
         </MapInteractionCSS>
       </div>
       {itemsForEdit && (
-        <ItemsEdit
+        <ItemsModal
           items={itemsForEdit.items}
           posX={itemsForEdit.posX}
           posY={itemsForEdit.posY}

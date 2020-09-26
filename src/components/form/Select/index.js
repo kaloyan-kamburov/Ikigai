@@ -3,7 +3,7 @@ import CreatableSelect from "react-select/async-creatable";
 import { Field } from "react-final-form";
 import Highlighter from "react-highlight-words";
 import { debounce } from "underscore";
-import { fetchAbsolute as fetch } from "../../../config/api";
+import { fetchAbsolute as fetch } from "../../../utils/api";
 
 const styles = {
   container: (provided) => ({

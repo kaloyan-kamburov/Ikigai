@@ -231,3 +231,9 @@
     padding-left: 151px;
   }
 }
+
+input {
+  &.invalid {
+    border-color: red;
+  }
+}
