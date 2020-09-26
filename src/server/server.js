@@ -10,7 +10,7 @@ const app = express();
 /**
  * For local testing only!  Enables CORS for all domains
  */
-app.use(cors({ credentials: true }));
+app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 app.use(cookieParser());
 app.use(morgan("dev"));
 
@@ -87,43 +87,38 @@ const userData = {
 app.post("/api/logged", (req, res) => {
   // res.json(userData);
   setTimeout(() => {
-    res.json({
-      user: {},
-    });
-  }, 1500);
+    res
+      .cookie("jwt", "123", {
+        maxAge: 86_400_000,
+        httpOnly: true,
+      })
+      .json(userData);
+  }, 2000);
 });
 
 app.post("/api/login", (req, res) => {
-  // setTimeout(() => {
-  //   res
-  //     .cookie("jwt", "123", {
-  //       maxAge: 86_400_000,
-  //     })
-  //     .json(userData);
-  // }, 2000);
   setTimeout(() => {
-    res.json(userData);
-  }, 1500);
+    res
+      .cookie("jwt", "123", {
+        maxAge: 86_400_000,
+        httpOnly: true,
+      })
+      .json(userData);
+  }, 2000);
 });
 
 app.post("/api/logout", (req, res) => {
   console.log(req.headers);
   setTimeout(() => {
-    // res.cookie("jwt", "", {
-    //   maxAge: 0,
-    //   httpOnly: true,
-    // });
+    res.cookie("jwt", "", {
+      maxAge: 0,
+      httpOnly: true,
+    });
     res.json(userData);
-  }, 1500);
+  }, 2000);
 });
 
 app.post("/api/register", (req, res) => {
-  setTimeout(() => {
-    res.json(userData);
-  }, 1500);
-});
-
-app.patch("/api/profile", (req, res) => {
   setTimeout(() => {
     res.json(userData);
   }, 2000);

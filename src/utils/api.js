@@ -4,6 +4,12 @@ import { baseURL } from "../config";
 const instance = axios.create({
   baseURL,
   timeout: 6000,
+  withCredentials: true,
+  headers: {
+    Accept: "application/json",
+
+    "Access-Control-Allow-Credentials": "true",
+  },
 });
 
 // .interceptors.request.use(
