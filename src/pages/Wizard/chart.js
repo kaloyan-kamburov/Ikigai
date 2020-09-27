@@ -5,7 +5,7 @@ step_D: [{"label":"Skateboarding","value":"Skateboarding"},{"label":"Design","va
 step_A: [{"label":"Skateboarding","value":"Skateboarding"},{"label":"Flash","value":"Flash"},{"label":"Design","value":"Design"},{"label":"Hiking","value":"Hiking","__isNew__":true},{"label":"Travelling","value":"Travelling"},{"label":"Jump","value":"Jump","__isNew__":true}]
 step_C: [{"label":"Skateboarding","value":"Skateboarding"},{"label":"Travelling","value":"Travelling"},{"label":"Jump","value":"Jump","__isNew__":true},{"label":"Flash","value":"Flash","__isNew__":true},{"label":"Hiking","value":"Hiking","__isNew__":true}]
 */
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import * as d3 from "d3";
 import * as venn from "@upsetjs/venn.js";
 import { useHistory } from "react-router-dom";
@@ -13,10 +13,14 @@ import { intersection } from "underscore";
 import { MapInteractionCSS } from "react-map-interaction";
 // import sanitizeHtml from 'sanitize-html'
 import ItemsModal from "./ItemsModal";
+import { UserContext } from "../../context";
+import axios from "../../utils/api";
 
 const IkigaiChart = () => {
   const history = useHistory();
   const [zoomMode, setZoomMode] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [userDetails, setUserDetails] = useContext(UserContext);
   const defaultZoomValue = {
     scale: 1,
     translation: { x: 0, y: 0 },
@@ -291,7 +295,8 @@ const IkigaiChart = () => {
         sets: ["A"],
         size: 1000,
         label: "WHAT YOU LOVE",
-        desc: "<h6>Things that you love doing</h6><div><p>What would you do if you didn’t have to worry about making money?</p><p>How would you spend your time on a long vacation or a free weekend?</p><p>What’s exciting to you and gets your juices flowing when you do it?</p><p>What could you enthusiastically talk about for hours on end?</p></div><div><p><span></span>Click to view</p></div>",
+        desc:
+          "<h6>Things that you love doing</h6><div><p>What would you do if you didn’t have to worry about making money?</p><p>How would you spend your time on a long vacation or a free weekend?</p><p>What’s exciting to you and gets your juices flowing when you do it?</p><p>What could you enthusiastically talk about for hours on end?</p></div><div><p><span></span>Click to view</p></div>",
         items: generateItemsForGroup(["A"]),
         type: "circle",
         posLabelX: "50%",
@@ -329,7 +334,8 @@ const IkigaiChart = () => {
         sets: ["A", "B"],
         size: 300,
         // label: "AB",
-        desc: "<h6>This is your mission</h6><div><p>The place where the things you love intersect what the world needs.</p></div><div><p><span></span>Click to view</p></div>",
+        desc:
+          "<h6>This is your mission</h6><div><p>The place where the things you love intersect what the world needs.</p></div><div><p><span></span>Click to view</p></div>",
         items: generateItemsForGroup(["A", "B"]),
         type: "intersection",
         itemsParams: {
@@ -397,7 +403,8 @@ const IkigaiChart = () => {
         // label: "ABC",
         sets: ["A", "B", "C"],
         size: 300,
-        desc: "<h6>Great but uneasy</h6><div><p>Things you do with excitement and complacency, but sense of uncertainty.</p></div><div><p><span></span>Click to view</p></div>",
+        desc:
+          "<h6>Great but uneasy</h6><div><p>Things you do with excitement and complacency, but sense of uncertainty.</p></div><div><p><span></span>Click to view</p></div>",
         items: generateItemsForGroup(["A", "B", "C"]),
         type: "intersection",
         itemsParams: {
@@ -702,9 +709,29 @@ const IkigaiChart = () => {
           posX={itemsForEdit.posX}
           posY={itemsForEdit.posY}
           sets={itemsForEdit.sets}
+          loading={loading}
           saveFn={() => {
-            resetSets();
-            setItemsForEdit(null);
+            setLoading(true);
+            axios({
+              url: "profile",
+              method: "patch",
+              data: {
+                user: {
+                  ...userDetails.user,
+                  ikiSettings: JSON.parse(localStorage.getItem("ikiSettings")),
+                },
+              },
+            })
+              .then(({ data }) => {
+                document.getElementById("ikigai").innerHTML = null;
+                setUserDetails(data);
+                resetSets();
+                setItemsForEdit(null);
+                setLoading(false);
+              })
+              .catch((e) => {
+                setLoading(false);
+              });
           }}
           onClose={() => {
             document

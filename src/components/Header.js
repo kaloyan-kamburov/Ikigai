@@ -1,14 +1,10 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Form, Field } from "react-final-form";
-import {
-  required,
-  composeValidators,
-  email,
-  passwordCompare,
-} from "../utils/validation";
+import { required, composeValidators, email } from "../utils/validation";
 import Loader from "./Loader";
 import axios from "../utils/api";
 import { UserContext } from "../context";
+import { useHistory } from "react-router-dom";
 
 const Header = ({ userState }) => {
   const [loginModal, setLoginModal] = useState(false);
@@ -18,11 +14,14 @@ const Header = ({ userState }) => {
   const [logoutLoading, setLogoutLoading] = useState(false);
   const [userDetails, setUserDetails] = useContext(UserContext);
 
+  const history = useHistory();
+
   const handleLogin = (values) => {
     return new Promise((resolve, reject) => {
       setLoading(true);
       axios({
         url: "login",
+        data: values,
         method: "post",
       })
         .then(({ data }) => {
@@ -93,8 +92,12 @@ const Header = ({ userState }) => {
       axios({
         url: "profile",
         method: "patch",
+        data: values,
       })
         .then(({ data }) => {
+          setUserDetails({
+            user: data.user,
+          });
           setLoading(false);
           setProfileModal(false);
           resolve();
@@ -105,7 +108,7 @@ const Header = ({ userState }) => {
         });
     });
   };
-  // console.log(state);
+
   return (
     <header>
       <div className="logo">Logo</div>
@@ -319,13 +322,22 @@ const Header = ({ userState }) => {
             ></span>
             <div className="modal-content">
               <h4>Profile</h4>
+              <span
+                style={{ cursor: "pointer" }}
+                onClick={() => {
+                  setProfileModal(false);
+                  history.push("/chart");
+                }}
+              >
+                View my Ikigai
+              </span>
               <Form
                 onSubmit={handleProfileUpdate}
                 initialValues={{ email: userDetails.user.email }}
                 validate={(values) => {
                   const errors = {};
-                  if (values.password !== values.password2) {
-                    errors.password2 = "Passwords are not matching";
+                  if (values.new_password !== values.new_password2) {
+                    errors.new_password2 = "Passwords are not matching";
                   }
                   return errors;
                 }}
@@ -352,41 +364,22 @@ const Header = ({ userState }) => {
                     </div>
                     <div className="field-wrapper">
                       <Field
-                        name="password"
+                        name="old_password"
                         component="input"
                         type="password"
-                        placeholder="Password"
+                        placeholder="Old password"
                         className={
-                          props.touched.password && props.errors.password
+                          props.touched.old_password &&
+                          props.errors.old_password
                             ? "invalid"
                             : ""
                         }
                         validate={required}
                       />
-                      {props.touched.password && props.errors.password && (
-                        <span className="error">{props.errors.password}</span>
-                      )}
-                    </div>
-                    <div className="field-wrapper">
-                      <Field
-                        name="password2"
-                        component="input"
-                        type="password"
-                        placeholder="Confirm password"
-                        className={
-                          props.touched.password &&
-                          props.touched.password2 &&
-                          props.errors.password2
-                            ? "invalid"
-                            : ""
-                        }
-                        validate={required}
-                      />
-                      {props.touched.password &&
-                        props.touched.password2 &&
-                        props.errors.password2 && (
+                      {props.touched.old_password &&
+                        props.errors.old_password && (
                           <span className="error">
-                            {props.errors.password2}
+                            {props.errors.old_password}
                           </span>
                         )}
                     </div>
@@ -398,16 +391,39 @@ const Header = ({ userState }) => {
                         placeholder="New password"
                         className={
                           props.touched.new_password &&
-                          props.errors.new_password
+                          props.touched.new_password2 &&
+                          props.errors.new_password2
                             ? "invalid"
                             : ""
                         }
                         validate={required}
                       />
                       {props.touched.new_password &&
-                        props.errors.new_password && (
+                        props.touched.new_password2 &&
+                        props.errors.new_password2 && (
                           <span className="error">
-                            {props.errors.new_password}
+                            {props.errors.new_password2}
+                          </span>
+                        )}
+                    </div>
+                    <div className="field-wrapper">
+                      <Field
+                        name="new_password2"
+                        component="input"
+                        type="password"
+                        placeholder="Confirm password"
+                        className={
+                          props.touched.new_password2 &&
+                          props.errors.new_password2
+                            ? "invalid"
+                            : ""
+                        }
+                        validate={required}
+                      />
+                      {props.touched.new_password2 &&
+                        props.errors.new_password2 && (
+                          <span className="error">
+                            {props.errors.new_password2}
                           </span>
                         )}
                     </div>
@@ -415,7 +431,7 @@ const Header = ({ userState }) => {
                       type="submit"
                       disabled={!props.valid || props.submitting}
                     >
-                      Register
+                      Save
                     </button>
                   </form>
                 )}

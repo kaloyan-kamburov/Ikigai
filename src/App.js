@@ -42,8 +42,8 @@ const App = () => {
         <Loader dark />
       ) : (
         <div className="app-wrapper">
-          <Header userState={userDetails} />
           <Router basename="/">
+            <Header userState={userDetails} />
             <Switch>
               <Route path="/" component={Home} exact />
               <Route path="/what-are-you-good-at" component={GoodAt} exact />

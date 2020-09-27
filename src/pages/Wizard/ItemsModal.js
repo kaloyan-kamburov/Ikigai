@@ -3,13 +3,20 @@ import { difference, uniq, without } from "underscore";
 import Select from "../../components/form/Select";
 import { Form } from "react-final-form";
 import { useHistory } from "react-router-dom";
+import Loader from "../../components/Loader";
 
-const ItemsModal = ({ sets, items = [], onClose, posX, posY, saveFn }) => {
+const ItemsModal = ({
+  sets,
+  items = [],
+  onClose,
+  posX,
+  posY,
+  saveFn,
+  loading,
+}) => {
   const history = { useHistory };
 
   const handleSubmit = (values, initialValues) => {
-    document.getElementById("ikigai").innerHTML = null;
-
     sets.forEach((setName) => {
       const itemsGroup = JSON.parse(localStorage.getItem("ikiSettings")).items[
         `step_${setName}`
@@ -80,6 +87,7 @@ const ItemsModal = ({ sets, items = [], onClose, posX, posY, saveFn }) => {
         top: posY + "px",
       }}
     >
+      {loading && <Loader />}
       <Form
         // validate={(values) => {
         //   const errors = {};

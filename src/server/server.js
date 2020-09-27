@@ -124,6 +124,12 @@ app.post("/api/register", (req, res) => {
   }, 2000);
 });
 
+app.patch("/api/profile", (req, res) => {
+  setTimeout(() => {
+    res.json(userData);
+  }, 2000);
+});
+
 app.get("/items", (req, res) => {
   setTimeout(() => {
     res.status(200).send([
