@@ -130,7 +130,7 @@ app.patch("/api/profile", (req, res) => {
   }, 2000);
 });
 
-app.get("/items", (req, res) => {
+app.get("/api/items", (req, res) => {
   setTimeout(() => {
     res.status(200).send([
       {
@@ -144,6 +144,10 @@ app.get("/items", (req, res) => {
       {
         label: "Cooking",
         value: "Cooking",
+      },
+      {
+        label: "Working",
+        value: "Working",
       },
     ]);
   }, 2000);

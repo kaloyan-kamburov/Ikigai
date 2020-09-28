@@ -242,7 +242,7 @@ const IkigaiChart = () => {
         type: "ikigai",
         itemsParams: {
           x: -60,
-          y: 400,
+          y: 370,
           width: 120,
           height: 130,
           big: 5,
@@ -263,7 +263,7 @@ const IkigaiChart = () => {
         posLabelY: "0%",
         itemsParams: {
           x: -220,
-          y: 220,
+          y: 190,
           width: 170,
           height: 500,
           big: 20,
@@ -283,7 +283,7 @@ const IkigaiChart = () => {
         posLabelY: "0%",
         itemsParams: {
           x: 50,
-          y: 220,
+          y: 190,
           width: 170,
           height: 500,
           big: 20,
@@ -303,7 +303,7 @@ const IkigaiChart = () => {
         posLabelY: 1,
         itemsParams: {
           x: -100,
-          y: 45,
+          y: 35,
           width: 220,
           height: 160,
           big: 20,
@@ -322,7 +322,7 @@ const IkigaiChart = () => {
         posLabelY: "100%",
         itemsParams: {
           x: -120,
-          y: 730,
+          y: 680,
           width: 230,
           height: 140,
           big: 20,
@@ -340,7 +340,7 @@ const IkigaiChart = () => {
         type: "intersection",
         itemsParams: {
           x: -20,
-          y: 230,
+          y: 205,
           width: 160,
           height: 160,
           big: 15,
@@ -357,7 +357,7 @@ const IkigaiChart = () => {
         type: "intersection",
         itemsParams: {
           x: -20,
-          y: 540,
+          y: 505,
           width: 160,
           height: 160,
           big: 15,
@@ -374,7 +374,7 @@ const IkigaiChart = () => {
         type: "intersection",
         itemsParams: {
           x: -140,
-          y: 540,
+          y: 505,
           width: 160,
           height: 160,
           big: 15,
@@ -391,7 +391,7 @@ const IkigaiChart = () => {
         type: "intersection",
         itemsParams: {
           x: -140,
-          y: 230,
+          y: 205,
           width: 160,
           height: 160,
           big: 15,
@@ -409,7 +409,7 @@ const IkigaiChart = () => {
         type: "intersection",
         itemsParams: {
           x: 30,
-          y: 415,
+          y: 385,
           width: 100,
           height: 100,
           big: 2,
@@ -426,7 +426,7 @@ const IkigaiChart = () => {
         type: "intersection",
         itemsParams: {
           x: -45,
-          y: 300,
+          y: 270,
           width: 90,
           height: 90,
           big: 2,
@@ -443,7 +443,7 @@ const IkigaiChart = () => {
         type: "intersection",
         itemsParams: {
           x: -110,
-          y: 415,
+          y: 385,
           width: 100,
           height: 100,
           big: 2,
@@ -460,7 +460,7 @@ const IkigaiChart = () => {
         type: "intersection",
         itemsParams: {
           x: -45,
-          y: 550,
+          y: 520,
           width: 90,
           height: 90,
           big: 2,

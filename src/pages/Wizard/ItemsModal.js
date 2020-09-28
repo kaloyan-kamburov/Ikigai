@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { difference, uniq, without } from "underscore";
 import Select from "../../components/form/Select";
 import { Form } from "react-final-form";
@@ -14,9 +14,11 @@ const ItemsModal = ({
   saveFn,
   loading,
 }) => {
+  const [itemsForSend, setItemsForSend] = useState(null);
   const history = { useHistory };
 
   const handleSubmit = (values, initialValues) => {
+    setItemsForSend(values.options);
     sets.forEach((setName) => {
       const itemsGroup = JSON.parse(localStorage.getItem("ikiSettings")).items[
         `step_${setName}`
@@ -103,7 +105,8 @@ const ItemsModal = ({
           )
         }
         initialValues={{
-          options: items.map((item) => ({ label: item, value: item })),
+          options:
+            itemsForSend || items.map((item) => ({ label: item, value: item })),
         }}
       >
         {(props) => {
@@ -114,7 +117,7 @@ const ItemsModal = ({
                   className="popupSelect"
                   name="options"
                   isMulti
-                  value={props.initialValues.options}
+                  // value={props.initialValues.options}
                   autoFocus
                 />
                 <button className="btn-save" type="submit">

@@ -3,7 +3,7 @@ import CreatableSelect from "react-select/async-creatable";
 import { Field } from "react-final-form";
 import Highlighter from "react-highlight-words";
 import { debounce } from "underscore";
-import { fetchAbsolute as fetch } from "../../../utils/api";
+import axios from "../../../utils/api";
 
 const styles = {
   container: (provided) => ({
@@ -82,23 +82,23 @@ const options = [
   },
 ];
 
-// const loadOptions = async (inputValue, callback) => {
-//   if (!inputValue || inputValue.length < 2) {
-//     return callback([]);
-//   }
-//   try {
-//     const res = await fetch({ url: `items?q=${inputValue}` });
-//     return res.json();
-//   } catch (e) {
-//     return callback([]);
-//   }
-// };
-
-const loadOptions = (inputValue, callback) => {
-  // setTimeout(() => {
-  return callback(options);
-  // }, 2000);
+const loadOptions = async (inputValue, callback) => {
+  if (!inputValue || inputValue.length < 2) {
+    return callback([]);
+  }
+  try {
+    const res = await axios({ url: `items?q=${inputValue}`, method: "get" });
+    return res.data;
+  } catch (e) {
+    return callback([]);
+  }
 };
+
+// const loadOptions = (inputValue, callback) => {
+//   // setTimeout(() => {
+//   return callback(options);
+//   // }, 2000);
+// };
 
 const formatOptionLabel = ({ label = "" }, { inputValue }) => {
   return (
