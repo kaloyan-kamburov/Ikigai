@@ -1,29 +1,84 @@
 .modal-mask {
-  position: fixed;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.85);
+  background-color: rgba(0, 0, 0, 0.6);
   z-index: 100;
 
   .modal-wrapper {
     width: 400px;
-    min-height: 400px;
+    // min-height: 400px;
     max-width: 90%;
     max-height: 90%;
     background-color: $white;
     position: absolute;
-    top: 50%;
-    left: 50%;
+    // top: 50%;
+    // left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 50px;
 
     .modal-content {
+      width: 100%;
     }
+    .closeBtn {
+      top: 16px;
+      right: 16px;
+    }
+    &.show {
+      animation: show .2s;
+      transform: scale(1);
+    }
+    
+  }
+}
+
+@keyframes show{
+  from {
+    transform: scale(0);
+  } to {
+    transform: scale(1);
+  }
+}
+
+.modal-title {
+  & h4 {
+    opacity: 0.5;
+    color: #000000;
+    font-family: Campton;
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 30px;
+  } 
+}
+.field-wrapper {
+  margin-bottom: 15px;
+  & input {
+  border-color:rgba(0, 0, 0, 0.3);
+  border-width: 1px;
+  color: $black;
+  font-weight: 300;
+  font-size: 18px;
+  padding: 12px;
+  font-family: Campton;
+  color: $black;
+  }
+}
+.view {
+  font-family: Campton;
+  font-size: 18px;
+  padding-bottom: 20px;
+  display: block;
+  &:hover {
+    text-decoration: underline;
   }
 }

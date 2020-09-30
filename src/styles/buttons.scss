@@ -77,3 +77,23 @@ button {
     transform: rotate(-45deg);
   }
 }
+.btn-submit {
+  height: 68px;
+  width: 100%;
+  font-size: 25px;
+  line-height: 68px;
+  display: block;
+  box-shadow: none;
+  border-width: 2px;
+  &:disabled {
+    opacity: 1;
+  }
+  &:hover {
+    background-color: $black;
+    color: $white;
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+    
+  }
+}

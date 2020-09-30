@@ -111,7 +111,8 @@ const Header = ({ userState }) => {
 
   return (
     <header>
-      <div className="logo">Logo</div>
+    <div className="shell">
+      <div className="logo"></div>
       <div className="profile-controls">
         {/* {JSON.stringify(userDetails, null, 4)} */}
 
@@ -123,11 +124,12 @@ const Header = ({ userState }) => {
             >
               Register
             </span>
+           
             <span
               style={{ cursor: "pointer" }}
               onClick={() => setLoginModal(true)}
             >
-              Log in
+              Login
             </span>
           </>
         ) : (
@@ -151,15 +153,18 @@ const Header = ({ userState }) => {
 
       {/** modals */}
       {loginModal && (
-        <div className="modal-mask">
-          <div className="modal-wrapper">
+        <div className="modal-mask ">
+          <div className="modal-wrapper show">
             {loading && <Loader />}
             <span
               className="closeBtn"
               onClick={() => setLoginModal(false)}
             ></span>
             <div className="modal-content">
-              <h4>Login</h4>
+            <div className="modal-title">
+              <h4>Login to Your Account</h4>
+            </div>
+              
               <Form
                 onSubmit={handleLogin}
                 initialValues={{ email: "email@email.com", password: "asd" }}
@@ -202,11 +207,11 @@ const Header = ({ userState }) => {
                         <span className="error">{props.errors.password}</span>
                       )}
                     </div>
-                    <button
+                    <button className="btn-submit"
                       type="submit"
                       disabled={!props.valid || props.submitting}
                     >
-                      Log in
+                      Login
                     </button>
                   </form>
                 )}
@@ -218,14 +223,16 @@ const Header = ({ userState }) => {
 
       {registerModal && (
         <div className="modal-mask">
-          <div className="modal-wrapper">
+          <div className="modal-wrapper show">
             {loading && <Loader />}
             <span
               className="closeBtn"
               onClick={() => setRegisterModal(false)}
             ></span>
             <div className="modal-content">
+            <div className="modal-title">
               <h4>Register</h4>
+              </div>
               <Form
                 onSubmit={handleRegister}
                 initialValues={{ email: "email@email.com" }}
@@ -298,7 +305,7 @@ const Header = ({ userState }) => {
                           </span>
                         )}
                     </div>
-                    <button
+                    <button className="btn-submit"
                       type="submit"
                       disabled={!props.valid || props.submitting}
                     >
@@ -314,15 +321,17 @@ const Header = ({ userState }) => {
 
       {profileModal && (
         <div className="modal-mask">
-          <div className="modal-wrapper">
+          <div className="modal-wrapper show">
             {loading && <Loader />}
             <span
               className="closeBtn"
               onClick={() => setProfileModal(false)}
             ></span>
             <div className="modal-content">
+            <div className="modal-title">
               <h4>Profile</h4>
-              <span
+              </div>
+              <span className="view"
                 style={{ cursor: "pointer" }}
                 onClick={() => {
                   setProfileModal(false);
@@ -427,7 +436,7 @@ const Header = ({ userState }) => {
                           </span>
                         )}
                     </div>
-                    <button
+                    <button className="btn-submit"
                       type="submit"
                       disabled={!props.valid || props.submitting}
                     >
@@ -440,6 +449,7 @@ const Header = ({ userState }) => {
           </div>
         </div>
       )}
+      </div>
     </header>
   );
 };
