@@ -1,8 +1,4 @@
 .modal-mask {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
   height: 100%;
   top: 0;
@@ -11,21 +7,31 @@
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.85);
   z-index: 100;
+  overflow-x: scroll;
+  position: fixed;
 
   .modal-wrapper {
-    width: 400px;
-    // min-height: 400px;
-    max-width: 90%;
-    max-height: 90%;
+    max-width: 400px;
+    width: 100%;
+    // max-width: 90%;
+    // max-height: 90%;
     background-color: $white;
-    position: absolute;
+    // position: absolute;
     // top: 50%;
     // left: 50%;
-    transform: translate(-50%, -50%);
+    // transform: translate(-50%, -50%);
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 50px;
+    margin: 18em auto;
+    text-align: center;
+    
+    border-radius:6px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
 
     .modal-content {
       width: 100%;
@@ -36,6 +42,8 @@
     }
     &.show {
       animation: show .2s;
+      opacity: 1;
+      z-index: 2;
       transform: scale(1);
     }
     
@@ -45,8 +53,10 @@
 @keyframes show{
   from {
     transform: scale(0);
+    z-index: -1;
   } to {
     transform: scale(1);
+    z-index: 2;
   }
 }
 
