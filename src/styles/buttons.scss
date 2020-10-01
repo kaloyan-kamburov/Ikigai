@@ -78,13 +78,13 @@ button {
   }
 }
 .btn-submit {
-  height: 68px;
+  height: 72px;
   width: 100%;
   font-size: 25px;
-  line-height: 68px;
+  line-height: 72px;
   display: block;
-  box-shadow: none;
-  border-width: 2px;
+  font-size: 28px;
+  margin-top: 85px;
   &:disabled {
     opacity: 1;
   }

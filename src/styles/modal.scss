@@ -11,7 +11,7 @@
   position: fixed;
 
   .modal-wrapper {
-    max-width: 400px;
+    max-width: 500px;
     width: 100%;
     // max-width: 90%;
     // max-height: 90%;
@@ -23,8 +23,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 50px;
-    margin: 18em auto;
+    padding: 115px;
+    margin: 12em auto;
     text-align: center;
     
     border-radius:6px;
@@ -37,8 +37,12 @@
       width: 100%;
     }
     .closeBtn {
-      top: 16px;
-      right: 16px;
+      top: 40px;
+      right: 40px;
+      &::before, 
+      &::after {
+        height: 30px;
+      }
     }
     &.show {
       animation: show .2s;
@@ -62,25 +66,31 @@
 
 .modal-title {
   & h4 {
-    opacity: 0.5;
     color: #000000;
-    font-family: Campton;
-    font-size: 28px;
+    font-family: Casta;
+    font-weight: 100;
+    font-size: 80px;
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 85px;
   } 
 }
 .field-wrapper {
   margin-bottom: 15px;
   & input {
-  border-color:rgba(0, 0, 0, 0.3);
+  // border-color:rgba(0, 0, 0, 0.3);
   border-width: 1px;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom-color: $black;
   color: $black;
   font-weight: 300;
-  font-size: 18px;
-  padding: 12px;
+  font-size: 28px;
+  padding: 15px;
   font-family: Campton;
-  color: $black;
+    &::placeholder {
+      color: rgba(0, 0, 0, 0.3);
+    }
   }
 }
 .view {
