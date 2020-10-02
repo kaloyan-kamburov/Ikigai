@@ -120,6 +120,10 @@ app.post("/api/logout", (req, res) => {
 
 app.post("/api/register", (req, res) => {
   setTimeout(() => {
+    res.cookie("jwt", "123", {
+      maxAge: 86_400_000,
+      httpOnly: true,
+    });
     res.json(userData);
   }, 2000);
 });
