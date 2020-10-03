@@ -2,6 +2,49 @@
   position: relative;
   background-color: $black;
 
+  > div > div:first-child {
+    overflow: visible !important;
+  }
+
+  &.zoom-mode {
+    cursor: inherit;
+  }
+
+  &.edit-mode {
+    cursor: default;
+
+    > div > div:first-child {
+      cursor: default !important;
+    }
+
+    g {
+      &:hover {
+        cursor: pointer !important;
+      }
+    }
+  }
+
+  .desc {
+    position: absolute;
+    top: 60px;
+    width: 170px;
+    right: 20px;
+    z-index: 20;
+    color: $white;
+  }
+
+  .click-disabler {
+    z-index: 20;
+    position: absolute;
+    top: -20px;
+    left: 0;
+    right: 0;
+    bottom: -20px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    animation: opacity 0.3s linear;
+  }
+
   .mask {
     position: absolute;
     top: 0;
@@ -15,13 +58,26 @@
     animation: gone 1s;
   }
 
+  .zoom-controls {
+    position: absolute;
+    top: 130px;
+    right: 20px;
+    width: 200px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    z-index: 30;
+  }
+
   .controls {
     position: absolute;
     top: 1rem;
     right: 1rem;
     color: $white;
-    z-index: 20;
+    z-index: 30;
     width: 10rem;
+    display: flex;
+    justify-content: flex-end;
     span:first-child {
       cursor: pointer;
     }
@@ -62,6 +118,13 @@
   svg {
     animation: reveal 0.1s linear;
     overflow: visible;
+
+    image {
+      transition: all 0.3s linear;
+      opacity: 0.3;
+      clip-path: circle(0 at center);
+      filter: blur(30px);
+    }
     // transform: rotate(45deg) scale(0.85);
 
     text {
@@ -108,6 +171,7 @@
   .items {
     color: $white;
     // background-color: red;
+    // border: 1px solid red;
     height: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -121,6 +185,9 @@
   }
 
   g {
+    tspan {
+      white-space: nowrap;
+    }
     path {
       stroke: $white;
       // fill-opacity: 0.25 !important;
@@ -155,12 +222,22 @@
         }
       }
       path {
-        stroke-width: 5 !important;
+        // stroke-width: 5 !important;
+      }
+      image {
+        opacity: 0.7;
+        clip-path: circle(500px at center);
+        // transform-origin: center;
       }
     }
     &.active {
-      path {
-        stroke-width: 5;
+      // path {
+      //   stroke-width: 5;
+      // }
+
+      image {
+        opacity: 0.3;
+        clip-path: circle(500px at center) !important;
       }
     }
   }
@@ -184,6 +261,9 @@
     &:not(.active) {
       path {
         stroke-width: 1 !important;
+      }
+      image {
+        display: none;
       }
     }
   }
@@ -322,23 +402,36 @@
   // }
 }
 
+.btn-control,
 .zoom-in-btn,
 .zoom-out-btn {
-  width: 100px;
-  line-height: 26px;
-  padding: 0;
-  height: 26px;
+  // width: 100px;
+  margin: 0 5px;
+  padding: 7px;
+  // line-height: 26px;
+  // height: 26px;
   border: none;
+  opacity: 0.6;
+  transition: all 0.3s ease-in;
+
+  &:hover:not(:disabled) {
+    opacity: 0.85;
+  }
+
+  &.active {
+    opacity: 1 !important;
+  }
 
   &:disabled {
     cursor: default;
   }
 }
-.zoom-in-btn {
-  margin-top: 2px;
-}
+
+.zoom-in-btn,
 .zoom-out-btn {
-  margin-top: 8px;
+  &:hover:not(:disabled) {
+    opacity: 1;
+  }
 }
 
 @keyframes opacity {

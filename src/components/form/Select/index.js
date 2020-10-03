@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import CreatableSelect from "react-select/async-creatable";
 import { Field } from "react-final-form";
 import Highlighter from "react-highlight-words";
@@ -88,7 +88,7 @@ const loadOptions = async (inputValue, callback) => {
   }
   try {
     const res = await axios({ url: `items?q=${inputValue}`, method: "get" });
-    return res.data;
+    return callback(res.data);
   } catch (e) {
     return callback([]);
   }
@@ -116,7 +116,6 @@ const formatOptionLabel = ({ label = "" }, { inputValue }) => {
 const formatCreateLabel = (value) => `Add ${value}`;
 
 const renderSelect = (props) => {
-  // console.log(props);
   const onChange = (item) => {
     // Final form provided utility method
     const { onChange } = props.input;
@@ -143,7 +142,19 @@ const renderSelect = (props) => {
 };
 
 const SelectComponent = (props) => {
-  return <Field component={renderSelect} {...props} defVal={props.defVal} />;
+  const [menuIsOpen, setMenuIsOpen] = useState(false);
+  const onInputChange = (value) => {
+    setMenuIsOpen(value.length >= 2);
+  };
+  return (
+    <Field
+      onInputChange={onInputChange}
+      menuIsOpen={menuIsOpen}
+      component={renderSelect}
+      {...props}
+      defVal={props.defVal}
+    />
+  );
 };
 
 export default SelectComponent;

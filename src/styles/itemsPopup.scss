@@ -1,44 +1,47 @@
 .items-popup {
-  position: absolute;
+  position: fixed;
+  transform: translate(-50%, -50%);
   width: 372px;
+  opacity: 0.85;
+  transition: opacity 0.3s linear;
+  &:hover {
+    opacity: 1;
+  }
   // max-height: 430px;
   // height: 200px;
   background-color: $white;
   top: 0;
   left: 0;
-  z-index: 10;
+  z-index: 20;
   padding: 35px 35px 38px 25px;
   .items-popupWrapper {
-     position: relative;
-     line-height: 46px;
-     &:before {
-      content: '';
-      position: absolute;
-      left: -25px;
-      top: 25px;
-      width: 0;
-      height: 0;
-      border: 20px solid transparent;
-      border-right-color: $white;
-      border-left: 0;
-      margin-top: -20px;
-      margin-left: -20px;
-
-    }
+    position: relative;
+    line-height: 46px;
+    // &:before {
+    //   content: "";
+    //   position: absolute;
+    //   left: -25px;
+    //   top: 25px;
+    //   width: 0;
+    //   height: 0;
+    //   border: 20px solid transparent;
+    //   border-right-color: $white;
+    //   border-left: 0;
+    //   margin-top: -20px;
+    //   margin-left: -20px;
+    // }
     & [class*="custom-select"] {
       &[class*="custom-select__multi-value"],
-      &[class*="-placeholder"]{
+      &[class*="-placeholder"] {
         // font-size: 22px;
         // line-height: 36px;
         font-size: 18px;
         line-height: 28px;
       }
-      
     }
   }
   & button {
     float: right;
     margin-top: 30px;
   }
- 
 }

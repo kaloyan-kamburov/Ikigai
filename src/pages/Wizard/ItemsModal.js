@@ -13,6 +13,7 @@ const ItemsModal = ({
   posY,
   saveFn,
   loading,
+  hidden,
 }) => {
   const [itemsForSend, setItemsForSend] = useState(null);
   const history = { useHistory };
@@ -81,7 +82,7 @@ const ItemsModal = ({
     }
   }, []);
 
-  return (
+  return !hidden ? (
     <div
       className="items-popup"
       style={{
@@ -130,7 +131,7 @@ const ItemsModal = ({
       </Form>
       <span className="closeBtn" onClick={onClose}></span>
     </div>
-  );
+  ) : null;
 };
 
 export default ItemsModal;

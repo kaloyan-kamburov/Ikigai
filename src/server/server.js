@@ -86,13 +86,16 @@ const userData = {
 
 app.post("/api/logged", (req, res) => {
   // res.json(userData);
+  // setTimeout(() => {
+  //   res
+  //     .cookie("jwt", "123", {
+  //       maxAge: 86_400_000,
+  //       httpOnly: true,
+  //     })
+  //     .json(userData);
+  // }, 2000);
   setTimeout(() => {
-    res
-      .cookie("jwt", "123", {
-        maxAge: 86_400_000,
-        httpOnly: true,
-      })
-      .json(userData);
+    res.status(401).end();
   }, 2000);
 });
 
@@ -154,7 +157,7 @@ app.get("/api/items", (req, res) => {
         value: "Working",
       },
     ]);
-  }, 2000);
+  }, 1000);
 });
 
 const PORT = process.env.PORT || 3001;

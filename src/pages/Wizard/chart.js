@@ -15,19 +15,36 @@ import { MapInteractionCSS } from "react-map-interaction";
 import ItemsModal from "./ItemsModal";
 import { UserContext } from "../../context";
 import axios from "../../utils/api";
+import SingleZone from "../../images/zone1.svg";
+import SingleZoneCC90 from "../../images/zone1_cc90deg.svg";
+import SingleZoneC90 from "../../images/zone1_c90deg.svg";
+import SingleZone180 from "../../images/zone1_180deg.svg";
+import DoubleZone from "../../images/zones2.svg";
+import DoubleZoneCC90 from "../../images/zones2_cc90deg.svg";
+import DoubleZoneC90 from "../../images/zones2_c90deg.svg";
+import DoubleZone180 from "../../images/zones2_180deg.svg";
+import TripleZone from "../../images/zones3.svg";
+import TripleZoneCC90 from "../../images/zones3_cc90deg.svg";
+import TripleZoneC90 from "../../images/zones3_c90deg.svg";
+import TripleZone180 from "../../images/zones3_180deg.svg";
+import QuadZone from "../../images/zones4.svg";
 
 const IkigaiChart = () => {
   const history = useHistory();
-  const [zoomMode, setZoomMode] = useState(false);
   const [loading, setLoading] = useState(false);
   const [userDetails, setUserDetails] = useContext(UserContext);
   const defaultZoomValue = {
-    scale: 1,
-    translation: { x: 0, y: 0 },
+    scale: 0.96,
+    translation: {
+      x: (window.innerWidth - window.innerWidth * 0.96) / 2,
+      y: (window.innerHeight - window.innerHeight * 0.96) / 2,
+    },
   };
   const [zoomValue, setZoomValue] = useState(defaultZoomValue);
-
   const [itemsForEdit, setItemsForEdit] = useState(null);
+  const [scaleZoomChanged, setScaleZoomChanged] = useState(false);
+
+  const [mode, setMode] = useState("edit");
 
   const reduceItems = (items) => {
     if (!items) {
@@ -242,12 +259,20 @@ const IkigaiChart = () => {
         type: "ikigai",
         itemsParams: {
           x: -60,
-          y: 370,
+          y: 355,
           width: 120,
           height: 130,
           big: 5,
           medium: 9,
           small: 12,
+        },
+        shape: {
+          img: QuadZone,
+          x: 0,
+          y: -88,
+          scaleby: "both",
+          width: 3,
+          height: 3,
         },
       },
       {
@@ -263,12 +288,18 @@ const IkigaiChart = () => {
         posLabelY: "0%",
         itemsParams: {
           x: -220,
-          y: 190,
+          y: 165,
           width: 170,
           height: 500,
           big: 20,
           medium: 30,
           small: 40,
+        },
+        shape: {
+          img: SingleZoneCC90,
+          x: -13,
+          y: -88,
+          scaleby: "height",
         },
       },
       {
@@ -283,12 +314,18 @@ const IkigaiChart = () => {
         posLabelY: "0%",
         itemsParams: {
           x: 50,
-          y: 190,
+          y: 165,
           width: 170,
           height: 500,
           big: 20,
           medium: 30,
           small: 40,
+        },
+        shape: {
+          img: SingleZoneC90,
+          x: 240,
+          y: -88,
+          scaleby: "height",
         },
       },
       {
@@ -303,12 +340,18 @@ const IkigaiChart = () => {
         posLabelY: 1,
         itemsParams: {
           x: -100,
-          y: 35,
+          y: 30,
           width: 220,
           height: 160,
           big: 20,
           medium: 30,
           small: 40,
+        },
+        shape: {
+          img: SingleZone,
+          x: 0,
+          y: -104,
+          scaleby: "width",
         },
       },
       {
@@ -319,15 +362,21 @@ const IkigaiChart = () => {
         items: generateItemsForGroup(["C"]),
         type: "circle",
         posLabelX: "50%",
-        posLabelY: "100%",
+        posLabelY: "100.1%",
         itemsParams: {
           x: -120,
-          y: 680,
+          y: 660,
           width: 230,
           height: 140,
           big: 20,
           medium: 30,
           small: 40,
+        },
+        shape: {
+          img: SingleZone180,
+          x: 0,
+          y: 153,
+          scaleby: "width",
         },
       },
       {
@@ -340,12 +389,20 @@ const IkigaiChart = () => {
         type: "intersection",
         itemsParams: {
           x: -20,
-          y: 205,
+          y: 200,
           width: 160,
           height: 160,
           big: 15,
           medium: 25,
           small: 30,
+        },
+        shape: {
+          img: DoubleZoneC90,
+          x: 66,
+          y: -97,
+          scaleby: "both",
+          width: -59,
+          height: -58,
         },
       },
       {
@@ -357,12 +414,20 @@ const IkigaiChart = () => {
         type: "intersection",
         itemsParams: {
           x: -20,
-          y: 505,
+          y: 480,
           width: 160,
           height: 160,
           big: 15,
           medium: 25,
           small: 30,
+        },
+        shape: {
+          img: DoubleZone180,
+          x: 66,
+          y: -20,
+          scaleby: "both",
+          width: -59,
+          height: -58,
         },
       },
       {
@@ -374,12 +439,20 @@ const IkigaiChart = () => {
         type: "intersection",
         itemsParams: {
           x: -140,
-          y: 505,
+          y: 480,
           width: 160,
           height: 160,
           big: 15,
           medium: 25,
           small: 30,
+        },
+        shape: {
+          img: DoubleZoneCC90,
+          x: -12,
+          y: -20,
+          scaleby: "both",
+          width: -60,
+          height: -58,
         },
       },
       {
@@ -391,12 +464,20 @@ const IkigaiChart = () => {
         type: "intersection",
         itemsParams: {
           x: -140,
-          y: 205,
+          y: 200,
           width: 160,
           height: 160,
           big: 15,
           medium: 25,
           small: 30,
+        },
+        shape: {
+          img: DoubleZone,
+          x: -10,
+          y: -97,
+          scaleby: "both",
+          width: -55,
+          height: -58,
         },
       },
       {
@@ -409,12 +490,20 @@ const IkigaiChart = () => {
         type: "intersection",
         itemsParams: {
           x: 30,
-          y: 385,
+          y: 370,
           width: 100,
           height: 100,
           big: 2,
           medium: 5,
           small: 8,
+        },
+        shape: {
+          img: TripleZoneC90,
+          x: 132,
+          y: -80,
+          scaleby: "both",
+          width: -120,
+          height: -15,
         },
       },
       {
@@ -426,12 +515,20 @@ const IkigaiChart = () => {
         type: "intersection",
         itemsParams: {
           x: -45,
-          y: 270,
+          y: 255,
           width: 90,
           height: 90,
           big: 2,
           medium: 5,
           small: 8,
+        },
+        shape: {
+          img: TripleZone,
+          x: 8,
+          y: -90,
+          scaleby: "both",
+          width: -14,
+          height: -120,
         },
       },
       {
@@ -443,12 +540,20 @@ const IkigaiChart = () => {
         type: "intersection",
         itemsParams: {
           x: -110,
-          y: 385,
+          y: 370,
           width: 100,
           height: 100,
           big: 2,
           medium: 5,
           small: 8,
+        },
+        shape: {
+          img: TripleZoneCC90,
+          x: -4,
+          y: -80,
+          scaleby: "both",
+          width: -120,
+          height: -15,
         },
       },
       {
@@ -460,17 +565,29 @@ const IkigaiChart = () => {
         type: "intersection",
         itemsParams: {
           x: -45,
-          y: 520,
+          y: 495,
           width: 90,
           height: 90,
           big: 2,
           medium: 5,
           small: 8,
         },
+        shape: {
+          img: TripleZone180,
+          x: 8,
+          y: 44,
+          scaleby: "both",
+          width: -14,
+          height: -120,
+        },
       },
     ]);
 
   const [sets, setSets] = useState(defaultSets() || []);
+
+  const checkMode = () => {
+    console.log(mode);
+  };
 
   const draw = () => {
     // draw venn diagram
@@ -481,7 +598,9 @@ const IkigaiChart = () => {
         .VennDiagram()
         .useViewBox()
         .width(window.innerWidth)
-        .height(window.innerHeight - 64)
+        .height(
+          window.innerHeight - document.querySelector("header").clientHeight
+        )
     );
 
     d3.selectAll("#ikigai .venn-circle path")
@@ -507,19 +626,25 @@ const IkigaiChart = () => {
 
     // add listeners to all the groups to display tooltip on mouseover
     div
-      .selectAll("g")
+      .selectAll("g:not(.shape)")
       .on("click", function (d, i) {
         d3.select(this)
           .node()
           .parentElement.querySelectorAll(".active")
           .forEach((el) => el.classList.remove("active"));
+        removeActive();
         d3.select(this).node().classList.add("active");
-
+        checkMode();
         setItemsForEdit({
           sets: d.sets,
           items: d.items,
-          posX: d3.mouse(this)[0] + 30,
-          posY: d3.mouse(this)[1] - 30,
+          posX: window.innerWidth / 2,
+          posY: window.innerHeight / 2,
+          // posX: d3.mouse(this)[0] + 30,
+          // posY: d3.mouse(this)[1] + 30,
+          // d3.mouse(this)[1] > window.innerHeight / 2
+          //   ? d3.mouse(this)[1] - 200
+          //   : d3.mouse(this)[1] + 30,
         });
       })
       .on("mouseover", function (d, i) {
@@ -527,7 +652,8 @@ const IkigaiChart = () => {
         venn.sortAreas(div, d);
 
         // Display a tooltip with the current size
-        tooltip.transition().duration(400).style("opacity", 1);
+        // tooltip.transition().duration(400).style("opacity", 1);
+        tooltip.attr("style", "opacity: 1; visibility: visible;");
         tooltip.html(d.desc || null);
 
         // highlight the current path
@@ -549,12 +675,14 @@ const IkigaiChart = () => {
       })
 
       .on("mouseout", function (d, i) {
-        tooltip.transition().duration(400).style("opacity", 0);
-        var selection = d3.select(this).transition("tooltip").duration(400);
-        selection
-          .select("path")
-          .style("stroke-width", 0)
-          .style("fill-opacity", 0);
+        // tooltip.transition().duration(400).style("opacity", 0);
+        tooltip.attr("style", "opacity: 0; visibility: hidden;");
+
+        // var selection = d3.select(this).transition("tooltip").duration(400);
+        // selection
+        //   .select("path")
+        //   .style("stroke-width", 0)
+        //   .style("fill-opacity", 0);
         // // .style("fill-opacity", d.sets.length == 1 ? 0.25 : 0.0)
         // // .style("stroke-opacity", 0);
       });
@@ -576,6 +704,9 @@ const IkigaiChart = () => {
     // const text = path.node().childNodes[1]
     // console.log(path.node().childNodes[1]);
 
+    const svg = path.node().closest("svg");
+    let defs = svg.querySelectorAll("defs");
+
     let items = "";
     let labelText = path.node().childNodes[1].childNodes[0];
 
@@ -594,13 +725,6 @@ const IkigaiChart = () => {
           }90deg); transform-origin: center; fill: rgb(128, 128, 0); font-size: 1rem`
         );
     }
-    if (d.type === "circle") {
-      // labelText.setAttribute("x", 0);
-      // labelText.setAttribute("y", 0);
-      // labelText.childNodes[0].setAttribute("x", 0);
-      // console.log(labelText.childNodes[0].setAttribute("x", 0));
-    }
-    // const pathDimensions = path.node().getBoundingClientRect();
 
     if (d.items) {
       d.items.forEach((item) => {
@@ -631,6 +755,24 @@ const IkigaiChart = () => {
       .append("xhtml:div")
       .attr("class", "items")
       .html(items);
+
+    if (d.shape) {
+      //append image
+      let image = path.append("image").attr("href", d.shape.img);
+      if (d.shape.scaleby !== "both") {
+        image.attr(d.shape.scaleby, pathDimensions[d.shape.scaleby]);
+      } else {
+        image.attr("width", pathDimensions.width + d.shape.width);
+        image.attr("height", pathDimensions.height + d.shape.height);
+      }
+
+      image.attr("x", pathDimensions.x + d.shape.x);
+      image.attr("y", pathDimensions.y + d.shape.y);
+      // .attr("width", pathDimensions.width)
+      // .attr("height", pathDimensions.height)
+      // .attr("x", pathDimensions.x + d.shape.x)
+      // .attr("y", pathDimensions.y + d.shape.y);
+    }
   };
 
   useEffect(() => {
@@ -644,67 +786,104 @@ const IkigaiChart = () => {
 
   useEffect(() => draw(), [sets]);
 
+  useEffect(() => {
+    setScaleZoomChanged(
+      zoomValue.scale !== defaultZoomValue.scale ||
+        zoomValue.translation.x !== defaultZoomValue.translation.x ||
+        zoomValue.translation.y !== defaultZoomValue.translation.y
+    );
+
+    // document
+    //   .querySelectorAll(".venn-area")
+    //   .forEach((e) => e.classList.remove("active"));
+  }, [zoomValue, mode]);
+
   const resetSets = () => {
     setSets(removeDuplicates(defaultSets()));
+  };
+
+  const removeActive = () => {
+    document
+      .querySelectorAll(".venn-area")
+      .forEach((e) => e.classList.remove("active"));
   };
 
   return (
     <>
       <div
         id="chart-ikigai"
-        className={`outer-wrapper${!zoomMode ? " viewMode" : ""} ${
-          itemsForEdit ? "hide-tooltip" : ""
-        }`}
+        className={`outer-wrapper${scaleZoomChanged ? " changed" : ""} ${
+          mode === "zoom" ? "zoom-mode" : "edit-mode"
+        } ${itemsForEdit && mode === "edit" ? "hide-tooltip" : ""}`}
       >
-        {/* <div className="controls">
-          <span
+        <div className="controls">
+          <button
+            className={`btn-control${mode === "edit" ? " active" : ""}`}
             onClick={() => {
-              if (!zoomMode) {
-                setZoomValue(defaultZoomValue);
-              }
-              setZoomMode(!zoomMode);
+              setZoomValue(defaultZoomValue);
+              setMode("edit");
+              setItemsForEdit(null);
+              removeActive();
             }}
           >
-            Change mode
-          </span>
-          <br />
-          <span>Mode: {zoomMode ? "Zoom" : "Description"}</span>
-        </div> */}
+            Edit
+          </button>
+          <button
+            className={`btn-control${mode === "zoom" ? " active" : ""}`}
+            onClick={() => {
+              setMode("zoom");
+              setItemsForEdit(null);
+              removeActive();
+            }}
+          >
+            Explore
+          </button>
+        </div>
+
+        <div className="desc">
+          {mode === "edit"
+            ? "Click on each section to edit your items."
+            : "Use your mouse scroll or the buttons below to zoom in and out."}
+        </div>
         {/* {!zoomMode && <div className="mask"></div>} */}
         <MapInteractionCSS
-          // value={!zoomMode ? defaultZoomValue : zoomValue}
-          showControls
-          maxScale={2}
+          value={mode === "edit" ? defaultZoomValue : zoomValue}
+          showControls={mode === "zoom"}
+          maxScale={mode === "zoom" ? 2.2 : 0.96}
           minScale={0.96}
-          defaultValue={{
-            scale: 0.96,
-            translation: {
-              x: (window.innerWidth - window.innerWidth * 0.96) / 2,
-              y: (window.innerHeight - window.innerHeight * 0.96) / 2,
-            },
-          }}
+          controlsClass="zoom-controls"
+          // defaultValue={{
+          //   scale: 0.96,
+          //   translation: {
+          //     x: (window.innerWidth - window.innerWidth * 0.96) / 2,
+          //     y: (window.innerHeight - window.innerHeight * 0.96) / 2,
+          //   },
+          // }}
           plusBtnContents="Zoom in"
           plusBtnClass="zoom-in-btn"
           minusBtnContents="Zoom out"
           minusBtnClass="zoom-out-btn"
           onChange={(value) => {
-            console.log(value);
+            if (mode === "zoom") {
+              setZoomValue(value);
+            }
+            // setZoomValue(zoomMode ? value : defaultZoomValue);
           }}
-          // onChange={(value) => {
-          //   setZoomMode(value);
-          //   // setZoomValue(zoomMode ? value : defaultZoomValue);
-          // }}
         >
-          {/* {zoomMode && <div className="mask"></div>} */}
-          <div
-            className="chart-wrapper"
-            id="ikigai"
-            style={{ textAlign: "center" }}
-          ></div>
+          <>
+            {itemsForEdit && <div className="click-disabler"></div>}
+            {/* {zoomMode && <div className="mask"></div>} */}
+            <div
+              className="chart-wrapper"
+              id="ikigai"
+              style={{ textAlign: "center" }}
+            ></div>
+          </>
         </MapInteractionCSS>
       </div>
-      {itemsForEdit && (
+      {itemsForEdit && mode === "edit" && (
         <ItemsModal
+          hidden={scaleZoomChanged}
           items={itemsForEdit.items}
           posX={itemsForEdit.posX}
           posY={itemsForEdit.posY}
@@ -728,15 +907,14 @@ const IkigaiChart = () => {
                 resetSets();
                 setItemsForEdit(null);
                 setLoading(false);
+                setZoomValue(defaultZoomValue);
               })
               .catch((e) => {
                 setLoading(false);
               });
           }}
           onClose={() => {
-            document
-              .querySelectorAll(".venn-area")
-              .forEach((e) => e.classList.remove("active"));
+            removeActive();
             setItemsForEdit(null);
           }}
         />
