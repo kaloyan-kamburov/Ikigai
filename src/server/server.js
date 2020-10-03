@@ -102,7 +102,8 @@ app.post("/api/logged", (req, res) => {
 app.post("/api/login", (req, res) => {
   setTimeout(() => {
     res
-      .cookie("jwt", "123", {
+      .cookie("csrftoken", "asd")
+      .cookie("session", "123", {
         maxAge: 86_400_000,
         httpOnly: true,
       })

@@ -1,19 +1,16 @@
 .items-popup {
   position: fixed;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(1);
   width: 372px;
-  opacity: 0.85;
-  transition: opacity 0.3s linear;
-  &:hover {
-    opacity: 1;
-  }
+  max-height: 90vh;
   // max-height: 430px;
   // height: 200px;
   background-color: $white;
-  top: 0;
-  left: 0;
-  z-index: 20;
+  top: 50%;
+  left: 50%;
+  z-index: 300;
   padding: 35px 35px 38px 25px;
+  animation: showScale 0.1s ease-in;
   .items-popupWrapper {
     position: relative;
     line-height: 46px;
@@ -40,8 +37,41 @@
       }
     }
   }
-  & button {
+
+  button {
     float: right;
     margin-top: 30px;
+  }
+
+  h4 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+  }
+
+  .select-wrapper {
+    width: 100%;
+    // overflow-x: hidden;
+    // overflow-y: visible;
+    max-height: calc(90vh - 140px);
+  }
+  img {
+    max-width: 20px;
+    background-color: $black;
+    margin-right: 10px;
+    display: inline-flex;
+  }
+}
+
+@keyframes showScale {
+  from {
+    transform: translate(-50%, -50%) scale(0);
+    // z-index: -1;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    // z-index: 2;
   }
 }

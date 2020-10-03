@@ -14,6 +14,8 @@ const ItemsModal = ({
   saveFn,
   loading,
   hidden,
+  text,
+  icon,
 }) => {
   const [itemsForSend, setItemsForSend] = useState(null);
   const history = { useHistory };
@@ -85,12 +87,18 @@ const ItemsModal = ({
   return !hidden ? (
     <div
       className="items-popup"
-      style={{
-        left: posX + "px",
-        top: posY + "px",
-      }}
+      // style={{
+      //   left: posX + "px",
+      //   top: posY + "px",
+      // }}
     >
       {loading && <Loader />}
+      {text && (
+        <h4>
+          <img alt="icon" src={icon} />
+          {text}
+        </h4>
+      )}
       <Form
         // validate={(values) => {
         //   const errors = {};
@@ -114,13 +122,15 @@ const ItemsModal = ({
           return (
             <div className="items-popupWrapper">
               <form onSubmit={props.handleSubmit}>
-                <Select
-                  className="popupSelect"
-                  name="options"
-                  isMulti
-                  // value={props.initialValues.options}
-                  autoFocus
-                />
+                <div className="select-wrapper">
+                  <Select
+                    className="popupSelect"
+                    name="options"
+                    isMulti
+                    // value={props.initialValues.options}
+                    autoFocus
+                  />
+                </div>
                 <button className="btn-save" type="submit">
                   save
                 </button>

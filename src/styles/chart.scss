@@ -36,11 +36,11 @@
   .click-disabler {
     z-index: 20;
     position: absolute;
-    top: -20px;
-    left: 0;
-    right: 0;
-    bottom: -20px;
-    width: 100%;
+    top: -300px;
+    left: -30px;
+    right: -30px;
+    bottom: -30px;
+    // width: 100%;
     background-color: rgba(0, 0, 0, 0.75);
     animation: opacity 0.3s linear;
   }
@@ -96,7 +96,7 @@
   }
 }
 .chart-wrapper {
-  background: $black;
+  // background: $black;
   // height: 100vh;
   height: calc(100vh - 6.4rem);
   width: 100vw;
@@ -255,6 +255,9 @@
 .hide-tooltip {
   .ikigai-tooltip {
     display: none;
+  }
+  > div {
+    z-index: 100;
   }
   g {
     cursor: default !important;

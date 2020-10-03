@@ -257,6 +257,7 @@ const IkigaiChart = () => {
         desc: "IKIGAI",
         items: generateItemsForGroup(["A", "B", "C", "D"]),
         type: "ikigai",
+        text: "Edit your ikigai",
         itemsParams: {
           x: -60,
           y: 355,
@@ -283,6 +284,7 @@ const IkigaiChart = () => {
           "<h6>WHAT YOU ARE GOOD AT</h6><p></p><strong>click to add</strong>",
         items: generateItemsForGroup(["D"]),
         type: "circle",
+        text: "Edit what are you good at",
         rotate: "left",
         posLabelX: "50%",
         posLabelY: "0%",
@@ -309,6 +311,7 @@ const IkigaiChart = () => {
         desc: "WHAT THE WORLD NEEDS",
         items: generateItemsForGroup(["B"]),
         type: "circle",
+        text: "Edit what the world needs",
         rotate: "right",
         posLabelX: "50%",
         posLabelY: "0%",
@@ -336,6 +339,7 @@ const IkigaiChart = () => {
           "<h6>Things that you love doing</h6><div><p>What would you do if you didn’t have to worry about making money?</p><p>How would you spend your time on a long vacation or a free weekend?</p><p>What’s exciting to you and gets your juices flowing when you do it?</p><p>What could you enthusiastically talk about for hours on end?</p></div><div><p><span></span>Click to add</p></div>",
         items: generateItemsForGroup(["A"]),
         type: "circle",
+        text: "Edit what you love",
         posLabelX: "50%",
         posLabelY: 1,
         itemsParams: {
@@ -361,6 +365,7 @@ const IkigaiChart = () => {
         desc: "WHAT CAN YOU BE PAID FOR",
         items: generateItemsForGroup(["C"]),
         type: "circle",
+        text: "Whan can you be paid for",
         posLabelX: "50%",
         posLabelY: "100.1%",
         itemsParams: {
@@ -387,6 +392,7 @@ const IkigaiChart = () => {
           "<h6>This is your mission</h6><div><p>The place where the things you love intersect what the world needs.</p></div><div><p><span></span>Click to view</p></div>",
         items: generateItemsForGroup(["A", "B"]),
         type: "intersection",
+        text: "Edit your mission",
         itemsParams: {
           x: -20,
           y: 200,
@@ -412,6 +418,7 @@ const IkigaiChart = () => {
         desc: "VOCATION",
         items: generateItemsForGroup(["B", "C"]),
         type: "intersection",
+        text: "Edit your vocation",
         itemsParams: {
           x: -20,
           y: 480,
@@ -437,6 +444,7 @@ const IkigaiChart = () => {
         desc: "PROFESSION",
         items: generateItemsForGroup(["C", "D"]),
         type: "intersection",
+        text: "Edit your profession",
         itemsParams: {
           x: -140,
           y: 480,
@@ -462,6 +470,7 @@ const IkigaiChart = () => {
         desc: "PASSION",
         items: generateItemsForGroup(["A", "D"]),
         type: "intersection",
+        text: "Edit your passion",
         itemsParams: {
           x: -140,
           y: 200,
@@ -488,6 +497,7 @@ const IkigaiChart = () => {
           "<h6>Great but uneasy</h6><div><p>Things you do with excitement and complacency, but sense of uncertainty.</p></div><div><p><span></span>Click to add</p></div>",
         items: generateItemsForGroup(["A", "B", "C"]),
         type: "intersection",
+        text: "Edit your things",
         itemsParams: {
           x: 30,
           y: 370,
@@ -513,6 +523,7 @@ const IkigaiChart = () => {
         desc: "ABD",
         items: generateItemsForGroup(["A", "B", "D"]),
         type: "intersection",
+        text: "Edit your things",
         itemsParams: {
           x: -45,
           y: 255,
@@ -538,6 +549,7 @@ const IkigaiChart = () => {
         desc: "ACD",
         items: generateItemsForGroup(["A", "C", "D"]),
         type: "intersection",
+        text: "Edit your things",
         itemsParams: {
           x: -110,
           y: 370,
@@ -563,6 +575,7 @@ const IkigaiChart = () => {
         desc: "BCD",
         items: generateItemsForGroup(["B", "C", "D"]),
         type: "intersection",
+        text: "Edit your things",
         itemsParams: {
           x: -45,
           y: 495,
@@ -640,6 +653,8 @@ const IkigaiChart = () => {
           items: d.items,
           posX: window.innerWidth / 2,
           posY: window.innerHeight / 2,
+          text: d.text,
+          icon: TripleZoneC90,
           // posX: d3.mouse(this)[0] + 30,
           // posY: d3.mouse(this)[1] + 30,
           // d3.mouse(this)[1] > window.innerHeight / 2
@@ -851,6 +866,12 @@ const IkigaiChart = () => {
           showControls={mode === "zoom"}
           maxScale={mode === "zoom" ? 2.2 : 0.96}
           minScale={0.96}
+          // translationBounds={{
+          //   xMin: 0,
+          //   xMax: 0,
+          //   yMin: 0,
+          //   yMax: 0,
+          // }}
           controlsClass="zoom-controls"
           // defaultValue={{
           //   scale: 0.96,
@@ -888,6 +909,8 @@ const IkigaiChart = () => {
           posX={itemsForEdit.posX}
           posY={itemsForEdit.posY}
           sets={itemsForEdit.sets}
+          text={itemsForEdit.text}
+          icon={itemsForEdit.icon}
           loading={loading}
           saveFn={() => {
             setLoading(true);
