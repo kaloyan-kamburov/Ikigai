@@ -1,33 +1,28 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
 import Select from "../../components/form/Select";
 import { Form } from "react-final-form";
 import { useHistory, useLocation } from "react-router-dom";
+import { UserContext } from "../../context";
 
 const GoodAt = () => {
   const history = useHistory();
   const location = useLocation();
-  // const options = [
-  //   {
-  //     label: "Skateboarding",
-  //     value: "Skateboarding",
-  //   },
-  //   {
-  //     label: "Drawing",
-  //     value: "Drawing",
-  //   },
-  //   {
-  //     label: "Cooking",
-  //     value: "Cooking",
-  //   },
-  // ];
+  const [userDetails, setUserDetails] = useContext(UserContext);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    if (Object.keys(userDetails.user).length) {
+      return history.push("/chart");
+    }
+  }, []);
 
   const handleSubmit = (values) => {
-    const ikiSettings = JSON.parse(localStorage.getItem("ikiSettings"));
+    const ikiSettings = JSON.parse(localStorage.getItem("ikigai"));
     localStorage.setItem(
-      "ikiSettings",
+      "ikigai",
       JSON.stringify({
         ...ikiSettings,
-        items: { ...ikiSettings.items, step_A: values.options },
+        step_A: values.options,
       })
     );
     history.push({
@@ -83,11 +78,9 @@ const GoodAt = () => {
                   onSubmit={handleSubmit}
                   initialValues={{
                     options:
-                      (JSON.parse(localStorage.getItem("ikiSettings")) &&
-                        JSON.parse(localStorage.getItem("ikiSettings")).items &&
-                        JSON.parse(localStorage.getItem("ikiSettings")).items
-                          .step_A) ||
-                      null,
+                      (JSON.parse(localStorage.getItem("ikigai")) &&
+                        JSON.parse(localStorage.getItem("ikigai")).step_A) ||
+                      [],
                   }}
                 >
                   {(props) => {

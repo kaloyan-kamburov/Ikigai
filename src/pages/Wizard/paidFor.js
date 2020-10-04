@@ -1,33 +1,21 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
 import Select from "../../components/form/Select";
 import { Form } from "react-final-form";
 import { useHistory, useLocation } from "react-router-dom";
+import { UserContext } from "../../context";
 
 const GoodAt = () => {
+  const [userDetails, setUserDetails] = useContext(UserContext);
   const history = useHistory();
   const location = useLocation();
-  const options = [
-    {
-      label: "Skateboarding",
-      value: "Skateboarding",
-    },
-    {
-      label: "Drawing",
-      value: "Drawing",
-    },
-    {
-      label: "Cooking",
-      value: "Cooking",
-    },
-  ];
 
   const handleSubmit = (values) => {
-    const ikiSettings = JSON.parse(localStorage.getItem("ikiSettings"));
+    const ikiSettings = JSON.parse(localStorage.getItem("ikigai"));
     localStorage.setItem(
-      "ikiSettings",
+      "ikigai",
       JSON.stringify({
         ...ikiSettings,
-        items: { ...ikiSettings.items, step_D: values.options },
+        step_D: values.options,
       })
     );
     history.push({
@@ -38,6 +26,13 @@ const GoodAt = () => {
       },
     });
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    if (Object.keys(userDetails.user).length) {
+      return history.push("/chart");
+    }
+  }, []);
 
   return (
     <>
@@ -85,11 +80,9 @@ const GoodAt = () => {
                   onSubmit={handleSubmit}
                   initialValues={{
                     options:
-                      (JSON.parse(localStorage.getItem("ikiSettings")) &&
-                        JSON.parse(localStorage.getItem("ikiSettings")).items &&
-                        JSON.parse(localStorage.getItem("ikiSettings")).items
-                          .step_D) ||
-                      null,
+                      (JSON.parse(localStorage.getItem("ikigai")) &&
+                        JSON.parse(localStorage.getItem("ikigai")).step_D) ||
+                      [],
                   }}
                 >
                   {(props) => {
@@ -98,7 +91,6 @@ const GoodAt = () => {
                         <Select
                           name="options"
                           value={props.initialValues.options}
-                          options={options}
                           // defVal={sessionStorage.getItem("step_D")}
                         />
                         <div className="form-btns">

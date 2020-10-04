@@ -4,83 +4,11 @@ import { Field } from "react-final-form";
 import Highlighter from "react-highlight-words";
 import { debounce } from "underscore";
 import axios from "../../../utils/api";
+// import Loader from "../../Loader";
 
-const styles = {
-  container: (provided) => ({
-    ...provided,
-    border: "none",
-  }),
-  control: (provided) => ({
-    ...provided,
-    border: "0",
-    borderBottom: "1px solid #000",
-    borderRadius: 0,
-    boxShadow: "none",
-  }),
-  // option: (provided) => ({ ...provided, background: "red" }),
-  menu: (provided) => ({
-    border: "1px solid #000",
-    boxShadow: "3px 3px",
-    marginTop: "3px",
-    position: "absolute",
-    width: "100%",
-    background: "#fff",
-    zIndex: 1,
-  }),
-  multiValue: (provided) => ({
-    ...provided,
-    width: "100%",
-    background: "#fff",
-    display: "flex",
-    justifyContent: "space-between",
-    borderBottom: "1px solid #979797",
-    borderRadius: 0,
-  }),
-  multiValueLabel: (provided) => ({
-    ...provided,
-    paddingLeft: 0,
-  }),
-  multiValueRemove: (provided) => ({
-    ...provided,
-    cursor: "pointer",
-    width: 22,
-    padding: 0,
-    // display: "flex",
-    justifyContent: "flex-end",
-  }),
-  indicatorsContainer: (provided) => ({
-    ...provided,
-  }),
-  valueContainer: (provided) => ({
-    ...provided,
-    paddingLeft: 0,
-    paddingRight: 0,
-  }),
-  input: (provided) => ({ ...provided, width: "100%" }),
-  dropdownIndicator: () => ({ display: "none" }),
-};
-const options = [
-  {
-    label: "Skateboarding",
-    value: "Skateboarding",
-  },
-  {
-    label: "Drawing",
-    value: "Drawing",
-  },
-  {
-    label: "Cooking",
-    value: "Cooking",
-  },
-  {
-    label: "Travelling",
-    value: "Travelling",
-  },
-  {
-    label: "Design",
-    value: "Design",
-  },
-];
+// const LoadingIndicator = (props) => {
+//   return <Loader relative />;
+// };
 
 const loadOptions = async (inputValue, callback) => {
   if (!inputValue || inputValue.length < 2) {
@@ -116,6 +44,71 @@ const formatOptionLabel = ({ label = "" }, { inputValue }) => {
 const formatCreateLabel = (value) => `Add ${value}`;
 
 const renderSelect = (props) => {
+  const styles = {
+    container: (provided) => ({
+      ...provided,
+      border: "none",
+    }),
+    control: (provided) => ({
+      ...provided,
+      border: "0",
+      borderBottom: props.inModal ? "none" : "1px solid #000",
+      borderRadius: 0,
+      boxShadow: "none",
+      // paddingTop: props.inModal ? "50px" : "0",
+    }),
+    // option: (provided) => ({ ...provided, background: "red" }),
+    menu: (provided) => ({
+      border: "1px solid #000",
+      boxShadow: "3px 3px",
+      marginTop: "3px",
+      position: "absolute",
+      width: "100%",
+      background: "#fff",
+      zIndex: 1,
+      top: props.inModal ? "49px" : "inherit",
+    }),
+    multiValue: (provided) => ({
+      ...provided,
+      width: "100%",
+      background: "#fff",
+      display: "flex",
+      justifyContent: "space-between",
+      borderBottom: "1px solid #979797",
+      borderRadius: 0,
+    }),
+    multiValueLabel: (provided) => ({
+      ...provided,
+      paddingLeft: 0,
+    }),
+    multiValueRemove: (provided) => ({
+      ...provided,
+      cursor: "pointer",
+      width: 22,
+      padding: 0,
+      // display: "flex",
+      justifyContent: "flex-end",
+    }),
+    indicatorsContainer: (provided) => ({
+      ...provided,
+    }),
+    valueContainer: (provided) => ({
+      ...provided,
+      paddingLeft: 0,
+      paddingRight: 0,
+      // position: props.inModal ? "absolute" : "relative",
+      width: "100%",
+      paddingTop: props.inModal ? "70px" : "0",
+    }),
+    input: (provided) => ({
+      ...provided,
+      width: "100%",
+      position: props.inModal ? "absolute" : "relative",
+      top: props.inModal ? "0" : "auto",
+      borderBottom: props.inModal ? "1px solid #000" : "none",
+    }),
+    dropdownIndicator: () => ({ display: "none" }),
+  };
   const onChange = (item) => {
     // Final form provided utility method
     const { onChange } = props.input;
@@ -134,9 +127,8 @@ const renderSelect = (props) => {
       formatOptionLabel={formatOptionLabel}
       formatCreateLabel={formatCreateLabel}
       loadOptions={debounce(loadOptions, 500)}
+      // components={{ loadingIndicator: LoadingIndicator }}
       cacheOptions
-      // defaultMenuIsOpen
-      // menuIsOpen
     />
   );
 };

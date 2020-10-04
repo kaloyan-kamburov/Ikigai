@@ -1,10 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-/* 
-step_B: [{"label":"Skateboarding","value":"Skateboarding"},{"label":"Skateboarding","value":"Skateboarding"},{"label":"Jump","value":"Jump","__isNew__":true},{"label":"Drawing","value":"Drawing"},{"label":"Travelling","value":"Travelling"},{"label":"Something","value":"Something","__isNew__":true},{"label":"Bla","value":"Bla","__isNew__":true}]
-step_D: [{"label":"Skateboarding","value":"Skateboarding"},{"label":"Design","value":"Design"},{"label":"Drawing","value":"Drawing"},{"label":"Travelling","value":"Travelling"},{"label":"Jump","value":"Jump","__isNew__":true},{"label":"Flash","value":"Flash","__isNew__":true},{"label":"Bla","value":"Bla","__isNew__":true}]
-step_A: [{"label":"Skateboarding","value":"Skateboarding"},{"label":"Flash","value":"Flash"},{"label":"Design","value":"Design"},{"label":"Hiking","value":"Hiking","__isNew__":true},{"label":"Travelling","value":"Travelling"},{"label":"Jump","value":"Jump","__isNew__":true}]
-step_C: [{"label":"Skateboarding","value":"Skateboarding"},{"label":"Travelling","value":"Travelling"},{"label":"Jump","value":"Jump","__isNew__":true},{"label":"Flash","value":"Flash","__isNew__":true},{"label":"Hiking","value":"Hiking","__isNew__":true}]
-*/
 import React, { useState, useEffect, useContext } from "react";
 import * as d3 from "d3";
 import * as venn from "@upsetjs/venn.js";
@@ -59,24 +53,24 @@ const IkigaiChart = () => {
   const generateItemsForGroup = (group = ["A", "B", "C", "D"]) => {
     const items = [];
 
-    const ikiSettings = JSON.parse(localStorage.getItem("ikiSettings"));
+    const ikiSettings = JSON.parse(localStorage.getItem("ikigai"));
 
     if (
       !ikiSettings ||
-      !ikiSettings.items ||
-      !ikiSettings.items.step_A ||
-      !ikiSettings.items.step_B ||
-      !ikiSettings.items.step_C ||
-      !ikiSettings.items.step_D
+      !ikiSettings ||
+      !ikiSettings.step_A ||
+      !ikiSettings.step_B ||
+      !ikiSettings.step_C ||
+      !ikiSettings.step_D
     ) {
       return history.push("/");
     }
 
     const allItems = {
-      A: ikiSettings.items.step_A,
-      B: ikiSettings.items.step_B,
-      C: ikiSettings.items.step_C,
-      D: ikiSettings.items.step_D,
+      A: ikiSettings.step_A,
+      B: ikiSettings.step_B,
+      C: ikiSettings.step_C,
+      D: ikiSettings.step_D,
     }; //location.state;
     group.forEach((g) => items.push(reduceItems(allItems[g])));
 
@@ -84,15 +78,15 @@ const IkigaiChart = () => {
   };
 
   const removeDuplicates = (sets) => {
-    const ikiSettings = JSON.parse(localStorage.getItem("ikiSettings"));
+    const ikiSettings = JSON.parse(localStorage.getItem("ikigai"));
 
     if (
       !ikiSettings ||
-      !ikiSettings.items ||
-      !ikiSettings.items.step_A ||
-      !ikiSettings.items.step_B ||
-      !ikiSettings.items.step_C ||
-      !ikiSettings.items.step_D
+      !ikiSettings ||
+      !ikiSettings.step_A ||
+      !ikiSettings.step_B ||
+      !ikiSettings.step_C ||
+      !ikiSettings.step_D
     ) {
       return history.push("/");
     }
@@ -269,11 +263,11 @@ const IkigaiChart = () => {
         },
         shape: {
           img: QuadZone,
-          x: 0,
-          y: -88,
+          x: -3,
+          y: -91,
           scaleby: "both",
-          width: 3,
-          height: 3,
+          width: 6,
+          height: 7,
         },
       },
       {
@@ -300,8 +294,10 @@ const IkigaiChart = () => {
         shape: {
           img: SingleZoneCC90,
           x: -13,
-          y: -88,
-          scaleby: "height",
+          y: -91,
+          scaleby: "both",
+          width: -224,
+          height: 8,
         },
       },
       {
@@ -327,8 +323,10 @@ const IkigaiChart = () => {
         shape: {
           img: SingleZoneC90,
           x: 240,
-          y: -88,
-          scaleby: "height",
+          y: -91,
+          scaleby: "both",
+          width: -224,
+          height: 8,
         },
       },
       {
@@ -379,9 +377,11 @@ const IkigaiChart = () => {
         },
         shape: {
           img: SingleZone180,
-          x: 0,
-          y: 153,
-          scaleby: "width",
+          x: -3,
+          y: 151,
+          scaleby: "both",
+          width: 6,
+          height: -222,
         },
       },
       {
@@ -404,7 +404,7 @@ const IkigaiChart = () => {
         },
         shape: {
           img: DoubleZoneC90,
-          x: 66,
+          x: 69,
           y: -97,
           scaleby: "both",
           width: -59,
@@ -430,7 +430,7 @@ const IkigaiChart = () => {
         },
         shape: {
           img: DoubleZone180,
-          x: 66,
+          x: 69,
           y: -20,
           scaleby: "both",
           width: -59,
@@ -456,7 +456,7 @@ const IkigaiChart = () => {
         },
         shape: {
           img: DoubleZoneCC90,
-          x: -12,
+          x: -9,
           y: -20,
           scaleby: "both",
           width: -60,
@@ -510,17 +510,17 @@ const IkigaiChart = () => {
         shape: {
           img: TripleZoneC90,
           x: 132,
-          y: -80,
+          y: -82,
           scaleby: "both",
-          width: -120,
-          height: -15,
+          width: -115,
+          height: -10,
         },
       },
       {
         // label: "ABD",
         sets: ["A", "B", "D"],
         size: 300,
-        desc: "ABD",
+        desc: "Some text",
         items: generateItemsForGroup(["A", "B", "D"]),
         type: "intersection",
         text: "Edit your things",
@@ -535,18 +535,18 @@ const IkigaiChart = () => {
         },
         shape: {
           img: TripleZone,
-          x: 8,
-          y: -90,
+          x: 6,
+          y: -96,
           scaleby: "both",
-          width: -14,
-          height: -120,
+          width: -10,
+          height: -117,
         },
       },
       {
         // label: "ACD",
         sets: ["A", "C", "D"],
         size: 300,
-        desc: "ACD",
+        desc: "Some desc",
         items: generateItemsForGroup(["A", "C", "D"]),
         type: "intersection",
         text: "Edit your things",
@@ -561,18 +561,18 @@ const IkigaiChart = () => {
         },
         shape: {
           img: TripleZoneCC90,
-          x: -4,
-          y: -80,
+          x: -7,
+          y: -82,
           scaleby: "both",
-          width: -120,
-          height: -15,
+          width: -116,
+          height: -10,
         },
       },
       {
         // label: "BCD",
         sets: ["B", "C", "D"],
         size: 300,
-        desc: "BCD",
+        desc: "Some desc",
         items: generateItemsForGroup(["B", "C", "D"]),
         type: "intersection",
         text: "Edit your things",
@@ -587,11 +587,11 @@ const IkigaiChart = () => {
         },
         shape: {
           img: TripleZone180,
-          x: 8,
-          y: 44,
+          x: 6,
+          y: 42,
           scaleby: "both",
-          width: -14,
-          height: -120,
+          width: -12,
+          height: -116,
         },
       },
     ]);
@@ -915,18 +915,12 @@ const IkigaiChart = () => {
           saveFn={() => {
             setLoading(true);
             axios({
-              url: "profile",
+              url: "ikigai",
               method: "patch",
-              data: {
-                user: {
-                  ...userDetails.user,
-                  ikiSettings: JSON.parse(localStorage.getItem("ikiSettings")),
-                },
-              },
+              data: JSON.parse(localStorage.getItem("ikigai")),
             })
               .then(({ data }) => {
                 document.getElementById("ikigai").innerHTML = null;
-                setUserDetails(data);
                 resetSets();
                 setItemsForEdit(null);
                 setLoading(false);

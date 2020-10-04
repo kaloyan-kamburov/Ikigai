@@ -20,16 +20,17 @@ const App = () => {
   const [userDetails, setUserDetails] = useContext(UserContext);
   const [appLoaded, setAppLoaded] = useState(false);
   useEffect(() => {
-    const ikiSettings = localStorage.getItem("ikiSettings");
+    const ikiSettings = localStorage.getItem("ikigai");
     if (!ikiSettings) {
-      localStorage.setItem("ikiSettings", JSON.stringify({}));
+      localStorage.setItem("ikigai", JSON.stringify({}));
     }
     axios({
       url: "logged",
       method: "post",
     })
       .then(({ data }) => {
-        setUserDetails({ loggedIn: true, user: data.user });
+        setUserDetails(data);
+        localStorage.setItem("ikigai", JSON.stringify(data.ikigai));
       })
       .catch((e) => {
         console.log(e);
@@ -46,9 +47,9 @@ const App = () => {
             <Header userState={userDetails} />
             <Switch>
               <Route path="/" component={Home} exact />
-              <Route path="/what-are-you-good-at" component={GoodAt} exact />
               <Route path="/what-you-love" component={Love} exact />
               <Route path="/what-the-world-needs" component={Needs} exact />
+              <Route path="/what-are-you-good-at" component={GoodAt} exact />
               <Route path="/what-are-you-paid-for" component={PaidFor} exact />
               <Route
                 path="/congratulations"

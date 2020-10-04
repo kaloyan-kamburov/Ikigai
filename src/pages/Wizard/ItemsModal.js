@@ -23,7 +23,7 @@ const ItemsModal = ({
   const handleSubmit = (values, initialValues) => {
     setItemsForSend(values.options);
     sets.forEach((setName) => {
-      const itemsGroup = JSON.parse(localStorage.getItem("ikiSettings")).items[
+      const itemsGroup = JSON.parse(localStorage.getItem("ikigai"))[
         `step_${setName}`
       ].reduce((acc, item) => {
         acc.push(item.label);
@@ -56,27 +56,27 @@ const ItemsModal = ({
         }, [])
       );
 
-      const ikiSettings = JSON.parse(localStorage.getItem("ikiSettings"));
-      ikiSettings.items[`step_${setName}`] = newArr;
+      const ikiSettings = JSON.parse(localStorage.getItem("ikigai"));
+      ikiSettings[`step_${setName}`] = newArr;
 
-      localStorage.setItem("ikiSettings", JSON.stringify(ikiSettings));
+      localStorage.setItem("ikigai", JSON.stringify(ikiSettings));
     });
     saveFn();
   };
 
   useEffect(() => {
-    const ikiSettings = JSON.parse(localStorage.getItem("ikiSettings"));
+    const ikiSettings = JSON.parse(localStorage.getItem("ikigai"));
 
     if (
       !ikiSettings ||
       !(
         ikiSettings &&
         !(
-          ikiSettings.items &&
-          (!ikiSettings.items.step_A ||
-            !ikiSettings.items.step_B ||
-            !ikiSettings.items.step_C ||
-            !ikiSettings.items.step_D)
+          ikiSettings &&
+          (!ikiSettings.step_A ||
+            !ikiSettings.step_B ||
+            !ikiSettings.step_C ||
+            !ikiSettings.step_D)
         )
       )
     ) {
@@ -126,6 +126,7 @@ const ItemsModal = ({
                   <Select
                     className="popupSelect"
                     name="options"
+                    inModal
                     isMulti
                     // value={props.initialValues.options}
                     autoFocus

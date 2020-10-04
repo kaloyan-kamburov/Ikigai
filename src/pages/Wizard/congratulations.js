@@ -1,21 +1,29 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { useHistory, useLocation } from "react-router-dom";
+import { UserContext } from "../../context";
 
 const Congratulations = () => {
   const history = useHistory();
   const location = useLocation();
+  const [userDetails, setUserDetails] = useContext(UserContext);
+
   useEffect(() => {
-    const ikiSettings = JSON.parse(localStorage.getItem("ikiSettings"));
+    window.scrollTo(0, 0);
+    if (Object.keys(userDetails.user).length) {
+      return history.push("/chart");
+    }
+
+    const ikiSettings = JSON.parse(localStorage.getItem("ikigai"));
     if (
       !ikiSettings ||
       !(
         ikiSettings &&
         !(
-          ikiSettings.items &&
-          (!ikiSettings.items.step_A ||
-            !ikiSettings.items.step_B ||
-            !ikiSettings.items.step_C ||
-            !ikiSettings.items.step_D)
+          ikiSettings &&
+          (!ikiSettings.step_A ||
+            !ikiSettings.step_B ||
+            !ikiSettings.step_C ||
+            !ikiSettings.step_D)
         )
       )
     ) {
@@ -59,11 +67,9 @@ const Congratulations = () => {
             <button
               className="btn-lg"
               onClick={() => {
-                const ikiSettings = JSON.parse(
-                  localStorage.getItem("ikiSettings")
-                );
+                const ikiSettings = JSON.parse(localStorage.getItem("ikigai"));
                 localStorage.setItem(
-                  "ikiSettings",
+                  "ikigai",
                   JSON.stringify({ ...ikiSettings, dateCreated: new Date() })
                 );
 

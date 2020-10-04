@@ -1,14 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { UserContext } from "../../context";
 
 const Home = () => {
   const history = useHistory();
+  const [userDetails, setUserDetails] = useContext(UserContext);
+  const [logged, setLogged] = useState(false);
+
   // useEffect(() => {
   //   sessionStorage.removeItem("step_A");
   //   sessionStorage.removeItem("step_B");
   //   sessionStorage.removeItem("step_C");
   //   sessionStorage.removeItem("step_D");
   // }, []);
+
+  useEffect(() => setLogged(!!Object.keys(userDetails.user).length), [
+    userDetails,
+  ]);
+
   return (
     <>
       <section className="section">
@@ -19,10 +28,12 @@ const Home = () => {
           <div className="section-body">
             <div className="section-btn">
               <button
-                className="btn-lg"
-                onClick={() => history.push("/what-you-love")}
+                className="btn-small"
+                onClick={() => {
+                  history.push(logged ? "/chart" : "/what-you-love");
+                }}
               >
-                Start here
+                {logged ? "View my Ikigai" : "Start here"}
               </button>
             </div>
             <div className="section-content">
@@ -73,9 +84,11 @@ const Home = () => {
             <div className="aside-foot">
               <button
                 className="btn-small"
-                onClick={() => history.push("/what-are-you-good-at")}
+                onClick={() => {
+                  history.push(logged ? "/chart" : "/what-you-love");
+                }}
               >
-                Start here
+                {logged ? "View my Ikigai" : "Start here"}
               </button>
               <button className="btn-viewExamples">View examples</button>
             </div>
