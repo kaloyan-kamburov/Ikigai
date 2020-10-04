@@ -485,7 +485,7 @@ const IkigaiChart = () => {
           x: -10,
           y: -97,
           scaleby: "both",
-          width: -55,
+          width: -58,
           height: -58,
         },
       },
