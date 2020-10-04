@@ -9,6 +9,10 @@
   &.zoom-mode {
     cursor: all-scroll !important;
 
+    * {
+      cursor: all-scroll;
+    }
+
     // * {
     //   &:not(.controls),
     //   &:not(.desc),
