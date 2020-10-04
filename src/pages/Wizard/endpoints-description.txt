@@ -1,0 +1,141 @@
+POST /api/logged
+request:
+response:{
+  "user": { "name": "John Smith", "email": "email@email.com" },
+  "ikigai": {
+    "step_A": [{ "label": "ala bala", "value": "ala bala" }],
+    "step_B": [{ "label": "Travelling", "value": "Travelling" }],
+    "step_C": [{ "label": "something", "value": "something" }],
+    "step_D": [{ "label": "something", "value": "something" }],
+    "dateCreated": "2020-09-26T15:02:06.664Z"
+  }
+}
+
+----------------------------------------------------------------
+
+POST /api/login
+request: { "email": "email@email.com", "password": "asd" }
+response:  {
+  "user": { "name": "John Smith", "email": "email@email.com" },
+  "ikigai": {
+    "step_A": [{ "label": "ala bala", "value": "ala bala" }],
+    "step_B": [{ "label": "Travelling", "value": "Travelling" }],
+    "step_C": [{ "label": "something", "value": "something" }],
+    "step_D": [{ "label": "something", "value": "something" }],
+    "dateCreated": "2020-09-26T15:02:06.664Z"
+  }
+}
+
+----------------------------------------------------------------
+
+POST /api/logout
+request:
+response: {}
+
+----------------------------------------------------------------
+
+POST /api/register
+request: {
+  "name": "John Smith",
+  "email": "email@email.com",
+  "password": "asd",
+  "password2": "asd"
+}
+response: {
+  "user": { "name": "John Smith", "email": "email@email.com" },
+  "ikigai": {
+    "step_A": [{ "label": "ala bala", "value": "ala bala" }],
+    "step_B": [{ "label": "Travelling", "value": "Travelling" }],
+    "step_C": [{ "label": "something", "value": "something" }],
+    "step_D": [{ "label": "something", "value": "something" }],
+    "dateCreated": "2020-09-26T15:02:06.664Z"
+  }
+}
+
+----------------------------------------------------------------
+
+PATCH: /api/profile
+request: {
+  "name": "John Smith",
+  "email": "email@email.com",
+  "old_password": "asd",
+  "new_password": "asd1",
+  "new_password2": "asd1"
+} 
+response: {
+  "user": { "name": "John Smith", "email": "email@email.com" }
+}
+
+----------------------------------------------------------------
+
+PATCH: /api/ikigai 
+request: {
+  "step_A": [
+    { "label": "Travelling", "value": "Travelling" },
+    { "label": "asd", "value": "asd" },
+    { "label": "ala bala", "value": "ala bala" },
+    { "label": "Skateboarding", "value": "Skateboarding" },
+    { "label": "Drawing", "value": "Drawing" },
+    { "label": "something", "value": "something" },
+    { "label": "watching tv", "value": "watching tv" },
+    { "label": "testing", "value": "testing" },
+    { "label": "Add neshto", "value": "Add neshto" },
+    { "label": "dd", "value": "dd" },
+    { "label": "ss", "value": "ss" },
+    { "label": "Cooking", "value": "Cooking" },
+    { "label": "writing", "value": "writing" }
+  ],
+  "step_C": [
+    { "label": "something", "value": "something" },
+    { "label": "watching tv", "value": "watching tv" },
+    { "label": "testing", "value": "testing" },
+    { "label": "Drawing", "value": "Drawing" },
+    { "label": "Add neshto", "value": "Add neshto" },
+    { "label": "dd", "value": "dd" },
+    { "label": "ss", "value": "ss" },
+    { "label": "asd", "value": "asd" },
+    { "label": "Cooking", "value": "Cooking" },
+    { "label": "Skateboarding", "value": "Skateboarding" }
+  ],
+  "step_B": [
+    { "label": "Travelling", "value": "Travelling" },
+    { "label": "asd", "value": "asd" },
+    { "label": "writing", "value": "writing" },
+    { "label": "Skateboarding", "value": "Skateboarding" },
+    { "label": "Cooking", "value": "Cooking" }
+  ],
+  "step_D": [
+    { "label": "something", "value": "something" },
+    { "label": "watching tv", "value": "watching tv" },
+    { "label": "testing", "value": "testing" },
+    { "label": "Drawing", "value": "Drawing" },
+    { "label": "Add neshto", "value": "Add neshto" },
+    { "label": "dd", "value": "dd" },
+    { "label": "ss", "value": "ss" },
+    { "label": "asd", "value": "asd" },
+    { "label": "Cooking", "value": "Cooking" },
+    { "label": "Design", "value": "Design" },
+    { "label": "writing", "value": "writing" },
+    { "label": "Skateboarding", "value": "Skateboarding" }
+  ]
+}
+response: {}
+
+----------------------------------------------------------------
+
+GET /api/items?q=asd
+request:
+response: [
+  { "label": "Skateboarding", "value": "Skateboarding" },
+  { "label": "Drawing", "value": "Drawing" },
+  { "label": "Cooking", "value": "Cooking" },
+  { "label": "Working", "value": "Working" }
+]
+
+
+--------
+mappings:
+STEP_A - love
+STEP_B - needs
+STEP_C - good at
+STEP_D - paid for
