@@ -10,7 +10,8 @@ const app = express();
 /**
  * For local testing only!  Enables CORS for all domains
  */
-app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+// app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+app.use(cors({ credentials: true, origin: "http://localhost:5000" }));
 app.use(cookieParser());
 app.use(morgan("dev"));
 
@@ -84,18 +85,18 @@ const userData = {
 };
 
 app.post("/api/logged", (req, res) => {
-  setTimeout(() => {
-    res
-      .cookie("csrftoken", "asd")
-      .cookie("jwt", "123", {
-        maxAge: 86_400_000,
-        httpOnly: true,
-      })
-      .json(userData);
-  }, 1);
   // setTimeout(() => {
-  //   res.status(401).end();
-  // }, 2000);
+  //   res
+  //     .cookie("csrftoken", "asd")
+  //     .cookie("jwt", "123", {
+  //       maxAge: 86_400_000,
+  //       httpOnly: true,
+  //     })
+  //     .json(userData);
+  // }, 1);
+  setTimeout(() => {
+    res.status(403).end();
+  }, 2000);
 });
 
 app.post("/api/login", (req, res) => {

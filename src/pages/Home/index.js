@@ -14,9 +14,15 @@ const Home = () => {
   //   sessionStorage.removeItem("step_D");
   // }, []);
 
-  useEffect(() => setLogged(!!Object.keys(userDetails.user).length), [
-    userDetails,
-  ]);
+  useEffect(
+    () =>
+      setLogged(
+        userDetails &&
+          userDetails.user &&
+          !!Object.keys(userDetails.user).length
+      ),
+    [userDetails]
+  );
 
   return (
     <>

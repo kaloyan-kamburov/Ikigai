@@ -112,7 +112,6 @@ const Header = ({ userState }) => {
   };
 
   return (
-    // <header className={location.pathname === "/chart" ? "fixed" : ""}>
     <header
       className={
         loginModal || registerModal || profileModal ? "modal-open" : ""
@@ -121,7 +120,9 @@ const Header = ({ userState }) => {
       <div className="shell">
         <div className="logo" onClick={() => history.push("/")}></div>
         <div className="profile-controls">
-          {!Object.keys(userDetails.user).length &&
+          {userDetails &&
+            userDetails.user &&
+            !Object.keys(userDetails.user).length &&
             location.pathname === "/chart" && (
               <span
                 style={{ cursor: "pointer", marginRight: "15px" }}
@@ -131,7 +132,9 @@ const Header = ({ userState }) => {
               </span>
             )}
 
-          {!Object.keys(userDetails.user).length ? (
+          {userDetails &&
+          userDetails.user &&
+          !Object.keys(userDetails.user).length ? (
             <>
               {/* <span
               style={{ cursor: "pointer", marginRight: "15px" }}
@@ -371,8 +374,16 @@ const Header = ({ userState }) => {
                 <Form
                   onSubmit={handleProfileUpdate}
                   initialValues={{
-                    name: userDetails.user.name,
-                    email: userDetails.user.email,
+                    name:
+                      (userDetails &&
+                        userDetails.user &&
+                        userDetails.user.name) ||
+                      null,
+                    email:
+                      (userDetails &&
+                        userDetails.user &&
+                        userDetails.user.email) ||
+                      null,
                   }}
                   validate={(values) => {
                     const errors = {};
