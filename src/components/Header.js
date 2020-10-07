@@ -340,7 +340,7 @@ const Header = ({ userState }) => {
                         type="submit"
                         disabled={!props.valid || props.submitting}
                       >
-                        Register
+                        Sign up
                       </button>
                     </form>
                   )}
@@ -366,9 +366,7 @@ const Header = ({ userState }) => {
                   <h4>
                     Your profile
                     <br />
-                    <span className="log-out" onClick={handleLogOut}>
-                      Log out
-                    </span>
+                    
                   </h4>
                 </div>
                 <Form
@@ -443,7 +441,7 @@ const Header = ({ userState }) => {
                                 name="old_password"
                                 component="input"
                                 type="password"
-                                placeholder="Old password"
+                                placeholder="Current password"
                                 className={
                                   props.touched.old_password &&
                                   props.errors.old_password
@@ -487,7 +485,7 @@ const Header = ({ userState }) => {
                                 name="new_password2"
                                 component="input"
                                 type="password"
-                                placeholder="Confirm password"
+                                placeholder="Repeat new password"
                                 className={
                                   props.touched.new_password2 &&
                                   props.errors.new_password2
@@ -511,8 +509,11 @@ const Header = ({ userState }) => {
                         type="submit"
                         disabled={!props.valid || props.submitting}
                       >
-                        Save
+                        Save changes
                       </button>
+                      <span className="log-out" onClick={handleLogOut}>
+                      Log out
+                    </span>
                     </form>
                   )}
                 </Form>

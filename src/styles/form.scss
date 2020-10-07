@@ -3,7 +3,8 @@
 }
 .wizard {
   display: flex;
-  padding: 76px 0 89px;
+  // padding: 76px 0 89px;
+  padding:50px 0;
   width: 122%;
 }
 .wizard__step {
@@ -57,24 +58,27 @@
 .form-bg {
   background: $white;
   padding: 64px 73px 151px 77px;
+  // padding: 100px 0;
 }
 .formHead-title,
 .page-number {
   opacity: 0.5;
   color: $black;
   font-family: Campton;
-  font-size: 28px;
-  line-height: 46px;
+  // font-size: 28px;
+  // line-height: 46px;
+  font-size: 1.45vw; 
+  line-height: 2.39vw;
   display: inline-block;
 }
 .form-title {
   color: $black;
   font-family: Casta;
   // font-size: 120px;
-  font-size: 67px;
+  font-size: 3.48vw;
   font-weight: 100;
   // line-height: 132px;
-  line-height: 77px;
+  line-height: 5.20vw;
 }
 .page-number {
   float: right;
@@ -104,38 +108,45 @@
   opacity: 0.4;
   color: $black;
   font-family: Campton;
-  font-size: 18px;
+  // font-size: 18px;
+  font-size: 0.93vw;
   letter-spacing: 0;
-  line-height: 46px;
+  line-height: 2.39vw;
+  // line-height: 46px;
   padding: 45px 0 16px;
 }
 .form-btns {
-  padding: 83px 0 45px;
+  padding: 83px 0 30px;
 }
 .form-foot {
   & p {
     opacity: 0.5;
     color: $black;
     font-family: Campton;
-    font-size: 18px;
-    line-height: 32px;
+    // font-size: 18px;
+    // line-height: 32px;
+    font-size: 0.93vw;
+    line-height: 1.66vw;
   }
 }
 .form-questions {
-  padding-top: 172px;
+  // padding-top: 172px;
+  padding-top: 50px;
 }
 .form-questions-title {
   color: $white;
   font-family: Campton-Bold;
-  font-size: 38px;
-  line-height: 56px;
+  // font-size: 38px;
+  // line-height: 56px;
   font-weight: 600;
+  font-size: 1.97vw;
+  line-height: 2.91vw;
 }
 .form-questions-list {
   color: $white;
   padding-top: 27px;
   & li {
-    padding: 20px 0;
+    padding-bottom: 20px;
     &:before {
       content: "";
       display: inline-block;
@@ -145,7 +156,11 @@
       transform: rotate(315deg);
       background-color: $white;
       margin-right: 14px;
-      line-height: 46px;
+      // line-height: 46px;
+      line-height: 2.39vw;
+    }
+    &:last-child{
+      padding-bottom: 0;
     }
   }
 }
@@ -180,16 +195,20 @@
   &[class*="custom-select__multi-value"] {
     color: $black;
     font-family: Campton;
-    font-size: 28px;
+    // font-size: 28px;
     letter-spacing: 0;
-    line-height: 46px;
+    // line-height: 46px;
+    font-size: 1.45vw; 
+    line-height: 2.39vw;
   }
   &[class*="__input"] {
     color: $black;
     font-family: Campton;
-    font-size: 28px;
+    // font-size: 28px;
     letter-spacing: 0;
-    line-height: 46px;
+    // line-height: 46px;
+    font-size: 1.45vw; 
+    line-height: 2.39vw;
   }
   &[class*="value-container"] {
     mark {
@@ -198,11 +217,13 @@
   }
   &[class*="-placeholder"] {
     font-family: Campton;
-    font-size: 28px;
+    // font-size: 28px;
     letter-spacing: 0;
-    line-height: 46px;
+    // line-height: 46px;
     opacity: 0.2;
     color: $black;
+    font-size: 1.45vw; 
+    line-height: 2.39vw;
   }
 }
 
@@ -255,7 +276,8 @@
 .error {
   color: red;
   padding-top: 5px;
-  font-size: 14px;
+  // font-size: 14px;
+  font-size: 0.73vw;
   font-family: Campton;
 }
 

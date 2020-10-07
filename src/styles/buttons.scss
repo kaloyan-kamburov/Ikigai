@@ -16,22 +16,34 @@ button {
   }
 }
 .btn-lg {
-  height: 107px;
+  // height: 107px;
+  height: 84px;
+  // height: 5.3vw;
   width: 341px;
-  font-size: 40px;
-  line-height: 107px;
+  // font-size: 40px;
+  font-size: 32px;
+  // line-height: 107px;
+  line-height: 84px;
+  // font-size: 1.8vw;
+  // line-height: 5.3vw;
 }
 .btn-small {
   height: 76px;
   width: 252px;
   font-size: 28px;
+  // font-size: 1.45vw; 
   line-height: 76px;
+  // height: 3.95vw;
+  // line-height: 3.95vw;
 }
 .btn-viewExamples {
   font-size: 28px;
-  letter-spacing: 0;
+  // font-size: 1.45vw; 
+  // height: 3.95vw;
+  // line-height: 3.95vw;
   height: 76px;
   line-height: 76px;
+  
   text-decoration: underline;
   box-shadow: none;
   border: none;
@@ -47,16 +59,20 @@ button {
 .btn-save {
   border: 1px solid;
   box-shadow: none;
-  padding: 5px;
+  // padding: 5px;
   font-size: 15px;
+  line-height: 30px;
+  height: 30px;
+  width: 55px;
+  // font-size: 0.78vw;
 }
 .closeBtn {
   position: absolute;
-  right: 10px;
-  top: 10px;
+  right: 15px;
+  top: 15px;
   opacity: 0.3;
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
   cursor: pointer;
   &:hover {
     opacity: 1;
@@ -66,7 +82,7 @@ button {
     position: absolute;
     left: 15px;
     content: " ";
-    height: 25px;
+    height: 20px;
     width: 2px;
     background-color: $black;
   }
@@ -78,21 +94,14 @@ button {
   }
 }
 .btn-submit {
-  height: 72px;
+  height: 70px;
   width: 100%;
-  font-size: 25px;
-  line-height: 72px;
+  line-height: 70px;
   display: block;
-  font-size: 28px;
-  margin-top: 85px;
-  &:disabled {
-    opacity: 0.3;
-  }
-  &:hover {
-    background-color: $black;
-    color: $white;
-    -webkit-transition: all 0.4s;
-    -moz-transition: all 0.4s;
-    transition: all 0.4s;
-  }
+  font-size: 22px;
+  // font-size: 28px;
+  // font-size: 1.45vw; 
+  // line-height: 3.72vw;
+  // height: 3.72vw;
+  margin-top: 50px;
 }
