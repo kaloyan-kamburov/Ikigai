@@ -84,7 +84,7 @@ const userData = {
   },
 };
 
-app.post("/api/logged", (req, res) => {
+app.get("/api/logged", (req, res) => {
   // setTimeout(() => {
   //   res
   //     .cookie("csrftoken", "asd")
@@ -142,7 +142,7 @@ app.patch("/api/profile", (req, res) => {
   }, 2000);
 });
 
-app.patch("/api/ikigai", (req, res) => {
+app.put("/api/ikigai", (req, res) => {
   setTimeout(() => {
     res.status(200).end();
   }, 2000);

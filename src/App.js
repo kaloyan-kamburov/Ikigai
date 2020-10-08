@@ -25,8 +25,8 @@ const App = () => {
       localStorage.setItem("ikigai", JSON.stringify({}));
     }
     axios({
-      url: "logged",
-      method: "post",
+      url: "logged/",
+      method: "get",
     })
       .then(({ data }) => {
         setUserDetails(data);

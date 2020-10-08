@@ -915,8 +915,8 @@ const IkigaiChart = () => {
           saveFn={() => {
             setLoading(true);
             axios({
-              url: "ikigai",
-              method: "patch",
+              url: "ikigai/",
+              method: "put",
               data: JSON.parse(localStorage.getItem("ikigai")),
             })
               .then(({ data }) => {

@@ -21,7 +21,7 @@ const Header = ({ userState }) => {
     return new Promise((resolve, reject) => {
       setLoading(true);
       axios({
-        url: "login",
+        url: "login/",
         data: values,
         method: "post",
       })
@@ -45,7 +45,7 @@ const Header = ({ userState }) => {
   const handleLogOut = (values) => {
     setLoading(true);
     axios({
-      url: "logout",
+      url: "logout/",
       method: "post",
     })
       .then(({ data }) => {
@@ -66,7 +66,7 @@ const Header = ({ userState }) => {
     return new Promise((resolve, reject) => {
       setLoading(true);
       axios({
-        url: "register",
+        url: "register/",
         method: "post",
         data: {
           ...values,
@@ -92,7 +92,7 @@ const Header = ({ userState }) => {
     return new Promise((resolve, reject) => {
       setLoading(true);
       axios({
-        url: "profile",
+        url: "profile/",
         method: "patch",
         data: values,
       })
