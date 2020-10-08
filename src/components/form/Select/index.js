@@ -15,7 +15,7 @@ const loadOptions = async (inputValue, callback) => {
     return callback([]);
   }
   try {
-    const res = await axios({ url: `items?q=${inputValue}`, method: "get" });
+    const res = await axios({ url: `items/?q=${inputValue}`, method: "get" });
     return callback(res.data);
   } catch (e) {
     return callback([]);
