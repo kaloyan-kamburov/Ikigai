@@ -26,9 +26,11 @@ const instance = axios.create({
   //   "Access-Control-Allow-Credentials": "true",
 
   // },
-  headers: {
-    "X-CSRFToken": getCookie("csrftoken"),
-  },
+});
+
+instance.interceptors.request.use((config) => {
+  config.headers["X-CSRFToken"] = getCookie("csrftoken");
+  return config;
 });
 
 // .interceptors.request.use(

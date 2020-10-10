@@ -88,7 +88,7 @@ app.get("/api/logged", (req, res) => {
   // setTimeout(() => {
   //   res
   //     .cookie("csrftoken", "asd")
-  //     .cookie("jwt", "123", {
+  //     .cookie("jwt", "123", {πa
   //       maxAge: 86_400_000,
   //       httpOnly: true,
   //     })
@@ -101,10 +101,12 @@ app.get("/api/logged", (req, res) => {
 
 app.post("/api/login", (req, res) => {
   setTimeout(() => {
+    // const t = new Date();
+    // t.setSeconds(t.getSeconds() + 10);
     res
       .cookie("csrftoken", "asd")
       .cookie("session", "123", {
-        // maxAge: 86_400_000,
+        maxAge: 86_400_000,
         httpOnly: true,
       })
       .json(userData);
