@@ -16,6 +16,7 @@ const ItemsModal = ({
   hidden,
   text,
   icon,
+  errorMsgs,
 }) => {
   const [itemsForSend, setItemsForSend] = useState(null);
   const history = { useHistory };
@@ -97,6 +98,13 @@ const ItemsModal = ({
         <h4>
           <img alt="icon" src={icon} />
           {text}
+          {errorMsgs && !!errorMsgs.length && (
+            <div className="error-messages">
+              {errorMsgs.map((msg, i) => (
+                <span key={i}>{msg}</span>
+              ))}
+            </div>
+          )}
         </h4>
       )}
       <Form

@@ -4,8 +4,8 @@
 .wizard {
   display: flex;
   // padding: 76px 0 89px;
-  padding:50px 0;
-  width: 122%;
+  // padding: 50px 0;
+  width: 90%;
 }
 .wizard__step {
   flex: 1 0 0;
@@ -44,6 +44,9 @@
       animation: show 0.5s ease-in forwards;
     }
   }
+  &:last-child {
+    flex: none;
+  }
 }
 .rectangle {
   height: 27px;
@@ -67,7 +70,7 @@
   font-family: Campton;
   // font-size: 28px;
   // line-height: 46px;
-  font-size: 1.45vw; 
+  font-size: 1.45vw;
   line-height: 2.39vw;
   display: inline-block;
 }
@@ -78,7 +81,7 @@
   font-size: 3.48vw;
   font-weight: 100;
   // line-height: 132px;
-  line-height: 5.20vw;
+  line-height: 5.2vw;
 }
 .page-number {
   float: right;
@@ -159,7 +162,7 @@
       // line-height: 46px;
       line-height: 2.39vw;
     }
-    &:last-child{
+    &:last-child {
       padding-bottom: 0;
     }
   }
@@ -198,7 +201,7 @@
     // font-size: 28px;
     letter-spacing: 0;
     // line-height: 46px;
-    font-size: 1.45vw; 
+    font-size: 1.45vw;
     line-height: 2.39vw;
   }
   &[class*="__input"] {
@@ -207,7 +210,7 @@
     // font-size: 28px;
     letter-spacing: 0;
     // line-height: 46px;
-    font-size: 1.45vw; 
+    font-size: 1.45vw;
     line-height: 2.39vw;
   }
   &[class*="value-container"] {
@@ -222,7 +225,7 @@
     // line-height: 46px;
     opacity: 0.2;
     color: $black;
-    font-size: 1.45vw; 
+    font-size: 1.45vw;
     line-height: 2.39vw;
   }
 }

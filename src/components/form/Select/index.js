@@ -61,12 +61,11 @@ const renderSelect = (props) => {
     menu: (provided) => ({
       border: "1px solid #000",
       boxShadow: "3px 3px",
-      marginTop: "3px",
       position: "absolute",
       width: "100%",
       background: "#fff",
       zIndex: 1,
-      top: props.inModal ? "49px" : "inherit",
+      top: props.inModal ? "27px" : "inherit",
     }),
     multiValue: (provided) => ({
       ...provided,
@@ -98,7 +97,7 @@ const renderSelect = (props) => {
       paddingRight: 0,
       // position: props.inModal ? "absolute" : "relative",
       width: "100%",
-      paddingTop: props.inModal ? "70px" : "0",
+      paddingTop: props.inModal ? "36px" : "0",
     }),
     input: (provided) => ({
       ...provided,
@@ -106,6 +105,10 @@ const renderSelect = (props) => {
       position: props.inModal ? "absolute" : "relative",
       top: props.inModal ? "0" : "auto",
       borderBottom: props.inModal ? "1px solid #000" : "none",
+    }),
+    placeholder: (provided) => ({
+      ...provided,
+      top: props.inModal ? "18px" : "50%",
     }),
     dropdownIndicator: () => ({ display: "none" }),
   };
@@ -128,6 +131,7 @@ const renderSelect = (props) => {
       formatCreateLabel={formatCreateLabel}
       loadOptions={debounce(loadOptions, 500)}
       // components={{ loadingIndicator: LoadingIndicator }}
+      // menuIsOpen
       cacheOptions
     />
   );

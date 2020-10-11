@@ -1,10 +1,12 @@
 header {
   width: 100%;
   display: flex;
+  height: 132px;
   // height: 4rem;
   // background: $white;
   background-color: transparent;
   justify-content: space-between;
+  align-items: center;
   // padding: 0 2rem;
   box-sizing: border-box;
   padding: 20px 0;
@@ -16,9 +18,10 @@ header {
   }
 
   .shell {
-    width: 100%;
-    padding-right: 20px;
-    padding-left: 5%;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
   &.modal-open {
     z-index: 999;
@@ -42,16 +45,15 @@ header {
 }
 
 .profile-controls {
-  // display: flex;
-  // justify-content: flex-end;
-  // align-items: center;
+  display: flex;
+  justify-content: flex-end;
   color: $white;
   font-family: Campton;
   font-size: 18px;
   line-height: 46px;
-  display: inline-block;
-  float: right;
-
+  display: flex;
+  width: 10%;
+  margin-left: 50px;
   span:first-of-type:after {
     content: "";
     display: inline-block;
@@ -60,5 +62,9 @@ header {
     height: 18px;
     background: $black;
     margin-left: 15px;
+  }
+
+  span {
+    display: flex;
   }
 }

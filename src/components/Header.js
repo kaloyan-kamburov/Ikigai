@@ -13,9 +13,20 @@ const Header = ({ userState }) => {
   const [loading, setLoading] = useState(false);
   const [userDetails, setUserDetails] = useContext(UserContext);
   const [changePassword, setChangePassword] = useState(false);
+  const [errorMsgs, setErrorMsgs] = useState(null);
 
   const history = useHistory();
   const location = useLocation();
+
+  const renderErrorMsgs = () =>
+    errorMsgs &&
+    !!errorMsgs.length && (
+      <div className="error-messages">
+        {errorMsgs.map((msg, i) => (
+          <span key={i}>{msg}</span>
+        ))}
+      </div>
+    );
 
   const handleLogin = (values) => {
     return new Promise((resolve, reject) => {
@@ -37,6 +48,9 @@ const Header = ({ userState }) => {
         })
         .catch((e) => {
           setLoading(false);
+          setErrorMsgs(
+            e.response && e.response.data && e.response.data.messages
+          );
           reject();
         });
     });
@@ -83,6 +97,9 @@ const Header = ({ userState }) => {
         })
         .catch((e) => {
           setLoading(false);
+          setErrorMsgs(
+            e.response && e.response.data && e.response.data.messages
+          );
           reject();
         });
     });
@@ -111,6 +128,49 @@ const Header = ({ userState }) => {
     });
   };
 
+  const pathnamesMap = {
+    "/what-you-love": 1,
+    "/what-are-you-good-at": 2,
+    "/what-the-world-needs": 3,
+    "/what-are-you-paid-for": 4,
+    "/congratulations": 5,
+  };
+
+  const renderWizardStep = (pathname) => {
+    const currentWizardStep = pathnamesMap[location.pathname];
+    const step = pathnamesMap[pathname];
+    return currentWizardStep ? (
+      <li
+        className={`wizard__step${
+          currentWizardStep === step && currentWizardStep !== 5
+            ? " toBeFilled"
+            : ""
+        }${currentWizardStep > step ? " active" : ""}`}
+      >
+        <span
+          className={`rectangle${currentWizardStep === step ? " fill" : ""}${
+            currentWizardStep > step ? " active cursor-pointer" : ""
+          }`}
+          onClick={() => {
+            if (currentWizardStep > step) {
+              history.push(pathname);
+            }
+          }}
+        ></span>
+      </li>
+    ) : null;
+  };
+
+  const renderLogo = (routesArr) =>
+    routesArr.includes(location.pathname) && (
+      <li className="wizard__step">
+        <span
+          className="rectangle fill cursor-pointer"
+          onClick={() => history.push("/")}
+        ></span>
+      </li>
+    );
+
   return (
     <header
       className={
@@ -118,7 +178,30 @@ const Header = ({ userState }) => {
       }
     >
       <div className="shell">
-        <div className="logo" onClick={() => history.push("/")}></div>
+        {/* <div className="logo" onClick={() => history.push("/")}></div> */}
+        <ul className="wizard">
+          {/* <li className="wizard__step toBeFilled">
+            <span className="rectangle fill"></span>
+          </li>
+          <li className="wizard__step">
+            <span className="rectangle"></span>
+          </li>
+          <li className="wizard__step">
+            <span className="rectangle"></span>
+          </li>
+          <li className="wizard__step">
+            <span className="rectangle"></span>
+          </li>
+          <li className="wizard__step">
+            <span className="rectangle"></span>
+          </li> */}
+          {renderLogo(["/", "/chart"])}
+          {renderWizardStep("/what-you-love")}
+          {renderWizardStep("/what-are-you-good-at")}
+          {renderWizardStep("/what-the-world-needs")}
+          {renderWizardStep("/what-are-you-paid-for")}
+          {renderWizardStep("/congratulations")}
+        </ul>
         <div className="profile-controls">
           {userDetails &&
             userDetails.user &&
@@ -145,7 +228,10 @@ const Header = ({ userState }) => {
 
               <span
                 style={{ cursor: "pointer" }}
-                onClick={() => setLoginModal(true)}
+                onClick={() => {
+                  setErrorMsgs(null);
+                  setLoginModal(true);
+                }}
               >
                 Login
               </span>
@@ -174,11 +260,16 @@ const Header = ({ userState }) => {
               <div className="modal-content">
                 <div className="modal-title">
                   <h4>Welcome back</h4>
+                  {renderErrorMsgs()}
                 </div>
 
                 <Form
                   onSubmit={handleLogin}
-                  initialValues={{ email: "email@email.com", password: "asd" }}
+                  initialValues={
+                    {
+                      /*email: "email@email.com", password: "asd"*/
+                    }
+                  }
                 >
                   {(props) => (
                     <form onSubmit={props.handleSubmit}>
@@ -239,15 +330,23 @@ const Header = ({ userState }) => {
               {loading && <Loader />}
               <span
                 className="closeBtn"
-                onClick={() => setRegisterModal(false)}
+                onClick={() => {
+                  setErrorMsgs(false);
+                  setRegisterModal(false);
+                }}
               ></span>
               <div className="modal-content">
                 <div className="modal-title">
                   <h4>Create account</h4>
+                  {renderErrorMsgs()}
                 </div>
                 <Form
                   onSubmit={handleRegister}
-                  initialValues={{ email: "email@email.com" }}
+                  initialValues={
+                    {
+                      /*email: "email@email.com"*/
+                    }
+                  }
                   validate={(values) => {
                     const errors = {};
                     if (values.password !== values.password2) {
@@ -272,8 +371,8 @@ const Header = ({ userState }) => {
                           }
                           validate={composeValidators(required)}
                         />
-                        {props.touched.email && props.errors.email && (
-                          <span className="error">{props.errors.email}</span>
+                        {props.touched.name && props.errors.name && (
+                          <span className="error">{props.errors.name}</span>
                         )}
                       </div>
 
@@ -366,7 +465,6 @@ const Header = ({ userState }) => {
                   <h4>
                     Your profile
                     <br />
-                    
                   </h4>
                 </div>
                 <Form
@@ -512,8 +610,8 @@ const Header = ({ userState }) => {
                         Save changes
                       </button>
                       <span className="log-out" onClick={handleLogOut}>
-                      Log out
-                    </span>
+                        Log out
+                      </span>
                     </form>
                   )}
                 </Form>

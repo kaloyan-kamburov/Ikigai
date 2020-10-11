@@ -33,24 +33,6 @@ const Congratulations = () => {
   return (
     <section className="section-dark">
       <div className="shell">
-        <ul className="wizard">
-          <li className="wizard__step active">
-            <span className="rectangle active"></span>
-          </li>
-          <li className="wizard__step active">
-            <span className="rectangle active"></span>
-          </li>
-          <li className="wizard__step active">
-            <span className="rectangle active"></span>
-          </li>
-          <li className="wizard__step active">
-            <span className="rectangle active"></span>
-          </li>
-          <li className="wizard__step">
-            <span className="rectangle fill"></span>
-          </li>
-        </ul>
-
         <div className="congratulations form-bg">
           <h1 className="congrats-title">Congratulations</h1>
           <h2 className="congrats-subTitle">Your journey has just started.</h2>

@@ -9,24 +9,13 @@ import { MapInteractionCSS } from "react-map-interaction";
 import ItemsModal from "./ItemsModal";
 import { UserContext } from "../../context";
 import axios from "../../utils/api";
-import SingleZone from "../../images/zone1.svg";
-import SingleZoneCC90 from "../../images/zone1_cc90deg.svg";
-import SingleZoneC90 from "../../images/zone1_c90deg.svg";
-import SingleZone180 from "../../images/zone1_180deg.svg";
-import DoubleZone from "../../images/zones2.svg";
-import DoubleZoneCC90 from "../../images/zones2_cc90deg.svg";
-import DoubleZoneC90 from "../../images/zones2_c90deg.svg";
-import DoubleZone180 from "../../images/zones2_180deg.svg";
-import TripleZone from "../../images/zones3.svg";
-import TripleZoneCC90 from "../../images/zones3_cc90deg.svg";
 import TripleZoneC90 from "../../images/zones3_c90deg.svg";
-import TripleZone180 from "../../images/zones3_180deg.svg";
-import QuadZone from "../../images/zones4.svg";
 
 const IkigaiChart = () => {
   const history = useHistory();
   const [loading, setLoading] = useState(false);
-  const [userDetails, setUserDetails] = useContext(UserContext);
+  // const [userDetails, setUserDetails] = useContext(UserContext);
+  const [errorMsgs, setErrorMsgs] = useState(null);
   const defaultZoomValue = {
     scale: 0.96,
     translation: {
@@ -254,20 +243,12 @@ const IkigaiChart = () => {
         text: "Edit your ikigai",
         itemsParams: {
           x: -60,
-          y: 355,
+          y: 330,
           width: 120,
           height: 130,
           big: 5,
           medium: 9,
           small: 12,
-        },
-        shape: {
-          img: QuadZone,
-          x: -3,
-          y: -91,
-          scaleby: "both",
-          width: 6,
-          height: 7,
         },
       },
       {
@@ -284,20 +265,12 @@ const IkigaiChart = () => {
         posLabelY: "0%",
         itemsParams: {
           x: -220,
-          y: 165,
+          y: 140,
           width: 170,
           height: 500,
           big: 20,
           medium: 30,
           small: 40,
-        },
-        shape: {
-          img: SingleZoneCC90,
-          x: -13,
-          y: -91,
-          scaleby: "both",
-          width: -224,
-          height: 8,
         },
       },
       {
@@ -313,20 +286,12 @@ const IkigaiChart = () => {
         posLabelY: "0%",
         itemsParams: {
           x: 50,
-          y: 165,
+          y: 140,
           width: 170,
           height: 500,
           big: 20,
           medium: 30,
           small: 40,
-        },
-        shape: {
-          img: SingleZoneC90,
-          x: 240,
-          y: -91,
-          scaleby: "both",
-          width: -224,
-          height: 8,
         },
       },
       {
@@ -342,46 +307,32 @@ const IkigaiChart = () => {
         posLabelY: 1,
         itemsParams: {
           x: -100,
-          y: 30,
+          y: 5,
           width: 220,
           height: 160,
           big: 20,
           medium: 30,
           small: 40,
         },
-        shape: {
-          img: SingleZone,
-          x: 0,
-          y: -104,
-          scaleby: "width",
-        },
       },
       {
         sets: ["C"],
         size: 1000,
-        label: "WHAT CAN YOU BE PAID FOR",
-        desc: "WHAT CAN YOU BE PAID FOR",
+        label: "WHAT CAN YOU BE PAID",
+        desc: "WHAT CAN YOU BE PAID",
         items: generateItemsForGroup(["C"]),
         type: "circle",
         text: "Whan can you be paid for",
         posLabelX: "50%",
-        posLabelY: "100.1%",
+        posLabelY: "100.5%",
         itemsParams: {
           x: -120,
-          y: 660,
+          y: 635,
           width: 230,
           height: 140,
           big: 20,
           medium: 30,
           small: 40,
-        },
-        shape: {
-          img: SingleZone180,
-          x: -3,
-          y: 151,
-          scaleby: "both",
-          width: 6,
-          height: -222,
         },
       },
       {
@@ -395,20 +346,12 @@ const IkigaiChart = () => {
         text: "Edit your mission",
         itemsParams: {
           x: -20,
-          y: 200,
+          y: 175,
           width: 160,
           height: 160,
           big: 15,
           medium: 25,
           small: 30,
-        },
-        shape: {
-          img: DoubleZoneC90,
-          x: 69,
-          y: -97,
-          scaleby: "both",
-          width: -59,
-          height: -58,
         },
       },
       {
@@ -421,20 +364,12 @@ const IkigaiChart = () => {
         text: "Edit your vocation",
         itemsParams: {
           x: -20,
-          y: 480,
+          y: 455,
           width: 160,
           height: 160,
           big: 15,
           medium: 25,
           small: 30,
-        },
-        shape: {
-          img: DoubleZone180,
-          x: 69,
-          y: -20,
-          scaleby: "both",
-          width: -59,
-          height: -58,
         },
       },
       {
@@ -447,20 +382,12 @@ const IkigaiChart = () => {
         text: "Edit your profession",
         itemsParams: {
           x: -140,
-          y: 480,
+          y: 455,
           width: 160,
           height: 160,
           big: 15,
           medium: 25,
           small: 30,
-        },
-        shape: {
-          img: DoubleZoneCC90,
-          x: -9,
-          y: -20,
-          scaleby: "both",
-          width: -60,
-          height: -58,
         },
       },
       {
@@ -473,20 +400,12 @@ const IkigaiChart = () => {
         text: "Edit your passion",
         itemsParams: {
           x: -140,
-          y: 200,
+          y: 175,
           width: 160,
           height: 160,
           big: 15,
           medium: 25,
           small: 30,
-        },
-        shape: {
-          img: DoubleZone,
-          x: -10,
-          y: -97,
-          scaleby: "both",
-          width: -58,
-          height: -58,
         },
       },
       {
@@ -500,20 +419,12 @@ const IkigaiChart = () => {
         text: "Edit your things",
         itemsParams: {
           x: 30,
-          y: 370,
+          y: 345,
           width: 100,
           height: 100,
           big: 2,
           medium: 5,
           small: 8,
-        },
-        shape: {
-          img: TripleZoneC90,
-          x: 132,
-          y: -82,
-          scaleby: "both",
-          width: -115,
-          height: -10,
         },
       },
       {
@@ -526,20 +437,12 @@ const IkigaiChart = () => {
         text: "Edit your things",
         itemsParams: {
           x: -45,
-          y: 255,
+          y: 230,
           width: 90,
           height: 90,
           big: 2,
           medium: 5,
           small: 8,
-        },
-        shape: {
-          img: TripleZone,
-          x: 6,
-          y: -96,
-          scaleby: "both",
-          width: -10,
-          height: -117,
         },
       },
       {
@@ -552,20 +455,12 @@ const IkigaiChart = () => {
         text: "Edit your things",
         itemsParams: {
           x: -110,
-          y: 370,
+          y: 345,
           width: 100,
           height: 100,
           big: 2,
           medium: 5,
           small: 8,
-        },
-        shape: {
-          img: TripleZoneCC90,
-          x: -7,
-          y: -82,
-          scaleby: "both",
-          width: -116,
-          height: -10,
         },
       },
       {
@@ -578,20 +473,12 @@ const IkigaiChart = () => {
         text: "Edit your things",
         itemsParams: {
           x: -45,
-          y: 495,
+          y: 470,
           width: 90,
           height: 90,
           big: 2,
           medium: 5,
           small: 8,
-        },
-        shape: {
-          img: TripleZone180,
-          x: 6,
-          y: 42,
-          scaleby: "both",
-          width: -12,
-          height: -116,
         },
       },
     ]);
@@ -610,9 +497,16 @@ const IkigaiChart = () => {
       venn
         .VennDiagram()
         .useViewBox()
-        .width(window.innerWidth)
+        // .width(window.innerWidth)
+        // .height(
+        //   window.innerHeight - document.querySelector("header").clientHeight
+        // )
+        .width(window.innerWidth < 700 ? 853 : window.innerWidth)
         .height(
-          window.innerHeight - document.querySelector("header").clientHeight
+          window.innerHeight - document.querySelector("header").clientHeight <
+            700
+            ? 853
+            : window.innerHeight - document.querySelector("header").clientHeight
         )
     );
 
@@ -672,13 +566,13 @@ const IkigaiChart = () => {
         tooltip.html(d.desc || null);
 
         // highlight the current path
-        let selection = d3.select(this).transition("tooltip").duration(400);
+        let selection = d3.select(this); //.transition("tooltip").duration(400);
         // console.log(d3.select(this).node().childNodes[0]);
         // d3.select(this).node().childNodes[0].style = "stroke-width: 3";
         selection
           .select("path")
           // .style("stroke-width", 3)
-          .style("fill", "rgba(128, 128, 0, 0")
+          // .style("fill", "rgba(128, 128, 0, 0")
           .style("fill-opacity", 1);
         //   // .style("fill-opacity", d.sets.length == 1 ? 0.4 : 0.1)
       })
@@ -711,6 +605,12 @@ const IkigaiChart = () => {
 
     circles.each(insertItems);
     intersections.each(insertItems);
+
+    //fix for mouse over
+    [].slice.call(document.getElementsByTagName("g")).forEach((g) => {
+      g.dispatchEvent(new MouseEvent("mouseover", { bubbles: false }));
+      g.dispatchEvent(new MouseEvent("mouseleave", { bubbles: false }));
+    });
   };
 
   const insertItems = function (d, i) {
@@ -771,23 +671,23 @@ const IkigaiChart = () => {
       .attr("class", "items")
       .html(items);
 
-    if (d.shape) {
-      //append image
-      let image = path.append("image").attr("href", d.shape.img);
-      if (d.shape.scaleby !== "both") {
-        image.attr(d.shape.scaleby, pathDimensions[d.shape.scaleby]);
-      } else {
-        image.attr("width", pathDimensions.width + d.shape.width);
-        image.attr("height", pathDimensions.height + d.shape.height);
-      }
+    // if (d.shape) {
+    //   //append image
+    //   let image = path.append("image").attr("href", d.shape.img);
+    //   if (d.shape.scaleby !== "both") {
+    //     image.attr(d.shape.scaleby, pathDimensions[d.shape.scaleby]);
+    //   } else {
+    //     image.attr("width", pathDimensions.width + d.shape.width);
+    //     image.attr("height", pathDimensions.height + d.shape.height);
+    //   }
 
-      image.attr("x", pathDimensions.x + d.shape.x);
-      image.attr("y", pathDimensions.y + d.shape.y);
-      // .attr("width", pathDimensions.width)
-      // .attr("height", pathDimensions.height)
-      // .attr("x", pathDimensions.x + d.shape.x)
-      // .attr("y", pathDimensions.y + d.shape.y);
-    }
+    //   image.attr("x", pathDimensions.x + d.shape.x);
+    //   image.attr("y", pathDimensions.y + d.shape.y);
+    //   // .attr("width", pathDimensions.width)
+    //   // .attr("height", pathDimensions.height)
+    //   // .attr("x", pathDimensions.x + d.shape.x)
+    //   // .attr("y", pathDimensions.y + d.shape.y);
+    // }
   };
 
   useEffect(() => {
@@ -911,6 +811,7 @@ const IkigaiChart = () => {
           sets={itemsForEdit.sets}
           text={itemsForEdit.text}
           icon={itemsForEdit.icon}
+          errorMsgs={errorMsgs}
           loading={loading}
           saveFn={() => {
             setLoading(true);
@@ -928,6 +829,9 @@ const IkigaiChart = () => {
               })
               .catch((e) => {
                 setLoading(false);
+                setErrorMsgs(
+                  e.response && e.response.data && e.response.data.messages
+                );
               });
           }}
           onClose={() => {

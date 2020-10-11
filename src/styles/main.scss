@@ -17,11 +17,22 @@
   animation: fadeIn linear 0.3s;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 @keyframes fadeIn {
   0% {
     opacity: 0;
   }
   100% {
     opacity: 100%;
+  }
+}
+
+@media (max-height: 700px) {
+  .app-wrapper {
+    min-width: 853px;
+    min-height: 853px;
   }
 }

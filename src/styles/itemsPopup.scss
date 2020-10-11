@@ -52,7 +52,13 @@
     line-height: 24px;
     // line-height: 1.25vw;
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+
+    .error-messages {
+      margin-top: 10px;
+    }
   }
 
   .select-wrapper {

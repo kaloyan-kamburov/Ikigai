@@ -38,24 +38,6 @@ const GoodAt = () => {
     <>
       <section className="section-dark">
         <div className="shell">
-          <ul className="wizard">
-            <li className="wizard__step active">
-              <span className="rectangle active"></span>
-            </li>
-            <li className="wizard__step toBeFilled">
-              <span className="rectangle fill"></span>
-            </li>
-            <li className="wizard__step">
-              <span className="rectangle"></span>
-            </li>
-            <li className="wizard__step">
-              <span className="rectangle"></span>
-            </li>
-            <li className="wizard__step">
-              <span className="rectangle"></span>
-            </li>
-          </ul>
-
           <div className="col-wrapper">
             <div className="col_60 form-bg">
               <div className="form-head">
