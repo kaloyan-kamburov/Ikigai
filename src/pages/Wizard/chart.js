@@ -324,7 +324,7 @@ const IkigaiChart = () => {
         type: "circle",
         text: "Whan can you be paid for",
         posLabelX: "50%",
-        posLabelY: "100.5%",
+        posLabelY: "100%",
         itemsParams: {
           x: -120,
           y: 635,
@@ -501,11 +501,11 @@ const IkigaiChart = () => {
         // .height(
         //   window.innerHeight - document.querySelector("header").clientHeight
         // )
-        .width(window.innerWidth < 700 ? 853 : window.innerWidth)
+        .width(window.innerWidth < 832 ? 832 : window.innerWidth)
         .height(
           window.innerHeight - document.querySelector("header").clientHeight <
-            700
-            ? 853
+            832
+            ? 832
             : window.innerHeight - document.querySelector("header").clientHeight
         )
     );
