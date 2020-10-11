@@ -243,7 +243,7 @@ const IkigaiChart = () => {
         text: "Edit your ikigai",
         itemsParams: {
           x: -60,
-          y: 330,
+          y: 350,
           width: 120,
           height: 130,
           big: 5,
@@ -265,7 +265,7 @@ const IkigaiChart = () => {
         posLabelY: "0%",
         itemsParams: {
           x: -220,
-          y: 140,
+          y: 160,
           width: 170,
           height: 500,
           big: 20,
@@ -286,7 +286,7 @@ const IkigaiChart = () => {
         posLabelY: "0%",
         itemsParams: {
           x: 50,
-          y: 140,
+          y: 160,
           width: 170,
           height: 500,
           big: 20,
@@ -307,7 +307,7 @@ const IkigaiChart = () => {
         posLabelY: 1,
         itemsParams: {
           x: -100,
-          y: 5,
+          y: 25,
           width: 220,
           height: 160,
           big: 20,
@@ -327,7 +327,7 @@ const IkigaiChart = () => {
         posLabelY: "100%",
         itemsParams: {
           x: -120,
-          y: 635,
+          y: 655,
           width: 230,
           height: 140,
           big: 20,
@@ -346,7 +346,7 @@ const IkigaiChart = () => {
         text: "Edit your mission",
         itemsParams: {
           x: -20,
-          y: 175,
+          y: 195,
           width: 160,
           height: 160,
           big: 15,
@@ -364,7 +364,7 @@ const IkigaiChart = () => {
         text: "Edit your vocation",
         itemsParams: {
           x: -20,
-          y: 455,
+          y: 475,
           width: 160,
           height: 160,
           big: 15,
@@ -382,7 +382,7 @@ const IkigaiChart = () => {
         text: "Edit your profession",
         itemsParams: {
           x: -140,
-          y: 455,
+          y: 475,
           width: 160,
           height: 160,
           big: 15,
@@ -400,7 +400,7 @@ const IkigaiChart = () => {
         text: "Edit your passion",
         itemsParams: {
           x: -140,
-          y: 175,
+          y: 195,
           width: 160,
           height: 160,
           big: 15,
@@ -419,7 +419,7 @@ const IkigaiChart = () => {
         text: "Edit your things",
         itemsParams: {
           x: 30,
-          y: 345,
+          y: 365,
           width: 100,
           height: 100,
           big: 2,
@@ -437,7 +437,7 @@ const IkigaiChart = () => {
         text: "Edit your things",
         itemsParams: {
           x: -45,
-          y: 230,
+          y: 250,
           width: 90,
           height: 90,
           big: 2,
@@ -455,7 +455,7 @@ const IkigaiChart = () => {
         text: "Edit your things",
         itemsParams: {
           x: -110,
-          y: 345,
+          y: 365,
           width: 100,
           height: 100,
           big: 2,
@@ -473,7 +473,7 @@ const IkigaiChart = () => {
         text: "Edit your things",
         itemsParams: {
           x: -45,
-          y: 470,
+          y: 490,
           width: 90,
           height: 90,
           big: 2,
@@ -651,7 +651,15 @@ const IkigaiChart = () => {
 
     path
       .append("foreignObject")
-      .attr("x", pathDimensions.x + pathDimensions.width / 2 + d.itemsParams.x)
+      .attr(
+        "x",
+        window.innerWidth < 832
+          ? pathDimensions.x +
+              pathDimensions.width / 2 +
+              d.itemsParams.x +
+              (832 - window.innerWidth) / 2
+          : pathDimensions.x + pathDimensions.width / 2 + d.itemsParams.x
+      )
       .attr("y", d.itemsParams.y)
       .attr(
         "style",
@@ -692,11 +700,15 @@ const IkigaiChart = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    window.addEventListener("resize", redraw);
 
     draw();
 
     // delete tooltip
-    return () => document.getElementById("ikigai-tooltip").remove();
+    return () => {
+      window.removeEventListener("resize", redraw);
+      document.getElementById("ikigai-tooltip").remove();
+    };
   }, []);
 
   useEffect(() => draw(), [sets]);
@@ -712,6 +724,12 @@ const IkigaiChart = () => {
     //   .querySelectorAll(".venn-area")
     //   .forEach((e) => e.classList.remove("active"));
   }, [zoomValue, mode]);
+
+  const redraw = () => {
+    document.getElementById("ikigai").innerHTML = null;
+    window.scrollTo(0, 0);
+    draw();
+  };
 
   const resetSets = () => {
     setSets(removeDuplicates(defaultSets()));
@@ -790,6 +808,7 @@ const IkigaiChart = () => {
             }
             // setZoomValue(zoomMode ? value : defaultZoomValue);
           }}
+          disableZoom={mode !== "zoom" && window.innerHeight < 700}
         >
           <>
             {itemsForEdit && <div className="click-disabler"></div>}

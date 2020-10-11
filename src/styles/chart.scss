@@ -1,6 +1,9 @@
 .outer-wrapper {
   position: relative;
+  overflow-x: hidden;
   background-color: $black;
+  // min-width: 832px;
+  // min-height: 832px;
 
   > div > div:first-child {
     overflow: visible !important;
@@ -126,9 +129,10 @@
 .chart-wrapper {
   // background: $black;
   // height: 100vh;
+  // overflow-x: visible;
   height: calc(100vh - 6.4rem);
-  // min-height: 853px;
-  // min-width: 853px;
+  // min-height: 832px;
+  // min-width: 832px;
   width: 100vw;
   // width: 200vw;
   // transform: scale(0.5) translate(-50%, -50%);
@@ -136,6 +140,7 @@
   z-index: 10;
   opacity: 0;
   animation: opacity 0.5s linear forwards;
+  overflow: visible;
   // animation-delay: 3s;
 
   // .venn-intersection {
@@ -145,9 +150,19 @@
   //     }
   //   }
   // }
+  // @media (max-width: 832px) {
+  //   overflow: auto;
+  // }
+  // @media (max-height: 832px) {
+  //   overflow: visible;
+  // }
   svg {
     animation: reveal 0.1s linear;
     overflow: visible;
+    // width: 832px;
+    // height: 832px;
+    // min-width: 832px;
+    // min-height: 832px;
 
     path {
       transition: fill 0.25s ease-in;
