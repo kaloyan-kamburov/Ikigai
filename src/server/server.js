@@ -101,8 +101,8 @@ app.get("/api/logged", (req, res) => {
 
 app.post("/api/login", (req, res) => {
   setTimeout(() => {
-    // const t = new Date();
-    // t.setSeconds(t.getSeconds() + 10);
+    const t = new Date();
+    t.setSeconds(t.getSeconds() + 10);
     res
       .cookie("csrftoken", "asd")
       .cookie("session", "123", {
@@ -112,7 +112,7 @@ app.post("/api/login", (req, res) => {
       .json(userData);
   }, 2000);
   // res.status(401).json({
-  //   messages: ["asd", "asd2"],
+  //   detail: "bla",
   // });
 });
 
@@ -140,14 +140,17 @@ app.post("/api/register", (req, res) => {
   //     .json(userData);
   // }, 2000);
   res.status(401).json({
-    messages: ["asd", "asd2"],
+    detail: "asd",
   });
 });
 
 app.patch("/api/profile", (req, res) => {
-  setTimeout(() => {
-    res.json(userData);
-  }, 2000);
+  // setTimeout(() => {
+  //   res.json(userData);
+  // }, 2000);
+  res.status(400).json({
+    detail: "oops",
+  });
 });
 
 app.put("/api/ikigai", (req, res) => {
@@ -155,7 +158,7 @@ app.put("/api/ikigai", (req, res) => {
   //   res.status(200).end();
   // }, 2000);
   res.status(400).json({
-    messages: ["asd", "asd2"],
+    detail: "oops",
   });
 });
 

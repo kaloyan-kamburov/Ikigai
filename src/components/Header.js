@@ -13,20 +13,10 @@ const Header = ({ userState }) => {
   const [loading, setLoading] = useState(false);
   const [userDetails, setUserDetails] = useContext(UserContext);
   const [changePassword, setChangePassword] = useState(false);
-  const [errorMsgs, setErrorMsgs] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(null);
 
   const history = useHistory();
   const location = useLocation();
-
-  const renderErrorMsgs = () =>
-    errorMsgs &&
-    !!errorMsgs.length && (
-      <div className="error-messages">
-        {errorMsgs.map((msg, i) => (
-          <span key={i}>{msg}</span>
-        ))}
-      </div>
-    );
 
   const handleLogin = (values) => {
     return new Promise((resolve, reject) => {
@@ -48,9 +38,7 @@ const Header = ({ userState }) => {
         })
         .catch((e) => {
           setLoading(false);
-          setErrorMsgs(
-            e.response && e.response.data && e.response.data.messages
-          );
+          setErrorMsg(e.response && e.response.data && e.response.data.detail);
           reject();
         });
     });
@@ -97,9 +85,7 @@ const Header = ({ userState }) => {
         })
         .catch((e) => {
           setLoading(false);
-          setErrorMsgs(
-            e.response && e.response.data && e.response.data.messages
-          );
+          setErrorMsg(e.response && e.response.data && e.response.data.detail);
           reject();
         });
     });
@@ -123,6 +109,7 @@ const Header = ({ userState }) => {
         })
         .catch((e) => {
           setLoading(false);
+          setErrorMsg(e.response && e.response.data && e.response.data.detail);
           reject();
         });
     });
@@ -170,6 +157,13 @@ const Header = ({ userState }) => {
         ></span>
       </li>
     );
+
+  const renderErrorMsg = () =>
+    errorMsg ? (
+      <div className="error-messages">
+        <span>{errorMsg}</span>
+      </div>
+    ) : null;
 
   return (
     <header
@@ -229,7 +223,7 @@ const Header = ({ userState }) => {
               <span
                 style={{ cursor: "pointer" }}
                 onClick={() => {
-                  setErrorMsgs(null);
+                  setErrorMsg(null);
                   setLoginModal(true);
                 }}
               >
@@ -260,7 +254,7 @@ const Header = ({ userState }) => {
               <div className="modal-content">
                 <div className="modal-title">
                   <h4>Welcome back</h4>
-                  {renderErrorMsgs()}
+                  {renderErrorMsg()}
                 </div>
 
                 <Form
@@ -331,14 +325,14 @@ const Header = ({ userState }) => {
               <span
                 className="closeBtn"
                 onClick={() => {
-                  setErrorMsgs(false);
+                  setErrorMsg(null);
                   setRegisterModal(false);
                 }}
               ></span>
               <div className="modal-content">
                 <div className="modal-title">
                   <h4>Create account</h4>
-                  {renderErrorMsgs()}
+                  {renderErrorMsg()}
                 </div>
                 <Form
                   onSubmit={handleRegister}
@@ -462,10 +456,8 @@ const Header = ({ userState }) => {
               ></span>
               <div className="modal-content">
                 <div className="modal-title">
-                  <h4>
-                    Your profile
-                    <br />
-                  </h4>
+                  <h4>Your profile</h4>
+                  {renderErrorMsg()}
                 </div>
                 <Form
                   onSubmit={handleProfileUpdate}

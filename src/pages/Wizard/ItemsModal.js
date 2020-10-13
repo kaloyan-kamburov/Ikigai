@@ -16,7 +16,7 @@ const ItemsModal = ({
   hidden,
   text,
   icon,
-  errorMsgs,
+  errorMsg,
 }) => {
   const [itemsForSend, setItemsForSend] = useState(null);
   const history = { useHistory };
@@ -98,11 +98,9 @@ const ItemsModal = ({
         <h4>
           <img alt="icon" src={icon} />
           {text}
-          {errorMsgs && !!errorMsgs.length && (
+          {errorMsg && (
             <div className="error-messages">
-              {errorMsgs.map((msg, i) => (
-                <span key={i}>{msg}</span>
-              ))}
+              <span>{errorMsg}</span>
             </div>
           )}
         </h4>

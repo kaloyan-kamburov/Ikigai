@@ -15,7 +15,7 @@ const IkigaiChart = () => {
   const history = useHistory();
   const [loading, setLoading] = useState(false);
   // const [userDetails, setUserDetails] = useContext(UserContext);
-  const [errorMsgs, setErrorMsgs] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(null);
   const defaultZoomValue = {
     scale: 0.96,
     translation: {
@@ -830,7 +830,7 @@ const IkigaiChart = () => {
           sets={itemsForEdit.sets}
           text={itemsForEdit.text}
           icon={itemsForEdit.icon}
-          errorMsgs={errorMsgs}
+          errorMsg={errorMsg}
           loading={loading}
           saveFn={() => {
             setLoading(true);
@@ -848,8 +848,8 @@ const IkigaiChart = () => {
               })
               .catch((e) => {
                 setLoading(false);
-                setErrorMsgs(
-                  e.response && e.response.data && e.response.data.messages
+                setErrorMsg(
+                  e.response && e.response.data && e.response.data.detail
                 );
               });
           }}
