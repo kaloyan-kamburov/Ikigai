@@ -49,8 +49,10 @@
   }
 }
 .rectangle {
-  height: 27px;
-  width: 27px;
+  // height: 27px;
+  // width: 27px;
+  width: 1.40vw;
+  height: 1.40vw;
   border: 3px solid #ffffff;
   transform: rotate(315deg);
   display: block;
@@ -142,7 +144,7 @@
   // font-size: 38px;
   // line-height: 56px;
   font-weight: 600;
-  font-size: 1.97vw;
+  font-size: 1.80vw;
   line-height: 2.91vw;
 }
 .form-questions-list {
@@ -211,7 +213,8 @@
     letter-spacing: 0;
     // line-height: 46px;
     font-size: 1.45vw;
-    line-height: 2.39vw;
+    // line-height: 2.39vw;
+    line-height: 28px;
   }
   &[class*="value-container"] {
     mark {

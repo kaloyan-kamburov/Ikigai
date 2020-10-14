@@ -37,7 +37,11 @@
         // font-size: 0.93vw;
         // line-height: 1.45vw;
       }
+      &[class*="__input"] {
+        font-size: 18px;
+      }
     }
+    
   }
 
   button {

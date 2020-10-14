@@ -12,7 +12,7 @@
 }
 
 .section {
-  padding: 120px 0 355px;
+  padding: 144px 0 355px;
   background: $white;
 }
 .section-head {
@@ -78,10 +78,14 @@
 }
 .chart-bg {
   position: absolute;
-  height: 100%;
-  width: 100%;
+  // height: 100%;
+  // width: 100%;
+  // top: 0;
+  // left: -110%;
+  height: 110%;
+  width: 130%;
   top: 0;
-  left: -110%;
+  left: -120%;
   path {
     fill: rgba(0, 0, 0, 0);
     stroke: #fff;

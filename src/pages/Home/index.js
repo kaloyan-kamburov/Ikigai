@@ -34,7 +34,7 @@ const Home = () => {
           <div className="section-body">
             <div className="section-btn">
               <button
-                className="btn-small"
+                className="btn-lg"
                 onClick={() => {
                   history.push(logged ? "/chart" : "/what-you-love");
                 }}
