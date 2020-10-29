@@ -1,11 +1,20 @@
 import React, { useEffect, useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { UserContext } from "../../context";
+import Slider from "react-slick";
 
 const Home = () => {
   const history = useHistory();
   const [userDetails, setUserDetails] = useContext(UserContext);
   const [logged, setLogged] = useState(false);
+
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
 
   // useEffect(() => {
   //   sessionStorage.removeItem("step_A");
@@ -48,6 +57,25 @@ const Home = () => {
           </div>
         </div>
       </section>
+      <div>
+        <Slider {...sliderSettings}>
+          <>
+            <div style={{ minHeight: "200px" }}>
+              <span style={{ color: "#fff" }}>1</span>
+            </div>
+          </>
+          <>
+            <div style={{ minHeight: "200px" }}>
+              <span style={{ color: "#fff" }}>2</span>
+            </div>
+          </>
+          <>
+            <div style={{ minHeight: "200px" }}>
+              <span style={{ color: "#fff" }}>3</span>
+            </div>
+          </>
+        </Slider>
+      </div>
       <section className="bg-section">
         <div className="shell">
           <aside className="aside">
