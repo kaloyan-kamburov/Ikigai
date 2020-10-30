@@ -1,45 +1,68 @@
 .shell {
-  width: 89%;
-  margin: 0 auto;
-  overflow-x: visible;
+  // width: 89%;
+  // margin: 0 auto;
+  // overflow-x: visible;
 }
 @media #{$large} {
   .shell {
-    width: 89%;
-    margin: 0 auto;
-    padding: 0;
+    // width: 89%;
+    // margin: 0 auto;
+    // padding: 0;
   }
 }
 
 .section {
-  padding: 144px 0 355px;
-  background: $white;
-}
-.section-head {
-  padding: 0 0 59px;
-}
-.section-body {
+  padding: 134px 0 146px;
+  background: $yellow;
   &:after {
     clear: both;
     display: block;
     content: "";
   }
 }
-.section-btn {
-  float: left;
-}
 .section-content {
-  max-width: 40%;
-  text-align: left;
-  padding-left: 98px;
+  width: 60%;
   float: left;
 }
-.bg-section {
-  // background-image: url('../images/ALL\ TOGETHER.svg');
-  background-size: contain;
-  background-position: left;
-  background-repeat: no-repeat;
-  background-color: $black;
+.section-image {
+  width: 40%;
+  float: left;
+}
+
+.section-body {
+  padding: 15px 0 35px;
+}
+.section-white{
+  background-color: $white;
+}
+.section-intro {
+  padding-top: 120px;
+  padding-bottom: 67px;
+  & p {
+    max-width: 794px;
+    margin: auto;
+    color: $black;
+    font-family: "IBM Plex Sans";
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 44px;
+    text-align: center;
+    padding-top: 16px;
+  }
+}
+// .bg-section {
+//   // background-image: url('../images/ALL\ TOGETHER.svg');
+//   background-size: contain;
+//   background-position: left;
+//   background-repeat: no-repeat;
+//   background-color: $black;
+//   &:after {
+//     clear: both;
+//     display: block;
+//     content: "";
+//   }
+// }
+.aside-wrapper {
   &:after {
     clear: both;
     display: block;
@@ -48,34 +71,69 @@
 }
 .aside {
   width: 50%;
-  background-color: $white;
-  border: 3px solid $black;
-  color: $black;
-  margin-top: -64.5px;
-  float: right;
-  padding: 167px 131px 109px;
-  position: relative;
-}
-.aside-content p {
-  padding: 50px 0 0;
-}
-.aside-list {
-  padding: 27px 0 59px;
-  & li::before {
-    content: "";
-    display: inline-block;
-    vertical-align: middle;
-    height: 11px;
-    width: 11px;
-    transform: rotate(315deg);
-    background-color: $black;
-    margin-right: 14px;
-    line-height: 46px;
+  float: left;
+  padding-bottom: 142px;
+  // background-color: $white;
+  // border: 3px solid $black;
+  // color: $black;
+  // margin-top: -64.5px;
+  // float: right;
+  // padding: 167px 131px 109px;
+  // position: relative;
+  & .aside-head {
+    & h2 {
+      text-align: left;
+    }
+    & h3 {
+      color: $black;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 28px;
+      line-height: 44px;
+      font-weight: 400;
+    }
   }
 }
-.aside-foot {
-  padding: 65px 0 0;
+.aside-content  {
+  padding: 36px 0 32px;
+  & p {
+    color: $black;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 32px;
+    padding-bottom:20px;
+    &:last-child {
+      padding-bottom:0;
+    }
+  }
 }
+.aside-list {
+  padding: 20px 0 28px;
+  & li {
+    color: $black;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 32px;
+    padding-bottom: 16px;
+    &::before {
+      content: "";
+      display: inline-block;
+      vertical-align: middle;
+      height: 6px;
+      width: 6px;
+      transform: rotate(315deg);
+      background-color: $black;
+      margin-right: 11px;
+      line-height: 32px;
+    }
+    &:last-child{
+      padding-bottom: 0;
+    }
+  }
+  
+}
+
 .chart-bg {
   position: absolute;
   // height: 100%;

@@ -4,7 +4,7 @@ header {
   height: 100px;
   // height: 4rem;
   // background: $white;
-  background-color: transparent;
+  // background-color: transparent;
   justify-content: space-between;
   align-items: center;
   // padding: 0 2rem;
@@ -18,7 +18,7 @@ header {
   }
 
   .shell {
-    width: 90%;
+    // width: 90%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -47,10 +47,13 @@ header {
 .profile-controls {
   display: flex;
   justify-content: flex-end;
+  // color: $black;
   color: $white;
-  font-family: Campton;
+  font-family: 'IBM Plex Sans', sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
   font-size: 18px;
-  // line-height: 46px;
+  line-height: 23px;
   display: flex;
   width: 10%;
   margin-left: 50px;

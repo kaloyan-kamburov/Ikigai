@@ -227,7 +227,7 @@ const Header = ({ userState }) => {
                   setLoginModal(true);
                 }}
               >
-                Login
+                Sign in
               </span>
             </>
           ) : (

@@ -49,16 +49,15 @@
   }
 }
 .rectangle {
-  // height: 27px;
-  // width: 27px;
-  width: 1.40vw;
-  height: 1.40vw;
-  border: 3px solid #ffffff;
+  height: 20px;
+  width: 20px;
+  // border: 3px solid $white;
   transform: rotate(315deg);
   display: block;
-  &.active {
-    background-color: $white;
-  }
+  
+  // &.active {
+  //   background-color: $white;
+  // }
 }
 .form-bg {
   background: $white;

@@ -37,24 +37,95 @@ const Home = () => {
     <>
       <section className="section">
         <div className="shell">
-          <div className="section-head">
-            <h1>Realise your reason for being.</h1>
+          <div className="section-content">
+            <div className="section-head">
+                <h1>Realise your reason for being.</h1>
+              </div>
+              <div className="section-body">
+                <h3>We will help you find a purpose you strongly believe in.</h3>
+              </div>
+              <div className="section-foot">
+                <div className="section-btn">
+                  <button
+                    className="btn-lg"
+                    onClick={() => {
+                      history.push(logged ? "/chart" : "/what-you-love");
+                    }}
+                  >
+                    {logged ? "View my Ikigai" : "Start Your Journey"}
+                  </button>
+                  <button className="btn-more">Learn more</button>
+                </div>
+              </div>
+            </div>
+            <div className="section-image"> image </div>
+
+            
           </div>
-          <div className="section-body">
-            <div className="section-btn">
+      </section>
+      <section className="section-white">
+        <div className="shell">
+            <div className="section-intro">
+              <h2>What is Ikigai?</h2>
+              <p>Ikiguide is based on the japanese concept Ikigai that could help you discover a more meaningful life. It can be a great tool in many stages of your personal and professional life. </p>
+            </div>
+            <div className="aside-wrapper">
+            <aside className="aside">
+              image
+              </aside>
+              <aside className="aside">
+              <div className="aside-head">
+                <h3 className="aside-title">Take the next step</h3>
+              </div>
+              <div className="aside-content">
+                <ul className="aside-list">
+                  <li>You don’t know what is the right career for you</li>
+                  <li>
+                    You are stuck between jobs and look for something different
+                  </li>
+                  <li>Life has lost meaning and everyday is exactly the same</li>
+                </ul>
+              </div>
+              <div className="aside-foot">
+                <button className="btn-view">View examples</button>
+            </div>
+              </aside>
+              <div className="aside-wrapper">
+              
+              <aside className="aside">
+              <div className="aside-head">
+              <h2>What is Ikigai?</h2>
+              </div>
+              <div className="aside-content">
+                <p>Ikigai is a Japanese concept that means “a reason for being”. It is why you get up in the morning. The word refers to having a direction or purpose in life that makes one’s life worthwhile. </p>
+                <p>By discovering your ikigai you can focus on the things that matter the most to you and get satisfaction and a sense of meaning to your life. Ikigai could be related to your work, but it could also be related to something outside work. </p>
+                <p>Your ikigai could have many different expressions.</p>
+                <p>But, knowing your ikigai alone is not enough. You need an outlet. ikigai is “purpose in action”. </p>
+              </div>
+              <div className="aside-head">
+                <h3 className="aside-title">Take the next step</h3>
+              </div>
+              <div className="aside-content">
+                <p>Your ikigai lies in the interception of where what you love, what you are good at, what the world needs and what you can be paid for, overlap.</p>
+                <p>We will help you visualise your ikigai in a Venn diagram by asking you a series of questions. Then you would be able to discover where your ikigai lies. </p>
+              </div>
+              <div className="aside-foot">
               <button
-                className="btn-lg"
+                className="btn-small"
                 onClick={() => {
                   history.push(logged ? "/chart" : "/what-you-love");
                 }}
               >
-                {logged ? "View my Ikigai" : "Start here"}
+                {logged ? "View my Ikigai" : "Start your journey"}
               </button>
             </div>
-            <div className="section-content">
-              <h3>We will help you find a purpose you strongly believe in.</h3>
+              </aside>
+              <aside className="aside">
+              image
+              </aside>
+              </div>
             </div>
-          </div>
+            
         </div>
       </section>
       <div>
@@ -76,9 +147,10 @@ const Home = () => {
           </>
         </Slider>
       </div>
+      
       <section className="bg-section">
         <div className="shell">
-          <aside className="aside">
+          {/* <aside className="aside">
             <div className="aside-head">
               <h2>What is Ikigai?</h2>
             </div>
@@ -202,9 +274,11 @@ const Home = () => {
                 ></path>
               </g>
             </svg>
-          </aside>
+          </aside> */}
+          
         </div>
       </section>
+      
     </>
   );
 };

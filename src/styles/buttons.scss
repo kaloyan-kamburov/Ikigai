@@ -1,6 +1,6 @@
 button {
   color: $black;
-  font-family: Campton;
+  font-family: 'IBM Plex Sans', sans-serif;
   text-transform: uppercase;
   border: 3px solid $black;
   background: $white;
@@ -16,39 +16,40 @@ button {
   }
 }
 .btn-lg {
-  // height: 107px;
-  height: 90px;
-  // height: 5.3vw;
-  width: 341px;
-  // font-size: 40px;
-  font-size: 32px;
-  // line-height: 107px;
-  line-height: 90px;
-  // font-size: 1.8vw;
-  // line-height: 5.3vw;
+  height: 77px;
+  width: 319px;
+  line-height: 77px;
+  font-size: 23px;
+  font-weight: bold;
 }
 .btn-small {
-  height: 67px;
-  width: 252px;
-  font-size: 26px;
-  // font-size: 1.45vw; 
-  line-height: 67px;
-  // height: 3.95vw;
-  // line-height: 3.95vw;
+  color: $black;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 57px;
+  height:57px;
+  width:258px;
 }
-.btn-viewExamples {
-  font-size: 28px;
-  // font-size: 1.45vw; 
-  // height: 3.95vw;
-  // line-height: 3.95vw;
-  height: 76px;
-  line-height: 76px;
-  
+.btn-more {
+  color: $black;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 80px;
   text-decoration: underline;
   box-shadow: none;
   border: none;
-  text-transform: initial;
-  margin-left: 60px;
+  background: transparent;
+  margin-left: 55px;
+}
+.btn-view {
+  color: $black;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 24px;
+  text-decoration: underline;
+  box-shadow: none;
+  border: none;
+  background: transparent;
 }
 // .btn-light {
 //   opacity: 0.3;
