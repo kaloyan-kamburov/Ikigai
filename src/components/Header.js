@@ -123,6 +123,7 @@ const Header = ({ userState }) => {
     "/congratulations": 5,
   };
 
+  // eslint-disable-next-line no-unused-vars
   const renderWizardStep = (pathname) => {
     const currentWizardStep = pathnamesMap[location.pathname];
     const step = pathnamesMap[pathname];
@@ -190,11 +191,11 @@ const Header = ({ userState }) => {
             <span className="rectangle"></span>
           </li> */}
           {renderLogo(["/", "/chart"])}
-          {renderWizardStep("/what-you-love")}
+          {/* {renderWizardStep("/what-you-love")}
           {renderWizardStep("/what-are-you-good-at")}
           {renderWizardStep("/what-the-world-needs")}
           {renderWizardStep("/what-are-you-paid-for")}
-          {renderWizardStep("/congratulations")}
+          {renderWizardStep("/congratulations")} */}
         </ul>
         <div className="profile-controls">
           {userDetails &&

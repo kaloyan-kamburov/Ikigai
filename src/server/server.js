@@ -94,9 +94,9 @@ app.get("/api/logged", (req, res) => {
   //     })
   //     .json(userData);
   // }, 1);
-  setTimeout(() => {
-    res.status(403).end();
-  }, 2000);
+  // setTimeout(() => {
+  res.status(403).end();
+  // }, 2000);
 });
 
 app.post("/api/login", (req, res) => {

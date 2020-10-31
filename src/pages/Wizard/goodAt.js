@@ -3,6 +3,7 @@ import Select from "../../components/form/Select";
 import { Form } from "react-final-form";
 import { useHistory, useLocation } from "react-router-dom";
 import { UserContext } from "../../context";
+import MiniChart from "../../components/MiniChart";
 
 const GoodAt = () => {
   const [userDetails, setUserDetails] = useContext(UserContext);
@@ -104,8 +105,10 @@ const GoodAt = () => {
                 </p>
               </div>
             </div>
-
-            <div className="col_40 form-questions">
+            <div className="col_40">
+              <MiniChart active="B" />
+            </div>
+            {/* <div className="col_40 form-questions">
               <h2 className="form-questions-title">
                 This question is meant to figure out your natural gifts: your
                 talents and skills.
@@ -124,7 +127,7 @@ const GoodAt = () => {
                   the best at what you do?
                 </li>
               </ul>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>

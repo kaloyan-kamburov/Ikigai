@@ -3,6 +3,7 @@ import Select from "../../components/form/Select";
 import { Form } from "react-final-form";
 import { useHistory, useLocation } from "react-router-dom";
 import { UserContext } from "../../context";
+import MiniChart from "../../components/MiniChart";
 
 const GoodAt = () => {
   const history = useHistory();
@@ -118,31 +119,36 @@ const GoodAt = () => {
                 </p>
               </div>
             </div>
-
-            <div className="col_40 form-questions">
-              <h2 className="form-questions-title">
-                This question is about figuring out what you find fun,
-                interesting and motivating.
-              </h2>
-              <ul className="form-questions-list">
-                <li>
-                  {" "}
-                  What would you do if you didn’t have to worry about making
-                  money?
-                </li>
-                <li>
-                  How would you spend your time on a long vacation or a free
-                  weekend?
-                </li>
-                <li>
-                  What’s exciting to you and gets your juices flowing when you
-                  do it?
-                </li>
-                <li>
-                  What could you enthusiastically talk about for hours on end?
-                </li>
-              </ul>
+            <div className="col_40">
+              <MiniChart active="A" />
             </div>
+
+            {/* 
+              <div className="col_40 form-questions">
+                <h2 className="form-questions-title">
+                  This question is about figuring out what you find fun,
+                  interesting and motivating.
+                </h2>
+                <ul className="form-questions-list">
+                  <li>
+                    {" "}
+                    What would you do if you didn’t have to worry about making
+                    money?
+                  </li>
+                  <li>
+                    How would you spend your time on a long vacation or a free
+                    weekend?
+                  </li>
+                  <li>
+                    What’s exciting to you and gets your juices flowing when you
+                    do it?
+                  </li>
+                  <li>
+                    What could you enthusiastically talk about for hours on end?
+                  </li>
+                </ul>
+              </div> 
+            */}
           </div>
         </div>
       </section>
