@@ -29,6 +29,9 @@ button {
   line-height: 57px;
   height:57px;
   width:258px;
+  &.yellow {
+    background: $yellow;
+  }
 }
 .btn-more {
   color: $black;

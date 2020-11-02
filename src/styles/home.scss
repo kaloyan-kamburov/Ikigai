@@ -12,12 +12,15 @@
 }
 
 .section {
-  padding: 134px 0 146px;
+  // position: relative;
+  padding: 200px 0 146px;
   background: $yellow;
-  &:after {
-    clear: both;
-    display: block;
-    content: "";
+  & .shell {
+    &:after {
+      clear: both;
+      display: block;
+      content: "";
+    }
   }
 }
 .section-content {
@@ -50,18 +53,76 @@
     padding-top: 16px;
   }
 }
-// .bg-section {
-//   // background-image: url('../images/ALL\ TOGETHER.svg');
-//   background-size: contain;
-//   background-position: left;
-//   background-repeat: no-repeat;
-//   background-color: $black;
-//   &:after {
-//     clear: both;
-//     display: block;
-//     content: "";
-//   }
-// }
+.section-slider {
+  background-color: $lightyellow;
+  padding: 96px 0 70px;
+  & h2{
+    color: #131415;
+    padding: 0 0 31px;
+  }
+  & .slider-title {
+    & h3 {
+    font-weight: bold;
+    color: #131415;
+    }
+  }
+  &.slider-title-result {
+    font-weight: 400;
+  }
+  & .slider-text {
+    padding: 11px 0 31px;
+    & p {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 20px;
+      font-weight: 300;
+      color: #131415;
+      line-height: 32px;
+    }
+  }
+}
+.bg-section {
+  // background-image: url('../images/ALL\ TOGETHER.svg');
+  // background-size: contain;
+  // background-position: left;
+  // background-repeat: no-repeat;
+  background-color: $black;
+  // position: relative;
+  padding: 200px 0 250px;
+  // &:after {
+  //   clear: both;
+  //   display: block;
+  //   content: "";
+  // }
+  & .bg-section-head {
+    width: 60%;
+    margin: 0 auto;
+    padding: 0 0 20px;
+    & h2 {
+      color: #E5E4E4;
+      font-family: Casta;
+      font-size: 114px;
+      font-weight: 100;
+      line-height: 126px;
+      text-align: center;
+    }
+  }
+  & .bg-section-body {
+    & h3 {
+      color: $white;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 20px;
+      font-weight: 300;
+      line-height: 32px;
+      text-align: center;
+      
+    }
+  }
+  & .bg-section-foot {
+    text-align: center;
+    padding: 20px 0 0;
+  }
+  
+}
 .aside-wrapper {
   &:after {
     clear: both;
@@ -133,20 +194,23 @@
   }
   
 }
-
-.chart-bg {
-  position: absolute;
-  // height: 100%;
-  // width: 100%;
-  // top: 0;
-  // left: -110%;
-  height: 110%;
-  width: 130%;
-  top: 0;
-  left: -120%;
-  path {
-    fill: rgba(0, 0, 0, 0);
-    stroke: #fff;
-    stroke-width: 3px;
-  }
+.section-yellow {
+  background-color: $lightyellow;
+  padding: 138px 0 200px ;
 }
+// .chart-bg {
+//   position: absolute;
+//   // height: 100%;
+//   // width: 100%;
+//   // top: 0;
+//   // left: -110%;
+//   height: 110%;
+//   width: 130%;
+//   top: 0;
+//   left: -120%;
+//   path {
+//     fill: rgba(0, 0, 0, 0);
+//     stroke: #fff;
+//     stroke-width: 3px;
+//   }
+// }

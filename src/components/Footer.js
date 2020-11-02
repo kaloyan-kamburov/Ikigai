@@ -10,19 +10,15 @@ function Footer() {
       <footer className="footer">
         <div className="shell">
           <div className="foot-wrap">
-            <div className="foot-content left">
-              <p>Made with love by people that </p>
-            </div>
-            <div className="foot-content right">
-              <ul className="foot-nav">
-                <li>
-                  <a href="#">About</a>
-                </li>
-                <li>
-                  <a href="#">Contact</a>
-                </li>
-              </ul>
-            </div>
+            <p className="foot-text">Made with love by people that care.</p>
+            <ul className="foot-nav">
+              <li>
+                <a href="#">About</a>
+              </li>
+              <li>
+                <a href="#">Contact</a>
+              </li>
+            </ul>
           </div>
         </div>
       </footer>

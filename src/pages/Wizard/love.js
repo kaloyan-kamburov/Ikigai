@@ -53,19 +53,20 @@ const GoodAt = () => {
 
   return (
     <>
-      <section className="section-dark">
+      <section className="section-yellow">
         <div className="shell">
           <div className="col-wrapper">
             <div className="col_60 form-bg">
               <div className="form-head">
-                <p className="formHead-title">Discover your purpose</p>
+                <p className="formHead-title">Step</p>
                 <ul className="page-number">
                   <li>1</li>
                   <li>4</li>
                 </ul>
               </div>
 
-              <h1 className="form-title">What you love</h1>
+              <h1 className="form-title">What you love to do</h1>
+              <p className="form-subtitle">What would you do if you didn’t have to worry about money?</p>
               <div className="form-select">
                 <Form
                   validate={(values) => {
@@ -113,6 +114,9 @@ const GoodAt = () => {
                             Continue
                           </button>
                         </div>
+                        <div className="form-foot">
+                          <p>You have to add at least 3 items in order to continue.</p>
+                        </div>
                       </form>
                     );
                   }}
@@ -127,14 +131,9 @@ const GoodAt = () => {
                 >
                   Back
                 </button> */}
+                
               </div>
-              <div className="form-foot">
-                <p>You have to add at least 3 items in order to continue.</p>
-                <p>
-                  Don’t worry about missing out - you can always change them
-                  later.
-                </p>
-              </div>
+              
             </div>
             <div className="col_40">
               <MiniChart active="A" redraw={redraw} />
