@@ -4,7 +4,7 @@ import { intersection } from "underscore";
 import * as d3 from "d3";
 import * as venn from "@upsetjs/venn.js";
 
-const MiniChart = ({ active }) => {
+const MiniChart = ({ active, redraw }) => {
   const history = useHistory();
 
   const reduceItems = (items) => {
@@ -221,10 +221,10 @@ const MiniChart = ({ active }) => {
         type: "ikigai",
         text: "Edit your ikigai",
         itemsParams: {
-          x: 0,
-          y: 0,
-          width: 120,
-          height: 130,
+          x: 2,
+          y: 2,
+          width: 70,
+          height: 68,
           big: 5,
           medium: 9,
           small: 12,
@@ -243,10 +243,10 @@ const MiniChart = ({ active }) => {
         posLabelX: "50%",
         posLabelY: "0%",
         itemsParams: {
-          x: 0,
-          y: 0,
-          width: 170,
-          height: 500,
+          x: -125,
+          y: -150,
+          width: 90,
+          height: 300,
           big: 20,
           medium: 30,
           small: 40,
@@ -264,10 +264,10 @@ const MiniChart = ({ active }) => {
         posLabelX: "50%",
         posLabelY: "0%",
         itemsParams: {
-          x: 0,
-          y: 0,
-          width: 170,
-          height: 500,
+          x: 35,
+          y: -150,
+          width: 90,
+          height: 300,
           big: 20,
           medium: 30,
           small: 40,
@@ -285,10 +285,10 @@ const MiniChart = ({ active }) => {
         posLabelX: "50%",
         posLabelY: 1,
         itemsParams: {
-          x: 0,
-          y: 0,
-          width: 220,
-          height: 160,
+          x: -90,
+          y: -100,
+          width: 180,
+          height: 54,
           big: 20,
           medium: 30,
           small: 40,
@@ -305,10 +305,10 @@ const MiniChart = ({ active }) => {
         posLabelX: "50%",
         posLabelY: "100%",
         itemsParams: {
-          x: 0,
-          y: 0,
-          width: 230,
-          height: 140,
+          x: -90,
+          y: 45,
+          width: 180,
+          height: 54,
           big: 20,
           medium: 30,
           small: 40,
@@ -324,10 +324,10 @@ const MiniChart = ({ active }) => {
         type: "intersection",
         text: "Edit your mission",
         itemsParams: {
-          x: 0,
-          y: 0,
-          width: 160,
-          height: 160,
+          x: 80,
+          y: -170,
+          width: 80,
+          height: 100,
           big: 15,
           medium: 25,
           small: 30,
@@ -342,10 +342,10 @@ const MiniChart = ({ active }) => {
         type: "intersection",
         text: "Edit your vocation",
         itemsParams: {
-          x: 0,
-          y: 0,
-          width: 160,
-          height: 160,
+          x: 70,
+          y: 70,
+          width: 90,
+          height: 80,
           big: 15,
           medium: 25,
           small: 30,
@@ -360,10 +360,10 @@ const MiniChart = ({ active }) => {
         type: "intersection",
         text: "Edit your profession",
         itemsParams: {
-          x: 0,
-          y: 0,
-          width: 160,
-          height: 160,
+          x: 14,
+          y: -100,
+          width: 80,
+          height: 100,
           big: 15,
           medium: 25,
           small: 30,
@@ -378,10 +378,10 @@ const MiniChart = ({ active }) => {
         type: "intersection",
         text: "Edit your passion",
         itemsParams: {
-          x: 0,
-          y: 0,
-          width: 160,
-          height: 160,
+          x: 5,
+          y: 5,
+          width: 80,
+          height: 100,
           big: 15,
           medium: 25,
           small: 30,
@@ -397,10 +397,10 @@ const MiniChart = ({ active }) => {
         type: "intersection",
         text: "Edit your things",
         itemsParams: {
-          x: 0,
-          y: 0,
-          width: 100,
-          height: 100,
+          x: 79,
+          y: 15,
+          width: 36,
+          height: 40,
           big: 2,
           medium: 5,
           small: 8,
@@ -415,10 +415,10 @@ const MiniChart = ({ active }) => {
         type: "intersection",
         text: "Edit your things",
         itemsParams: {
-          x: 0,
-          y: 0,
-          width: 90,
-          height: 90,
+          x: 10,
+          y: -120,
+          width: 60,
+          height: 40,
           big: 2,
           medium: 5,
           small: 8,
@@ -433,10 +433,10 @@ const MiniChart = ({ active }) => {
         type: "intersection",
         text: "Edit your things",
         itemsParams: {
-          x: 0,
-          y: 0,
-          width: 100,
-          height: 100,
+          x: 19,
+          y: -20,
+          width: 36,
+          height: 40,
           big: 2,
           medium: 5,
           small: 8,
@@ -451,10 +451,10 @@ const MiniChart = ({ active }) => {
         type: "intersection",
         text: "Edit your things",
         itemsParams: {
-          x: 0,
-          y: 0,
-          width: 90,
-          height: 90,
+          x: 10,
+          y: 80,
+          width: 50,
+          height: 60,
           big: 2,
           medium: 5,
           small: 8,
@@ -525,21 +525,14 @@ const MiniChart = ({ active }) => {
     let labelText = path.node().childNodes[1].childNodes[0];
 
     // const pathDimensions = path.node().getBoundingClientRect();
-    const pathDimensions = path.node().children[0].getBoundingClientRect();
-    console.log(pathDimensions);
+    // console.log(path.node().getBoundingClientRect());
+    const boundingRect = path.node().getBoundingClientRect();
+    const pathDimensions = path.node().children[0];
+    // console.log(path.node().children[0]);
+    // console.log(path.node().children[0].getPointAtLength(0));
     if (d.posLabelX && d.posLabelY) {
       labelText.setAttribute("x", d.posLabelX);
       labelText.setAttribute("y", d.posLabelY);
-    }
-    if (d.rotate) {
-      path
-        .node()
-        .childNodes[1].setAttribute(
-          "style",
-          `transform: rotate(${
-            d.rotate === "left" ? "-" : ""
-          }90deg); transform-origin: center; fill: rgb(128, 128, 0); font-size: 1rem`
-        );
     }
 
     if (d.items) {
@@ -554,7 +547,7 @@ const MiniChart = ({ active }) => {
       .append("foreignObject")
       .attr(
         "x",
-        pathDimensions.x
+        pathDimensions.getPointAtLength(0).x
         // window.innerWidth < 832
         //   ? pathDimensions.x +
         //       pathDimensions.width / 2 +
@@ -562,7 +555,9 @@ const MiniChart = ({ active }) => {
         //       (832 - window.innerWidth) / 2
         //   : pathDimensions.x + pathDimensions.width / 2 + d.itemsParams.x
       )
-      .attr("y", pathDimensions.y)
+      .attr("x", pathDimensions.getPointAtLength(0).x + d.itemsParams.x)
+      .attr("y", pathDimensions.getPointAtLength(0).y + d.itemsParams.y)
+
       // .attr(
       //   "style",
       //   `width: ${d.itemsParams.width}px; height: ${d.itemsParams.height}px;`
@@ -580,7 +575,16 @@ const MiniChart = ({ active }) => {
         }`
       )
       .append("xhtml:div")
-      .attr("class", "items")
+      .attr("class", d.items.length === 0 ? "items none" : "items")
+      // .attr(
+      //   "style",
+      //   `width: ${boundingRect.width}px; height: ${boundingRect.height}px;`
+      // )
+
+      .attr(
+        "style",
+        `width: ${d.itemsParams.width}px; height: ${d.itemsParams.height}px;`
+      )
       .html(items);
 
     // if (d.shape) {
@@ -602,10 +606,22 @@ const MiniChart = ({ active }) => {
     // }
   };
 
+  const resetSets = () => {
+    setSets(removeDuplicates(defaultSets()));
+  };
+
   useEffect(() => draw(), [sets]);
 
+  useEffect(() => {
+    redraw && resetSets();
+  }, [redraw]);
+
   return (
-    <div id="ikigai" className="chart-mini" style={{ height: "100%" }}></div>
+    <div
+      id="ikigai"
+      className="chart-mini"
+      style={{ height: "100%", maxHeight: "500px" }}
+    ></div>
   );
 };
 

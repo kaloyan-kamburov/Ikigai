@@ -536,5 +536,23 @@
 
   .items {
     color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    // background-color: red;
+    // border: 1px solid red;
+
+    &.none {
+      // background-color: transparent;
+    }
+
+    .item {
+      font-size: 10px;
+    }
+  }
+
+  foreignObject {
+    overflow: visible;
   }
 }

@@ -4,25 +4,24 @@
 // }
 
 .shell {
-	width:1400px;
-	margin: 0 auto;
-	padding:0 60px;
-
-} 
+  width: 1400px;
+  margin: 0 auto;
+  padding: 0 60px;
+}
 .col_40,
 .col-60 {
-	width: 100%;
+  width: 100%;
 }
 
 @media #{$large} {
-	.col-wrapper {
-		display: flex;
-	}
-	
-	.col_40 { width: 40%;}
-	.col_60 { width: 60%; }
-		
+  .col-wrapper {
+    display: flex;
+  }
+
+  .col_40 {
+    width: 40%;
+  }
+  .col_60 {
+    width: 60%;
+  }
 }
-
-	
-

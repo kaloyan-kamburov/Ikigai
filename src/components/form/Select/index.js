@@ -116,6 +116,7 @@ const renderSelect = (props) => {
     // Final form provided utility method
     const { onChange } = props.input;
     onChange(item);
+    props.onExternalChange && props.onExternalChange(item);
   };
 
   return (

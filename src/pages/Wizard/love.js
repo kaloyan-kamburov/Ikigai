@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import Select from "../../components/form/Select";
 import { Form } from "react-final-form";
 import { useHistory, useLocation } from "react-router-dom";
@@ -9,6 +9,22 @@ const GoodAt = () => {
   const history = useHistory();
   const location = useLocation();
   const [userDetails, setUserDetails] = useContext(UserContext);
+  const [redraw, setRedraw] = useState(false);
+
+  const onChange = (options) => {
+    const ikiSettings = JSON.parse(localStorage.getItem("ikigai"));
+    localStorage.setItem(
+      "ikigai",
+      JSON.stringify({
+        ...ikiSettings,
+        step_A: options,
+      })
+    );
+    setRedraw(true);
+    setTimeout(() => {
+      setRedraw(false);
+    }, 1);
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -75,6 +91,7 @@ const GoodAt = () => {
                           isMulti
                           value={props.initialValues.options}
                           defVal={sessionStorage.getItem("step_A")}
+                          onExternalChange={onChange}
                         />
                         {/* <div className="form-list">
                           <p className="form-list-title">Your items</p>
@@ -120,7 +137,7 @@ const GoodAt = () => {
               </div>
             </div>
             <div className="col_40">
-              <MiniChart active="A" />
+              <MiniChart active="A" redraw={redraw} />
             </div>
 
             {/* 
