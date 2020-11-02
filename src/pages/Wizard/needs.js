@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import Select from "../../components/form/Select";
 import { Form } from "react-final-form";
 import { useHistory, useLocation } from "react-router-dom";
@@ -9,24 +9,24 @@ const GoodAt = () => {
   const [userDetails, setUserDetails] = useContext(UserContext);
   const history = useHistory();
   const location = useLocation();
+  const [redraw, setRedraw] = useState(false);
 
-  const handleSubmit = (values) => {
+  const onChange = (options) => {
     const ikiSettings = JSON.parse(localStorage.getItem("ikigai"));
     localStorage.setItem(
       "ikigai",
       JSON.stringify({
         ...ikiSettings,
-        step_C: values.options,
+        step_B: options,
       })
     );
-    history.push({
-      pathname: "/what-are-you-paid-for",
-      state: {
-        ...location.state,
-        C: values.options,
-      },
-    });
+    setRedraw(true);
+    setTimeout(() => {
+      setRedraw(false);
+    }, 1);
   };
+
+  const handleSubmit = () => history.push("/what-are-you-paid-for");
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -44,7 +44,7 @@ const GoodAt = () => {
               <div className="form-head">
                 <p className="formHead-title">Discover your purpose</p>
                 <ul className="page-number">
-                  <li>3</li>
+                  <li>2</li>
                   <li>4</li>
                 </ul>
               </div>
@@ -64,7 +64,7 @@ const GoodAt = () => {
                   initialValues={{
                     options:
                       (JSON.parse(localStorage.getItem("ikigai")) &&
-                        JSON.parse(localStorage.getItem("ikigai")).step_C) ||
+                        JSON.parse(localStorage.getItem("ikigai")).step_B) ||
                       [],
                   }}
                 >
@@ -75,6 +75,7 @@ const GoodAt = () => {
                           name="options"
                           value={props.initialValues.options}
                           defVal={sessionStorage.getItem("step_B")}
+                          onExternalChange={onChange}
                         />
                         <div className="form-btns">
                           <button
@@ -84,6 +85,9 @@ const GoodAt = () => {
                           >
                             Continue
                           </button>
+                          <span onClick={() => history.push("/chart")}>
+                            SKIP WIZARD
+                          </span>
                         </div>
                       </form>
                     );
@@ -107,7 +111,7 @@ const GoodAt = () => {
             </div>
 
             <div className="col_40">
-              <MiniChart active="C" />
+              <MiniChart active="B" redraw={redraw} />
             </div>
 
             {/* <div className="col_40 form-questions">

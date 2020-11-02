@@ -33,23 +33,7 @@ const GoodAt = () => {
     }
   }, []);
 
-  const handleSubmit = (values) => {
-    const ikiSettings = JSON.parse(localStorage.getItem("ikigai"));
-    localStorage.setItem(
-      "ikigai",
-      JSON.stringify({
-        ...ikiSettings,
-        step_A: values.options,
-      })
-    );
-    history.push({
-      pathname: "/what-are-you-good-at",
-      state: {
-        ...location.state,
-        A: values.options,
-      },
-    });
-  };
+  const handleSubmit = () => history.push("/what-the-world-needs");
 
   return (
     <>
@@ -66,7 +50,9 @@ const GoodAt = () => {
               </div>
 
               <h1 className="form-title">What you love to do</h1>
-              <p className="form-subtitle">What would you do if you didn’t have to worry about money?</p>
+              <p className="form-subtitle">
+                What would you do if you didn’t have to worry about money?
+              </p>
               <div className="form-select">
                 <Form
                   validate={(values) => {
@@ -113,9 +99,15 @@ const GoodAt = () => {
                           >
                             Continue
                           </button>
+                          <span onClick={() => history.push("/chart")}>
+                            SKIP WIZARD
+                          </span>
                         </div>
                         <div className="form-foot">
-                          <p>You have to add at least 3 items in order to continue.</p>
+                          <p>
+                            You have to add at least 3 items in order to
+                            continue.
+                          </p>
                         </div>
                       </form>
                     );
@@ -131,9 +123,7 @@ const GoodAt = () => {
                 >
                   Back
                 </button> */}
-                
               </div>
-              
             </div>
             <div className="col_40">
               <MiniChart active="A" redraw={redraw} />

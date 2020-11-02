@@ -95,8 +95,16 @@ app.get("/api/logged", (req, res) => {
   //     .json(userData);
   // }, 1);
   // setTimeout(() => {
-  res.status(403).end();
+  // res.status(403).end();
   // }, 2000);
+  res.status(403).end();
+  // res
+  //   .cookie("csrftoken", "asd")
+  //   .cookie("jwt", "123", {
+  //     maxAge: 86_400_000,
+  //     httpOnly: true,
+  //   })
+  //   .json(userData);
 });
 
 app.post("/api/login", (req, res) => {

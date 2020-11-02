@@ -233,7 +233,7 @@ const MiniChart = ({ active, redraw }) => {
       {
         sets: ["D"],
         size: 1000,
-        label: " ",
+        label: "You are good at",
         desc:
           "<h6>WHAT YOU ARE GOOD AT</h6><p></p><strong>click to add</strong>",
         items: generateItemsForGroup(["D"]),
@@ -255,7 +255,7 @@ const MiniChart = ({ active, redraw }) => {
       {
         sets: ["B"],
         size: 1000,
-        label: " ",
+        label: "The world needs",
         desc: "WHAT THE WORLD NEEDS",
         items: generateItemsForGroup(["B"]),
         type: "circle",
@@ -276,14 +276,14 @@ const MiniChart = ({ active, redraw }) => {
       {
         sets: ["A"],
         size: 1000,
-        label: " ",
+        label: "You love",
         desc:
           "<h6>Things that you love doing</h6><div><p>What would you do if you didn’t have to worry about making money?</p><p>How would you spend your time on a long vacation or a free weekend?</p><p>What’s exciting to you and gets your juices flowing when you do it?</p><p>What could you enthusiastically talk about for hours on end?</p></div><div><p><span></span>Click to add</p></div>",
         items: generateItemsForGroup(["A"]),
         type: "circle",
         text: "Edit what you love",
         posLabelX: "50%",
-        posLabelY: 1,
+        posLabelY: "0%",
         itemsParams: {
           x: -90,
           y: -100,
@@ -297,7 +297,7 @@ const MiniChart = ({ active, redraw }) => {
       {
         sets: ["C"],
         size: 1000,
-        label: " ",
+        label: "You can be paid for",
         desc: "WHAT CAN YOU BE PAID",
         items: generateItemsForGroup(["C"]),
         type: "circle",
@@ -470,30 +470,27 @@ const MiniChart = ({ active, redraw }) => {
     const nativeEl = document.getElementById("ikigai");
     nativeEl.innerHTML = "";
     const div = d3.select("#ikigai");
-    div.datum(sets).call(
-      venn
-        .VennDiagram()
-        .useViewBox()
-        // .width(window.innerWidth)
-        // .height(
-        //   window.innerHeight - document.querySelector("header").clientHeight
-        // )
-        .width(nativeEl.offsetWidth)
-        .height(nativeEl.offsetHeight)
-    );
+    div
+      .datum(sets)
+      .call(
+        venn
+          .VennDiagram()
+          .useViewBox()
+          .width(nativeEl.offsetWidth)
+          .height(nativeEl.offsetHeight)
+      );
 
     d3.selectAll("#ikigai .venn-circle path")
       .style("stroke", "black")
-      .style("fill", "rgba(0,0,0,0)");
-    d3.selectAll(`#ikigai .venn-circle[data-venn-sets="${active}"] path`).style(
-      "fill",
-      "red"
-    );
+      .style("fill", "transparent");
+    d3.selectAll(`#ikigai .venn-circle[data-venn-sets="${active}"] path`)
+      .style("fill", "rgba(245,200,88)")
+      .style("fill-opacity", "0.5");
 
     d3.selectAll("#ikigai .venn-circle")
       .select("text")
-      .style("font-size", "1rem")
-      .style("fill", "rgba(128, 128, 0, 1)");
+      .style("font-size", "12px")
+      .style("fill", "#131415");
     d3.selectAll("#ikigai .venn-intersection")
       .select("text")
       .style("font-size", "1.4rem")
@@ -513,10 +510,7 @@ const MiniChart = ({ active, redraw }) => {
   };
 
   const insertItems = function (d, i) {
-    // if (d.label === "gucci") {
     const path = d3.select(this);
-    // const text = path.node().childNodes[1]
-    // console.log(path.node().childNodes[1]);
 
     const svg = path.node().closest("svg");
     let defs = svg.querySelectorAll("defs");
@@ -524,15 +518,23 @@ const MiniChart = ({ active, redraw }) => {
     let items = "";
     let labelText = path.node().childNodes[1].childNodes[0];
 
-    // const pathDimensions = path.node().getBoundingClientRect();
-    // console.log(path.node().getBoundingClientRect());
     const boundingRect = path.node().getBoundingClientRect();
     const pathDimensions = path.node().children[0];
-    // console.log(path.node().children[0]);
-    // console.log(path.node().children[0].getPointAtLength(0));
+
     if (d.posLabelX && d.posLabelY) {
       labelText.setAttribute("x", d.posLabelX);
       labelText.setAttribute("y", d.posLabelY);
+    }
+
+    if (d.rotate) {
+      path
+        .node()
+        .childNodes[1].setAttribute(
+          "style",
+          `transform: rotate(${
+            d.rotate === "left" ? "-" : ""
+          }90deg); transform-origin: center; fill: #131415; font-size: 12px`
+        );
     }
 
     if (d.items) {
@@ -541,27 +543,11 @@ const MiniChart = ({ active, redraw }) => {
       });
     }
 
-    // console.log(path.node());
-
     path
       .append("foreignObject")
-      .attr(
-        "x",
-        pathDimensions.getPointAtLength(0).x
-        // window.innerWidth < 832
-        //   ? pathDimensions.x +
-        //       pathDimensions.width / 2 +
-        //       d.itemsParams.x +
-        //       (832 - window.innerWidth) / 2
-        //   : pathDimensions.x + pathDimensions.width / 2 + d.itemsParams.x
-      )
+      .attr("x", pathDimensions.getPointAtLength(0).x)
       .attr("x", pathDimensions.getPointAtLength(0).x + d.itemsParams.x)
       .attr("y", pathDimensions.getPointAtLength(0).y + d.itemsParams.y)
-
-      // .attr(
-      //   "style",
-      //   `width: ${d.itemsParams.width}px; height: ${d.itemsParams.height}px;`
-      // )
       .attr("width", pathDimensions.width)
       .attr("height", pathDimensions.height)
       .attr(
@@ -576,39 +562,23 @@ const MiniChart = ({ active, redraw }) => {
       )
       .append("xhtml:div")
       .attr("class", d.items.length === 0 ? "items none" : "items")
-      // .attr(
-      //   "style",
-      //   `width: ${boundingRect.width}px; height: ${boundingRect.height}px;`
-      // )
-
       .attr(
         "style",
         `width: ${d.itemsParams.width}px; height: ${d.itemsParams.height}px;`
       )
       .html(items);
-
-    // if (d.shape) {
-    //   //append image
-    //   let image = path.append("image").attr("href", d.shape.img);
-    //   if (d.shape.scaleby !== "both") {
-    //     image.attr(d.shape.scaleby, pathDimensions[d.shape.scaleby]);
-    //   } else {
-    //     image.attr("width", pathDimensions.width + d.shape.width);
-    //     image.attr("height", pathDimensions.height + d.shape.height);
-    //   }
-
-    //   image.attr("x", pathDimensions.x + d.shape.x);
-    //   image.attr("y", pathDimensions.y + d.shape.y);
-    //   // .attr("width", pathDimensions.width)
-    //   // .attr("height", pathDimensions.height)
-    //   // .attr("x", pathDimensions.x + d.shape.x)
-    //   // .attr("y", pathDimensions.y + d.shape.y);
-    // }
   };
 
   const resetSets = () => {
     setSets(removeDuplicates(defaultSets()));
   };
+
+  const handleResize = () => resetSets();
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => draw(), [sets]);
 

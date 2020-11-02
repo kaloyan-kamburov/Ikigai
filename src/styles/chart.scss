@@ -531,8 +531,24 @@
 }
 
 .chart-mini {
+  // margin: 20px;
   cursor: default;
   background-color: $lightyellow;
+  overflow: visible;
+  min-height: 470px;
+  padding: 10px 0 10px 15px;
+  min-width: 470px;
+  @media (max-width: 1600px) {
+    padding: 10px 20px;
+  }
+  @media (max-width: 1500px) {
+    padding: 10px 35px;
+  }
+
+  g {
+    position: absolute;
+    z-index: 1;
+  }
 
   .items {
     color: #000;
@@ -549,10 +565,20 @@
 
     .item {
       font-size: 10px;
+      margin: 3px;
     }
   }
 
   foreignObject {
     overflow: visible;
+  }
+
+  svg {
+    overflow: visible;
+  }
+
+  tspan {
+    font-size: 12px;
+    color: #131415;
   }
 }
