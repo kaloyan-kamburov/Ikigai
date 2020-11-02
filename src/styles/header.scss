@@ -1,7 +1,9 @@
 header {
+  position: absolute;
   width: 100%;
   display: flex;
-  height: 100px;
+  padding-top: 70px;
+  // height: 100px;
   // height: 4rem;
   // background: $white;
   // background-color: transparent;
@@ -10,7 +12,7 @@ header {
   // padding: 0 2rem;
   box-sizing: border-box;
   // padding: 20px 0;
-  position: relative;
+  // position: relative;
   z-index: 10;
 
   &.fixed {
@@ -47,8 +49,8 @@ header {
 .profile-controls {
   display: flex;
   justify-content: flex-end;
-  // color: $black;
-  color: $white;
+  color: $black;
+  // color: $white;
   font-family: 'IBM Plex Sans', sans-serif;
   text-transform: uppercase;
   font-weight: 700;

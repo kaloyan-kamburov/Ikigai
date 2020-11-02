@@ -1,38 +1,52 @@
 .footer {
-    background: $black;
-    padding: 104px 0 71.5px;
+    position: absolute;
+    bottom: 50px;
+    width: 100%;
+    & .foot-wrap {
+        & .foot-text {
+            color: $white;
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-weight: 300;
+            font-size: 14px;
+            line-height: 36px;
+            text-align: center;
+        }
+        & .foot-nav{
+            text-align: center;
+            & li {
+                color: $white;
+                font-family: 'IBM Plex Sans', sans-serif;
+                font-weight: 300;
+                font-size: 14px;
+                line-height: 36px;
+                display: inline-block;
+                padding-left: 40px;
+                &:first-child {
+                    padding-left: 0;
+                } 
+                & a {
+                    color: $white;
+                }  
+            }
+        }
+    }
+    
 }
-.foot-wrap {
-    &::after {
-        display: block;
-        clear: both;
-        content:"";
-    }
-}
-.foot-content  {
-    display: inline-block;
-    & p,
-    & .foot-nav li a{
-        color: $white;
-        font-family: Campton;
-        font-size: 18px;
-        line-height: 46px;
-    }
-    &.left {
-        float: left;
-    }
-    &.right {
-        float: right;
+@media #{$medium} {
+	.footer {
+        & .foot-wrap { 
+            & .foot-text {
+                text-align: left;
+                display: inline-block;
+            }
+            & .foot-nav {
+                text-align: right;
+                float: right;
+                
+            }
+        }
+        
     }
 }
 
-.foot-nav {
-    text-align: right;
-    & li {
-        display: inline-block;
-        padding-left: 40px;
-        &:first-child {
-            padding-left: 0;
-        }
-    }
-}
+	

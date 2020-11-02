@@ -1,4 +1,19 @@
 /* Slider */
+.slider-wrapper {
+  &:after {
+    clear: both;
+    display: block;
+    content: "";
+  }
+  & .slider-image {
+    width: 45%;
+    float: left;
+  }
+  & .slider-content {
+    width: 55%;
+    float: right;
+  }
+}
 .slick-slider {
   position: relative;
 
@@ -97,4 +112,19 @@
 }
 .slick-arrow.slick-hidden {
   display: none;
+}
+.slick-arrow {
+  display: none !important;
+}
+.slick-dots li {
+  margin: 0 2px !important;
+}
+.slick-dots li.slick-active button:before {
+  opacity: 1 !important;
+  color:#131415 !important; 
+}
+.slick-dots li button:before {
+  font-size: 10px !important;
+  opacity: 0.22 !important;
+  color:#131415 !important;
 }

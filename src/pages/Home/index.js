@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { UserContext } from "../../context";
 import Slider from "react-slick";
 
+
 const Home = () => {
   const history = useHistory();
   const [userDetails, setUserDetails] = useContext(UserContext);
@@ -70,86 +71,126 @@ const Home = () => {
               <p>Ikiguide is based on the japanese concept Ikigai that could help you discover a more meaningful life. It can be a great tool in many stages of your personal and professional life. </p>
             </div>
             <div className="aside-wrapper">
-            <aside className="aside">
-              image
-              </aside>
+              <aside className="aside">image</aside>
               <aside className="aside">
-              <div className="aside-head">
-                <h3 className="aside-title">Take the next step</h3>
-              </div>
-              <div className="aside-content">
-                <ul className="aside-list">
-                  <li>You don’t know what is the right career for you</li>
-                  <li>
-                    You are stuck between jobs and look for something different
-                  </li>
-                  <li>Life has lost meaning and everyday is exactly the same</li>
-                </ul>
-              </div>
-              <div className="aside-foot">
-                <button className="btn-view">View examples</button>
-            </div>
+                <div className="aside-head">
+                  <h3 className="aside-title">Take the next step</h3>
+                </div>
+                <div className="aside-content">
+                  <ul className="aside-list">
+                    <li>You don’t know what is the right career for you</li>
+                    <li>
+                      You are stuck between jobs and look for something different
+                    </li>
+                    <li>Life has lost meaning and everyday is exactly the same</li>
+                  </ul>
+                </div>
+                <div className="aside-foot">
+                  <button className="btn-view">View examples</button>
+                </div>
               </aside>
+            </div>
               <div className="aside-wrapper">
               
-              <aside className="aside">
-              <div className="aside-head">
-              <h2>What is Ikigai?</h2>
-              </div>
-              <div className="aside-content">
-                <p>Ikigai is a Japanese concept that means “a reason for being”. It is why you get up in the morning. The word refers to having a direction or purpose in life that makes one’s life worthwhile. </p>
-                <p>By discovering your ikigai you can focus on the things that matter the most to you and get satisfaction and a sense of meaning to your life. Ikigai could be related to your work, but it could also be related to something outside work. </p>
-                <p>Your ikigai could have many different expressions.</p>
-                <p>But, knowing your ikigai alone is not enough. You need an outlet. ikigai is “purpose in action”. </p>
-              </div>
-              <div className="aside-head">
-                <h3 className="aside-title">Take the next step</h3>
-              </div>
-              <div className="aside-content">
-                <p>Your ikigai lies in the interception of where what you love, what you are good at, what the world needs and what you can be paid for, overlap.</p>
-                <p>We will help you visualise your ikigai in a Venn diagram by asking you a series of questions. Then you would be able to discover where your ikigai lies. </p>
-              </div>
-              <div className="aside-foot">
-              <button
-                className="btn-small"
-                onClick={() => {
-                  history.push(logged ? "/chart" : "/what-you-love");
-                }}
-              >
-                {logged ? "View my Ikigai" : "Start your journey"}
-              </button>
-            </div>
+                <aside className="aside">
+                  <div className="aside-head">
+                    <h2>What is Ikigai?</h2>
+                  </div>
+                  <div className="aside-content">
+                    <p>Ikigai is a Japanese concept that means “a reason for being”. It is why you get up in the morning. The word refers to having a direction or purpose in life that makes one’s life worthwhile. </p>
+                    <p>By discovering your ikigai you can focus on the things that matter the most to you and get satisfaction and a sense of meaning to your life. Ikigai could be related to your work, but it could also be related to something outside work. </p>
+                    <p>Your ikigai could have many different expressions.</p>
+                    <p>But, knowing your ikigai alone is not enough. You need an outlet. ikigai is “purpose in action”. </p>
+                  </div>
+                  <div className="aside-head">
+                    <h3 className="aside-title">Take the next step</h3>
+                  </div>
+                  <div className="aside-content">
+                    <p>Your ikigai lies in the interception of where what you love, what you are good at, what the world needs and what you can be paid for, overlap.</p>
+                    <p>We will help you visualise your ikigai in a Venn diagram by asking you a series of questions. Then you would be able to discover where your ikigai lies. </p>
+                  </div>
+                  <div className="aside-foot">
+                  <button
+                    className="btn-small"
+                    onClick={() => {
+                      history.push(logged ? "/chart" : "/what-you-love");
+                    }}
+                  >
+                    {logged ? "View my Ikigai" : "Start your journey"}
+                  </button>
+                </div>
               </aside>
               <aside className="aside">
-              image
+                image
               </aside>
-              </div>
+             
             </div>
             
         </div>
       </section>
-      <div>
-        <Slider {...sliderSettings}>
-          <>
-            <div style={{ minHeight: "200px" }}>
-              <span style={{ color: "#fff" }}>1</span>
-            </div>
-          </>
-          <>
-            <div style={{ minHeight: "200px" }}>
-              <span style={{ color: "#fff" }}>2</span>
-            </div>
-          </>
-          <>
-            <div style={{ minHeight: "200px" }}>
-              <span style={{ color: "#fff" }}>3</span>
-            </div>
-          </>
-        </Slider>
-      </div>
+      <section className="section-slider">
+        <div className="shell">
+            <h2>See Ikigai in action</h2>
+
+          <Slider {...sliderSettings}>
+            <>
+              <div className="slider-slide">
+                <div className="slider-wrapper">
+                  <div className="slider-image">image</div>
+                  <div className="slider-content">
+                    <div className="slider-title">
+                      <h3>John</h3>
+                    </div>
+                    <div className="slider-text">
+                      <p>John is working as this and that. He is good in something but lacks something else. Incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                    </div>  
+                    <div className="slider-title-result">
+                      <h3>Result</h3>
+                    </div>
+                    <div className="slider-text">
+                      <p>By using Ikigai, John found a new way to combine his skills and start a new NGO venture where he’ll be able to earn his living by doing what he loves best,  and make the world a better place in the process.</p>
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+            </>
+            <>
+              <div className="slider-slide">
+                <span style={{ color: "#000" }}>2</span>
+              </div>
+            </>
+            <>
+              <div className="slider-slide">
+                <span style={{ color: "#000" }}>3</span>
+              </div>
+            </>
+          </Slider>
+        </div>
+      </section>
       
       <section className="bg-section">
         <div className="shell">
+          <div className="bg-section-head">
+                <h2>It’s time to begin your journey</h2>
+              </div>
+              <div className="bg-section-body">
+                <h3>It takes only 5 minutes to start</h3>
+              </div>
+              <div className="bg-section-foot">
+                <div className="section-btn">
+                  <button
+                    className="btn-small yellow"
+                    onClick={() => {
+                      history.push(logged ? "/chart" : "/what-you-love");
+                    }}
+                  >
+                    {logged ? "View my Ikigai" : "Create your Ikigai"}
+                  </button>
+                 
+                </div>
+              </div>
+
           {/* <aside className="aside">
             <div className="aside-head">
               <h2>What is Ikigai?</h2>
