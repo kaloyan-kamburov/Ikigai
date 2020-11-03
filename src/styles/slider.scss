@@ -1,7 +1,13 @@
 /* Slider */
 .slider-wrapper {
   & .slider-image {
-    height: 300px;
+    text-align: center;
+    & img {
+      width: 100%;
+      max-width: 477px;
+      max-height: 479px;
+      margin: 0 auto;
+    }
   }
 }
 .slick-slider {

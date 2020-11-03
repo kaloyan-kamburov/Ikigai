@@ -2,7 +2,11 @@ import React, { useEffect, useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { UserContext } from "../../context";
 import Slider from "react-slick";
-
+import Image from "../../images/pixeltrue-meditation.png";
+import ImageVision from "../../images/pixeltrue-vision.png";
+import ImageIkigai from "../../images/ikigaiChart.png";
+import ImageIkigaiEx from "../../images/ikigaiEx.png";
+import ImageBackground from "../../images/background.png";
 
 const Home = () => {
   const history = useHistory();
@@ -59,7 +63,9 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <div className="section-image"> image </div>
+            <div className="section-image"> 
+              <img src={Image}/>
+            </div>
 
             
           </div>
@@ -71,7 +77,7 @@ const Home = () => {
               <p>Ikiguide is based on the japanese concept Ikigai that could help you discover a more meaningful life. It can be a great tool in many stages of your personal and professional life. </p>
             </div>
             <div className="aside-wrapper">
-              <aside className="aside">image</aside>
+              <aside className="aside image"><img src={ImageVision}/></aside>
               <aside className="aside">
                 <div className="aside-head">
                   <h3 className="aside-title">Take the next step</h3>
@@ -120,8 +126,8 @@ const Home = () => {
                   </button>
                 </div>
               </aside>
-              <aside className="aside">
-                image
+              <aside className="aside image-chart">
+                <img src={ImageIkigai}/>
               </aside>
              
             </div>
@@ -136,7 +142,9 @@ const Home = () => {
             <>
               <div className="slider-slide">
                 <div className="slider-wrapper">
-                  <div className="slider-image">image</div>
+                  <div className="slider-image">
+                  <img src={ImageIkigaiEx}/>
+                  </div>
                   <div className="slider-content">
                     <div className="slider-title">
                       <h3>John</h3>

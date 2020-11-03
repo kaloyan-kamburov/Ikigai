@@ -173,7 +173,11 @@ const Header = ({ userState }) => {
       }`}
     >
       <div className="shell">
-        <div className="logo" onClick={() => history.push("/")}></div>
+        <div className="logo" onClick={() => history.push("/")}>
+
+        </div>
+        {location.pathname === "/" ?  "": <div className="backHome">Back to home</div>}
+        
         <ul className="wizard">
           {/* <li className="wizard__step toBeFilled">
             <span className="rectangle fill"></span>
@@ -198,6 +202,11 @@ const Header = ({ userState }) => {
           {renderWizardStep("/congratulations")} */}
         </ul>
         <div className="profile-controls">
+
+        {location.pathname === "/" ?  "": <span style={{ cursor: "pointer", textDecoration:"underline" }} onClick={() => history.push("/chart")} >
+            SKIP WIZARD
+          </span>}
+          
           {userDetails &&
             userDetails.user &&
             !Object.keys(userDetails.user).length &&
@@ -208,6 +217,7 @@ const Header = ({ userState }) => {
               >
                 Register
               </span>
+              
             )}
 
           {userDetails &&

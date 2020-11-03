@@ -9,6 +9,14 @@
   padding: 200px 0 146px;
   background: $yellow;
 }
+.section-image {
+  text-align: center;
+  & img {
+    max-height: 519px;
+    width: 100%;
+    max-width: 532px;
+  }
+}
 .section-body {
   padding: 15px 0 35px;
 }
@@ -65,34 +73,26 @@
   }
 }
 .bg-section {
-  // background-image: url('../images/ALL\ TOGETHER.svg');
-  // background-size: contain;
-  // background-position: left;
-  // background-repeat: no-repeat;
+  background-image: url("../images/background.png");
   background-color: $black;
-  // position: relative;
-  padding: 200px 0 250px;
-  // &:after {
-  //   clear: both;
-  //   display: block;
-  //   content: "";
-  // }
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 906px;
   & .bg-section-head {
-    // width: 60%;
     margin: 0 auto;
-    padding: 0 0 20px;
+    padding: 240px 0 20px;
     & h2 {
       color: #E5E4E4;
       font-family: Casta;
-      // font-size: 114px;
       font-size: 52px;
       font-weight: 100;
-      // line-height: 126px;
       line-height: 62px;
       text-align: center;
     }
   }
   & .bg-section-body {
+    
     & h3 {
       color: $white;
       font-family: 'IBM Plex Sans', sans-serif;
@@ -117,15 +117,8 @@
   }
 }
 .aside {
-  padding-bottom: 142px;
-  // background-color: $white;
-  // border: 3px solid $black;
-  // color: $black;
-  // margin-top: -64.5px;
-  // float: right;
-  // padding: 167px 131px 109px;
-  // position: relative;
   & .aside-head {
+    padding-top: 35px;
     & h2 {
       text-align: left;
     }
@@ -135,6 +128,23 @@
       font-size: 28px;
       line-height: 44px;
       font-weight: 400;
+    }
+  }
+  &.image {
+    text-align: center;
+    & img {
+      max-height: 369px;
+      max-width: 478px;
+      width: 100%;
+    }
+  }
+  &.image-chart {
+    padding-top: 155px;
+    text-align: center;
+    & img {
+      max-height: 683px;
+      max-width: 684px;
+      width: 100%;
     }
   }
 }
@@ -224,12 +234,14 @@
   .section-content {
     width: 60%;
     float: left;
+    padding-top: 40px;
   }
   .section-image {
     width: 40%;
     float: left;
   }
   .aside {
+    padding-bottom: 142px;
     width: 50%;
     float: left;
   }

@@ -40,7 +40,14 @@ header {
   background-color: $black;
   cursor: pointer;
 }
-
+.backHome {
+  color: $black;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 18px;
+  line-height: 23px;
+  text-transform: uppercase;
+  width: 77%;
+}
 .profile-controls {
   display: flex;
   justify-content: flex-end;

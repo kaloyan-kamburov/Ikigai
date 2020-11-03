@@ -99,9 +99,7 @@ const GoodAt = () => {
                           >
                             Continue
                           </button>
-                          {/* <span onClick={() => history.push("/chart")}>
-                            SKIP WIZARD
-                          </span> */}
+                          
                         </div>
                         <div className="form-foot">
                           <p>
