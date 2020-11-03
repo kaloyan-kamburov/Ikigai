@@ -256,7 +256,7 @@ const IkigaiChart = () => {
         size: 1000,
         label: "WHAT YOU ARE GOOD AT",
         desc:
-          "<h6>WHAT YOU ARE GOOD AT</h6><p></p><strong>click to add</strong>",
+          "<h6>WHAT YOU ARE GOOD AT</h6><span>Click anywhere to add an item</span>",
         items: generateItemsForGroup(["D"]),
         type: "circle",
         text: "Edit what are you good at",
@@ -299,7 +299,7 @@ const IkigaiChart = () => {
         size: 1000,
         label: "WHAT YOU LOVE",
         desc:
-          "<h6>Things that you love doing</h6><div><p>What would you do if you didn’t have to worry about making money?</p><p>How would you spend your time on a long vacation or a free weekend?</p><p>What’s exciting to you and gets your juices flowing when you do it?</p><p>What could you enthusiastically talk about for hours on end?</p></div><div><p><span></span>Click to add</p></div>",
+          "<h6>Things that you love doing</h6><div><p>What would you do if you didn’t have to worry about making money?</p><p>How would you spend your time on a long vacation or a free weekend?</p><p>What’s exciting to you and gets your juices flowing when you do it?</p><p>What could you enthusiastically talk about for hours on end?</p></div><div><span>Click anywhere to add an item</span></div>",
         items: generateItemsForGroup(["A"]),
         type: "circle",
         text: "Edit what you love",
@@ -340,7 +340,7 @@ const IkigaiChart = () => {
         size: 300,
         // label: "AB",
         desc:
-          "<h6>This is your mission</h6><div><p>The place where the things you love intersect what the world needs.</p></div><div><p><span></span>Click to view</p></div>",
+          "<h6>This is your mission</h6><div><p>The place where the things you love intersect what the world needs.</p></div><div><span>Click anywhere to add an item</span></div>",
         items: generateItemsForGroup(["A", "B"]),
         type: "intersection",
         text: "Edit your mission",
@@ -413,7 +413,7 @@ const IkigaiChart = () => {
         sets: ["A", "B", "C"],
         size: 300,
         desc:
-          "<h6>Great but uneasy</h6><div><p>Things you do with excitement and complacency, but sense of uncertainty.</p></div><div><p><span></span>Click to add</p></div>",
+          "<h6>Great but uneasy</h6><div><p>Things you do with excitement and complacency, but sense of uncertainty.</p></div><div><span>Click anywhere to add an item</span></div>",
         items: generateItemsForGroup(["A", "B", "C"]),
         type: "intersection",
         text: "Edit your things",

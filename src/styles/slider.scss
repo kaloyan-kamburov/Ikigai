@@ -1,17 +1,7 @@
 /* Slider */
 .slider-wrapper {
-  &:after {
-    clear: both;
-    display: block;
-    content: "";
-  }
   & .slider-image {
-    width: 45%;
-    float: left;
-  }
-  & .slider-content {
-    width: 55%;
-    float: right;
+    height: 300px;
   }
 }
 .slick-slider {
@@ -127,4 +117,21 @@
   font-size: 10px !important;
   opacity: 0.22 !important;
   color:#131415 !important;
+}
+@media #{$large} { 
+  .slider-wrapper {
+    &:after {
+      clear: both;
+      display: block;
+      content: "";
+    }
+    & .slider-image {
+      width: 45%;
+      float: left;
+    }
+    & .slider-content {
+      width: 55%;
+      float: right;
+    }
+  }
 }

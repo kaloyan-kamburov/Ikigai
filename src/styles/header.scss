@@ -31,9 +31,6 @@ header {
 }
 
 .logo {
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
   content: "";
   display: inline-block;
   vertical-align: middle;
@@ -41,8 +38,6 @@ header {
   width: 20px;
   transform: rotate(315deg);
   background-color: $black;
-  // margin-left: 7px;
-  // margin-top: 7px;
   cursor: pointer;
 }
 
@@ -50,14 +45,12 @@ header {
   display: flex;
   justify-content: flex-end;
   color: $black;
-  // color: $white;
   font-family: 'IBM Plex Sans', sans-serif;
   text-transform: uppercase;
   font-weight: 700;
   font-size: 18px;
   line-height: 23px;
-  display: flex;
-  width: 10%;
+  // width: 10%;
   margin-left: 50px;
   span:first-of-type:after {
     content: "";
@@ -65,7 +58,6 @@ header {
     vertical-align: middle;
     width: 1px;
     height: 18px;
-    // background: $white;
     margin-left: 15px;
   }
 

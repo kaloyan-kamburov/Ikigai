@@ -35,7 +35,7 @@ const formatOptionLabel = ({ label = "" }, { inputValue }) => {
       textToHighlight={label}
       highlightStyle={{
         background: "transparent",
-        fontFamily: "Campton-Bold",
+        fontFamily: "IBM Plex Sans",
       }}
     />
   );

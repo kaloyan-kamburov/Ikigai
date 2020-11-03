@@ -3,37 +3,21 @@
   // margin: 0 auto;
   // overflow-x: visible;
 }
-@media #{$large} {
-  .shell {
-    // width: 89%;
-    // margin: 0 auto;
-    // padding: 0;
-  }
-}
+
 
 .section {
-  // position: relative;
   padding: 200px 0 146px;
   background: $yellow;
-  & .shell {
-    &:after {
-      clear: both;
-      display: block;
-      content: "";
-    }
-  }
 }
-.section-content {
-  width: 60%;
-  float: left;
-}
-.section-image {
-  width: 40%;
-  float: left;
-}
-
 .section-body {
   padding: 15px 0 35px;
+}
+.section-foot {
+  text-align: center;
+  & .btn-lg{
+    display: block;
+    margin: auto;
+  }
 }
 .section-white{
   background-color: $white;
@@ -94,15 +78,17 @@
   //   content: "";
   // }
   & .bg-section-head {
-    width: 60%;
+    // width: 60%;
     margin: 0 auto;
     padding: 0 0 20px;
     & h2 {
       color: #E5E4E4;
       font-family: Casta;
-      font-size: 114px;
+      // font-size: 114px;
+      font-size: 52px;
       font-weight: 100;
-      line-height: 126px;
+      // line-height: 126px;
+      line-height: 62px;
       text-align: center;
     }
   }
@@ -131,8 +117,6 @@
   }
 }
 .aside {
-  width: 50%;
-  float: left;
   padding-bottom: 142px;
   // background-color: $white;
   // border: 3px solid $black;
@@ -192,7 +176,9 @@
       padding-bottom: 0;
     }
   }
-  
+}
+.aside-foot {
+  text-align: center;
 }
 .section-yellow {
   background-color: $lightyellow;
@@ -214,3 +200,49 @@
 //     stroke-width: 3px;
 //   }
 // }
+@media #{$small} {
+  .section-foot {
+    text-align: left;
+    & .btn-lg {
+      display: inline-block;
+    }
+    & .btn-more {
+      margin-left: 55px;
+    }
+  }
+}
+@media #{$large} {
+  .section {
+    & .shell {
+      &:after {
+        clear: both;
+        display: block;
+        content: "";
+      }
+    }
+  }
+  .section-content {
+    width: 60%;
+    float: left;
+  }
+  .section-image {
+    width: 40%;
+    float: left;
+  }
+  .aside {
+    width: 50%;
+    float: left;
+  }
+  .aside-foot {
+    text-align: left;
+  }
+  .bg-section {
+    & .bg-section-head {
+      width: 60%;
+      & h2 {
+        font-size: 114px;
+        line-height: 126px;
+      }
+    }
+  }
+}

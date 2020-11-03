@@ -18,6 +18,7 @@ button {
 .btn-lg {
   height: 77px;
   width: 319px;
+  max-width: 100%;
   line-height: 77px;
   font-size: 23px;
   font-weight: bold;
@@ -33,6 +34,13 @@ button {
     background: $yellow;
   }
 }
+.btn-form {
+  width: 197px;
+  height: 76px;
+  line-height: 76px;
+  font-size: 23px;
+  font-weight: bold;
+}
 .btn-more {
   color: $black;
   font-size: 22px;
@@ -42,7 +50,6 @@ button {
   box-shadow: none;
   border: none;
   background: transparent;
-  margin-left: 55px;
 }
 .btn-view {
   color: $black;

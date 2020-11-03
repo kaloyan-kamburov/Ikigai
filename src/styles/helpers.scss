@@ -8,8 +8,7 @@
   margin: 0 auto;
   padding: 0 15px;
 }
-.col_40,
-.col-60 {
+.col-50 {
   width: 100%;
 }
 
@@ -23,10 +22,7 @@
     display: flex;
   }
 
-  .col_40 {
-    width: 40%;
-  }
-  .col_60 {
-    width: 60%;
+  .col_50 {
+    width: 50%;
   }
 }

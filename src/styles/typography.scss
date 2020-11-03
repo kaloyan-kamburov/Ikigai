@@ -4,11 +4,11 @@ html {
 }
 
 h1 {
-  font-size: 114px;
+  font-size: 52px;
   font-family: Casta;
   color: $black;
-  line-height: 126px;
-  text-align: left;
+  line-height: 62px;
+  text-align: center;
   font-weight: 100;
 }
 
@@ -24,10 +24,10 @@ h2 {
 h3 {
   color: $black;
   font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 24px;
-  line-height: 44px;
+  font-size: 20px;
+  line-height: 30px;
   font-weight: 300;
-
+  text-align: center;
 }
 p, ul { 
   color: $black;
@@ -37,10 +37,24 @@ p, ul {
   // font-weight: 200;
 }
 h6{
-  color: $white;
+  color: #131415;
   font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 22px;
-  line-height: 24px;
+  font-size: 28px;
+  line-height: 37px;
   text-align: left;
   font-weight:bold;
+}
+@media #{$large} {
+  h1 {
+    font-size: 114px;
+    line-height: 126px;
+    text-align: left;
+  }
+
+
+  h3 {
+    font-size: 24px;
+    line-height: 44px;
+    text-align: left;
+  }
 }

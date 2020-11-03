@@ -31,9 +31,9 @@ const Congratulations = () => {
     }
   }, []);
   return (
-    <section className="section-dark">
+    <section className="section-yellow">
       <div className="shell">
-        <div className="congratulations form-bg">
+        <div className="congratulations">
           <h1 className="congrats-title">Congratulations</h1>
           <h2 className="congrats-subTitle">Your journey has just started.</h2>
           <div className="congrats-body">
@@ -45,7 +45,7 @@ const Congratulations = () => {
               is connected. Everything is work in progress.
             </p>
           </div>
-          <div className="form-btns">
+          <div className="congrats-btns">
             <button
               className="btn-lg"
               onClick={() => {

@@ -15,14 +15,6 @@ code {
   font-family: 'Casta';
   src: local('Casta'), url(./fonts/Casta-Thin.otf) format('opentype');
 }
-/* @font-face {
-  font-family: 'Campton';
-  src: local('Campton'), url(./fonts/Campton-Light.otf) format('opentype');
-}
-@font-face {
-  font-family: 'Campton-Bold';
-  src: local('Campton'), url(./fonts/Campton-Bold.otf) format('opentype');
-} */
 
 @font-face {
   font-family: 'IBM Plex Sans', sans-serif;

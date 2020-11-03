@@ -3,10 +3,10 @@
 }
 .wizard {
   display: none;
-  display: flex;
+  // display: flex;
   // padding: 76px 0 89px;
   // padding: 50px 0;
-  width: 90%;
+  // width: 90%;
 }
 .wizard__step {
   flex: 1 0 0;
@@ -74,6 +74,17 @@
   text-transform: uppercase;
   display: inline-block;
 }
+.formHead-title {
+  position: relative;
+  &:before {
+    content: '<';
+    display: inline-block;
+    position: absolute;
+    left: -30px;
+    top: -1px;
+    font-size: 24px;
+  }
+}
 .form-title {
   color: $black;
   font-family: 'IBM Plex Sans', sans-serif;
@@ -105,18 +116,6 @@
 .form-head {
   padding-bottom: 49px;
 }
-
-// .form-list-title {
-//   opacity: 0.4;
-//   color: $black;
-//   font-family: Campton;
-//   // font-size: 18px;
-//   font-size: 0.93vw;
-//   letter-spacing: 0;
-//   line-height: 2.39vw;
-//   // line-height: 46px;
-//   padding: 45px 0 16px;
-// }
 .form-btns {
   padding: 43px 0;
   display: inline-block;
@@ -124,7 +123,7 @@
 .form-foot {
   max-width: 207px;
   display: inline-block;
-  padding-left: 60px;
+  vertical-align: middle;
   & p {
     color: $black;
     font-family: 'IBM Plex Sans', sans-serif;
@@ -133,13 +132,16 @@
     line-height: 21px;
   }
 }
+.form-select {
+text-align: center;
+}
 // .form-questions {
 //   // padding-top: 172px;
 //   padding-top: 50px;
 // }
 // .form-questions-title {
 //   color: $white;
-//   font-family: Campton-Bold;
+//   font-family: IBM Plex Sans;
 //   // font-size: 38px;
 //   // line-height: 56px;
 //   font-weight: 600;
@@ -168,7 +170,9 @@
 //     }
 //   }
 // }
-
+.css-6q0nyr-Svg {
+  opacity: 0.2 !important;
+}
 *[class*="custom-select"] {
   //   background-color: red;
   &[class*="__indicators"] {
@@ -253,9 +257,12 @@
   }
 }
 
-@media #{$large} {
-  .form-questions {
-    padding-left: 151px;
+@media #{$small} {
+  .form-select {
+    text-align: left;
+  }
+  .form-foot {
+    padding-left: 60px;
   }
 }
 

@@ -40,9 +40,9 @@ const GoodAt = () => {
       <section className="section-yellow">
         <div className="shell">
           <div className="col-wrapper">
-            <div className="col_60 form-bg">
+            <div className="col_50 form-bg">
               <div className="form-head">
-                <p className="formHead-title">Step</p>
+                <a className="formHead-title" href="" >	Step</a>
                 <ul className="page-number">
                   <li>1</li>
                   <li>4</li>
@@ -93,15 +93,15 @@ const GoodAt = () => {
                         </div> */}
                         <div className="form-btns">
                           <button
-                            className="btn-small"
+                            className="btn-form"
                             disabled={props.invalid}
                             type="submit"
                           >
                             Continue
                           </button>
-                          <span onClick={() => history.push("/chart")}>
+                          {/* <span onClick={() => history.push("/chart")}>
                             SKIP WIZARD
-                          </span>
+                          </span> */}
                         </div>
                         <div className="form-foot">
                           <p>
@@ -125,7 +125,7 @@ const GoodAt = () => {
                 </button> */}
               </div>
             </div>
-            <div className="col_40">
+            <div className="col_50">
               <MiniChart active="A" redraw={redraw} />
             </div>
 

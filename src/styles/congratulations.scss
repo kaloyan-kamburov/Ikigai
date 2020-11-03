@@ -1,29 +1,29 @@
 .congratulations {
   text-align: center;
-  padding-top: 100px;
+  background: $white;
+  padding: 40px;
 }
 .congrats-title {
-  color: $black;
-  // font-size: 160px;
-  font-weight: 100;
-  // line-height: 176px;
-  text-align: center;
-  // padding: 189px 0 45px;
-  padding: 0 0 45px;
-  font-size: 8vw; 
-  line-height:9vw;
+  font-size: 40px;
 }
 .congrats-subTitle {
-  color: $black;
-  font-family: Campton;
-  // font-size: 44px;
-  // line-height: 64px;
-  font-size: 2.29vw; 
-  line-height:3.33vw;
   text-align: center;
 }
 .congrats-body {
-  // padding: 58px 0 46px;
-  width: 65%;
-  margin: 0 auto;
+  margin: 20px auto;
+}
+@media #{$medium} {
+  .congrats-title {
+    text-align: center;
+    font-size: 114px;
+  }
+}
+@media #{$large} {
+  .congratulations {
+    padding: 100px 40px 60px;
+  }
+  .congrats-body {
+    width: 65%;
+    margin: 20px auto 40px;
+  }
 }
