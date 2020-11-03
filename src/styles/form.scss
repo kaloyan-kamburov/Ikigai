@@ -2,6 +2,7 @@
   background: $black;
 }
 .wizard {
+  display: none;
   display: flex;
   // padding: 76px 0 89px;
   // padding: 50px 0;
@@ -53,7 +54,7 @@
   width: 20px;
   // border: 3px solid $white;
   transform: rotate(315deg);
-  display: block;
+  display: none;
   
   // &.active {
   //   background-color: $white;

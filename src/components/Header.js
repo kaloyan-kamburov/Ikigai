@@ -173,12 +173,12 @@ const Header = ({ userState }) => {
       }
     >
       <div className="shell">
-        {/* <div className="logo" onClick={() => history.push("/")}></div> */}
+        <div className="logo" onClick={() => history.push("/")}></div>
         <ul className="wizard">
-          <li className="wizard__step toBeFilled">
+          {/* <li className="wizard__step toBeFilled">
             <span className="rectangle fill"></span>
           </li>
-          {/* <li className="wizard__step">
+          <li className="wizard__step">
             <span className="rectangle"></span>
           </li>
           <li className="wizard__step">
