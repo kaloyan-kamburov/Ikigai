@@ -168,9 +168,9 @@ const Header = ({ userState }) => {
 
   return (
     <header
-      className={
-        loginModal || registerModal || profileModal ? "modal-open" : ""
-      }
+      className={`${location.pathname === "/" ? "home" : ""}${
+        loginModal || registerModal || profileModal ? " modal-open " : ""
+      }`}
     >
       <div className="shell">
         <div className="logo" onClick={() => history.push("/")}></div>
