@@ -6,7 +6,6 @@ import Image from "../../images/pixeltrue-meditation.png";
 import ImageVision from "../../images/pixeltrue-vision.png";
 import ImageIkigai from "../../images/ikigaiChart.png";
 import ImageIkigaiEx from "../../images/ikigaiEx.png";
-import ImageBackground from "../../images/background.png";
 
 const Home = () => {
   const history = useHistory();
@@ -77,8 +76,8 @@ const Home = () => {
               <p>Ikiguide is based on the japanese concept Ikigai that could help you discover a more meaningful life. It can be a great tool in many stages of your personal and professional life. </p>
             </div>
             <div className="aside-wrapper">
-              <aside className="aside image"><img src={ImageVision}/></aside>
-              <aside className="aside">
+              <aside className="aside-image"><img src={ImageVision}/></aside>
+              <aside className="aside-text">
                 <div className="aside-head">
                   <h3 className="aside-title">Take the next step</h3>
                 </div>
@@ -98,7 +97,7 @@ const Home = () => {
             </div>
               <div className="aside-wrapper">
               
-                <aside className="aside">
+                <aside className="aside-text">
                   <div className="aside-head">
                     <h2>What is Ikigai?</h2>
                   </div>
@@ -126,7 +125,7 @@ const Home = () => {
                   </button>
                 </div>
               </aside>
-              <aside className="aside image-chart">
+              <aside className="aside-image image-chart">
                 <img src={ImageIkigai}/>
               </aside>
              

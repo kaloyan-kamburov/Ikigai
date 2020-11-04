@@ -9,6 +9,9 @@
       margin: 0 auto;
     }
   }
+  & .slider-content {
+    padding-top: 40px;
+  }
 }
 .slick-slider {
   position: relative;
@@ -124,6 +127,9 @@
   opacity: 0.22 !important;
   color:#131415 !important;
 }
+.slick-dots {
+ bottom: -50px !important;
+}
 @media #{$large} { 
   .slider-wrapper {
     &:after {
@@ -134,6 +140,9 @@
     & .slider-image {
       width: 45%;
       float: left;
+      & img {
+        margin-left:0;
+      }
     }
     & .slider-content {
       width: 55%;
