@@ -31,18 +31,19 @@ const Congratulations = () => {
     }
   }, []);
   return (
-    <section className="section-yellow">
+    <section className="section-yellowFull">
       <div className="shell">
         <div className="congratulations">
           <h1 className="congrats-title">Congratulations</h1>
-          <h2 className="congrats-subTitle">Your journey has just started.</h2>
+          {/* <h2 className="congrats-subTitle">Congratulations! You have filled in your ikigai diagram. You can now view your Ikigai Venn diagram. </h2> */}
           <div className="congrats-body">
             <p>
-              We have to be honest with you. The ikigai diagram is not perfect.
+              {/* We have to be honest with you. The ikigai diagram is not perfect.
               The important part is the process of self discovery that you
               follow as you try to answer the questions. What you could have
               seen is that ikigai shows you that nothing is siloed. Everything
-              is connected. Everything is work in progress.
+              is connected. Everything is work in progress. */}
+              Congratulations! You have filled in your ikigai diagram. You can now view your Ikigai Venn diagram. 
             </p>
           </div>
           <div className="congrats-btns">

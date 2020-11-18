@@ -176,7 +176,7 @@ const Header = ({ userState }) => {
         <div className="logo" onClick={() => history.push("/")}>
 
         </div>
-        {location.pathname === "/" ?  "": <div className="backHome">Back to home</div>}
+        {/* {location.pathname === "/" ?  "": <div className="backHome">Back to home</div>} */}
         
         <ul className="wizard">
           {/* <li className="wizard__step toBeFilled">
@@ -203,8 +203,8 @@ const Header = ({ userState }) => {
         </ul>
         <div className="profile-controls">
 
-        {location.pathname === "/" ?  "": <span style={{ cursor: "pointer", textDecoration:"underline" }} onClick={() => history.push("/chart")} >
-            SKIP WIZARD
+        {location.pathname === "/" ?  "": <span className="skip" onClick={() => history.push("/chart")} >
+            Skip wizard
           </span>}
           
           {userDetails &&

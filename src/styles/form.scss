@@ -62,7 +62,7 @@
 }
 .form-bg {
   background: $white;
-  padding: 40px 60px;
+  padding: 0;
 }
 .formHead-title,
 .page-number {
@@ -75,12 +75,13 @@
   display: inline-block;
 }
 .formHead-title {
+  cursor: pointer;
   position: relative;
   &:before {
     content: '<';
     display: inline-block;
     position: absolute;
-    left: -30px;
+    left: -55px;
     top: -1px;
     font-size: 24px;
   }
@@ -98,7 +99,36 @@
   font-size: 16px;
   font-weight: 300;
   line-height: 22px;
-  padding: 24px 0 39px;
+  padding: 24px 0 20px;
+}
+.form-listTitle {
+  color: $black;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 16px;
+  font-weight:600;
+  line-height: 22px;
+}
+.form-list {
+  color: $black;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 22px; 
+  padding: 0 94px 50px 0;
+  & li {
+    padding-top: 15px;
+    &:before {
+      content: "";
+      display: inline-block;
+      vertical-align: middle;
+      height: 6px;
+      width: 6px;
+      transform: rotate(315deg);
+      background-color: #000000;
+      margin-right: 11px;
+      line-height: 32px;
+    }
+  }
 }
 .page-number {
   padding-left: 7px;
@@ -114,10 +144,10 @@
   }
 }
 .form-head {
-  padding-bottom: 49px;
+  padding-bottom: 20px;
 }
 .form-btns {
-  padding: 43px 0;
+  padding: 60px 0 0;
   display: inline-block;
 }
 .form-foot {
@@ -130,10 +160,21 @@
     font-size: 16px;
     letter-spacing: 0;
     line-height: 21px;
+    padding-top: 20px;
   }
 }
 .form-select {
-text-align: center;
+  text-align: center;
+  padding: 20px;
+}
+.form-selectTitle {
+  color: #A6A6A6;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 18px;
+  line-height: 23px;
+  text-align:left;
+  font-weight: 300;
+  padding-bottom: 20px;
 }
 // .form-questions {
 //   // padding-top: 172px;
@@ -209,13 +250,10 @@ text-align: center;
   }
   &[class*="__input"] {
     color: $black;
-    font-family: Campton;
-    // font-size: 28px;
-    letter-spacing: 0;
-    // line-height: 46px;
-    font-size: 1.45vw;
-    // line-height: 2.39vw;
-    line-height: 28px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 44px;
   }
   &[class*="value-container"] {
     mark {
@@ -223,14 +261,11 @@ text-align: center;
     }
   }
   &[class*="-placeholder"] {
-    font-family: Campton;
-    // font-size: 28px;
-    letter-spacing: 0;
-    // line-height: 46px;
     opacity: 0.2;
     color: $black;
-    font-size: 1.45vw;
-    line-height: 2.39vw;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 20px;
+    line-height: 44px;
   }
 }
 
@@ -302,6 +337,17 @@ fieldset {
 
     &:hover {
       color: $black;
+    }
+  }
+}
+@media #{$large} {
+
+  .form-bg {
+    padding: 90px 60px;
+  }
+  .form-foot {
+    & p {
+      padding-top: 0;
     }
   }
 }

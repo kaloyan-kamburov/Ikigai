@@ -7,6 +7,7 @@ function Footer() {
 
   return location.pathname !== "/chart" ? (
     <>
+    {/* {location.pathname === "/" ?  "": <div className="backHome">Back to home</div>} */}
       <footer className="footer">
         <div className="shell">
           <div className="foot-wrap">

@@ -191,7 +191,11 @@
 }
 .section-yellow {
   background-color: $lightyellow;
-  padding: 138px 0 200px ;
+  padding: 110px 0 50px;
+}
+.section-yellowFull{
+  background-color: $lightyellow;
+  padding:200px 0 ;
 }
 // .chart-bg {
 //   position: absolute;
@@ -268,5 +272,9 @@
         line-height: 126px;
       }
     }
+  }
+  .section-yellow {
+    background: linear-gradient(90deg, rgba(250,238,208,1) 0%, rgba(250,238,208,1) 50%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
+    padding: 45px 0 0;
   }
 }

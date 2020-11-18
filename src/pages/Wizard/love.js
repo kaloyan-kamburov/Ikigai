@@ -40,20 +40,33 @@ const GoodAt = () => {
       <section className="section-yellow">
         <div className="shell">
           <div className="col-wrapper">
-            <div className="col_50 form-bg">
+            <div className="col_50">
               <div className="form-head">
-                <a className="formHead-title" href="" >	Step</a>
+                <a className="formHead-title" onClick={() => history.push({ pathname: "/"})} >	Step</a>
                 <ul className="page-number">
                   <li>1</li>
                   <li>4</li>
                 </ul>
               </div>
 
-              <h1 className="form-title">What you love to do</h1>
+              <h1 className="form-title">What you Love</h1>
               <p className="form-subtitle">
-                What would you do if you didn’t have to worry about money?
+                  What do you love doing or find fun, exciting or motivating?
               </p>
+              <p className="form-listTitle">Start by asking yourself:</p>
+              <ul className="form-list">
+                <li>What would you do if you didn’t have to worry about making money?</li>
+                <li>What do you enjoy the process of doing without thinking of the outcome?</li>
+                <li>What’s exciting for you and makes you come alive?</li>
+                <li>What is something you can do hours on end without getting tired?</li>
+                <li>What puts you in the state of flow and you forget about everything else around you?</li>
+              </ul>
+              <MiniChart active="A" redraw={redraw} />
+            </div>
+            <div className="col_50 form-bg">
+              
               <div className="form-select">
+              <h2 className="form-selectTitle">Add your items here</h2>
                 <Form
                   validate={(values) => {
                     const errors = {};
@@ -123,9 +136,7 @@ const GoodAt = () => {
                 </button> */}
               </div>
             </div>
-            <div className="col_50">
-              <MiniChart active="A" redraw={redraw} />
-            </div>
+           
 
             {/* 
               <div className="col_40 form-questions">

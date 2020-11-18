@@ -13,7 +13,7 @@ const Home = () => {
   const [logged, setLogged] = useState(false);
 
   const sliderSettings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
@@ -162,16 +162,16 @@ const Home = () => {
                 
               </div>
             </>
-            <>
+            {/* <>
               <div className="slider-slide">
                 <span style={{ color: "#000" }}>2</span>
               </div>
-            </>
-            <>
+            </> */}
+            {/* <>
               <div className="slider-slide">
                 <span style={{ color: "#000" }}>3</span>
               </div>
-            </>
+            </> */}
           </Slider>
         </div>
       </section>

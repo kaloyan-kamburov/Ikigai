@@ -40,20 +40,33 @@ const GoodAt = () => {
       <section className="section-yellow">
         <div className="shell">
           <div className="col-wrapper">
-            <div className="col_50 form-bg">
+          <div className="col_50">
               <div className="form-head">
-                <a className="formHead-title">Step</a>
+                <a className="formHead-title" onClick={() => history.push({ pathname: "/what-are-you-paid-for"})} >	Step</a>
                 <ul className="page-number">
                   <li>4</li>
                   <li>4</li>
                 </ul>
               </div>
 
-              <h1 className="form-title">What are you good at</h1>
+              <h1 className="form-title">What are you Good At</h1>
               <p className="form-subtitle">
-                This question is meant to figure out your natural gifts: your talents and skills.
+              What are your natural gifts, talents and special skills? It could be activities you enjoy and activities you don’t enjoy so much. 
+
               </p>
+            
+              <p className="form-listTitle">Start by asking yourself:</p>
+              <ul className="form-list">
+                <li>What are you among the best in your workplace or from the people you know?</li>
+                <li>What comes easy to you and you are effortlessly good at?</li>
+                <li>With some more education and experience, what areas could you be among the best at what you do?</li>
+              </ul>
+              <MiniChart active="D" redraw={redraw} />
+            </div>
+            <div className="col_50 form-bg">
+            
               <div className="form-select">
+              <h2 className="form-selectTitle">Add your items here</h2>
                 <Form
                   validate={(values) => {
                     const errors = {};
@@ -109,9 +122,7 @@ const GoodAt = () => {
                 Back to home
               </button> */}
             </div>
-            <div className="col_50">
-              <MiniChart active="D" redraw={redraw} />
-            </div>
+            
             {/* <div className="col_40 form-questions">
               <h2 className="form-questions-title">
                 This question is meant to figure out your natural gifts: your

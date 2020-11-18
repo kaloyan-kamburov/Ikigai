@@ -40,20 +40,36 @@ const GoodAt = () => {
       <section className="section-yellow">
         <div className="shell">
           <div className="col-wrapper">
-            <div className="col_50 form-bg">
+          <div className="col_50">
               <div className="form-head">
-                <a className="formHead-title">Step</a>
+                <a className="formHead-title" onClick={() => history.push({ pathname: "/what-the-world-needs"})}>	Step</a>
                 <ul className="page-number">
                   <li>3</li>
                   <li>4</li>
                 </ul>
               </div>
 
-              <h1 className="form-title">What you can be paid for</h1>
+              <h1 className="form-title">What you can be Paid For</h1>
               <p className="form-subtitle">
                 What would you do if you didn’t have to worry about money?
               </p>
+              <p className="form-listTitle">Start by asking yourself:</p>
+              <ul className="form-list">
+             
+                <li> What do you currently get paid to do?</li>
+                <li>What have you previously been paid to do?</li>
+                <li>What jobs currently pay well in the marketplace?</li>
+                <li>What opportunities exist in the marketplace</li>
+                <li>What career did your parents advice you to follow that pays well?</li>
+                <li>What have you been trained and educated in and could be paid to do?</li>
+              </ul>
+              
+              <MiniChart active="C" redraw={redraw} />
+            </div>
+            <div className="col_50 form-bg">
+              
               <div className="form-select">
+                <h2 className="form-selectTitle">Add your items here</h2>
                 <Form
                   validate={(values) => {
                     const errors = {};
@@ -87,9 +103,6 @@ const GoodAt = () => {
                           >
                             Continue
                           </button>
-                          {/* <span onClick={() => history.push("/chart")}>
-                            SKIP WIZARD
-                          </span> */}
                         </div>
                         <div className="form-foot">
                           <p>
@@ -111,9 +124,7 @@ const GoodAt = () => {
 
             </div>
 
-            <div className="col_50">
-              <MiniChart active="C" redraw={redraw} />
-            </div>
+        
 
             {/* <div className="col_40 form-questions">
               <h2 className="form-questions-title">

@@ -30,7 +30,25 @@
             }
         }
     }
-    
+    &.foot-yellow{
+        position: static;
+        background-color: $lightyellow;
+        bottom: 0;
+        padding: 60px 0 50px;
+        & .foot-wrap {
+            & .foot-text {
+                color: $black;
+            }
+            & .foot-nav{
+                & li {
+                    color: $black;
+                    & a {
+                        color: $black;
+                    }  
+                }
+            }
+        }
+    }
 }
 @media #{$medium} {
 	.footer {
@@ -43,6 +61,23 @@
                 text-align: right;
                 float: right;
                 
+            }
+        }
+        &.foot-yellow{
+            position: static;
+            background-color: $lightyellow;
+            & .foot-wrap {
+                & .foot-text {
+                    color: $black;
+                }
+                & .foot-nav{
+                    & li {
+                        color: $black;
+                        & a {
+                            color: $black;
+                        }  
+                    }
+                }
             }
         }
         

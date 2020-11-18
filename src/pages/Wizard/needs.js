@@ -40,20 +40,34 @@ const GoodAt = () => {
       <section className="section-yellow">
         <div className="shell">
           <div className="col-wrapper">
-            <div className="col_50 form-bg">
+            <div className="col_50">
               <div className="form-head">
-                <a className="formHead-title">Step</a>
+                <a className="formHead-title" onClick={() => history.push({ pathname: "/what-you-love"})} >	Step</a>
                 <ul className="page-number">
                   <li>2</li>
                   <li>4</li>
                 </ul>
               </div>
 
-              <h1 className="form-title">What the world needs</h1>
+              <h1 className="form-title">What the World Needs</h1>
               <p className="form-subtitle">
-                What would you do if you didn’t have to worry about money?
+               What does the world need the most? What you can give to the world or your community?
               </p>
+              <p className="form-listTitle">Start by asking yourself:</p>
+              <ul className="form-list">
+                <li>What problems in the world or your community would you like to help solve immediately?</li>
+                <li>What do you think are the biggest challenges in the world?</li>
+                <li>What issues touch you emotionally?</li>
+                <li>Why were you put on this Earth?</li>
+                <li>What do you think would be an exciting and inspiring future for the world or your community?</li>
+                <li>Will your work still be relevant a decade or even a century from now?</li>
+              </ul>
+              <MiniChart active="B" redraw={redraw} />
+            </div>
+            <div className="col_50 form-bg">
+            
               <div className="form-select">
+              <h2 className="form-selectTitle">Add your items here</h2>
                 <Form
                   validate={(values) => {
                     const errors = {};
@@ -111,9 +125,7 @@ const GoodAt = () => {
 
             </div>
 
-            <div className="col_50">
-              <MiniChart active="B" redraw={redraw} />
-            </div>
+  
 
             {/* <div className="col_40 form-questions">
               <h2 className="form-questions-title">
