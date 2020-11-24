@@ -34,13 +34,13 @@ const Congratulations = () => {
     <section className="section-yellowFull">
       <div className="shell">
         <div className="congratulations">
-          <h1 className="congrats-title">Congratulation!</h1>
+          <h1 className="congrats-title">Thank you!</h1>
          
           <div className="congrats-body">
             <p>
-              Your journey has just started.
+              We will be back in touch soon.
             </p>
-            <p>Please add your email so we could send you <br></br>your Ikigai visualization. </p>
+           
           </div>
           <div className="congrats-btns">
             <button
@@ -58,7 +58,7 @@ const Congratulations = () => {
                 });
               }}
             >
-           submit
+        Go to homepage
             </button>
           </div>
         </div>

@@ -1,6 +1,6 @@
 .congratulations {
   text-align: center;
-  background: $white;
+  background: $lightyellow;
   padding: 40px;
 }
 .congrats-title {
@@ -11,6 +11,10 @@
 }
 .congrats-body {
   margin: 20px auto;
+  & p {
+    padding-bottom: 20px;
+    font-weight: 100;
+  }
 }
 @media #{$medium} {
   .congrats-title {
@@ -19,11 +23,15 @@
   }
 }
 @media #{$large} {
+  .congrats-title {
+    font-size: 80px;
+    line-height: 100px;
+  }
   .congratulations {
-    padding: 200px 40px 200px;
+    padding: 155px 40px 200px;
   }
   .congrats-body {
-    width: 65%;
+    width: 55%;
     margin: 20px auto 40px;
   }
 }
