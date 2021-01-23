@@ -4,12 +4,13 @@ import { Form } from "react-final-form";
 import { useHistory, useLocation } from "react-router-dom";
 import { UserContext } from "../../context";
 import MiniChart from "../../components/MiniChart";
+import preventEnterFn from "./preventEnterFn";
 
 const GoodAt = () => {
   const [userDetails, setUserDetails] = useContext(UserContext);
   const history = useHistory();
-  const location = useLocation();
-  const [redraw, setRedraw] = useState(false);
+  // const location = useLocation();
+  // const [redraw, setRedraw] = useState(false);
 
   const onChange = (options) => {
     const ikiSettings = JSON.parse(localStorage.getItem("ikigai"));
@@ -20,19 +21,21 @@ const GoodAt = () => {
         step_D: options,
       })
     );
-    setRedraw(true);
-    setTimeout(() => {
-      setRedraw(false);
-    }, 1);
+    // setRedraw(true);
+    // setTimeout(() => {
+    //   setRedraw(false);
+    // }, 1);
   };
 
   const handleSubmit = () => history.push("/congratulations");
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    window.addEventListener("keypress", preventEnterFn);
     if (Object.keys(userDetails.user).length) {
       return history.push("/chart");
     }
+    return () => window.removeEventListener("keypress", preventEnterFn);
   }, []);
 
   return (
@@ -40,9 +43,17 @@ const GoodAt = () => {
       <section className="section-yellow">
         <div className="shell">
           <div className="col-wrapper">
-          <div className="col_50">
+            <div className="col_50">
               <div className="form-head">
-                <a className="formHead-title" onClick={() => history.push({ pathname: "/what-are-you-paid-for"})} >	Step</a>
+                <a
+                  className="formHead-title"
+                  onClick={() =>
+                    history.push({ pathname: "/what-are-you-paid-for" })
+                  }
+                >
+                  {" "}
+                  Step
+                </a>
                 <ul className="page-number">
                   <li>4</li>
                   <li>4</li>
@@ -51,22 +62,31 @@ const GoodAt = () => {
 
               <h1 className="form-title">What are you Good At</h1>
               <p className="form-subtitle">
-              What are your natural gifts, talents and special skills? It could be activities you enjoy and activities you don’t enjoy so much. 
-
+                What are your natural gifts, talents and special skills? It
+                could be activities you enjoy and activities you don’t enjoy so
+                much.
               </p>
-            
+
               <p className="form-listTitle">Start by asking yourself:</p>
               <ul className="form-list">
-                <li>What are you among the best in your workplace or from the people you know?</li>
-                <li>What comes easy to you and you are effortlessly good at?</li>
-                <li>With some more education and experience, what areas could you be among the best at what you do?</li>
+                <li>
+                  What are you among the best in your workplace or from the
+                  people you know?
+                </li>
+                <li>
+                  What comes easy to you and you are effortlessly good at?
+                </li>
+                <li>
+                  With some more education and experience, what areas could you
+                  be among the best at what you do?
+                </li>
               </ul>
-              <MiniChart active="D" redraw={redraw} />
+              {/* <MiniChart active="D" redraw={redraw} /> */}
+              <MiniChart active="D" />
             </div>
             <div className="col_50 form-bg">
-            
               <div className="form-select">
-              <h2 className="form-selectTitle">Add your items here</h2>
+                <h2 className="form-selectTitle">Add your items here</h2>
                 <Form
                   validate={(values) => {
                     const errors = {};
@@ -122,7 +142,7 @@ const GoodAt = () => {
                 Back to home
               </button> */}
             </div>
-            
+
             {/* <div className="col_40 form-questions">
               <h2 className="form-questions-title">
                 This question is meant to figure out your natural gifts: your

@@ -55,7 +55,7 @@
   // border: 3px solid $white;
   transform: rotate(315deg);
   display: none;
-  
+
   // &.active {
   //   background-color: $white;
   // }
@@ -68,7 +68,7 @@
 .page-number {
   opacity: 0.5;
   color: $black;
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: "IBM Plex Sans", sans-serif;
   font-size: 16px;
   line-height: 44px;
   text-transform: uppercase;
@@ -78,7 +78,7 @@
   cursor: pointer;
   position: relative;
   &:before {
-    content: '<';
+    content: "<";
     display: inline-block;
     position: absolute;
     left: -55px;
@@ -88,14 +88,14 @@
 }
 .form-title {
   color: $black;
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: "IBM Plex Sans", sans-serif;
   font-size: 48px;
   font-weight: bold;
   line-height: 44px;
 }
 .form-subtitle {
   color: $black;
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: "IBM Plex Sans", sans-serif;
   font-size: 16px;
   font-weight: 300;
   line-height: 22px;
@@ -103,17 +103,17 @@
 }
 .form-listTitle {
   color: $black;
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: "IBM Plex Sans", sans-serif;
   font-size: 16px;
-  font-weight:600;
+  font-weight: 600;
   line-height: 22px;
 }
 .form-list {
   color: $black;
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: "IBM Plex Sans", sans-serif;
   font-size: 16px;
   font-weight: 300;
-  line-height: 22px; 
+  line-height: 22px;
   padding: 0 94px 50px 0;
   & li {
     padding-top: 15px;
@@ -156,7 +156,7 @@
   vertical-align: middle;
   & p {
     color: $black;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: "IBM Plex Sans", sans-serif;
     font-size: 16px;
     letter-spacing: 0;
     line-height: 21px;
@@ -168,11 +168,11 @@
   padding: 20px;
 }
 .form-selectTitle {
-  color: #A6A6A6;
-  font-family: 'IBM Plex Sans', sans-serif;
+  color: #a6a6a6;
+  font-family: "IBM Plex Sans", sans-serif;
   font-size: 18px;
   line-height: 23px;
-  text-align:left;
+  text-align: left;
   font-weight: 300;
   padding-bottom: 20px;
 }
@@ -243,14 +243,14 @@
   }
   &[class*="custom-select__multi-value"] {
     color: $black;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: "IBM Plex Sans", sans-serif;
     font-size: 20px;
     font-weight: 500;
     line-height: 44px;
   }
   &[class*="__input"] {
     color: $black;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: "IBM Plex Sans", sans-serif;
     font-size: 20px;
     font-weight: 500;
     line-height: 44px;
@@ -263,7 +263,7 @@
   &[class*="-placeholder"] {
     opacity: 0.2;
     color: $black;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: "IBM Plex Sans", sans-serif;
     font-size: 20px;
     line-height: 44px;
   }
@@ -305,6 +305,14 @@
   display: flex;
   flex-wrap: wrap;
 
+  &.congrats {
+    justify-content: center;
+    input {
+      background-color: $lightyellow;
+      max-width: 300px;
+    }
+  }
+
   input {
     width: 100%;
     outline: none;
@@ -341,7 +349,6 @@ fieldset {
   }
 }
 @media #{$large} {
-
   .form-bg {
     padding: 90px 60px;
   }

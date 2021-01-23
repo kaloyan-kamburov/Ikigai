@@ -388,14 +388,14 @@
       padding-bottom: 15px;
     }
     & span {
-      color: #ADADAD;
-      font-family: 'IBM Plex Sans', sans-serif;
+      color: #adadad;
+      font-family: "IBM Plex Sans", sans-serif;
       font-size: 18px;
       font-style: italic;
       font-weight: 500;
       line-height: 23px;
     }
-    
+
     // &:last-of-type {
     //   height: 45px;
     //   width: 240px;
@@ -590,7 +590,9 @@
   }
 
   tspan {
-    font-size: 12px;
+    font-size: 10px;
+    font-weight: bold;
     color: #131415;
+    white-space: pre-line;
   }
 }

@@ -1,87 +1,83 @@
 .footer {
-    position: absolute;
-    bottom: 50px;
-    width: 100%;
+  position: absolute;
+  bottom: 50px;
+  width: 100%;
+  & .foot-wrap {
+    & .foot-text {
+      color: $white;
+      font-family: "IBM Plex Sans", sans-serif;
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 36px;
+      text-align: center;
+    }
+    & .foot-nav {
+      text-align: center;
+      & li {
+        color: $white;
+        font-family: "IBM Plex Sans", sans-serif;
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 36px;
+        display: inline-block;
+        padding-left: 40px;
+        &:first-child {
+          padding-left: 0;
+        }
+        & a {
+          color: $white;
+        }
+      }
+    }
+  }
+  &.foot-yellow {
+    position: static;
+    background-color: $lightyellow;
+    bottom: 0;
+    padding: 60px 0 50px;
     & .foot-wrap {
-        & .foot-text {
-            color: $white;
-            font-family: 'IBM Plex Sans', sans-serif;
-            font-weight: 300;
-            font-size: 14px;
-            line-height: 36px;
-            text-align: center;
+      & .foot-text {
+        color: $black;
+      }
+      & .foot-nav {
+        & li {
+          color: $black;
+          & a {
+            color: $black;
+          }
         }
-        & .foot-nav{
-            text-align: center;
-            & li {
-                color: $white;
-                font-family: 'IBM Plex Sans', sans-serif;
-                font-weight: 300;
-                font-size: 14px;
-                line-height: 36px;
-                display: inline-block;
-                padding-left: 40px;
-                &:first-child {
-                    padding-left: 0;
-                } 
-                & a {
-                    color: $white;
-                }  
-            }
-        }
+      }
     }
-    &.foot-yellow{
-        position: static;
-        background-color: $lightyellow;
-        bottom: 0;
-        padding: 60px 0 50px;
-        & .foot-wrap {
-            & .foot-text {
-                color: $black;
-            }
-            & .foot-nav{
-                & li {
-                    color: $black;
-                    & a {
-                        color: $black;
-                    }  
-                }
-            }
-        }
-    }
+  }
 }
 @media #{$medium} {
-	.footer {
-        & .foot-wrap { 
-            & .foot-text {
-                text-align: left;
-                display: inline-block;
-            }
-            & .foot-nav {
-                text-align: right;
-                float: right;
-                
-            }
-        }
-        &.foot-yellow{
-            position: static;
-            background-color: $lightyellow;
-            & .foot-wrap {
-                & .foot-text {
-                    color: $black;
-                }
-                & .foot-nav{
-                    & li {
-                        color: $black;
-                        & a {
-                            color: $black;
-                        }  
-                    }
-                }
-            }
-        }
-        
+  .footer {
+    & .foot-wrap {
+      & .foot-text {
+        text-align: left;
+        display: inline-block;
+      }
+      & .foot-nav {
+        text-align: right;
+        float: right;
+      }
     }
+    &.foot-yellow {
+      position: static;
+      background-color: $lightyellow;
+      & .foot-wrap {
+        & .foot-text {
+          color: $black;
+        }
+        & .foot-nav {
+          & li {
+            color: $black;
+            & a {
+              color: $black;
+            }
+          }
+        }
+      }
+    }
+  }
 }
-
-	

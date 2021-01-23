@@ -4,12 +4,13 @@ import { Form } from "react-final-form";
 import { useHistory, useLocation } from "react-router-dom";
 import { UserContext } from "../../context";
 import MiniChart from "../../components/MiniChart";
+import preventEnterFn from "./preventEnterFn";
 
 const GoodAt = () => {
   const [userDetails, setUserDetails] = useContext(UserContext);
   const history = useHistory();
-  const location = useLocation();
-  const [redraw, setRedraw] = useState(false);
+  // const location = useLocation();
+  // const [redraw, setRedraw] = useState(false);
 
   const onChange = (options) => {
     const ikiSettings = JSON.parse(localStorage.getItem("ikigai"));
@@ -20,19 +21,21 @@ const GoodAt = () => {
         step_B: options,
       })
     );
-    setRedraw(true);
-    setTimeout(() => {
-      setRedraw(false);
-    }, 1);
+    // setRedraw(true);
+    // setTimeout(() => {
+    //   setRedraw(false);
+    // }, 1);
   };
 
   const handleSubmit = () => history.push("/what-are-you-paid-for");
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    window.addEventListener("keypress", preventEnterFn);
     if (Object.keys(userDetails.user).length) {
       return history.push("/chart");
     }
+    return () => window.removeEventListener("keypress", preventEnterFn);
   }, []);
 
   return (
@@ -42,7 +45,13 @@ const GoodAt = () => {
           <div className="col-wrapper">
             <div className="col_50">
               <div className="form-head">
-                <a className="formHead-title" onClick={() => history.push({ pathname: "/what-you-love"})} >	Step</a>
+                <a
+                  className="formHead-title"
+                  onClick={() => history.push({ pathname: "/what-you-love" })}
+                >
+                  {" "}
+                  Step
+                </a>
                 <ul className="page-number">
                   <li>2</li>
                   <li>4</li>
@@ -51,23 +60,35 @@ const GoodAt = () => {
 
               <h1 className="form-title">What the World Needs</h1>
               <p className="form-subtitle">
-               What does the world need the most? What you can give to the world or your community?
+                What does the world need the most? What you can give to the
+                world or your community?
               </p>
               <p className="form-listTitle">Start by asking yourself:</p>
               <ul className="form-list">
-                <li>What problems in the world or your community would you like to help solve immediately?</li>
-                <li>What do you think are the biggest challenges in the world?</li>
+                <li>
+                  What problems in the world or your community would you like to
+                  help solve immediately?
+                </li>
+                <li>
+                  What do you think are the biggest challenges in the world?
+                </li>
                 <li>What issues touch you emotionally?</li>
                 <li>Why were you put on this Earth?</li>
-                <li>What do you think would be an exciting and inspiring future for the world or your community?</li>
-                <li>Will your work still be relevant a decade or even a century from now?</li>
+                <li>
+                  What do you think would be an exciting and inspiring future
+                  for the world or your community?
+                </li>
+                <li>
+                  Will your work still be relevant a decade or even a century
+                  from now?
+                </li>
               </ul>
-              <MiniChart active="B" redraw={redraw} />
+              {/* <MiniChart active="B" redraw={redraw} /> */}
+              <MiniChart active="B" />
             </div>
             <div className="col_50 form-bg">
-            
               <div className="form-select">
-              <h2 className="form-selectTitle">Add your items here</h2>
+                <h2 className="form-selectTitle">Add your items here</h2>
                 <Form
                   validate={(values) => {
                     const errors = {};
@@ -122,10 +143,7 @@ const GoodAt = () => {
               >
                 Back to home
               </button> */}
-
             </div>
-
-  
 
             {/* <div className="col_40 form-questions">
               <h2 className="form-questions-title">

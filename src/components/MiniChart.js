@@ -215,7 +215,7 @@ const MiniChart = ({ active, redraw }) => {
       {
         sets: ["A", "B", "C", "D"],
         size: 300,
-        // label: "IKIGAI",
+        label: "IKIGAI",
         desc: "IKIGAI",
         items: generateItemsForGroup(["A", "B", "C", "D"]),
         type: "ikigai",
@@ -233,7 +233,7 @@ const MiniChart = ({ active, redraw }) => {
       {
         sets: ["D"],
         size: 1000,
-        label: "You are good at",
+        label: "What you are good at",
         desc:
           "<h6>WHAT YOU ARE GOOD AT</h6><p></p><strong>click to add</strong>",
         items: generateItemsForGroup(["D"]),
@@ -255,7 +255,7 @@ const MiniChart = ({ active, redraw }) => {
       {
         sets: ["B"],
         size: 1000,
-        label: "The world needs",
+        label: "What the world needs",
         desc: "WHAT THE WORLD NEEDS",
         items: generateItemsForGroup(["B"]),
         type: "circle",
@@ -276,7 +276,7 @@ const MiniChart = ({ active, redraw }) => {
       {
         sets: ["A"],
         size: 1000,
-        label: "You love",
+        label: "What you love",
         desc:
           "<h6>Things that you love doing</h6><div><p>What would you do if you didn’t have to worry about making money?</p><p>How would you spend your time on a long vacation or a free weekend?</p><p>What’s exciting to you and gets your juices flowing when you do it?</p><p>What could you enthusiastically talk about for hours on end?</p></div><div><p><span></span>Click to add</p></div>",
         items: generateItemsForGroup(["A"]),
@@ -297,7 +297,7 @@ const MiniChart = ({ active, redraw }) => {
       {
         sets: ["C"],
         size: 1000,
-        label: "You can be paid for",
+        label: "What you can be paid for",
         desc: "WHAT CAN YOU BE PAID",
         items: generateItemsForGroup(["C"]),
         type: "circle",
@@ -490,84 +490,86 @@ const MiniChart = ({ active, redraw }) => {
     d3.selectAll("#ikigai .venn-circle")
       .select("text")
       .style("font-size", "12px")
-      .style("fill", "#131415");
+      .style("fill", "#131415")
+      .style("font-weight", "bold");
     d3.selectAll("#ikigai .venn-intersection")
       .select("text")
       .style("font-size", "1.4rem")
-      .style("fill", "rgba(255, 255, 255, 1)");
+      .style("fill", "rgba(0, 0, 0, 1)")
+      .style("font-weight", "bold");
 
-    const circles = d3.selectAll("#ikigai .venn-circle");
-    const intersections = d3.selectAll("#ikigai .venn-intersection");
+    // const circles = d3.selectAll("#ikigai .venn-circle");
+    // const intersections = d3.selectAll("#ikigai .venn-intersection");
 
-    circles.each(insertItems);
-    intersections.each(insertItems);
+    // circles.each(insertItems);
+    // intersections.each(insertItems);
 
     //fix for mouse over
-    [].slice.call(document.getElementsByTagName("g")).forEach((g) => {
-      g.dispatchEvent(new MouseEvent("mouseover", { bubbles: false }));
-      g.dispatchEvent(new MouseEvent("mouseleave", { bubbles: false }));
-    });
+    // [].slice.call(document.getElementsByTagName("g")).forEach((g) => {
+    //   g.dispatchEvent(new MouseEvent("mouseover", { bubbles: false }));
+    //   g.dispatchEvent(new MouseEvent("mouseleave", { bubbles: false }));
+    // });
   };
 
-  const insertItems = function (d, i) {
-    const path = d3.select(this);
+  // const insertItems = function (d, i) {
+  //   const path = d3.select(this);
 
-    const svg = path.node().closest("svg");
-    let defs = svg.querySelectorAll("defs");
+  //   const svg = path.node().closest("svg");
+  //   let defs = svg.querySelectorAll("defs");
 
-    let items = "";
-    let labelText = path.node().childNodes[1].childNodes[0];
+  //   let items = "";
+  //   let labelText = path.node().childNodes[1].childNodes[0];
 
-    const boundingRect = path.node().getBoundingClientRect();
-    const pathDimensions = path.node().children[0];
+  //   const boundingRect = path.node().getBoundingClientRect();
+  //   const pathDimensions = path.node().children[0];
 
-    if (d.posLabelX && d.posLabelY) {
-      labelText.setAttribute("x", d.posLabelX);
-      labelText.setAttribute("y", d.posLabelY);
-    }
+  //   if (d.posLabelX && d.posLabelY) {
+  //     labelText.setAttribute("x", d.posLabelX);
+  //     labelText.setAttribute("y", d.posLabelY);
+  //   }
 
-    if (d.rotate) {
-      path
-        .node()
-        .childNodes[1].setAttribute(
-          "style",
-          `transform: rotate(${
-            d.rotate === "left" ? "-" : ""
-          }90deg); transform-origin: center; fill: #131415; font-size: 12px`
-        );
-    }
+  //   if (d.rotate) {
+  //     path
+  //       .node()
+  //       .childNodes[1].setAttribute(
+  //         "style",
+  //         `transform: rotate(${
+  //           d.rotate === "left" ? "-" : ""
+  //         }90deg); transform-origin: center; fill: #131415; font-size: 12px`
+  //       );
+  //   }
 
-    if (d.items) {
-      d.items.forEach((item) => {
-        items += `<div class="item">${item}</div>`;
-      });
-    }
+  //   if (d.items) {
+  //     d.items.forEach((item) => {
+  //       items += `<div class="item">${item}</div>`;
+  //     });
+  //   }
 
-    path
-      .append("foreignObject")
-      .attr("x", pathDimensions.getPointAtLength(0).x)
-      .attr("x", pathDimensions.getPointAtLength(0).x + d.itemsParams.x)
-      .attr("y", pathDimensions.getPointAtLength(0).y + d.itemsParams.y)
-      .attr("width", pathDimensions.width)
-      .attr("height", pathDimensions.height)
-      .attr(
-        "class",
-        `items-${
-          d.items.length > d.itemsParams.big
-            ? d.items.length > d.itemsParams.medium
-              ? "small"
-              : "medium"
-            : "big"
-        }`
-      )
-      .append("xhtml:div")
-      .attr("class", d.items.length === 0 ? "items none" : "items")
-      .attr(
-        "style",
-        `width: ${d.itemsParams.width}px; height: ${d.itemsParams.height}px;`
-      )
-      .html(items);
-  };
+  //   path
+  //     .append("foreignObject")
+  //     .attr("x", pathDimensions.getPointAtLength(0).x)
+  //     .attr("x", pathDimensions.getPointAtLength(0).x + d.itemsParams.x)
+  //     .attr("y", pathDimensions.getPointAtLength(0).y + d.itemsParams.y)
+  //     .attr("width", pathDimensions.width)
+  //     .attr("height", pathDimensions.height)
+  //     .attr(
+  //       "class",
+  //       `items-${
+  //         d.items.length > d.itemsParams.big
+  //           ? d.items.length > d.itemsParams.medium
+  //             ? "small"
+  //             : "medium"
+  //           : "big"
+  //       }`
+  //     )
+  //     .append("xhtml:div")
+  //     .attr("class", d.items.length === 0 ? "items none" : "items")
+  //     .attr(
+  //       "style",
+  //       `width: ${d.itemsParams.width}px; height: ${d.itemsParams.height}px;`
+  //     )
+  //     .html(items);
+  // };
 
   const resetSets = () => {
     setSets(removeDuplicates(defaultSets()));

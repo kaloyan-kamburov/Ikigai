@@ -26,18 +26,19 @@ const App = () => {
     if (!ikiSettings) {
       localStorage.setItem("ikigai", JSON.stringify({}));
     }
-    axios({
-      url: "logged/",
-      method: "get",
-    })
-      .then(({ data }) => {
-        setUserDetails(data);
-        localStorage.setItem("ikigai", JSON.stringify(data.ikigai));
-      })
-      .catch((e) => {
-        console.log(e);
-      })
-      .finally(() => setAppLoaded(true));
+    // axios({
+    //   url: "logged/",
+    //   method: "get",
+    // })
+    //   .then(({ data }) => {
+    //     setUserDetails(data);
+    //     localStorage.setItem("ikigai", JSON.stringify(data.ikigai));
+    //   })
+    //   .catch((e) => {
+    //     console.log(e);
+    //   })
+    //   .finally(() => setAppLoaded(true));
+    setAppLoaded(true);
   }, []);
   return (
     <>
@@ -58,7 +59,7 @@ const App = () => {
                 component={Congratulations}
                 exact
               />
-              <Route path="/chart" component={IkigaiChart} exact />
+              {/* <Route path="/chart" component={IkigaiChart} exact /> */}
               <Route component={Home} />
             </Switch>
             <Footer />

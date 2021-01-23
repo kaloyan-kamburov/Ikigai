@@ -7,8 +7,10 @@ function Footer() {
 
   return location.pathname !== "/chart" ? (
     <>
-    {/* {location.pathname === "/" ?  "": <div className="backHome">Back to home</div>} */}
-      <footer className="footer">
+      {/* {location.pathname === "/" ?  "": <div className="backHome">Back to home</div>} */}
+      <footer
+        className={`footer${location.pathname !== "/" ? " foot-yellow" : ""}`}
+      >
         <div className="shell">
           <div className="foot-wrap">
             <p className="foot-text">Made with love by people that care.</p>
