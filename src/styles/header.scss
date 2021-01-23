@@ -49,6 +49,7 @@ header {
 //   width: 77%;
 // }
 .skip {
+  display:none !important;
   color: $black;
   font-family: 'IBM Plex Sans', sans-serif;
   font-size: 15px;
@@ -73,6 +74,7 @@ header {
   
 }
 .profile-controls {
+  display: none !important;
   display: flex;
   justify-content: flex-end;
   color: $black;

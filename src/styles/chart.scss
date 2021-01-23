@@ -1,7 +1,8 @@
 .outer-wrapper {
   position: relative;
   overflow-x: hidden;
-  background-color: $lightyellow;
+  // background-color: $lightyellow;
+  background-color: $black;
   // min-width: 832px;
   // min-height: 832px;
 
@@ -574,7 +575,8 @@
     }
 
     .item {
-      font-size: 10px;
+      // font-size: 10px;
+      font-size: 0;
       margin: 3px;
     }
   }
