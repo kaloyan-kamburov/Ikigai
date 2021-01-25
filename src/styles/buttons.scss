@@ -16,11 +16,11 @@ button {
   }
 }
 .btn-lg {
-  height: 77px;
+  height: 67px;
   width: 319px;
   max-width: 100%;
-  line-height: 77px;
-  font-size: 23px;
+  line-height: 67px;
+  font-size: 20px;
   font-weight: bold;
 }
 .btn-small {
@@ -43,7 +43,7 @@ button {
 }
 .btn-more {
   color: $black;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 500;
   line-height: 80px;
   text-decoration: underline;
@@ -70,12 +70,10 @@ button {
 .btn-save {
   border: 1px solid;
   box-shadow: none;
-  // padding: 5px;
   font-size: 15px;
   line-height: 30px;
   height: 30px;
   width: 55px;
-  // font-size: 0.78vw;
 }
 .closeBtn {
   position: absolute;
@@ -110,9 +108,15 @@ button {
   line-height: 70px;
   display: block;
   font-size: 25px;
-  // font-size: 28px;
-  // font-size: 1.45vw; 
-  // line-height: 3.72vw;
-  // height: 3.72vw;
   margin-top: 50px;
+}
+@media #{$large} {
+  .btn-lg {
+    height: 77px;
+    line-height: 77px;
+    font-size: 23px;
+  }
+  .btn-more {
+    font-size: 22px;
+  }
 }

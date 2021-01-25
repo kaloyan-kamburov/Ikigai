@@ -10,10 +10,12 @@
 }
 .col_50 {
   width: 100%;
-  padding: 0 57px;
 }
 
 @media #{$large} {
+  .col_50 {
+    padding: 0 57px;
+  }
   .shell {
     max-width: 1400px;
     margin: 0 auto;

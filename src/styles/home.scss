@@ -6,7 +6,7 @@
 
 
 .section {
-  padding: 200px 0 146px;
+  padding: 130px 0 50px;
   background: $yellow;
 }
 .section-image {
@@ -31,16 +31,14 @@
   background-color: $white;
 }
 .section-intro {
-  padding-top: 120px;
+  padding-top: 70px;
   padding-bottom: 67px;
   & p {
-    max-width: 794px;
-    margin: auto;
     color: $black;
     font-family: "IBM Plex Sans";
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 300;
-    line-height: 44px;
+    line-height: 32px;
     text-align: center;
     padding-top: 16px;
   }
@@ -195,7 +193,7 @@
 }
 .section-yellowFull{
   background-color: $lightyellow;
-  padding:200px 0 ;
+  padding: 100px 0;
 }
 // .chart-bg {
 //   position: absolute;
@@ -228,15 +226,28 @@
       padding: 240px 0 20px;
     }
   }
+  .section-yellowFull{
+    padding:230px 0 ;
+  }
 }
 @media #{$large} {
   .section {
+      padding: 200px 0 146px;
     & .shell {
       &:after {
         clear: both;
         display: block;
         content: "";
       }
+    }
+  }
+  .section-intro {
+    padding-top: 120px;
+    & p {
+      max-width: 794px;
+      margin: auto;
+      font-size: 24px;
+      line-height: 44px;
     }
   }
   .section-content {
@@ -277,4 +288,8 @@
     background: linear-gradient(90deg, rgba(250,238,208,1) 0%, rgba(250,238,208,1) 50%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
     padding: 45px 0 0;
   }
+  .section-yellowFull{
+    padding:200px 0 ;
+  }
+
 }

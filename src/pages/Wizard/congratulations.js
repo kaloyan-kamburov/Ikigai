@@ -87,7 +87,7 @@ const Congratulations = () => {
                           name="email"
                           component="input"
                           type="email"
-                          placeholder="Email"
+                          placeholder="Type your email here ..."
                           className={
                             props.touched.email && props.errors.email
                               ? "invalid"
@@ -99,7 +99,7 @@ const Congratulations = () => {
                       <div className="congrats-btns">
                         <button
                           disabled={!props.valid}
-                          className="btn-small"
+                          className="btn-lg"
                           onClick={() => {
                             const ikiSettings = JSON.parse(
                               localStorage.getItem("ikigai")
@@ -128,11 +128,18 @@ const Congratulations = () => {
             </>
           ) : (
             <>
-              <h1>Thank you!</h1>
-              <div className="congrats-btns">
-                <button className="btn-small" onClick={() => history.push("/")}>
+              <div className="shell">
+                <div className="congratulations">
+                  <h1 className="congrats-title">Thank you!</h1>
+                  <div className="congrats-body">
+                    <p>We will be back in touch soon.</p>
+                  </div>
+                <div className="congrats-btns">
+                  <button className="btn-lg" onClick={() => history.push("/")}>
                   Go to homepage
-                </button>
+                  </button>
+                </div>
+                </div>
               </div>
             </>
           )}
