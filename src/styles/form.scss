@@ -68,7 +68,7 @@
 .page-number {
   opacity: 0.5;
   color: $black;
-  font-family: "IBM Plex Sans", sans-serif;
+  font-family: "IBMPlexSans-Regular";
   font-size: 16px;
   line-height: 44px;
   text-transform: uppercase;
@@ -86,18 +86,19 @@
     left: 0;
     top: -1px;
     font-size: 24px;
+    font-weight: bold;
   }
 }
 .form-title {
   color: $black;
-  font-family: "IBM Plex Sans", sans-serif;
+  font-family: "IBMPlexSans-Bold";
   font-size: 35px;
   font-weight: bold;
   line-height: 44px;
 }
 .form-subtitle {
   color: $black;
-  font-family: "IBM Plex Sans", sans-serif;
+  font-family: "IBMPlexSans-Light";
   font-size: 16px;
   font-weight: 300;
   line-height: 22px;
@@ -105,20 +106,22 @@
 }
 .form-listTitle {
   color: $black;
-  font-family: "IBM Plex Sans", sans-serif;
+  font-family: "IBMPlexSans-SemiBold";
   font-size: 16px;
   font-weight: 600;
   line-height: 22px;
 }
 .form-list {
   color: $black;
-  font-family: "IBM Plex Sans", sans-serif;
+  font-family: "IBMPlexSans-Light";
   font-size: 16px;
   font-weight: 300;
   line-height: 22px;
   padding: 0 94px 50px 0;
   & li {
     padding-top: 15px;
+    position: relative;
+    margin-left: 13px;
     &:before {
       content: "";
       display: inline-block;
@@ -127,8 +130,10 @@
       width: 6px;
       transform: rotate(315deg);
       background-color: #000000;
-      margin-right: 11px;
+      left: -13px;
       line-height: 32px;
+      position: absolute;
+      top: 23px;
     }
   }
 }
@@ -158,7 +163,7 @@
   vertical-align: middle;
   & p {
     color: $black;
-    font-family: "IBM Plex Sans", sans-serif;
+    font-family: "IBMPlexSans-Regular";
     font-size: 16px;
     letter-spacing: 0;
     line-height: 21px;
@@ -171,7 +176,7 @@
 }
 .form-selectTitle {
   color: #a6a6a6;
-  font-family: "IBM Plex Sans", sans-serif;
+  font-family: "IBMPlexSans-Light";
   font-size: 18px;
   line-height: 23px;
   text-align: left;
@@ -184,7 +189,7 @@
 // }
 // .form-questions-title {
 //   color: $white;
-//   font-family: IBM Plex Sans;
+//   font-family: 'IBMPlexSans-SemiBold';
 //   // font-size: 38px;
 //   // line-height: 56px;
 //   font-weight: 600;
@@ -245,27 +250,27 @@
   }
   &[class*="custom-select__multi-value"] {
     color: $black;
-    font-family: "IBM Plex Sans", sans-serif;
+    font-family: 'IBMPlexSans-Regular';
     font-size: 20px;
-    font-weight: 500;
+    font-weight: 400;
     line-height: 44px;
   }
   &[class*="__input"] {
     color: $black;
-    font-family: "IBM Plex Sans", sans-serif;
+    font-family: 'IBMPlexSans-Regular';
     font-size: 20px;
-    font-weight: 500;
+    font-weight: 400;
     line-height: 44px;
   }
   &[class*="value-container"] {
     mark {
-      font-family: Campton !important;
+      // font-family: 'IBMPlexSans-Regular';
     }
   }
   &[class*="-placeholder"] {
     opacity: 0.2;
     color: $black;
-    font-family: "IBM Plex Sans", sans-serif;
+    font-family: "IBMPlexSans-Regular";
     font-size: 20px;
     line-height: 44px;
   }
@@ -323,7 +328,7 @@
     outline: none;
 
     &.invalid {
-      border-color: red;
+      // border-color: red;
     }
   }
 
@@ -337,7 +342,7 @@
   padding-top: 5px;
   // font-size: 14px;
   font-size: 0.73vw;
-  font-family: Campton;
+  font-family: 'IBMPlexSans-Regular';
 }
 
 fieldset {
@@ -354,9 +359,9 @@ fieldset {
   }
 }
 @media #{$large} {
-  .formHead-title,
-  .page-number {
+  .formHead-title{
   padding-left: 0;
+  // padding-left: 30px;
   }
   .formHead-title {
   cursor: pointer;

@@ -381,7 +381,7 @@
     padding: 9px 0 9px;
     & p {
       color: $black;
-      font-family: "IBM Plex Sans";
+      font-family: "IBMPlexSans";
       font-size: 18px;
       line-height: 22px;
       text-align: left;
@@ -389,7 +389,7 @@
     }
     & span {
       color: #adadad;
-      font-family: "IBM Plex Sans", sans-serif;
+      font-family: 'IBMPlexSans-Medium';
       font-size: 18px;
       font-style: italic;
       font-weight: 500;
@@ -403,7 +403,7 @@
     //   padding: 0 15px;
     //   & p:last-of-type {
     //     padding-bottom: 0;
-    //     font-family: IBM Plex Sans;
+    //     font-family: 'IBMPlexSans';
     //     line-height: 45px;
     //     padding-left: 25px;
     //     position: relative;

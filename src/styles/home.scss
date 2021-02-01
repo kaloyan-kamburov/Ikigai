@@ -35,7 +35,7 @@
   padding-bottom: 67px;
   & p {
     color: $black;
-    font-family: "IBM Plex Sans";
+    font-family: "IBMPlexSans-Light";
     font-size: 22px;
     font-weight: 300;
     line-height: 32px;
@@ -52,17 +52,19 @@
   }
   & .slider-title {
     & h3 {
-    font-weight: bold;
+    font-weight: 400;
+    font-family: "IBMPlexSans-Regular";
     color: #131415;
     }
   }
-  &.slider-title-result {
+  & .slider-title-result h3{
     font-weight: 400;
+    font-family: "IBMPlexSans-Regular";
   }
   & .slider-text {
     padding: 11px 0 31px;
     & p {
-      font-family: 'IBM Plex Sans', sans-serif;
+      font-family: 'IBMPlexSans-Light';
       font-size: 20px;
       font-weight: 300;
       color: #131415;
@@ -83,7 +85,7 @@
     padding: 100px 0 20px;
     & h2 {
       color: #E5E4E4;
-      font-family: Casta;
+      font-family: 'Casta';
       font-size: 52px;
       font-weight: 100;
       line-height: 62px;
@@ -93,7 +95,7 @@
   & .bg-section-body { 
     & h3 {
       color: $white;
-      font-family: 'IBM Plex Sans', sans-serif;
+      font-family: 'IBMPlexSans-Light';
       font-size: 20px;
       font-weight: 300;
       line-height: 32px;
@@ -120,7 +122,7 @@
     }
     & h3 {
       color: $black;
-      font-family: 'IBM Plex Sans', sans-serif;
+      font-family: 'IBMPlexSans-Regular';
       font-size: 28px;
       line-height: 44px;
       font-weight: 400;
@@ -149,7 +151,7 @@
   padding: 36px 0 32px;
   & p {
     color: $black;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'IBMPlexSans-Light';
     font-size: 20px;
     font-weight: 300;
     line-height: 32px;
@@ -163,11 +165,13 @@
   padding: 20px 0 28px;
   & li {
     color: $black;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'IBMPlexSans-Light';
     font-size: 20px;
     font-weight: 300;
     line-height: 32px;
     padding-bottom: 16px;
+    position: relative;
+    margin-left: 15px;
     &::before {
       content: "";
       display: inline-block;
@@ -176,8 +180,10 @@
       width: 6px;
       transform: rotate(315deg);
       background-color: $black;
-      margin-right: 11px;
+      left:-15px;
       line-height: 32px;
+      position: absolute;
+      top: 14px;
     }
     &:last-child{
       padding-bottom: 0;

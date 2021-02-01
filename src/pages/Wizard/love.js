@@ -62,24 +62,20 @@ const GoodAt = () => {
               <p className="form-subtitle">
                 What do you love doing or find fun, exciting or motivating?
               </p>
-              <p className="form-listTitle">Start by asking yourself:</p>
+              <p className="form-listTitle">Ask yourself:</p>
               <ul className="form-list">
                 <li>
-                  What would you do if you didn’t have to worry about making
-                  money?
+                What would you do if you didn’t have to worry about making money?
                 </li>
                 <li>
-                  What do you enjoy the process of doing without thinking of the
-                  outcome?
+                What do you enjoy the process of doing without thinking of the outcome?
                 </li>
                 <li>What’s exciting for you and makes you come alive?</li>
                 <li>
-                  What is something you can do hours on end without getting
-                  tired?
+                What is something you can do hours on end without getting tired?
                 </li>
                 <li>
-                  What puts you in the state of flow and you forget about
-                  everything else around you?
+                What puts you in the state of flow and you forget about everything else around you?
                 </li>
               </ul>
               {/* <MiniChart active="A" redraw={redraw} /> */}

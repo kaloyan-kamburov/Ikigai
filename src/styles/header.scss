@@ -42,7 +42,7 @@ header {
 }
 // .backHome {
 //   color: $black;
-//   font-family: 'IBM Plex Sans', sans-serif;
+//   font-family: 'IBMPlexSans';
 //   font-size: 18px;
 //   line-height: 23px;
 //   text-transform: uppercase;
@@ -51,7 +51,7 @@ header {
 .skip {
   display:none !important;
   color: $black;
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: 'IBMPlexSans';
   font-size: 15px;
   line-height: 19px;
   position: relative;
@@ -78,7 +78,7 @@ header {
   display: flex;
   justify-content: flex-end;
   color: $black;
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: 'IBMPlexSans-Bold';
   text-transform: uppercase;
   font-weight: 700;
   font-size: 18px;

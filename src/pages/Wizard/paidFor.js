@@ -62,21 +62,19 @@ const GoodAt = () => {
 
               <h1 className="form-title">What you can be Paid For</h1>
               <p className="form-subtitle">
-                What would you do if you didn’t have to worry about money?
+              What is your source of income and pays the bills? What generally pays well in the marketplace?
               </p>
-              <p className="form-listTitle">Start by asking yourself:</p>
+              <p className="form-listTitle">Ask yourself:</p>
               <ul className="form-list">
-                <li> What do you currently get paid to do?</li>
+                <li>What do you currently get paid to do?</li>
                 <li>What have you previously been paid to do?</li>
                 <li>What jobs currently pay well in the marketplace?</li>
-                <li>What opportunities exist in the marketplace</li>
+                <li>What opportunities exist in the marketplace?</li>
                 <li>
-                  What career did your parents advice you to follow that pays
-                  well?
+                What career did your parents advice you to follow that pays well?
                 </li>
                 <li>
-                  What have you been trained and educated in and could be paid
-                  to do?
+                What have you been trained and educated in and could be paid to do?
                 </li>
               </ul>
 

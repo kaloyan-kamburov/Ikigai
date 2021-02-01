@@ -72,8 +72,10 @@ const Home = () => {
       <section className="section-white">
         <div className="shell">
             <div className="section-intro">
-              <h2>What is Ikigai?</h2>
-              <p>Ikiguide is based on the japanese concept Ikigai that could help you discover a more meaningful life. It can be a great tool in many stages of your personal and professional life. </p>
+              <h2>What is Bliss?</h2>
+              {/* <p>Ikiguide is based on the japanese concept Ikigai that could help you discover a more meaningful life. It can be a great tool in many stages of your personal and professional life. </p> */}
+              <p>Bliss helps you discover and realise your Ikigai. Bliss can be a great tool in many stages of your personal and professional life. 
+</p>
             </div>
             <div className="aside-wrapper">
               <aside className="aside-image"><img src={ImageVision}/></aside>
@@ -83,11 +85,12 @@ const Home = () => {
                 </div>
                 <div className="aside-content">
                   <ul className="aside-list">
-                    <li>You don’t know what is the right career for you</li>
+                    <li>You are looking to change your career but don’t know which career will bring you the most fulfillment and how to change course.</li>
                     <li>
-                      You are stuck between jobs and look for something different
+                    You are between jobs and look for one that will give more fulfillment and purpose.
                     </li>
-                    <li>Life has lost meaning and everyday is exactly the same</li>
+                    <li>You are stuck in the same daily routine and looking for more purpose and excitement in your life. </li>
+                    <li>You are just starting your career of school or university and looking for a job with purpose.</li>
                   </ul>
                 </div>
                 <div className="aside-foot">
@@ -105,13 +108,13 @@ const Home = () => {
                     <p>Ikigai is a Japanese concept that means “a reason for being”. It is why you get up in the morning. The word refers to having a direction or purpose in life that makes one’s life worthwhile. </p>
                     <p>By discovering your ikigai you can focus on the things that matter the most to you and get satisfaction and a sense of meaning to your life. Ikigai could be related to your work, but it could also be related to something outside work. </p>
                     <p>Your ikigai could have many different expressions.</p>
-                    <p>But, knowing your ikigai alone is not enough. You need an outlet. ikigai is “purpose in action”. </p>
+                    <p>But, knowing your ikigai alone is not enough: ikigai is “purpose in action”. </p>
                   </div>
                   <div className="aside-head">
-                    <h3 className="aside-title">Take the next step</h3>
+                    <h3 className="aside-title">How it works</h3>
                   </div>
                   <div className="aside-content">
-                    <p>Your ikigai lies in the interception of where what you love, what you are good at, what the world needs and what you can be paid for, overlap.</p>
+                    <p>Your ikigai lies in the interception of where what you love, what you are good at, what the world needs and what you can be paid for overlap.</p>
                     <p>We will help you visualise your ikigai in a Venn diagram by asking you a series of questions. Then you would be able to discover where your ikigai lies. </p>
                   </div>
                   <div className="aside-foot">

@@ -62,23 +62,20 @@ const GoodAt = () => {
 
               <h1 className="form-title">What are you Good At</h1>
               <p className="form-subtitle">
-                What are your natural gifts, talents and special skills? It
-                could be activities you enjoy and activities you don’t enjoy so
-                much.
+              What are your natural gifts, talents and special skills? It could be activities you enjoy and activities you don’t enjoy so much. 
+
               </p>
 
-              <p className="form-listTitle">Start by asking yourself:</p>
+              <p className="form-listTitle">Ask yourself:</p>
               <ul className="form-list">
                 <li>
-                  What are you among the best in your workplace or from the
-                  people you know?
+                What are you among the best in your workplace or from the people you know?
                 </li>
                 <li>
-                  What comes easy to you and you are effortlessly good at?
+                What comes easy to you and you are effortlessly good at?
                 </li>
                 <li>
-                  With some more education and experience, what areas could you
-                  be among the best at what you do?
+                With some more education and experience, what areas could you be among the best at what you do?
                 </li>
               </ul>
               {/* <MiniChart active="D" redraw={redraw} /> */}

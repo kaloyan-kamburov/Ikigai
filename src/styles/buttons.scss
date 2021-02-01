@@ -1,10 +1,10 @@
 button {
   color: $black;
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: 'IBMPlexSans-Bold';
   text-transform: uppercase;
   border: 3px solid $black;
   background: $white;
-  box-shadow: 7px 6px;
+  box-shadow: 7px 4px;
   display: inline-block;
   vertical-align: middle;
   cursor: pointer;
@@ -32,6 +32,8 @@ button {
   width:258px;
   &.yellow {
     background: $yellow;
+    border: 3px solid $black;
+    box-shadow: 7px 4px $black;
   }
 }
 .btn-form {
@@ -44,7 +46,8 @@ button {
 .btn-more {
   color: $black;
   font-size: 20px;
-  font-weight: 500;
+  font-family: 'IBMPlexSans-Medium';
+  font-weight:500;
   line-height: 80px;
   text-decoration: underline;
   box-shadow: none;
@@ -54,6 +57,7 @@ button {
 .btn-view {
   color: $black;
   font-size: 19px;
+  font-family: 'IBMPlexSans-Bold';
   font-weight: 700;
   line-height: 24px;
   text-decoration: underline;
