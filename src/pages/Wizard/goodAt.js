@@ -60,10 +60,9 @@ const GoodAt = () => {
                 </ul>
               </div>
 
-              <h1 className="form-title">What are you Good At</h1>
+              <h1 className="form-title">What are you GOOD AT</h1>
               <p className="form-subtitle">
-              What are your natural gifts, talents and special skills? It could be activities you enjoy and activities you don’t enjoy so much. 
-
+              What are your natural gifts, talents and special skills? It could be activities you enjoy or activities you don’t enjoy so much. 
               </p>
 
               <p className="form-listTitle">Ask yourself:</p>

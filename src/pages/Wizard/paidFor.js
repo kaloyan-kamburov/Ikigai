@@ -60,22 +60,20 @@ const GoodAt = () => {
                 </ul>
               </div>
 
-              <h1 className="form-title">What you can be Paid For</h1>
+              <h1 className="form-title">What you can be  PAID FOR</h1>
               <p className="form-subtitle">
-              What is your source of income and pays the bills? What generally pays well in the marketplace?
+              What is your source of income and pays the bills? What jobs or skills generally pay well in the marketplace?
               </p>
               <p className="form-listTitle">Ask yourself:</p>
               <ul className="form-list">
                 <li>What do you currently get paid to do?</li>
                 <li>What have you previously been paid to do?</li>
-                <li>What jobs currently pay well in the marketplace?</li>
-                <li>What opportunities exist in the marketplace?</li>
-                <li>
-                What career did your parents advice you to follow that pays well?
-                </li>
-                <li>
+                <li>What opportunities that pay well exist in the marketplace?</li>
+                <li>What career did your parents advice you to follow that pays well?</li>
+                <li>What have you been trained and educated in and could be paid to do?</li>
+                {/* <li>
                 What have you been trained and educated in and could be paid to do?
-                </li>
+                </li> */}
               </ul>
 
               {/* <MiniChart active="C" redraw={redraw} /> */}

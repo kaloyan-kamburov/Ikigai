@@ -63,7 +63,7 @@ const Congratulations = () => {
           {formSubmitting && <Loader />}
           {!emailSent ? (
             <>
-              <h1 className="congrats-title">Congratulation!</h1>
+              <h1 className="congrats-title">Congratulations!</h1>
               <Form
                 validate={(values) => {
                   const errors = {};
@@ -76,10 +76,9 @@ const Congratulations = () => {
                   return (
                     <form onSubmit={props.handleSubmit}>
                       <div className="congrats-body">
-                        <p>Your journey has just started.</p>
-                        <p>
-                          Please add your email so we could send you <br></br>
-                          your Ikigai visualization.{" "}
+                        <p>You have filled in your ikigai.</p>
+                        <p>We will send you a link to your ikigai Venn diagram. <br></br>
+                        Please, enter your email below:{" "}
                         </p>
                       </div>
                       <div className="field-wrapper congrats">

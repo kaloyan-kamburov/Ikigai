@@ -43,7 +43,7 @@ const Home = () => {
         <div className="shell">
           <div className="section-content">
             <div className="section-head">
-                <h1>Realise your reason for being.</h1>
+                <h1>Discover and realise your reason for being.</h1>
               </div>
               <div className="section-body">
                 <h3>We will help you find a purpose you strongly believe in.</h3>
@@ -72,10 +72,10 @@ const Home = () => {
       <section className="section-white">
         <div className="shell">
             <div className="section-intro">
-              <h2>What is Bliss?</h2>
+              <h2>What is Bliss/ Ikify?</h2>
               {/* <p>Ikiguide is based on the japanese concept Ikigai that could help you discover a more meaningful life. It can be a great tool in many stages of your personal and professional life. </p> */}
-              <p>Bliss helps you discover and realise your Ikigai. Bliss can be a great tool in many stages of your personal and professional life. 
-</p>
+              <p>Bliss/ Ikify helps you discover and realise your ikigai. Bliss/ Ikify can be a great tool in many stages of your personal and professional life. </p>
+
             </div>
             <div className="aside-wrapper">
               <aside className="aside-image"><img src={ImageVision}/></aside>
@@ -90,7 +90,8 @@ const Home = () => {
                     You are between jobs and look for one that will give more fulfillment and purpose.
                     </li>
                     <li>You are stuck in the same daily routine and looking for more purpose and excitement in your life. </li>
-                    <li>You are just starting your career of school or university and looking for a job with purpose.</li>
+                    <li>You are just starting your career out of school or university and looking for a job with meaning and purpose.</li>
+                  <li>You are a group of friends or colleagues that want to work on a project, but do not know where your interests overlap and what project to undertake.</li>
                   </ul>
                 </div>
                 <div className="aside-foot">
@@ -108,7 +109,7 @@ const Home = () => {
                     <p>Ikigai is a Japanese concept that means “a reason for being”. It is why you get up in the morning. The word refers to having a direction or purpose in life that makes one’s life worthwhile. </p>
                     <p>By discovering your ikigai you can focus on the things that matter the most to you and get satisfaction and a sense of meaning to your life. Ikigai could be related to your work, but it could also be related to something outside work. </p>
                     <p>Your ikigai could have many different expressions.</p>
-                    <p>But, knowing your ikigai alone is not enough: ikigai is “purpose in action”. </p>
+                    {/* <p>But, knowing your ikigai alone is not enough: ikigai is “purpose in action”. </p> */}
                   </div>
                   <div className="aside-head">
                     <h3 className="aside-title">How it works</h3>

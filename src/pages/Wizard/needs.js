@@ -58,27 +58,18 @@ const GoodAt = () => {
                 </ul>
               </div>
 
-              <h1 className="form-title">What the World Needs</h1>
+              <h1 className="form-title">What the WORLD NEEDS</h1>
               <p className="form-subtitle">
-                What does the world need the most? What you can give to the
-                world or your community?
+              What does the world need the most? What you can give to the world or your community?
               </p>
               <p className="form-listTitle">Ask yourself:</p>
               <ul className="form-list">
-                <li>
-                What problems in the world or your community would you like to help solve immediately?
-                </li>
-                <li>
-                What do you think are the biggest challenges in the world?
-                </li>
+                <li>What problems in the world or your community would you like to help solve immediately?</li>
+                <li>What do you think are the biggest challenges in the world?</li>
                 <li>What issues touch you emotionally?</li>
-                <li>Why were you put on this Earth?</li>
-                <li>
-                What do you think would be an exciting and inspiring future for the world or your community?
-                </li>
-                <li>
-                Will your work still be relevant a decade or even a century from now?
-                </li>
+                <li>Why were you put on this Earth?  </li>
+                <li>What do you think would be an exciting and inspiring future for the world or your community?</li>
+                <li>Would your work still be relevant a decade or even a century from now?</li>
               </ul>
               {/* <MiniChart active="B" redraw={redraw} /> */}
               <MiniChart active="B" />

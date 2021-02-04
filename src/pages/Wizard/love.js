@@ -58,9 +58,9 @@ const GoodAt = () => {
                 </ul>
               </div>
 
-              <h1 className="form-title">What you Love</h1>
+              <h1 className="form-title">What you LOVE</h1>
               <p className="form-subtitle">
-                What do you love doing or find fun, exciting or motivating?
+              What do you love doing or find fun, exciting or motivating?
               </p>
               <p className="form-listTitle">Ask yourself:</p>
               <ul className="form-list">
