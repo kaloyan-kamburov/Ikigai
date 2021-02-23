@@ -186,12 +186,7 @@ const Home = () => {
                       <h3>John</h3>
                     </div>
                     <div className="slider-text">
-                      <p>
-                        John is working as this and that. He is good in
-                        something but lacks something else. Incididunt ut labore
-                        et dolore magna aliqua. Ut enim ad minim veniam, quis
-                        nostrud exercitation ullamco laboris nisi ut aliquip ex
-                        ea commodo consequat.{" "}
+                      <p>John has been working as a middle school teacher for 6 years. He likes his job but he is not sure if this is the right career path, and how to move forward. Aside of work, he loves to cook and sometimes creates short videos to share with his friends on Instagram.{" "}
                       </p>
                     </div>
                     <div className="slider-title-result">
@@ -199,10 +194,7 @@ const Home = () => {
                     </div>
                     <div className="slider-text">
                       <p>
-                        By using Ikigai, John found a new way to combine his
-                        skills and start a new NGO venture where he’ll be able
-                        to earn his living by doing what he loves best, and make
-                        the world a better place in the process.
+                      By using Ikigai, John found a new way to combine his skills, monetise his hobby and make the world a better place in the process.
                       </p>
                     </div>
                   </div>
