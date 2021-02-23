@@ -219,7 +219,7 @@
 // }
 @media #{$small} {
   .section-foot {
-    text-align: left;
+    text-align: center;
     & .btn-lg {
       display: inline-block;
     }
@@ -237,6 +237,15 @@
   }
 }
 @media #{$large} {
+  .section-foot {
+    text-align: left;
+    // & .btn-lg {
+    //   display: inline-block;
+    // }
+    // & .btn-more {
+    //   margin-left: 55px;
+    // }
+  }
   .section {
       padding: 200px 0 146px;
     & .shell {

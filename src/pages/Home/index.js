@@ -71,11 +71,10 @@ const Home = () => {
       <section className="section-white">
         <div className="shell">
           <div className="section-intro">
-            <h2>What is Bliss/ Ikify?</h2>
+            <h2>What is Ikify?</h2>
             {/* <p>Ikiguide is based on the japanese concept Ikigai that could help you discover a more meaningful life. It can be a great tool in many stages of your personal and professional life. </p> */}
             <p>
-              Bliss/ Ikify helps you discover and realise your ikigai. Bliss/
-              Ikify can be a great tool in many stages of your personal and
+              Ikify helps you discover and realise your ikigai. Ikify can be a great tool in many stages of your personal and
               professional life.{" "}
             </p>
           </div>
