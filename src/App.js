@@ -10,15 +10,16 @@ import Love from "./pages/Wizard/love";
 import Needs from "./pages/Wizard/needs";
 import PaidFor from "./pages/Wizard/paidFor";
 import Congratulations from "./pages/Wizard/congratulations";
-import IkigaiChart from "./pages/Wizard/chart";
+// import IkigaiChart from "./pages/Wizard/chart";
 
-import { UserProvider, UserContext } from "./context";
-import axios from "./utils/api";
+import { /*UserProvider,*/ UserContext } from "./context";
+// import axios from "./utils/api";
 import Loader from "./components/Loader";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const App = () => {
+  // eslint-disable-next-line no-unused-vars
   const [userDetails, setUserDetails] = useContext(UserContext);
   const [appLoaded, setAppLoaded] = useState(false);
   useEffect(() => {

@@ -9,6 +9,7 @@ import ImageIkigaiEx from "../../images/ikigaiEx.png";
 
 const Home = () => {
   const history = useHistory();
+  // eslint-disable-next-line no-unused-vars
   const [userDetails, setUserDetails] = useContext(UserContext);
   const [logged, setLogged] = useState(false);
 
@@ -43,127 +44,170 @@ const Home = () => {
         <div className="shell">
           <div className="section-content">
             <div className="section-head">
-                <h1>Discover and realise your reason for being.</h1>
-              </div>
-              <div className="section-body">
-                <h3>We will help you find a purpose you strongly believe in.</h3>
-              </div>
-              <div className="section-foot">
-                <div className="section-btn">
-                  <button
-                    className="btn-lg"
-                    onClick={() => {
-                      history.push(logged ? "/chart" : "/what-you-love");
-                    }}
-                  >
-                    {logged ? "View my Ikigai" : "Start Your Journey"}
-                  </button>
-                  <button className="btn-more">Learn more</button>
-                </div>
+              <h1>Discover and realise your reason for being.</h1>
+            </div>
+            <div className="section-body">
+              <h3>We will help you find a purpose you strongly believe in.</h3>
+            </div>
+            <div className="section-foot">
+              <div className="section-btn">
+                <button
+                  className="btn-lg"
+                  onClick={() => {
+                    history.push(logged ? "/chart" : "/what-you-love");
+                  }}
+                >
+                  {logged ? "View my Ikigai" : "Start Your Journey"}
+                </button>
+                <button className="btn-more">Learn more</button>
               </div>
             </div>
-            <div className="section-image"> 
-              <img src={Image}/>
-            </div>
-
-            
           </div>
+          <div className="section-image">
+            <img alt="Ikigai" src={Image} />
+          </div>
+        </div>
       </section>
       <section className="section-white">
         <div className="shell">
-            <div className="section-intro">
-              <h2>What is Bliss/ Ikify?</h2>
-              {/* <p>Ikiguide is based on the japanese concept Ikigai that could help you discover a more meaningful life. It can be a great tool in many stages of your personal and professional life. </p> */}
-              <p>Bliss/ Ikify helps you discover and realise your ikigai. Bliss/ Ikify can be a great tool in many stages of your personal and professional life. </p>
-
-            </div>
-            <div className="aside-wrapper">
-              <aside className="aside-image"><img src={ImageVision}/></aside>
-              <aside className="aside-text">
-                <div className="aside-head">
-                  <h3 className="aside-title">Take the next step</h3>
-                </div>
-                <div className="aside-content">
-                  <ul className="aside-list">
-                    <li>You are looking to change your career but don’t know which career will bring you the most fulfillment and how to change course.</li>
-                    <li>
-                    You are between jobs and look for one that will give more fulfillment and purpose.
-                    </li>
-                    <li>You are stuck in the same daily routine and looking for more purpose and excitement in your life. </li>
-                    <li>You are just starting your career out of school or university and looking for a job with meaning and purpose.</li>
-                  <li>You are a group of friends or colleagues that want to work on a project, but do not know where your interests overlap and what project to undertake.</li>
-                  </ul>
-                </div>
-                <div className="aside-foot">
-                  <button className="btn-view">View examples</button>
-                </div>
-              </aside>
-            </div>
-              <div className="aside-wrapper">
-              
-                <aside className="aside-text">
-                  <div className="aside-head">
-                    <h2>What is Ikigai?</h2>
-                  </div>
-                  <div className="aside-content">
-                    <p>Ikigai is a Japanese concept that means “a reason for being”. It is why you get up in the morning. The word refers to having a direction or purpose in life that makes one’s life worthwhile. </p>
-                    <p>By discovering your ikigai you can focus on the things that matter the most to you and get satisfaction and a sense of meaning to your life. Ikigai could be related to your work, but it could also be related to something outside work. </p>
-                    <p>Your ikigai could have many different expressions.</p>
-                    {/* <p>But, knowing your ikigai alone is not enough: ikigai is “purpose in action”. </p> */}
-                  </div>
-                  <div className="aside-head">
-                    <h3 className="aside-title">How it works</h3>
-                  </div>
-                  <div className="aside-content">
-                    <p>Your ikigai lies in the interception of where what you love, what you are good at, what the world needs and what you can be paid for overlap.</p>
-                    <p>We will help you visualise your ikigai in a Venn diagram by asking you a series of questions. Then you would be able to discover where your ikigai lies. </p>
-                  </div>
-                  <div className="aside-foot">
-                  <button
-                    className="btn-small"
-                    onClick={() => {
-                      history.push(logged ? "/chart" : "/what-you-love");
-                    }}
-                  >
-                    {logged ? "View my Ikigai" : "Start your journey"}
-                  </button>
-                </div>
-              </aside>
-              <aside className="aside-image image-chart">
-                <img src={ImageIkigai}/>
-              </aside>
-             
-            </div>
-            
+          <div className="section-intro">
+            <h2>What is Bliss/ Ikify?</h2>
+            {/* <p>Ikiguide is based on the japanese concept Ikigai that could help you discover a more meaningful life. It can be a great tool in many stages of your personal and professional life. </p> */}
+            <p>
+              Bliss/ Ikify helps you discover and realise your ikigai. Bliss/
+              Ikify can be a great tool in many stages of your personal and
+              professional life.{" "}
+            </p>
+          </div>
+          <div className="aside-wrapper">
+            <aside className="aside-image">
+              <img alt="Ikigai" src={ImageVision} />
+            </aside>
+            <aside className="aside-text">
+              <div className="aside-head">
+                <h3 className="aside-title">Take the next step</h3>
+              </div>
+              <div className="aside-content">
+                <ul className="aside-list">
+                  <li>
+                    You are looking to change your career but don’t know which
+                    career will bring you the most fulfillment and how to change
+                    course.
+                  </li>
+                  <li>
+                    You are between jobs and look for one that will give more
+                    fulfillment and purpose.
+                  </li>
+                  <li>
+                    You are stuck in the same daily routine and looking for more
+                    purpose and excitement in your life.{" "}
+                  </li>
+                  <li>
+                    You are just starting your career out of school or
+                    university and looking for a job with meaning and purpose.
+                  </li>
+                  <li>
+                    You are a group of friends or colleagues that want to work
+                    on a project, but do not know where your interests overlap
+                    and what project to undertake.
+                  </li>
+                </ul>
+              </div>
+              <div className="aside-foot">
+                <button className="btn-view">View examples</button>
+              </div>
+            </aside>
+          </div>
+          <div className="aside-wrapper">
+            <aside className="aside-text">
+              <div className="aside-head">
+                <h2>What is Ikigai?</h2>
+              </div>
+              <div className="aside-content">
+                <p>
+                  Ikigai is a Japanese concept that means “a reason for being”.
+                  It is why you get up in the morning. The word refers to having
+                  a direction or purpose in life that makes one’s life
+                  worthwhile.{" "}
+                </p>
+                <p>
+                  By discovering your ikigai you can focus on the things that
+                  matter the most to you and get satisfaction and a sense of
+                  meaning to your life. Ikigai could be related to your work,
+                  but it could also be related to something outside work.{" "}
+                </p>
+                <p>Your ikigai could have many different expressions.</p>
+                {/* <p>But, knowing your ikigai alone is not enough: ikigai is “purpose in action”. </p> */}
+              </div>
+              <div className="aside-head">
+                <h3 className="aside-title">How it works</h3>
+              </div>
+              <div className="aside-content">
+                <p>
+                  Your ikigai lies in the interception of where what you love,
+                  what you are good at, what the world needs and what you can be
+                  paid for overlap.
+                </p>
+                <p>
+                  We will help you visualise your ikigai in a Venn diagram by
+                  asking you a series of questions. Then you would be able to
+                  discover where your ikigai lies.{" "}
+                </p>
+              </div>
+              <div className="aside-foot">
+                <button
+                  className="btn-small"
+                  onClick={() => {
+                    history.push(logged ? "/chart" : "/what-you-love");
+                  }}
+                >
+                  {logged ? "View my Ikigai" : "Start your journey"}
+                </button>
+              </div>
+            </aside>
+            <aside className="aside-image image-chart">
+              <img alt="Ikigai" src={ImageIkigai} />
+            </aside>
+          </div>
         </div>
       </section>
       <section className="section-slider">
         <div className="shell">
-            <h2>See Ikigai in action</h2>
+          <h2>See Ikigai in action</h2>
 
           <Slider {...sliderSettings}>
             <>
               <div className="slider-slide">
                 <div className="slider-wrapper">
                   <div className="slider-image">
-                  <img src={ImageIkigaiEx}/>
+                    <img alt="Ikigai" src={ImageIkigaiEx} />
                   </div>
                   <div className="slider-content">
                     <div className="slider-title">
                       <h3>John</h3>
                     </div>
                     <div className="slider-text">
-                      <p>John is working as this and that. He is good in something but lacks something else. Incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-                    </div>  
+                      <p>
+                        John is working as this and that. He is good in
+                        something but lacks something else. Incididunt ut labore
+                        et dolore magna aliqua. Ut enim ad minim veniam, quis
+                        nostrud exercitation ullamco laboris nisi ut aliquip ex
+                        ea commodo consequat.{" "}
+                      </p>
+                    </div>
                     <div className="slider-title-result">
                       <h3>Result</h3>
                     </div>
                     <div className="slider-text">
-                      <p>By using Ikigai, John found a new way to combine his skills and start a new NGO venture where he’ll be able to earn his living by doing what he loves best,  and make the world a better place in the process.</p>
+                      <p>
+                        By using Ikigai, John found a new way to combine his
+                        skills and start a new NGO venture where he’ll be able
+                        to earn his living by doing what he loves best, and make
+                        the world a better place in the process.
+                      </p>
                     </div>
                   </div>
                 </div>
-                
               </div>
             </>
             {/* <>
@@ -179,28 +223,27 @@ const Home = () => {
           </Slider>
         </div>
       </section>
-      
+
       <section className="bg-section">
         <div className="shell">
           <div className="bg-section-head">
-                <h2>It’s time to begin your journey</h2>
-              </div>
-              <div className="bg-section-body">
-                <h3>It takes only 5 minutes to start</h3>
-              </div>
-              <div className="bg-section-foot">
-                <div className="section-btn">
-                  <button
-                    className="btn-small yellow"
-                    onClick={() => {
-                      history.push(logged ? "/chart" : "/what-you-love");
-                    }}
-                  >
-                    {logged ? "View my Ikigai" : "Create your Ikigai"}
-                  </button>
-                 
-                </div>
-              </div>
+            <h2>It’s time to begin your journey</h2>
+          </div>
+          <div className="bg-section-body">
+            <h3>It takes only 5 minutes to start</h3>
+          </div>
+          <div className="bg-section-foot">
+            <div className="section-btn">
+              <button
+                className="btn-small yellow"
+                onClick={() => {
+                  history.push(logged ? "/chart" : "/what-you-love");
+                }}
+              >
+                {logged ? "View my Ikigai" : "Create your Ikigai"}
+              </button>
+            </div>
+          </div>
 
           {/* <aside className="aside">
             <div className="aside-head">
@@ -327,10 +370,8 @@ const Home = () => {
               </g>
             </svg>
           </aside> */}
-          
         </div>
       </section>
-      
     </>
   );
 };

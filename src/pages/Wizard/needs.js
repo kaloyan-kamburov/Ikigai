@@ -1,13 +1,13 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useEffect, useContext /*, useState*/ } from "react";
 import Select from "../../components/form/Select";
 import { Form } from "react-final-form";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory /*, useLocation*/ } from "react-router-dom";
 import { UserContext } from "../../context";
 import MiniChart from "../../components/MiniChart";
 import preventEnterFn from "./preventEnterFn";
 
 const GoodAt = () => {
-  const [userDetails, setUserDetails] = useContext(UserContext);
+  const [userDetails /*, setUserDetails*/] = useContext(UserContext);
   const history = useHistory();
   // const location = useLocation();
   // const [redraw, setRedraw] = useState(false);
@@ -36,6 +36,7 @@ const GoodAt = () => {
       return history.push("/chart");
     }
     return () => window.removeEventListener("keypress", preventEnterFn);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -45,6 +46,7 @@ const GoodAt = () => {
           <div className="col-wrapper">
             <div className="col_50">
               <div className="form-head">
+                {/* eslint-disable-next-line*/}
                 <a
                   className="formHead-title"
                   onClick={() => history.push({ pathname: "/what-you-love" })}
@@ -60,16 +62,28 @@ const GoodAt = () => {
 
               <h1 className="form-title">What the WORLD NEEDS</h1>
               <p className="form-subtitle">
-              What does the world need the most? What you can give to the world or your community?
+                What does the world need the most? What you can give to the
+                world or your community?
               </p>
               <p className="form-listTitle">Ask yourself:</p>
               <ul className="form-list">
-                <li>What problems in the world or your community would you like to help solve immediately?</li>
-                <li>What do you think are the biggest challenges in the world?</li>
+                <li>
+                  What problems in the world or your community would you like to
+                  help solve immediately?
+                </li>
+                <li>
+                  What do you think are the biggest challenges in the world?
+                </li>
                 <li>What issues touch you emotionally?</li>
-                <li>Why were you put on this Earth?  </li>
-                <li>What do you think would be an exciting and inspiring future for the world or your community?</li>
-                <li>Would your work still be relevant a decade or even a century from now?</li>
+                <li>Why were you put on this Earth? </li>
+                <li>
+                  What do you think would be an exciting and inspiring future
+                  for the world or your community?
+                </li>
+                <li>
+                  Would your work still be relevant a decade or even a century
+                  from now?
+                </li>
               </ul>
               {/* <MiniChart active="B" redraw={redraw} /> */}
               <MiniChart active="B" />

@@ -1,13 +1,13 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useEffect, useContext /*, useState */ } from "react";
 import Select from "../../components/form/Select";
 import { Form } from "react-final-form";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory /*, useLocation */ } from "react-router-dom";
 import { UserContext } from "../../context";
 import MiniChart from "../../components/MiniChart";
 import preventEnterFn from "./preventEnterFn";
 
 const GoodAt = () => {
-  const [userDetails, setUserDetails] = useContext(UserContext);
+  const [userDetails /*, setUserDetails*/] = useContext(UserContext);
   const history = useHistory();
   // const location = useLocation();
   // const [redraw, setRedraw] = useState(false);
@@ -36,6 +36,7 @@ const GoodAt = () => {
       return history.push("/chart");
     }
     return () => window.removeEventListener("keypress", preventEnterFn);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -45,6 +46,7 @@ const GoodAt = () => {
           <div className="col-wrapper">
             <div className="col_50">
               <div className="form-head">
+                {/* eslint-disable-next-line*/}
                 <a
                   className="formHead-title"
                   onClick={() =>
@@ -62,19 +64,23 @@ const GoodAt = () => {
 
               <h1 className="form-title">What are you GOOD AT</h1>
               <p className="form-subtitle">
-              What are your natural gifts, talents and special skills? It could be activities you enjoy or activities you don’t enjoy so much. 
+                What are your natural gifts, talents and special skills? It
+                could be activities you enjoy or activities you don’t enjoy so
+                much.
               </p>
 
               <p className="form-listTitle">Ask yourself:</p>
               <ul className="form-list">
                 <li>
-                What are you among the best in your workplace or from the people you know?
+                  What are you among the best in your workplace or from the
+                  people you know?
                 </li>
                 <li>
-                What comes easy to you and you are effortlessly good at?
+                  What comes easy to you and you are effortlessly good at?
                 </li>
                 <li>
-                With some more education and experience, what areas could you be among the best at what you do?
+                  With some more education and experience, what areas could you
+                  be among the best at what you do?
                 </li>
               </ul>
               {/* <MiniChart active="D" redraw={redraw} /> */}

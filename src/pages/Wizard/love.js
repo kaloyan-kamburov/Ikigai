@@ -1,7 +1,7 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useEffect, useContext /*, useState*/ } from "react";
 import Select from "../../components/form/Select";
 import { Form } from "react-final-form";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory /*, useLocation*/ } from "react-router-dom";
 import { UserContext } from "../../context";
 import MiniChart from "../../components/MiniChart";
 import preventEnterFn from "./preventEnterFn";
@@ -9,6 +9,7 @@ import preventEnterFn from "./preventEnterFn";
 const GoodAt = () => {
   const history = useHistory();
   // const location = useLocation();
+  // eslint-disable-next-line no-unused-vars
   const [userDetails, setUserDetails] = useContext(UserContext);
   // const [redraw, setRedraw] = useState(false);
 
@@ -34,6 +35,7 @@ const GoodAt = () => {
       return history.push("/chart");
     }
     return () => window.removeEventListener("keypress", preventEnterFn);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSubmit = () => history.push("/what-the-world-needs");
@@ -45,6 +47,7 @@ const GoodAt = () => {
           <div className="col-wrapper">
             <div className="col_50">
               <div className="form-head">
+                {/* eslint-disable-next-line*/}
                 <a
                   className="formHead-title"
                   onClick={() => history.push({ pathname: "/" })}
@@ -60,22 +63,26 @@ const GoodAt = () => {
 
               <h1 className="form-title">What you LOVE</h1>
               <p className="form-subtitle">
-              What do you love doing or find fun, exciting or motivating?
+                What do you love doing or find fun, exciting or motivating?
               </p>
               <p className="form-listTitle">Ask yourself:</p>
               <ul className="form-list">
                 <li>
-                What would you do if you didn’t have to worry about making money?
+                  What would you do if you didn’t have to worry about making
+                  money?
                 </li>
                 <li>
-                What do you enjoy the process of doing without thinking of the outcome?
+                  What do you enjoy the process of doing without thinking of the
+                  outcome?
                 </li>
                 <li>What’s exciting for you and makes you come alive?</li>
                 <li>
-                What is something you can do hours on end without getting tired?
+                  What is something you can do hours on end without getting
+                  tired?
                 </li>
                 <li>
-                What puts you in the state of flow and you forget about everything else around you?
+                  What puts you in the state of flow and you forget about
+                  everything else around you?
                 </li>
               </ul>
               {/* <MiniChart active="A" redraw={redraw} /> */}

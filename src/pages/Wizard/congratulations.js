@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useState } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory /*, useLocation*/ } from "react-router-dom";
 import { UserContext } from "../../context";
 import { Form, Field } from "react-final-form";
 import { required, composeValidators, email } from "../../utils/validation";
@@ -8,29 +8,25 @@ import Loader from "../../components/Loader";
 
 const Congratulations = () => {
   const history = useHistory();
+  // eslint-disable-next-line no-unused-vars
   const [userDetails, setUserDetails] = useContext(UserContext);
   const [formSubmitting, setFormSubmitting] = useState(false);
+  // eslint-disable-next-line no-unused-vars
   const [emailSent, setEmailSent] = useState(false);
 
   const handleSubmit = (values) => {
     setFormSubmitting(true);
     axios({
-      url: "subscribe",
-      data: values,
+      url: "subscribe/",
+      data: {
+        email: values.email,
+        ikigai: JSON.parse(localStorage.getItem("ikigai")),
+      },
       method: "post",
     })
-      .then(({ data }) => {
-        // setEmailSent(true);
-        // setFormSubmitting(false);
-        setEmailSent(false);
-        setFormSubmitting(false);
-      })
-      .catch(() => {
-        // setEmailSent(false);
-        // setFormSubmitting(false);
-        setEmailSent(true);
-        setFormSubmitting(false);
-      });
+      .then(({ data }) => setEmailSent(true))
+      .catch(() => setEmailSent(false))
+      .finally(() => setFormSubmitting(false));
   };
 
   useEffect(() => {
@@ -55,6 +51,7 @@ const Congratulations = () => {
     ) {
       return history.push("/");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <section className="section-yellowFull">
@@ -77,8 +74,10 @@ const Congratulations = () => {
                     <form onSubmit={props.handleSubmit}>
                       <div className="congrats-body">
                         <p>You have filled in your ikigai.</p>
-                        <p>We will send you a link to your ikigai Venn diagram. <br></br>
-                        Please, enter your email below:{" "}
+                        <p>
+                          We will send you a link to your ikigai Venn diagram.{" "}
+                          <br></br>
+                          Please, enter your email below:{" "}
                         </p>
                       </div>
                       <div className="field-wrapper congrats">
@@ -133,11 +132,14 @@ const Congratulations = () => {
                   <div className="congrats-body">
                     <p>We will be back in touch soon.</p>
                   </div>
-                <div className="congrats-btns">
-                  <button className="btn-lg" onClick={() => history.push("/")}>
-                  Go to homepage
-                  </button>
-                </div>
+                  <div className="congrats-btns">
+                    <button
+                      className="btn-lg"
+                      onClick={() => history.push("/")}
+                    >
+                      Go to homepage
+                    </button>
+                  </div>
                 </div>
               </div>
             </>

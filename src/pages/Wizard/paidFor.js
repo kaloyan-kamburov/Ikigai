@@ -1,13 +1,13 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useEffect, useContext /*, useState*/ } from "react";
 import Select from "../../components/form/Select";
 import { Form } from "react-final-form";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory /*, useLocation*/ } from "react-router-dom";
 import { UserContext } from "../../context";
 import MiniChart from "../../components/MiniChart";
 import preventEnterFn from "./preventEnterFn";
 
 const GoodAt = () => {
-  const [userDetails, setUserDetails] = useContext(UserContext);
+  const [userDetails /*, setUserDetails*/] = useContext(UserContext);
   const history = useHistory();
   // const location = useLocation();
   // const [redraw, setRedraw] = useState(false);
@@ -36,6 +36,7 @@ const GoodAt = () => {
       return history.push("/chart");
     }
     return () => window.removeEventListener("keypress", preventEnterFn);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -45,6 +46,7 @@ const GoodAt = () => {
           <div className="col-wrapper">
             <div className="col_50">
               <div className="form-head">
+                {/* eslint-disable-next-line*/}
                 <a
                   className="formHead-title"
                   onClick={() =>
@@ -60,17 +62,26 @@ const GoodAt = () => {
                 </ul>
               </div>
 
-              <h1 className="form-title">What you can be  PAID FOR</h1>
+              <h1 className="form-title">What you can be PAID FOR</h1>
               <p className="form-subtitle">
-              What is your source of income and pays the bills? What jobs or skills generally pay well in the marketplace?
+                What is your source of income and pays the bills? What jobs or
+                skills generally pay well in the marketplace?
               </p>
               <p className="form-listTitle">Ask yourself:</p>
               <ul className="form-list">
                 <li>What do you currently get paid to do?</li>
                 <li>What have you previously been paid to do?</li>
-                <li>What opportunities that pay well exist in the marketplace?</li>
-                <li>What career did your parents advice you to follow that pays well?</li>
-                <li>What have you been trained and educated in and could be paid to do?</li>
+                <li>
+                  What opportunities that pay well exist in the marketplace?
+                </li>
+                <li>
+                  What career did your parents advice you to follow that pays
+                  well?
+                </li>
+                <li>
+                  What have you been trained and educated in and could be paid
+                  to do?
+                </li>
                 {/* <li>
                 What have you been trained and educated in and could be paid to do?
                 </li> */}

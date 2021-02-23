@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState, useEffect /*, useContext*/ } from "react";
+// import { useHistory } from "react-router-dom";
 import { intersection } from "underscore";
 import * as d3 from "d3";
 import * as venn from "@upsetjs/venn.js";
 
 const MiniChart = ({ active, redraw }) => {
-  const history = useHistory();
+  // const history = useHistory();
 
   const reduceItems = (items) => {
     // console.log(items);
@@ -46,7 +46,7 @@ const MiniChart = ({ active, redraw }) => {
   };
 
   const removeDuplicates = (sets) => {
-    const ikiSettings = JSON.parse(localStorage.getItem("ikigai"));
+    // const ikiSettings = JSON.parse(localStorage.getItem("ikigai"));
 
     // if (
     //   !ikiSettings ||
@@ -580,12 +580,15 @@ const MiniChart = ({ active, redraw }) => {
   useEffect(() => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => draw(), [sets]);
 
   useEffect(() => {
     redraw && resetSets();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [redraw]);
 
   return (
