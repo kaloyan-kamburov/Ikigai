@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useEffect, useContext, useState, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import { UserContext } from "../../context";
 import Slider from "react-slick";
@@ -12,6 +12,9 @@ const Home = () => {
   // eslint-disable-next-line no-unused-vars
   const [userDetails, setUserDetails] = useContext(UserContext);
   const [logged, setLogged] = useState(false);
+  const learnRef = useRef(null);
+
+  const scrollToLearnMore = () => learnRef.current.scrollIntoView();
 
   const sliderSettings = {
     dots: false,
@@ -59,7 +62,9 @@ const Home = () => {
                 >
                   {logged ? "View my Ikigai" : "Start Your Journey"}
                 </button>
-                <button className="btn-more">Learn more</button>
+                <button className="btn-more" onClick={scrollToLearnMore}>
+                  Learn more
+                </button>
               </div>
             </div>
           </div>
@@ -68,14 +73,14 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className="section-white">
+      <section className="section-white" ref={learnRef}>
         <div className="shell">
           <div className="section-intro">
             <h2>What is Ikify?</h2>
             {/* <p>Ikiguide is based on the japanese concept Ikigai that could help you discover a more meaningful life. It can be a great tool in many stages of your personal and professional life. </p> */}
             <p>
-              Ikify helps you discover and realise your ikigai. Ikify can be a great tool in many stages of your personal and
-              professional life.{" "}
+              Ikify helps you discover and realise your ikigai. Ikify can be a
+              great tool in many stages of your personal and professional life.{" "}
             </p>
           </div>
           <div className="aside-wrapper">
@@ -186,7 +191,12 @@ const Home = () => {
                       <h3>John</h3>
                     </div>
                     <div className="slider-text">
-                      <p>John has been working as a middle school teacher for 6 years. He likes his job but he is not sure if this is the right career path, and how to move forward. Aside of work, he loves to cook and sometimes creates short videos to share with his friends on Instagram.{" "}
+                      <p>
+                        John has been working as a middle school teacher for 6
+                        years. He likes his job but he is not sure if this is
+                        the right career path, and how to move forward. Aside of
+                        work, he loves to cook and sometimes creates short
+                        videos to share with his friends on Instagram.{" "}
                       </p>
                     </div>
                     <div className="slider-title-result">
@@ -194,7 +204,9 @@ const Home = () => {
                     </div>
                     <div className="slider-text">
                       <p>
-                      By using Ikigai, John found a new way to combine his skills, monetise his hobby and make the world a better place in the process.
+                        By using Ikigai, John found a new way to combine his
+                        skills, monetise his hobby and make the world a better
+                        place in the process.
                       </p>
                     </div>
                   </div>
